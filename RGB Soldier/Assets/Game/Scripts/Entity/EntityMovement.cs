@@ -89,7 +89,7 @@ public class EntityMovement : MonoBehaviour
         }
     }
 
-    void Flip()
+    public void Flip()
     {
         // Switch the way the entity is labelled as facing.
         facingRight = !facingRight;
