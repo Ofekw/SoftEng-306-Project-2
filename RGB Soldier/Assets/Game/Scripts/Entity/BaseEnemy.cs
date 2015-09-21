@@ -45,12 +45,11 @@ public class BaseEnemy : KillableEntityInterface {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Hit side wall so reverse direction of movement
+        //Take damage trigger function
         if (other.gameObject.CompareTag("PlayerEnemyCollider"))
         {
             Player player = other.GetComponentInParent<Player>();
             player.takeDamage(damageGiven);
-            print("pow");
         }
     }
 
