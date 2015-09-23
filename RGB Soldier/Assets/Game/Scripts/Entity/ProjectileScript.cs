@@ -7,17 +7,19 @@ public class ProjectileScript : MonoBehaviour {
     public Vector3 startPoint;
     public GameObject shooter;
 
-	// Use this for initialization
 	void Start () {
         startPoint = this.gameObject.transform.position;
         shooter = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), shooter.gameObject.GetComponent<Collider2D>());
     }
 	
-	// Update is called once per frame
 	void Update () {
+        //If we want a max range on projectiles
         if (Mathf.Abs(startPoint.x - this.gameObject.transform.position.x) > range){
             //Destroy(this.gameObject);
+        }
+        if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
+            Destroy(this.gameObject);
         }
     }
 
@@ -27,18 +29,9 @@ public class ProjectileScript : MonoBehaviour {
             hit.gameObject.SendMessage("takeDamage", 1);
             Destroy(this.gameObject);
         }
-        if (hit.gameObject.tag == "ground")
+        if (hit.gameObject.tag == "ground" || hit.gameObject.tag == "SideWall")
         {
             Destroy(this.gameObject);
-        }
-       //Destroy(this.gameObject);
-    }
-
-    void OnTriggerEnter2D(Collider2D hit) {
-        if (hit.gameObject.tag == "Enemy" && hit.gameObject != shooter)
-        {
-            //hit.gameObject.SendMessage("takeDamage", 1);
-            //Destroy(this.gameObject);
         }
     }
 }

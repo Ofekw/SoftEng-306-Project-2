@@ -9,8 +9,7 @@ using System;
 public class Player : KillableEntityInterface {
 
     public EntityMovement entityMovement;
-    public Rigidbody2D projectileRight;
-    public Rigidbody2D projectileLeft;
+    public Rigidbody2D projectile;
     public float projectileSpeed = 10;
     public float xProjectileOffset = 0f;
     public float yProjectileOffset = 0f;
@@ -32,6 +31,7 @@ public class Player : KillableEntityInterface {
         //call the base movement module method to handle movement
         entityMovement.Movement(hVelocity);
 
+        //If the shift button is pressed
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Shoot();
@@ -40,15 +40,19 @@ public class Player : KillableEntityInterface {
 
     public void Shoot () {
         Rigidbody2D clone;
+        //Shoot to the right
         if (entityMovement.facingRight) {
-            clone = (Rigidbody2D)Instantiate(projectileRight, new Vector3(transform.position.x + xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            clone.velocity = new Vector3(projectileSpeed, 0, 0);
+            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x + xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
+            clone.velocity = new Vector2(projectileSpeed, 0);
         } else {
-            clone = (Rigidbody2D)Instantiate(projectileLeft, new Vector3(transform.position.x - xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            clone.velocity = new Vector3(-projectileSpeed, 0, 0);
+            //Shoot to the left
+            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x - xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
+            //Invert prefab
+            Vector3 theScale = clone.transform.localScale;
+            theScale.x *= -1;
+            clone.transform.localScale = theScale;
+            clone.velocity = new Vector2(-projectileSpeed, 0);
         }
-
-
     }
 
     public override void takeDamage(int damageReceived)
