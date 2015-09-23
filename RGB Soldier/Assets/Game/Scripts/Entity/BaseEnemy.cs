@@ -56,11 +56,17 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
-        throw new NotImplementedException();
+        //Suggested convention
+        //-1 represents kill?
+        currentHealth = currentHealth - damageReceived;
+        if(currentHealth <= 0){
+            die();
+        }
     }
 
     public override void die()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        Destroy(this.gameObject);
     }
 }

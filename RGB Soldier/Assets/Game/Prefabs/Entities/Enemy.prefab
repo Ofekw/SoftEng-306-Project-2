@@ -122,6 +122,7 @@ MonoBehaviour:
   currentHealth: 1
   dead: 0
   entityMovement: {fileID: 0}
+  damageGiven: 1
 --- !u!114 &11483886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,6 +180,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: currentHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
