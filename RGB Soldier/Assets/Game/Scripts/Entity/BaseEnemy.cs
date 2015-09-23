@@ -9,17 +9,17 @@ public class BaseEnemy : KillableEntityInterface {
 
     public EntityMovement entityMovement;
     public int damageGiven = 1;
+    public int count = 0;
 
 	// Use this for initialization
 	void Start () {
         this.entityMovement = GetComponent<EntityMovement>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         AIControl();
-
-	}
+    }
 
      protected virtual void AIControl()
     {
@@ -45,13 +45,13 @@ public class BaseEnemy : KillableEntityInterface {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Hit side wall so reverse direction of movement
+        //Take damage trigger function
         if (other.gameObject.CompareTag("PlayerEnemyCollider"))
         {
             Player player = other.GetComponentInParent<Player>();
             print("pow");
             player.takeDamage(damageGiven);
-           
+            print("pow");
         }
     }
 
@@ -66,7 +66,7 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void die()
     {
-        //throw new NotImplementedException();
-        Destroy(this.gameObject);
+        dead = true;
+        Destroy(gameObject, 0f);
     }
 }

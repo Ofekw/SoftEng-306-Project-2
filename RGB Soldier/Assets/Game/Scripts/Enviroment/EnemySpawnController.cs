@@ -3,35 +3,30 @@ using System.Collections;
 
 public class EnemySpawnController : MonoBehaviour
 {
+    public GameObject enemy;                // The enemy prefab to be spawned.
+    public float spawnTime = 3f;            // How long between each spawn.
+    public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
+    public int enemyLimit = 10;
 
-    public float spawnPeriod = 5f;
-    public EnemySpawner[] spawners;
-    private float spawnTimer = 0;
 
-    // Use this for initialization
     void Start()
     {
-        if (spawners.Length == 0)
-        {
-            throw new UnityException("No spawners specified for: " + this.name);
-        }
+        // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
+        InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void Spawn()
     {
-        spawnTimer += Time.deltaTime; // Delta time is the time between frames, we increment this until we hit the spawn time
-
-        if (spawnTimer > spawnPeriod)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length < enemyLimit)
         {
-            spawnTimer = 0f;
+            // Find a random index between zero and one less than the number of spawn points.
+            int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-            int randomSpawnerIndex = Random.Range(0, spawners.Length - 1); // choose a random spawner to call
-
-            spawners[randomSpawnerIndex].Spawn();
-
+            // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
+            Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            
         }
-      
-        
     }
 }
