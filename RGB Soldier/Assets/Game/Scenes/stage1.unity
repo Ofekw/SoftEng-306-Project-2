@@ -271,7 +271,7 @@ Prefab:
     - target: {fileID: 11450854, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 5033434, guid: 7426600626d87fc4cb449dbbdc772ffd, type: 2}
+      objectReference: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
     - target: {fileID: 11450854, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
       propertyPath: projectileRight
       value: 
@@ -614,6 +614,14 @@ Prefab:
     - target: {fileID: 455536, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104528, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
+      propertyPath: m_Offset.y
+      value: .147563815
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104528, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
+      propertyPath: m_Size.y
+      value: 2.30487204
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}

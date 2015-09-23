@@ -13,14 +13,20 @@ public class Player : KillableEntityInterface {
     public float projectileSpeed = 10;
     public float xProjectileOffset = 0f;
     public float yProjectileOffset = 0f;
+    public Boolean attacking = false;
+    public float attackCooldown = 0.3f;
+    public float lastAttack;
+    public BoxCollider2D meleeCollider;
 
     // Use this for initialization
-    void Start () 
-    {
-	 this.entityMovement = GetComponent<EntityMovement>();
-	}
-	
-	void FixedUpdate () 
+    void Start () {
+	    this.entityMovement = GetComponent<EntityMovement>();
+        meleeCollider.enabled = false;
+        attacking = false;
+        lastAttack = Time.time;
+    }
+
+    void Update () 
     {
         //if pressing jump button, call jump method to toggle boolean
         if (Input.GetButtonDown("Jump"))
@@ -35,6 +41,32 @@ public class Player : KillableEntityInterface {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Shoot();
+        }
+
+        //If the control button is pressed
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Melee();
+        }
+        if(attacking == true){
+            meleeCollider.enabled = true;
+            if((Time.time - lastAttack) > 0.1)
+            {
+                attacking = false;
+                meleeCollider.enabled = false;
+            }
+        }
+        else
+        {
+            meleeCollider.enabled = false;
+        }
+    }
+
+    public void Melee() {
+        if (Time.time > (lastAttack + attackCooldown))
+        {
+            attacking = true;
+            lastAttack = Time.time;
         }
     }
 
