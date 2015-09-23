@@ -9,17 +9,22 @@ public class BaseEnemy : KillableEntityInterface {
 
     public EntityMovement entityMovement;
     public int damageGiven = 1;
+    public int count = 0;
 
 	// Use this for initialization
 	void Start () {
         this.entityMovement = GetComponent<EntityMovement>();
-	}
+        InvokeRepeating("takeDamage(1)", 5f, 5f);
+    }
 	
 	// Update is called once per frame
 	void Update () {
         AIControl();
-
-	}
+        if (count++ == 400)
+        {
+            takeDamage(1);
+        }
+    }
 
      protected virtual void AIControl()
     {
@@ -55,11 +60,15 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
-        throw new NotImplementedException();
+        if (currentHealth-damageReceived <= 0) {
+            die();
+        }
+       
     }
 
     public override void die()
     {
-        throw new NotImplementedException();
+        dead = true;
+        Destroy(gameObject, 2f);
     }
 }
