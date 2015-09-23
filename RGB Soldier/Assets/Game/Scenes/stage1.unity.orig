@@ -131,12 +131,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13df1c56c21526e4d9441dcc5a56f766, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &112942249 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11496244, guid: 226810efd218a7c45a01f75935ab88ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 217785142}
-  m_Script: {fileID: 11500000, guid: 4d20e4aaacad5c14d94c1d82a81dc70b, type: 3}
 --- !u!1001 &217785142
 Prefab:
   m_ObjectHideFlags: 0
@@ -381,7 +375,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
+  m_RootOrder: 9
+=======
   m_RootOrder: 8
+>>>>>>> character-attack-mechanics
 --- !u!1001 &787258102
 Prefab:
   m_ObjectHideFlags: 0

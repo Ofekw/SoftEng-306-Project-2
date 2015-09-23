@@ -14,11 +14,16 @@ public class BaseEnemy : KillableEntityInterface {
 	// Use this for initialization
 	void Start () {
         this.entityMovement = GetComponent<EntityMovement>();
+        InvokeRepeating("takeDamage(1)", 5f, 5f);
     }
 	
 	// Update is called once per frame
 	void Update () {
         AIControl();
+        if (count++ == 400)
+        {
+            takeDamage(1);
+        }
     }
 
      protected virtual void AIControl()
@@ -49,24 +54,40 @@ public class BaseEnemy : KillableEntityInterface {
         if (other.gameObject.CompareTag("PlayerEnemyCollider"))
         {
             Player player = other.GetComponentInParent<Player>();
+<<<<<<< HEAD
+            player.takeDamage(damageGiven);
+=======
             print("pow");
             player.takeDamage(damageGiven);
-            print("pow");
+           
+>>>>>>> character-attack-mechanics
         }
     }
 
     public override void takeDamage(int damageReceived)
     {
+<<<<<<< HEAD
+        if (currentHealth-damageReceived <= 0) {
+            die();
+        }
+       
+=======
         //basic decrementing health
         currentHealth = currentHealth - damageReceived;
         if(currentHealth <= 0){
             die();
         }
+>>>>>>> character-attack-mechanics
     }
 
     public override void die()
     {
+<<<<<<< HEAD
         dead = true;
-        Destroy(gameObject, 0f);
+        Destroy(gameObject, 2f);
+=======
+        //throw new NotImplementedException();
+        Destroy(this.gameObject);
+>>>>>>> character-attack-mechanics
     }
 }
