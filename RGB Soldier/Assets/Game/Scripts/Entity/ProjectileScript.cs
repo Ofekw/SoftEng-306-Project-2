@@ -31,7 +31,7 @@ public class ProjectileScript : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-       // Destroy(this.gameObject);
+       //Destroy(this.gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D hit) {

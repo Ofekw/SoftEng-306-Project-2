@@ -271,7 +271,23 @@ Prefab:
     - target: {fileID: 11450854, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 5028148, guid: 7426600626d87fc4cb449dbbdc772ffd, type: 2}
+      objectReference: {fileID: 5033434, guid: 7426600626d87fc4cb449dbbdc772ffd, type: 2}
+    - target: {fileID: 11450854, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: projectileRight
+      value: 
+      objectReference: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
+    - target: {fileID: 11450854, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: projectileLeft
+      value: 
+      objectReference: {fileID: 5033434, guid: 7426600626d87fc4cb449dbbdc772ffd, type: 2}
+    - target: {fileID: 11450854, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: xProjectileOffset
+      value: .949999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450854, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: yProjectileOffset
+      value: -.400000006
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
   m_IsPrefabParent: 0
@@ -503,6 +519,14 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 117240, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 117240, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
   m_IsPrefabParent: 0
@@ -640,6 +664,14 @@ Prefab:
     - target: {fileID: 165524, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
       propertyPath: m_Name
       value: Platform (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 117240, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 117240, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 773a68ee3da7fa94a885b6bc8d2e049a, type: 2}

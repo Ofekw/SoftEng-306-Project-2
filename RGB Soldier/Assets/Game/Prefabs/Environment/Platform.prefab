@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 492730}
   - 61: {fileID: 6104528}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: platformEnd
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +121,14 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: ac645939b9e72f74d82d2b67ba86550c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 165524}
