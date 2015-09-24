@@ -37,6 +37,8 @@ public class Player : KillableEntityInterface {
 
     Vector3 movement;
 
+    private Animator animator;                  //Used to store a reference to the Player's animator component.
+
     // Use this for initialization
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
@@ -45,6 +47,9 @@ public class Player : KillableEntityInterface {
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
+
+        //Get a component reference to the Player's animator component
+            animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -131,6 +136,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
+        animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
             attacking = true;
@@ -212,6 +218,7 @@ public class Player : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
+        animator.SetTrigger("playerHit");
         throw new NotImplementedException();
     }
 
