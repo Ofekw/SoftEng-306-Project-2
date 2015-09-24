@@ -16,48 +16,75 @@ public class IncreaseStat : MonoBehaviour {
     //Update with player points
     int points;
 
-    public void Awake()
+    // Starts after everything has woken - must wait for gamecontrol
+    public void Start()
     {
-        points = player.abilityPoints;
-        strSlider.value = player.strength;
-        aglSlider.value = player.agility;
-        dexSlider.value = player.dexterity;
-        intSlider.value = player.intelligence;
-        vitSlider.value = player.vitality;
+        points = GameControl.control.abilityPoints;
+        strSlider.value = GameControl.control.playerStr;
+        aglSlider.value = GameControl.control.playerAgl;
+        dexSlider.value = GameControl.control.playerDex;
+        intSlider.value = GameControl.control.playerInt;
+        vitSlider.value = GameControl.control.playerVit;
+
         pointsText.text = "Points: " + points;
     }
 
     public void clickAdd(Slider statBar) {
-        //TODO - check points before adding them
         if (statBar.value != 5 && points > 0)
         {
             statBar.value = statBar.value + 1;
             string statType = statBar.name.Substring(0, 3);
-            // update character stat
+
+            // Update character stat
             switch (statType)
             {
                 case "Str":
                     player.strength = (int)statBar.value;
+                    GameControl.control.playerStr = player.strength;
                     break;
                 case "Agl":
                     player.agility = (int)statBar.value;
+                    GameControl.control.playerAgl = player.agility;
                     break;
                 case "Dex":
                     player.dexterity = (int)statBar.value;
+                    GameControl.control.playerDex = player.dexterity;
                     break;
                 case "Int":
                     player.intelligence = (int)statBar.value;
+                    GameControl.control.playerInt = player.intelligence;
                     break;
                 case "Vit":
                     player.vitality = (int)statBar.value;
+                    GameControl.control.playerVit = player.vitality;
                     break;
             }
-            // Update the character points
+
             points--;
             pointsText.text = "Points: " + points;
             player.abilityPoints = points;
-            player.UpdateStats();
+            GameControl.control.abilityPoints = points;
         }
 
+    }
+
+    // For testing purposes
+    public void resetStats()
+    {
+        player.strength = 1;
+        GameControl.control.playerStr = 1;
+        player.agility = 1;
+        GameControl.control.playerAgl = 1;
+        player.dexterity = 1;
+        GameControl.control.playerDex = 1;
+        player.intelligence = 1;
+        GameControl.control.playerInt = 1;
+        player.vitality = 1;
+        GameControl.control.playerVit = 1;
+        player.abilityPoints = 5;
+        GameControl.control.abilityPoints = 5;
+
+        // resets sliders to values set above
+        Start();
     }
 }

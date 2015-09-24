@@ -24,12 +24,13 @@ public class Player : KillableEntityInterface {
     //TODO associate with skill set 
     public int specialChargeMeterLength = 100;
 
-    public int strength = 1;    //Strength - Melee
-    public int agility = 1;     //Agility- Speed
-    public int dexterity = 1;   //Dexterity- Range
-    public int intelligence = 1;//Intelligence - Special
-    public int vitality = 1;    //Vitality - Health
-    public int abilityPoints = 10; // Points to spend on skill
+    public int strength;    //Strength - Melee
+    public int agility;    //Agility- Speed
+    public int dexterity;   //Dexterity- Range
+    public int intelligence; //Intelligence - Special
+    public int vitality;    //Vitality - Health
+
+    public int abilityPoints; // Points to spend on skill
 
 
     bool moveRight = false;
@@ -39,6 +40,7 @@ public class Player : KillableEntityInterface {
     Vector3 movement;
 
     // Use this for initialization
+    // Starts after everything has woken - must wait for gamecontrol
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 	    this.entityMovement = GetComponent<EntityMovement>();
@@ -46,6 +48,13 @@ public class Player : KillableEntityInterface {
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
+
+        strength = GameControl.control.playerStr;
+        agility = GameControl.control.playerAgl;
+        dexterity = GameControl.control.playerDex;
+        intelligence = GameControl.control.playerInt;
+        vitality = GameControl.control.playerVit;
+        abilityPoints = GameControl.control.abilityPoints;
     }
 
     void Update()
