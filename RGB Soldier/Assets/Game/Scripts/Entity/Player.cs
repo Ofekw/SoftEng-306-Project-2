@@ -18,12 +18,17 @@ public class Player : KillableEntityInterface {
     public float lastAttack;
     public BoxCollider2D meleeCollider;
 
+    private Animator animator;                  //Used to store a reference to the Player's animator component.
+
     // Use this for initialization
     void Start () {
 	    this.entityMovement = GetComponent<EntityMovement>();
         meleeCollider.enabled = false;
         attacking = false;
         lastAttack = Time.time;
+
+        //Get a component reference to the Player's animator component
+            animator = GetComponent<Animator>();
     }
 
     void Update () 
@@ -46,6 +51,8 @@ public class Player : KillableEntityInterface {
         //If the control button is pressed
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
+            print("melee");
+            animator.SetTrigger("playerMelee");
             Melee();
         }
         if(attacking == true){
@@ -89,6 +96,7 @@ public class Player : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
+        animator.SetTrigger("playerHit");
         throw new NotImplementedException();
     }
 
