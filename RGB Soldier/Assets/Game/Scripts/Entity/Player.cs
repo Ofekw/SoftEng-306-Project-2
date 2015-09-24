@@ -17,6 +17,7 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
+    public 
 
     // Use this for initialization
     void Start () {
