@@ -17,6 +17,7 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
+    int orbCount = 0;
 
     public int strength = 1;    //Strength - Melee
     public int agility = 1;     //Agility- Speed
@@ -115,6 +116,22 @@ public class Player : KillableEntityInterface {
     public override void die()
     {
         throw new NotImplementedException();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Orb"))
+        {
+            orbCount++;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Orb"))
+        {
+            orbCount++;
+        }
     }
 
 }
