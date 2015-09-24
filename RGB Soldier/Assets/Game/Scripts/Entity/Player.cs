@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Assets.Game.Scripts.Enviroment;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -17,6 +18,11 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
+    public Boolean specialAttack = false;
+    //TODO move incrementing of special charge to game manager
+    public int specialCharge = 0;
+    //TODO associate with skill set 
+    public int specialChargeMeterLength = 100;
 
     public int strength = 1;    //Strength - Melee
     public int agility = 1;     //Agility- Speed
@@ -28,49 +34,99 @@ public class Player : KillableEntityInterface {
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
+
+    bool moveRight = false;
+    bool moveLeft = false;
+    bool isJumping = false;
+
+    Vector3 movement;
+
+    private Animator animator;                  //Used to store a reference to the Player's animator component.
+
     // Use this for initialization
     void Start () {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
 	    this.entityMovement = GetComponent<EntityMovement>();
         meleeCollider.enabled = false;
         attacking = false;
+        specialAttack = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
-    } 
+        //Get a component reference to the Player's animator component
+            animator = GetComponent<Animator>();
+    }
 
-    void Update () 
+    void Update()
     {
-        //if pressing jump button, call jump method to toggle boolean
-        if (Input.GetButtonDown("Jump"))
+        //TODO move incrementing of special charge to game manager
+        specialCharge++;
+        var shakingAmount = Input.acceleration.magnitude;
+        if (shakingAmount > 1.5)
         {
-            entityMovement.Jump();
+            Special();
         }
-        float hVelocity = Input.GetAxis("Horizontal");
-        //call the base movement module method to handle movement
-        entityMovement.Movement(hVelocity);
-
-        //If the shift button is pressed
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            Shoot();
-        }
-
-        //If the control button is pressed
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Melee();
-        }
-        if(attacking == true){
-            meleeCollider.enabled = true;
-            if((Time.time - lastAttack) > 0.1)
+            /*
+            if (moveRight)
             {
-                attacking = false;
+                movement.Set(1, 0, 0);
+                movement = movement.normalized * movementSpeed * Time.deltaTime;
+                playerRigidBody.MovePosition(transform.position + movement);
+            }
+             * */
+            //if pressing jump button, call jump method to toggle boolean
+            if (Input.GetButtonDown("Jump"))
+            {
+                entityMovement.Jump();
+            }
+
+            if (isJumping)
+            {
+                entityMovement.Jump();
+            }
+            //float hVelocity = Input.GetAxis("Horizontal");
+            float hVelocity = 0f;
+            if (moveRight && !moveLeft)
+            {
+                hVelocity = 1.0f;
+            }
+            else if (moveLeft && !moveRight)
+            {
+                hVelocity = -1.0f;
+            }
+            if (!moveRight && !moveLeft)
+            {
+                hVelocity = 0.0f;
+            }
+
+            //hVelocity = Input.GetAxis("Horizontal");
+            //call the base movement module method to handle movement
+            entityMovement.Movement(hVelocity);
+
+            //If the shift button is pressed
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Shoot();
+            }
+
+            //If the control button is pressed
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                Melee();
+            }
+
+            if (attacking == true)
+            {
+                meleeCollider.enabled = true;
+                if ((Time.time - lastAttack) > 0.1)
+                {
+                    attacking = false;
+                    meleeCollider.enabled = false;
+                }
+            }
+            else
+            {
                 meleeCollider.enabled = false;
             }
-        }
-        else
-        {
-            meleeCollider.enabled = false;
-        }
 
 
         if (temporaryInvulnerable)
@@ -81,8 +137,9 @@ public class Player : KillableEntityInterface {
             }
         }
 
-        UpdateStats();
-    }
+            UpdateStats();
+        }
+    
 
     public void UpdateStats()
     {
@@ -92,11 +149,31 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
+        animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
             attacking = true;
             lastAttack = Time.time;
         }
+    }
+
+    public void Special()
+    {
+        //If the meter is fully charged
+        if (specialCharge >= specialChargeMeterLength)
+        {
+            specialAttack = true;
+            specialCharge = 0;
+            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                var e = enemy.GetComponent<BaseEnemy>();
+                e.die();
+            }
+
+
+        }
+
     }
 
     public void Shoot () {
@@ -121,10 +198,42 @@ public class Player : KillableEntityInterface {
         }
     }
 
+    public void rightButtonPressed()
+    {
+        moveRight = true;
+    }
+
+    public void rightButtonReleased()
+    {
+        moveRight = false;
+    }
+
+    public void leftButtonPressed()
+    {
+        moveLeft = true;
+    }
+
+    public void leftButtonReleased()
+    {
+        moveLeft = false;
+    }
+
+    public void jumpPressed()
+    {
+        isJumping = true;
+    }
+
+    public void jumpReleased()
+    {
+        isJumping = false;
+    }
+
+
     public override void takeDamage(int damageReceived)
     {
         if (!temporaryInvulnerable)
         {
+            animator.SetTrigger("playerHit");
             currentHealth--;
             temporaryInvulnerable = true;
             temporaryInvulnerableTime = Time.time;
