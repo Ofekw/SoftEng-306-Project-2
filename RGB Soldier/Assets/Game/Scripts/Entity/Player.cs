@@ -24,12 +24,17 @@ public class Player : KillableEntityInterface {
     public int intelligence = 1;//Intelligence - Special
     public int vitality = 1;    //Vitality - Health
 
+    public Boolean temporaryInvulnerable = false;
+    public float temporaryInvulnerableTime;
+    public float invulnTime = 2.0f;
+
     // Use this for initialization
     void Start () {
 	    this.entityMovement = GetComponent<EntityMovement>();
         meleeCollider.enabled = false;
         attacking = false;
         lastAttack = Time.time;
+        temporaryInvulnerableTime = Time.time;
     } 
 
     void Update () 
@@ -65,6 +70,15 @@ public class Player : KillableEntityInterface {
         else
         {
             meleeCollider.enabled = false;
+        }
+
+
+        if (temporaryInvulnerable)
+        {
+            if (Time.time > temporaryInvulnerableTime + invulnTime)
+            {
+                temporaryInvulnerable = false;
+            }
         }
 
         UpdateStats();
@@ -109,12 +123,22 @@ public class Player : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
-        throw new NotImplementedException();
+        if (!temporaryInvulnerable)
+        {
+            currentHealth--;
+            temporaryInvulnerable = true;
+            temporaryInvulnerableTime = Time.time;
+        }
+        if (currentHealth <= 0)
+        {
+            die();
+        }
     }
 
     public override void die()
     {
-        throw new NotImplementedException();
+        //Destroy(this.gameObject);
+        print("YOU DIED!");
     }
 
 }
