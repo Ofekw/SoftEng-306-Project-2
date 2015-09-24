@@ -30,6 +30,11 @@ public class Player : KillableEntityInterface {
     public int intelligence = 1;//Intelligence - Special
     public int vitality = 1;    //Vitality - Health
 
+<<<<<<< HEAD
+    public Boolean temporaryInvulnerable = false;
+    public float temporaryInvulnerableTime;
+    public float invulnTime = 2.0f;
+=======
 
     bool moveRight = false;
     bool moveLeft = false;
@@ -38,6 +43,7 @@ public class Player : KillableEntityInterface {
     Vector3 movement;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
+>>>>>>> develop
 
     // Use this for initialization
     void Start () {
@@ -47,6 +53,11 @@ public class Player : KillableEntityInterface {
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
+<<<<<<< HEAD
+        temporaryInvulnerableTime = Time.time;
+    } 
+=======
+>>>>>>> develop
 
         //Get a component reference to the Player's animator component
             animator = GetComponent<Animator>();
@@ -94,18 +105,6 @@ public class Player : KillableEntityInterface {
                 hVelocity = 0.0f;
             }
 
-<<<<<<< HEAD
-        //If the control button is pressed
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            print("melee");
-            animator.SetTrigger("playerMelee");
-            Melee();
-        }
-        if(attacking == true){
-            meleeCollider.enabled = true;
-            if((Time.time - lastAttack) > 0.1)
-=======
             //hVelocity = Input.GetAxis("Horizontal");
             //call the base movement module method to handle movement
             entityMovement.Movement(hVelocity);
@@ -132,14 +131,27 @@ public class Player : KillableEntityInterface {
                 }
             }
             else
->>>>>>> develop
             {
                 meleeCollider.enabled = false;
             }
 
+<<<<<<< HEAD
+
+        if (temporaryInvulnerable)
+        {
+            if (Time.time > temporaryInvulnerableTime + invulnTime)
+            {
+                temporaryInvulnerable = false;
+            }
+        }
+
+        UpdateStats();
+    }
+=======
             UpdateStats();
         }
     
+>>>>>>> develop
 
     public void UpdateStats()
     {
@@ -149,6 +161,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
+        animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
             attacking = true;
@@ -230,13 +243,27 @@ public class Player : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
+<<<<<<< HEAD
+        if (!temporaryInvulnerable)
+        {
+            currentHealth--;
+            temporaryInvulnerable = true;
+            temporaryInvulnerableTime = Time.time;
+        }
+        if (currentHealth <= 0)
+        {
+            die();
+        }
+=======
         animator.SetTrigger("playerHit");
         throw new NotImplementedException();
+>>>>>>> develop
     }
 
     public override void die()
     {
-        throw new NotImplementedException();
+        //Destroy(this.gameObject);
+        print("YOU DIED!");
     }
 
 }

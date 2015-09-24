@@ -30,6 +30,10 @@ public class Player : KillableEntityInterface {
     public int intelligence = 1;//Intelligence - Special
     public int vitality = 1;    //Vitality - Health
 
+    public Boolean temporaryInvulnerable = false;
+    public float temporaryInvulnerableTime;
+    public float invulnTime = 2.0f;
+
 
     bool moveRight = false;
     bool moveLeft = false;
@@ -47,7 +51,7 @@ public class Player : KillableEntityInterface {
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
-
+        temporaryInvulnerableTime = Time.time;
         //Get a component reference to the Player's animator component
             animator = GetComponent<Animator>();
     }
@@ -123,6 +127,15 @@ public class Player : KillableEntityInterface {
             {
                 meleeCollider.enabled = false;
             }
+
+
+        if (temporaryInvulnerable)
+        {
+            if (Time.time > temporaryInvulnerableTime + invulnTime)
+            {
+                temporaryInvulnerable = false;
+            }
+        }
 
             UpdateStats();
         }
@@ -218,13 +231,23 @@ public class Player : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
-        animator.SetTrigger("playerHit");
-        throw new NotImplementedException();
+        if (!temporaryInvulnerable)
+        {
+            animator.SetTrigger("playerHit");
+            currentHealth--;
+            temporaryInvulnerable = true;
+            temporaryInvulnerableTime = Time.time;
+        }
+        if (currentHealth <= 0)
+        {
+            die();
+        }
     }
 
     public override void die()
     {
-        throw new NotImplementedException();
+        //Destroy(this.gameObject);
+        print("YOU DIED!");
     }
 
 }
