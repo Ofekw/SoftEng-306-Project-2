@@ -10,8 +10,6 @@ public class Player : KillableEntityInterface {
 
     public EntityMovement entityMovement;
 
-    public float movementSpeed = 5f;
-    Rigidbody2D playerRigidBody;
 
     bool moveRight = false;
     bool moveLeft = false;
@@ -23,7 +21,6 @@ public class Player : KillableEntityInterface {
 	void Start () 
     {
 	    this.entityMovement = GetComponent<EntityMovement>();
-        playerRigidBody = GetComponent<Rigidbody2D>();
 	}
 	
 	void FixedUpdate () 

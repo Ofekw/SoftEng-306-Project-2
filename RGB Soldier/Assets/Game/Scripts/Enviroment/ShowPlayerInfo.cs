@@ -15,8 +15,9 @@ public class ShowPlayerInfo : MonoBehaviour {
         string str = GameControl.control.playerStr.ToString();
         string vit = GameControl.control.playerVit.ToString();
         string currentLevel = GameControl.control.currentGameLevel.ToString();
+        string abilityPoint = GameControl.control.abilityPoints.ToString();
 
-        string toPrint = level + " " + agl + " " + dex + " " + intel + " " + str + " " + vit + " " + currentLevel;
+        string toPrint = level + " " + agl + " " + dex + " " + intel + " " + str + " " + vit + " " + currentLevel + " " + abilityPoint;
         theButton = GetComponent<Button>();
         theButton.GetComponentInChildren<Text>().text = toPrint;
 	}
@@ -35,5 +36,6 @@ public class ShowPlayerInfo : MonoBehaviour {
         GameControl.control.playerStr += 1;
         GameControl.control.playerVit += 1;
         GameControl.control.currentGameLevel += 1;
+        GameControl.control.abilityPoints += 1;
     }
 }

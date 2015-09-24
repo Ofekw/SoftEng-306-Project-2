@@ -16,6 +16,7 @@ public class GameControl : MonoBehaviour {
     public int playerInt;
     public int playerVit;
     public int currentGameLevel;
+    public int abilityPoints;
 
 
     //Save code on enable and disable if you want auto saving.
@@ -59,6 +60,8 @@ public class GameControl : MonoBehaviour {
         playerData.playerInt = playerInt;
         playerData.playerVit = playerVit;
         playerData.currentGameLevel = currentGameLevel;
+        playerData.abilityPoints = abilityPoints;
+        
 
         bf.Serialize(file, playerData);
 
@@ -82,6 +85,7 @@ public class GameControl : MonoBehaviour {
             playerInt = data.playerInt;
             playerVit = data.playerVit;
             currentGameLevel = data.currentGameLevel;
+            abilityPoints = data.abilityPoints;
         }
     }
 }
@@ -98,4 +102,5 @@ class PlayerData
     public int playerInt;
     public int playerVit;
     public int currentGameLevel;
+    public int abilityPoints;
 }
