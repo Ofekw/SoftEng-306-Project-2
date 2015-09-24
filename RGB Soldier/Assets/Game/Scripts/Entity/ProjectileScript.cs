@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ProjectileScript : MonoBehaviour {
 
-    public int range;
+    public int damage = 1;
     public Vector3 startPoint;
     public GameObject shooter;
 
@@ -14,10 +14,6 @@ public class ProjectileScript : MonoBehaviour {
     }
 	
 	void Update () {
-        //If we want a max range on projectiles
-        if (Mathf.Abs(startPoint.x - this.gameObject.transform.position.x) > range){
-            //Destroy(this.gameObject);
-        }
         if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
             Destroy(this.gameObject);
         }
@@ -26,7 +22,7 @@ public class ProjectileScript : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D hit) {
         if (hit.gameObject.tag == "Enemy")
         {
-            hit.gameObject.SendMessage("takeDamage", 1);
+            hit.gameObject.SendMessage("takeDamage", damage);
             Destroy(this.gameObject);
         }
         if (hit.gameObject.tag == "ground" || hit.gameObject.tag == "SideWall")
