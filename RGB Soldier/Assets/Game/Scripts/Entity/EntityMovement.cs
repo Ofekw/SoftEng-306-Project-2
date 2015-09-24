@@ -18,7 +18,7 @@ public class EntityMovement : MonoBehaviour
     public AudioClip[] jumpClips;			// Array of clips for when the entity jumps.
     public float jumpForce = 150f;			// Amount of force added when the entity jumps.
     public int jumpCount = 0;               //Number of jumps made
-    public float lastJumpTime;
+    public float lastJumpTime;              //Time of last jump
 
     private Transform groundCheck;			// A position marking where to check if the entity is grounded.
     private bool grounded = true;			// Whether or not the entity is grounded.
@@ -47,6 +47,7 @@ public class EntityMovement : MonoBehaviour
     //helper method, flags entity to jump at next movement call
     public void Jump()
     {
+        //Check grounded, or has not jumped more than once and that hasnt jumped in last half second
         if ((grounded || jumpCount < 2) && Time.time > (lastJumpTime + 0.5))
         {
             lastJumpTime = Time.time;
