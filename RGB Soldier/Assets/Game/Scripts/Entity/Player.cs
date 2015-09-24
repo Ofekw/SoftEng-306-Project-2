@@ -41,6 +41,7 @@ public class Player : KillableEntityInterface {
         }
         float hVelocity = Input.GetAxis("Horizontal");
         //call the base movement module method to handle movement
+        entityMovement.maxSpeed = agility * 5.0f;
         entityMovement.Movement(hVelocity);
 
         //If the shift button is pressed
