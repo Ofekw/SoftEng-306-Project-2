@@ -5,14 +5,18 @@ using System;
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
 
+
 public class BaseEnemy : KillableEntityInterface {
 
     public EntityMovement entityMovement;
     public int damageGiven = 1;
 
+    private Animator animator;                  //Used to store a reference to the Player's animator component.
+
 	// Use this for initialization
 	void Start () {
         this.entityMovement = GetComponent<EntityMovement>();
+        this.animator = animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -49,7 +53,7 @@ public class BaseEnemy : KillableEntityInterface {
         if (other.gameObject.CompareTag("PlayerEnemyCollider"))
         {
             Player player = other.GetComponentInParent<Player>();
-            print("pow");
+            animator.SetTrigger("enemyAttack");
             player.takeDamage(damageGiven);
            
         }

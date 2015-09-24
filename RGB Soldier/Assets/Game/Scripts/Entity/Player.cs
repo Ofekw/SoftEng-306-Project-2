@@ -32,12 +32,18 @@ public class Player : KillableEntityInterface {
 
     public int abilityPoints; // Points to spend on skill
 
+    public Boolean temporaryInvulnerable = false;
+    public float temporaryInvulnerableTime;
+    public float invulnTime = 2.0f;
+
 
     bool moveRight = false;
     bool moveLeft = false;
     bool isJumping = false;
 
     Vector3 movement;
+
+    private Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
@@ -48,6 +54,9 @@ public class Player : KillableEntityInterface {
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
+        temporaryInvulnerableTime = Time.time;
+        //Get a component reference to the Player's animator component
+            animator = GetComponent<Animator>();
 
         strength = GameControl.control.playerStr;
         agility = GameControl.control.playerAgl;
@@ -129,6 +138,15 @@ public class Player : KillableEntityInterface {
                 meleeCollider.enabled = false;
             }
 
+
+        if (temporaryInvulnerable)
+        {
+            if (Time.time > temporaryInvulnerableTime + invulnTime)
+            {
+                temporaryInvulnerable = false;
+            }
+        }
+
             UpdateStats();
         }
     
@@ -141,6 +159,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
+        animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
             attacking = true;
@@ -222,12 +241,23 @@ public class Player : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
-        throw new NotImplementedException();
+        if (!temporaryInvulnerable)
+        {
+            animator.SetTrigger("playerHit");
+            currentHealth--;
+            temporaryInvulnerable = true;
+            temporaryInvulnerableTime = Time.time;
+        }
+        if (currentHealth <= 0)
+        {
+            die();
+        }
     }
 
     public override void die()
     {
-        throw new NotImplementedException();
+        //Destroy(this.gameObject);
+        print("YOU DIED!");
     }
 
 }
