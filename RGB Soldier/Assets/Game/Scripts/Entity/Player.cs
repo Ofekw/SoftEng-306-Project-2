@@ -24,6 +24,12 @@ public class Player : KillableEntityInterface {
     //TODO associate with skill set 
     public int specialChargeMeterLength = 100;
 
+    public int strength = 1;    //Strength - Melee
+    public int agility = 1;     //Agility- Speed
+    public int dexterity = 1;   //Dexterity- Range
+    public int intelligence = 1;//Intelligence - Special
+    public int vitality = 1;    //Vitality - Health
+
     // Use this for initialization
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
@@ -32,7 +38,7 @@ public class Player : KillableEntityInterface {
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
-    }
+    } 
 
     void Update () 
     {
@@ -75,6 +81,15 @@ public class Player : KillableEntityInterface {
         {
             meleeCollider.enabled = false;
         }
+
+        UpdateStats();
+    }
+
+    public void UpdateStats()
+    {
+        this.maxHealth = vitality;
+        entityMovement.maxSpeed = agility * 5.0f;
+        //Strength and dexterity are called during damage calculations
     }
 
     public void Melee() {
@@ -109,14 +124,19 @@ public class Player : KillableEntityInterface {
         //Shoot to the right
         if (entityMovement.facingRight) {
             clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x + xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
+            //Set damage equal to dexterity stat
+            clone.GetComponent<ProjectileScript>().damage = dexterity;
+            //Set x speed 
             clone.velocity = new Vector2(projectileSpeed, 0);
         } else {
             //Shoot to the left
             clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x - xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
+            clone.GetComponent<ProjectileScript>().damage = dexterity;
             //Invert prefab
             Vector3 theScale = clone.transform.localScale;
             theScale.x *= -1;
             clone.transform.localScale = theScale;
+            //Set x speed
             clone.velocity = new Vector2(-projectileSpeed, 0);
         }
     }
