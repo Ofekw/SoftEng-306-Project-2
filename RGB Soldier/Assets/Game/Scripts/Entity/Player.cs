@@ -56,7 +56,7 @@ public class Player : KillableEntityInterface {
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
         //Get a component reference to the Player's animator component
-            animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         strength = GameControl.control.playerStr;
         agility = GameControl.control.playerAgl;
