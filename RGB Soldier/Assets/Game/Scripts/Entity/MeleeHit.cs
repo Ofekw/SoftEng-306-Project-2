@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MeleeHit : MonoBehaviour {
 
+    public GameObject player;
+
 
     // Use this for initialization
     void Start () {
@@ -17,7 +19,9 @@ public class MeleeHit : MonoBehaviour {
     {
         if (hit.gameObject.tag == "Crate" || hit.gameObject.tag == "Enemy")
         {
-            hit.gameObject.SendMessage("takeDamage", 1);
+            //Tell the meleed object that it has taken damage
+            //Damage is equal to players strength
+            hit.gameObject.SendMessage("takeDamage", player.GetComponent<Player>().strength);
         }
     }    
 }

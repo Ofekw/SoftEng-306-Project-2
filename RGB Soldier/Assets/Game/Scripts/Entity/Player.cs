@@ -18,6 +18,12 @@ public class Player : KillableEntityInterface {
     public float lastAttack;
     public BoxCollider2D meleeCollider;
 
+    public int strength;    //Strength - Melee
+    public int agility;     //Agility- Speed
+    public int dexterity;   //Dexterity- Range
+    public int intelligence;//Intelligence - Special
+    public int vitality;    //Vitality - Health
+
     // Use this for initialization
     void Start () {
 	    this.entityMovement = GetComponent<EntityMovement>();
