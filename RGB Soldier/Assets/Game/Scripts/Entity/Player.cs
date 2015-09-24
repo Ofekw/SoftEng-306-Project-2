@@ -45,9 +45,9 @@ public class Player : KillableEntityInterface {
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
-    } 
+    }
 
-    void Update () 
+    void Update()
     {
         //TODO move incrementing of special charge to game manager
         specialCharge++;
@@ -55,70 +55,73 @@ public class Player : KillableEntityInterface {
         if (shakingAmount > 1.5)
         {
             Special();
-        /*
-        if (moveRight)
-        {
-            movement.Set(1, 0, 0);
-            movement = movement.normalized * movementSpeed * Time.deltaTime;
-            playerRigidBody.MovePosition(transform.position + movement);
         }
-         * */
-        //if pressing jump button, call jump method to toggle boolean
-        if (Input.GetButtonDown("Jump"))
-        {
-            entityMovement.Jump();
-        }
-
-        if (isJumping)
-        {
-            entityMovement.Jump();
-        }
-        //float hVelocity = Input.GetAxis("Horizontal");
-        float hVelocity = 0f;
-        if (moveRight && !moveLeft)
-        {
-            hVelocity = 1.0f;
-        }
-        else if (moveLeft && !moveRight)
-        {
-            hVelocity = -1.0f;
-        }
-        if (!moveRight && !moveLeft)
-        {
-            hVelocity = 0.0f;
-        }
-
-        //hVelocity = Input.GetAxis("Horizontal");
-        //call the base movement module method to handle movement
-        entityMovement.Movement(hVelocity);
-
-        //If the shift button is pressed
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            Shoot();
-        }
-
-        //If the control button is pressed
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Melee();
-        }
-
-        if(attacking == true){
-            meleeCollider.enabled = true;
-            if((Time.time - lastAttack) > 0.1)
+            /*
+            if (moveRight)
             {
-                attacking = false;
+                movement.Set(1, 0, 0);
+                movement = movement.normalized * movementSpeed * Time.deltaTime;
+                playerRigidBody.MovePosition(transform.position + movement);
+            }
+             * */
+            //if pressing jump button, call jump method to toggle boolean
+            if (Input.GetButtonDown("Jump"))
+            {
+                entityMovement.Jump();
+            }
+
+            if (isJumping)
+            {
+                entityMovement.Jump();
+            }
+            //float hVelocity = Input.GetAxis("Horizontal");
+            float hVelocity = 0f;
+            if (moveRight && !moveLeft)
+            {
+                hVelocity = 1.0f;
+            }
+            else if (moveLeft && !moveRight)
+            {
+                hVelocity = -1.0f;
+            }
+            if (!moveRight && !moveLeft)
+            {
+                hVelocity = 0.0f;
+            }
+
+            //hVelocity = Input.GetAxis("Horizontal");
+            //call the base movement module method to handle movement
+            entityMovement.Movement(hVelocity);
+
+            //If the shift button is pressed
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Shoot();
+            }
+
+            //If the control button is pressed
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                Melee();
+            }
+
+            if (attacking == true)
+            {
+                meleeCollider.enabled = true;
+                if ((Time.time - lastAttack) > 0.1)
+                {
+                    attacking = false;
+                    meleeCollider.enabled = false;
+                }
+            }
+            else
+            {
                 meleeCollider.enabled = false;
             }
-        }
-        else
-        {
-            meleeCollider.enabled = false;
-        }
 
-        UpdateStats();
-    }
+            UpdateStats();
+        }
+    
 
     public void UpdateStats()
     {
