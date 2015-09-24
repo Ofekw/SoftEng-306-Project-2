@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -9,9 +7,10 @@ public class BaseEnemy : KillableEntityInterface {
 
     public EntityMovement entityMovement;
     public int damageGiven = 1;
+    public GameObject orb;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         this.entityMovement = GetComponent<EntityMovement>();
 	}
 	
@@ -66,7 +65,11 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void die()
     {
-        //throw new NotImplementedException();
-        Destroy(this.gameObject);
+        dead = true;
+        Destroy(gameObject);
+        if (Random.Range(0, 2) == 0)
+        {
+            Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
+        }
     }
 }
