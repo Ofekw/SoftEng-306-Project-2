@@ -64,7 +64,6 @@ public class Player : KillableEntityInterface {
         if (moveRight && !moveLeft)
         {
             hVelocity = 1.0f;
-            Debug.Log("Move right");
         }
         else if (moveLeft && !moveRight)
         {
