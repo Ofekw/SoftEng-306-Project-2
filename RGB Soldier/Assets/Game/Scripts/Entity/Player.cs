@@ -30,7 +30,7 @@ public class Player : KillableEntityInterface {
         meleeCollider.enabled = false;
         attacking = false;
         lastAttack = Time.time;
-    }
+    } 
 
     void Update () 
     {
@@ -41,7 +41,6 @@ public class Player : KillableEntityInterface {
         }
         float hVelocity = Input.GetAxis("Horizontal");
         //call the base movement module method to handle movement
-        entityMovement.maxSpeed = agility * 5.0f;
         entityMovement.Movement(hVelocity);
 
         //If the shift button is pressed
@@ -67,6 +66,15 @@ public class Player : KillableEntityInterface {
         {
             meleeCollider.enabled = false;
         }
+
+        UpdateStats();
+    }
+
+    public void UpdateStats()
+    {
+        this.maxHealth = vitality;
+        entityMovement.maxSpeed = agility * 5.0f;
+        //Strength and dexterity are called during damage calculations
     }
 
     public void Melee() {
