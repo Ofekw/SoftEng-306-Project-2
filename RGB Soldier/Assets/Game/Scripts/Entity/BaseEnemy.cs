@@ -49,18 +49,24 @@ public class BaseEnemy : KillableEntityInterface {
         if (other.gameObject.CompareTag("PlayerEnemyCollider"))
         {
             Player player = other.GetComponentInParent<Player>();
-            player.takeDamage(damageGiven);
             print("pow");
+            player.takeDamage(damageGiven);
+           
         }
     }
 
     public override void takeDamage(int damageReceived)
     {
-        throw new NotImplementedException();
+        //basic decrementing health
+        currentHealth = currentHealth - damageReceived;
+        if(currentHealth <= 0){
+            die();
+        }
     }
 
     public override void die()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        Destroy(this.gameObject);
     }
 }
