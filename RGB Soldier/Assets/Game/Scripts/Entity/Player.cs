@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Assets.Game.Scripts.Enviroment;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -17,8 +18,8 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
-
     public Boolean specialAttack = false;
+    //TODO move incrementing of special charge to game manager
     public int specialCharge = 0;
     //TODO associate with skill set 
     public int specialChargeMeterLength = 100;
@@ -26,7 +27,6 @@ public class Player : KillableEntityInterface {
     // Use this for initialization
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-
 	    this.entityMovement = GetComponent<EntityMovement>();
         meleeCollider.enabled = false;
         attacking = false;
@@ -36,8 +36,8 @@ public class Player : KillableEntityInterface {
 
     void Update () 
     {
+        //TODO move incrementing of special charge to game manager
         specialCharge++;
-        //TODO adjust shaking amount to good amount, and add listening to button
         var shakingAmount = Input.acceleration.magnitude;
         if (shakingAmount > 1.5)
         {
@@ -92,13 +92,16 @@ public class Player : KillableEntityInterface {
         {
             specialAttack = true;
             specialCharge = 0;
+            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                var e = enemy.GetComponent<BaseEnemy>();
+                e.die();
+            }
+
 
         }
-         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies) {
-            var e = enemy.GetComponent<BaseEnemy>();
-            e.die();
-        }
+
     }
 
     public void Shoot () {
