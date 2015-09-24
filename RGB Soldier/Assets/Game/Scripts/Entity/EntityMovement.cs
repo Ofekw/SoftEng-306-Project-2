@@ -17,6 +17,8 @@ public class EntityMovement : MonoBehaviour
     public float maxSpeed = 10f;				// The fastest the entity can travel in the x axis.
     public AudioClip[] jumpClips;			// Array of clips for when the entity jumps.
     public float jumpForce = 150f;			// Amount of force added when the entity jumps.
+    public int jumpCount = 0;               //Number of jumps made
+    public float lastJumpTime;
 
     private Transform groundCheck;			// A position marking where to check if the entity is grounded.
     private bool grounded = true;			// Whether or not the entity is grounded.
@@ -28,20 +30,27 @@ public class EntityMovement : MonoBehaviour
         // Setting up references.
         groundCheck = transform.Find("groundCheck");
         anim = GetComponent<Animator>();
+        lastJumpTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
         // The entity is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        if (grounded)
+        {
+            jumpCount = 0;
+        }
     }
 
     //helper method, flags entity to jump at next movement call
     public void Jump()
     {
-        if (grounded)
+        if ((grounded || jumpCount < 2) && Time.time > (lastJumpTime + 0.5))
         {
+            lastJumpTime = Time.time;
+            jumpCount++;
             this.jump = true;
         }
     }
