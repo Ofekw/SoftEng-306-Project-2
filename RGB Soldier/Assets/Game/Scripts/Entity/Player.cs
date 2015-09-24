@@ -18,16 +18,31 @@ public class Player : KillableEntityInterface {
     public float lastAttack;
     public BoxCollider2D meleeCollider;
 
+    public Boolean specialAttack = false;
+    public int specialCharge = 0;
+    //TODO associate with skill set 
+    public int specialChargeMeterLength = 100;
+
     // Use this for initialization
     void Start () {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
 	    this.entityMovement = GetComponent<EntityMovement>();
         meleeCollider.enabled = false;
         attacking = false;
+        specialAttack = false;
         lastAttack = Time.time;
     }
 
     void Update () 
     {
+        specialCharge++;
+        //TODO adjust shaking amount to good amount, and add listening to button
+        var shakingAmount = Input.acceleration.magnitude;
+        if (shakingAmount > 1.5)
+        {
+            Special();
+        }
         //if pressing jump button, call jump method to toggle boolean
         if (Input.GetButtonDown("Jump"))
         {
@@ -67,6 +82,22 @@ public class Player : KillableEntityInterface {
         {
             attacking = true;
             lastAttack = Time.time;
+        }
+    }
+
+    public void Special()
+    {
+        //If the meter is fully charged
+        if (specialCharge >= specialChargeMeterLength)
+        {
+            specialAttack = true;
+            specialCharge = 0;
+
+        }
+         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies) {
+            var e = enemy.GetComponent<BaseEnemy>();
+            e.die();
         }
     }
 
