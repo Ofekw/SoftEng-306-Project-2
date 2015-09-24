@@ -17,20 +17,28 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
-    int orbCount = 0;
 
-    public int strength = 1;    //Strength - Melee
-    public int agility = 1;     //Agility- Speed
-    public int dexterity = 1;   //Dexterity- Range
-    public int intelligence = 1;//Intelligence - Special
-    public int vitality = 1;    //Vitality - Health
-
+<<<<<<< HEAD
 
     bool moveRight = false;
     bool moveLeft = false;
     bool isJumping = false;
 
     Vector3 movement;
+
+	// Use this for initialization
+	void Start () 
+    {
+	    this.entityMovement = GetComponent<EntityMovement>();
+	}
+	
+	void FixedUpdate () 
+=======
+    public int strength = 1;    //Strength - Melee
+    public int agility = 1;     //Agility- Speed
+    public int dexterity = 1;   //Dexterity- Range
+    public int intelligence = 1;//Intelligence - Special
+    public int vitality = 1;    //Vitality - Health
 
     // Use this for initialization
     void Start () {
@@ -41,6 +49,7 @@ public class Player : KillableEntityInterface {
     } 
 
     void Update () 
+>>>>>>> develop
     {
         /*
         if (moveRight)
@@ -55,27 +64,29 @@ public class Player : KillableEntityInterface {
         {
             entityMovement.Jump();
         }
-
         if (isJumping)
         {
             entityMovement.Jump();
         }
         //float hVelocity = Input.GetAxis("Horizontal");
         float hVelocity = 0f;
-        if (moveRight && !moveLeft)
+        if (moveRight)
         {
-            hVelocity = 1.0f;
+            hVelocity += 1.0f;
         }
-        else if (moveLeft && !moveRight)
+        else if (!moveRight)
         {
-            hVelocity = -1.0f;
-        }
-        if (!moveRight && !moveLeft)
-        {
-            hVelocity = 0.0f;
+            hVelocity -= 1.0f;
         }
 
-        //hVelocity = Input.GetAxis("Horizontal");
+        if (moveLeft)
+        {
+            hVelocity -= 1.0f;
+        }
+        else if (!moveLeft)
+        {
+            hVelocity += 1.0f;
+        }
         //call the base movement module method to handle movement
         entityMovement.Movement(hVelocity);
 
@@ -90,7 +101,6 @@ public class Player : KillableEntityInterface {
         {
             Melee();
         }
-
         if(attacking == true){
             meleeCollider.enabled = true;
             if((Time.time - lastAttack) > 0.1)
@@ -183,22 +193,6 @@ public class Player : KillableEntityInterface {
     public override void die()
     {
         throw new NotImplementedException();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Orb"))
-        {
-            orbCount++;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.CompareTag("Orb"))
-        {
-            orbCount++;
-        }
     }
 
 }
