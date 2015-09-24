@@ -22,6 +22,18 @@ namespace Assets.Game.Scripts.Enviroment
 
         Vector3 originalPos;
 
+        //var currentpos = mainCam.transform.position;
+        //Vector3 vext = new Vector3(10, 10, -10);
+        //Camera.main.transform.position = vext;
+        //Vector3 decrementVector = new Vector3(-1, -1, 0);
+        //while (vext.x > 0)
+        //{
+        //    Debug.Log("Camera Moving");
+
+        //    vext = vext + decrementVector;
+        //    Camera.main.transform.position = vext; 
+        //}
+
         void Awake()
         {
             if (camTransform == null)
