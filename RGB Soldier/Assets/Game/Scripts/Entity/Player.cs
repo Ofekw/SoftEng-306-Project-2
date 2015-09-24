@@ -23,6 +23,7 @@ public class Player : KillableEntityInterface {
     public int dexterity = 1;   //Dexterity- Range
     public int intelligence = 1;//Intelligence - Special
     public int vitality = 1;    //Vitality - Health
+    public int abilityPoints = 10; // Points to spend on skill
 
     // Use this for initialization
     void Start () {
