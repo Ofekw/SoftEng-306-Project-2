@@ -123,6 +123,7 @@ MonoBehaviour:
   dead: 0
   entityMovement: {fileID: 0}
   damageGiven: 1
+  orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
 --- !u!114 &11483886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,6 +217,10 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: -1783731295
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: orb
+      value: 
+      objectReference: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 109272}

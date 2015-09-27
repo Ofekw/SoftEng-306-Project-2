@@ -18,6 +18,7 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
+    int orbCount = 0;
     public Boolean specialAttack = false;
     //TODO move incrementing of special charge to game manager
     public int specialCharge = 0;
@@ -256,6 +257,22 @@ public class Player : KillableEntityInterface {
     {
         //Destroy(this.gameObject);
         print("YOU DIED!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Orb"))
+        {
+            orbCount++;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Orb"))
+        {
+            orbCount++;
+        }
     }
 
 }
