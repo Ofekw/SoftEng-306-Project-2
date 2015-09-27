@@ -10,17 +10,12 @@ public class PauseScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0))
-		{
-			paused = !paused;
-		}
-		if (paused) 
-		{
-			Time.timeScale = 0;
-		}
-		else if (!paused)
-		{
-			Time.timeScale = 1;
-		}
+        Time.timeScale = paused ? 0 : 1;
 	}
+
+    public void Pause()
+    {
+        paused = !paused;
+        print("Game paused: " + paused);
+    }
 }
