@@ -48,6 +48,8 @@ public class Player : KillableEntityInterface {
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 	    this.entityMovement = GetComponent<EntityMovement>();
+        Camera.main.GetComponent<CameraShake>().enabled = false;
+
         meleeCollider.enabled = false;
         attacking = false;
         specialAttack = false;
@@ -150,6 +152,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
+
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -163,6 +166,9 @@ public class Player : KillableEntityInterface {
         //If the meter is fully charged
         if (specialCharge >= specialChargeMeterLength)
         {
+            Camera.main.GetComponent<CameraShake>().enabled = true;
+
+            Camera.main.GetComponent<CameraShake>().shake = 2;
             specialAttack = true;
             specialCharge = 0;
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -171,6 +177,8 @@ public class Player : KillableEntityInterface {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
+            Camera.main.GetComponent<CameraShake>().enabled = false;
+
 
 
         }
