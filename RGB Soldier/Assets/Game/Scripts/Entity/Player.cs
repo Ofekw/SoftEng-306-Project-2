@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 
@@ -9,11 +10,12 @@ using System;
 public class Player : KillableEntityInterface {
 
     public EntityMovement entityMovement;
-
+    public Slider healthSlider; //TODO: healthSlider logic should be moved to Player manager in future
 	// Use this for initialization
 	void Start () 
     {
 	 this.entityMovement = GetComponent<EntityMovement>();
+        healthSlider.value = maxHealth;
 	}
 	
 	void FixedUpdate () 
@@ -30,7 +32,9 @@ public class Player : KillableEntityInterface {
 
     public override void takeDamage(int damageReceived)
     {
-        throw new NotImplementedException();
+        healthSlider.value -= damageReceived;
+        currentHealth -= damageReceived;
+        
     }
 
     public override void die()

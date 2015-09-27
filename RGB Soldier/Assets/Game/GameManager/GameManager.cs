@@ -40,6 +40,7 @@
 //}
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -48,7 +49,10 @@ public class GameManager : MonoBehaviour {
 	public static int specialAttackCounter = 0;
 	public static int enemiesOnScreen = 0;
 	public static int stage;
+
 	public const int ORB_COUNT_TARGET = 20;
+
+    public Text orbCountDisp;
 
 	void Awake() {
 		if (instance == null) {
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour {
 		orbsCollected = 0;
 		specialAttackCounter = 0;
 		enemiesOnScreen = 0;
-
+        orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
 	}
 	void Update() {
 		Player player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player>();
@@ -74,6 +78,13 @@ public class GameManager : MonoBehaviour {
 		if (orbsCollected >= ORB_COUNT_TARGET) {
 			levelCleared();
 		}
+        
+        //test orb display by random increment
+        if (Random.value < 0.01)
+        {
+            incrementOrbCounter();
+            orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString();
+        }
 	}
 
 	public static void incrementOrbCounter() {
