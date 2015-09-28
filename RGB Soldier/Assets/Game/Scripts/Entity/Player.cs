@@ -59,29 +59,24 @@ public class Player : KillableEntityInterface {
         {
             entityMovement.Jump();
         }
-        float hVelocity = Input.GetAxis("Horizontal");
-        if (hVelocity != 0)
+        //float hVelocity = Input.GetAxis("Horizontal");
+        float hVelocity = 0f;
+        if (moveRight && !moveLeft)
         {
-            entityMovement.Movement(hVelocity);
+            hVelocity = 1.0f;
         }
-        else
+        else if (moveLeft && !moveRight)
         {
-            if (moveRight && !moveLeft)
-            {
-                hVelocity = 1.0f;
-            }
-            else if (moveLeft && !moveRight)
-            {
-                hVelocity = -1.0f;
-            }
-            if (!moveRight && !moveLeft)
-            {
-                hVelocity = 0.0f;
-            }
+            hVelocity = -1.0f;
+        }
+        if (!moveRight && !moveLeft)
+        {
+            hVelocity = 0.0f;
+        }
 
-            //call the base movement module method to handle movement
-            entityMovement.Movement(hVelocity);
-        }
+        //hVelocity = Input.GetAxis("Horizontal");
+        //call the base movement module method to handle movement
+        entityMovement.Movement(hVelocity);
 
         //If the shift button is pressed
         if (Input.GetKeyDown(KeyCode.LeftShift))

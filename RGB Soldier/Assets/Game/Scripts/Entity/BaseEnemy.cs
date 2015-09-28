@@ -9,7 +9,6 @@ public class BaseEnemy : KillableEntityInterface {
 
     public EntityMovement entityMovement;
     public int damageGiven = 1;
-    public int experienceGiven = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -67,7 +66,6 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void die()
     {
-        GameControl.control.giveExperience(experienceGiven);
         //throw new NotImplementedException();
         Destroy(this.gameObject);
     }

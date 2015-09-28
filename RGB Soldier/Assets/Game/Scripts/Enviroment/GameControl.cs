@@ -17,7 +17,6 @@ public class GameControl : MonoBehaviour {
     public int playerVit;
     public int currentGameLevel;
     public int abilityPoints;
-    public int experienceToNextLevel;
 
 
     //Save code on enable and disable if you want auto saving.
@@ -36,16 +35,6 @@ public class GameControl : MonoBehaviour {
         
 	}
 
-    void Start()
-    {
-        experienceToNextLevel = 15;
-    }
-
-    void OnApplicationPause(bool pauseStatus)
-    {
-        Save();
-    }
-
     void OnEnable()
     {
         Load();
@@ -59,7 +48,7 @@ public class GameControl : MonoBehaviour {
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo");
+        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
 
         PlayerData playerData = new PlayerData();
 
@@ -72,7 +61,6 @@ public class GameControl : MonoBehaviour {
         playerData.playerVit = playerVit;
         playerData.currentGameLevel = currentGameLevel;
         playerData.abilityPoints = abilityPoints;
-        playerData.experienceToNextLevel = experienceToNextLevel;
         
 
         bf.Serialize(file, playerData);
@@ -82,10 +70,10 @@ public class GameControl : MonoBehaviour {
 
     public void Load()
     {
-        if (File.Exists(Application.persistentDataPath + "/playerInfo"))
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
             PlayerData data = (PlayerData) bf.Deserialize(file);
             file.Close();
 
@@ -98,25 +86,6 @@ public class GameControl : MonoBehaviour {
             playerVit = data.playerVit;
             currentGameLevel = data.currentGameLevel;
             abilityPoints = data.abilityPoints;
-            experienceToNextLevel = data.experienceToNextLevel;
-        }
-    }
-
-    public void giveExperience(int experience)
-    {
-        playerExp += experience;
-        checkPlayerLevel();
-    }
-
-    public void checkPlayerLevel()
-    {
-        if (playerExp >= experienceToNextLevel)
-        {
-            int experienceCarryOver = playerExp - experienceToNextLevel;
-            playerExp = experienceCarryOver;
-            playerLevel++;
-            abilityPoints++;
-            experienceToNextLevel = experienceToNextLevel * 2;
         }
     }
 }
@@ -134,5 +103,4 @@ class PlayerData
     public int playerVit;
     public int currentGameLevel;
     public int abilityPoints;
-    public int experienceToNextLevel;
 }
