@@ -19,11 +19,13 @@ public class Player : KillableEntityInterface {
     public float lastAttack;
     public BoxCollider2D meleeCollider;
 
-    public int strength = 1;    //Strength - Melee
-    public int agility = 1;     //Agility- Speed
-    public int dexterity = 1;   //Dexterity- Range
-    public int intelligence = 1;//Intelligence - Special
-    public int vitality = 1;    //Vitality - Health
+    public int strength;    //Strength - Melee
+    public int agility;    //Agility- Speed
+    public int dexterity;   //Dexterity- Range
+    public int intelligence; //Intelligence - Special
+    public int vitality;    //Vitality - Health
+
+    public int abilityPoints; // Points to spend on skill
 
     public Boolean temporaryInvulnerable = false;
     public float temporaryInvulnerableTime;
@@ -39,6 +41,7 @@ public class Player : KillableEntityInterface {
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
+    // Starts after everything has woken - must wait for gamecontrol
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 	    this.entityMovement = GetComponent<EntityMovement>();
@@ -49,7 +52,14 @@ public class Player : KillableEntityInterface {
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
         //Get a component reference to the Player's animator component
-            animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+
+        strength = GameControl.control.playerStr;
+        agility = GameControl.control.playerAgl;
+        dexterity = GameControl.control.playerDex;
+        intelligence = GameControl.control.playerInt;
+        vitality = GameControl.control.playerVit;
+        abilityPoints = GameControl.control.abilityPoints;
     }
 
     void Update()
