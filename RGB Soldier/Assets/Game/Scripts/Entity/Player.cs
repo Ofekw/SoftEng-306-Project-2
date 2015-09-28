@@ -2,7 +2,6 @@
 using System.Collections;
 using System;
 using Assets.Game.Scripts.Enviroment;
-using UnityEngine.UI;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -19,21 +18,12 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
-    public Boolean specialAttack = false;
 
-    private int player_level;
-
-    //TODO move incrementing of special charge to game manager
-    public int specialCharge = 0;
-    //TODO associate with skill set 
-    public int specialChargeMeterLength = 100;
-
-    public int strength = 1;    //Strength - Melee
-    public int agility = 1;     //Agility- Speed
-    public int dexterity = 1;   //Dexterity- Range
-    public int intelligence = 1;//Intelligence - Special
-    public int vitality = 1;    //Vitality - Health
-
+    public int strength;    //Strength - Melee
+    public int agility;    //Agility- Speed
+    public int dexterity;   //Dexterity- Range
+    public int intelligence; //Intelligence - Special charge speed
+    public int vitality;    //Vitality - Health
 
     public int abilityPoints; // Points to spend on skill
 
@@ -163,7 +153,6 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
-
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -187,10 +176,6 @@ public class Player : KillableEntityInterface {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
-            Camera.main.GetComponent<CameraShake>().enabled = false;
-
-
-
         }
 
     }
