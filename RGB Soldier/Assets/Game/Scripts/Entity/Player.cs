@@ -19,7 +19,6 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
-<<<<<<< HEAD
     public Boolean specialAttack = false;
 
     private int player_level;
@@ -34,16 +33,9 @@ public class Player : KillableEntityInterface {
     public int dexterity = 1;   //Dexterity- Range
     public int intelligence = 1;//Intelligence - Special
     public int vitality = 1;    //Vitality - Health
-=======
 
-    public int strength;    //Strength - Melee
-    public int agility;    //Agility- Speed
-    public int dexterity;   //Dexterity- Range
-    public int intelligence; //Intelligence - Special
-    public int vitality;    //Vitality - Health
 
     public int abilityPoints; // Points to spend on skill
->>>>>>> e80293386c4649f12d2a69994306dbe8b671f4c6
 
     public Boolean temporaryInvulnerable = false;
     public float temporaryInvulnerableTime;

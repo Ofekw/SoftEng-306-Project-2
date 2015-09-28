@@ -20,6 +20,7 @@ public class GameControl : MonoBehaviour {
     public int currentGameLevel;
     public int abilityPoints;
 
+
     //Save code on enable and disable if you want auto saving.
 
     // Use this for initialization
@@ -36,64 +37,7 @@ public class GameControl : MonoBehaviour {
         
 	}
 
-    //This is called each time a stage is loaded.
-    void OnLevelWasLoaded(int index)
-    {
-        //Add one to our level number.
-        level++;
-        //Call InitGame to initialize our level.
-        InitGame();
-    }
 
-
-    //Initializes the game for each level.
-    void InitGame()
-    {
-        //While doingSetup is true the player can't move, prevent player from moving while title card is up.
-        doingSetup = true;
-
-        //Get a reference to our image LevelImage by finding it by name.
-        levelImage = GameObject.Find("LevelImage");
-
-        //Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
-        levelText = GameObject.Find("LevelText").GetComponent<Text>();
-
-        //Set the text of levelText to the string "Stage " and append the current level number.
-        levelText.text = "Stage " + level;
-
-        //Set levelImage to active blocking player's view of the game board during setup.
-        levelImage.SetActive(true);
-
-        //Call the HideLevelImage function with a delay in seconds of levelStartDelay.
-        Invoke("HideLevelImage", levelStartDelay);
-
-        //Call the SetupScene function of the BoardManager script, pass it current level number.
-        //boardScript.SetupScene(level);
-
-    }
-
-
-    //Hides black image used between levels
-    void HideLevelImage()
-    {
-        //Disable the levelImage gameObject.
-        levelImage.SetActive(false);
-        doingSetup = false;
-    }
-
-
-    //GameOver is called when the player reaches 0 health points
-    public void GameOver()
-    {
-        //Set levelText to display number of levels passed and game over message
-        levelText.text = "You have died";
-
-        //Enable black background image gameObject.
-        levelImage.SetActive(true);
-
-        //Disable this GameManager.
-        enabled = false;
-    }
 
     void OnEnable()
     {
