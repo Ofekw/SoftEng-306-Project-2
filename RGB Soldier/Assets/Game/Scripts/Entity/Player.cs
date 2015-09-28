@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using Assets.Game.Scripts.Enviroment;
+using UnityEngine.UI;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -19,6 +20,9 @@ public class Player : KillableEntityInterface {
     public float lastAttack;
     public BoxCollider2D meleeCollider;
     public Boolean specialAttack = false;
+
+    private int player_level;
+
     //TODO move incrementing of special charge to game manager
     public int specialCharge = 0;
     //TODO associate with skill set 

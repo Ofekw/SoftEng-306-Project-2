@@ -554,8 +554,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 362, y: 159}
-  m_SizeDelta: {x: 724, y: 318}
+  m_AnchoredPosition: {x: 338.5, y: 172}
+  m_SizeDelta: {x: 677, y: 344}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &175227433
 MonoBehaviour:
@@ -904,7 +904,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488036, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 22488036, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -2268,6 +2268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 409913499}
   loadingImage: {fileID: 409913500}
+  levelStartDelay: 2
 --- !u!1 &1141005018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,7 +3036,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1137231599}
-        m_MethodName: ClickAsync
+        m_MethodName: ClickStageAsync
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
