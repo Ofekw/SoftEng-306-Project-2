@@ -22,7 +22,7 @@ public class Player : KillableEntityInterface {
     public int strength;    //Strength - Melee
     public int agility;    //Agility- Speed
     public int dexterity;   //Dexterity- Range
-    public int intelligence; //Intelligence - Special
+    public int intelligence; //Intelligence - Special charge speed
     public int vitality;    //Vitality - Health
 
     public int abilityPoints; // Points to spend on skill
