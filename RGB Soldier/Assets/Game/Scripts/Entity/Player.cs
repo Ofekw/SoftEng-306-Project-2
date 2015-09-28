@@ -18,12 +18,6 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
-    int orbCount = 0;
-    public Boolean specialAttack = false;
-    //TODO move incrementing of special charge to game manager
-    public int specialCharge = 0;
-    //TODO associate with skill set 
-    public int specialChargeMeterLength = 100;
 
     public int strength = 1;    //Strength - Melee
     public int agility = 1;     //Agility- Speed
@@ -52,7 +46,6 @@ public class Player : KillableEntityInterface {
 
         meleeCollider.enabled = false;
         attacking = false;
-        specialAttack = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
         //Get a component reference to the Player's animator component
@@ -61,8 +54,6 @@ public class Player : KillableEntityInterface {
 
     void Update()
     {
-        //TODO move incrementing of special charge to game manager
-        specialCharge++;
         var shakingAmount = Input.acceleration.magnitude;
         if (shakingAmount > 1.5)
         {
@@ -164,13 +155,12 @@ public class Player : KillableEntityInterface {
     public void Special()
     {
         //If the meter is fully charged
-        if (specialCharge >= specialChargeMeterLength)
+        if (GameManager.instance.canSpecialAtk)
         {
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
-            specialAttack = true;
-            specialCharge = 0;
+            GameManager.instance.resetSpecialAtkCounter(); //reset counter
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
@@ -264,7 +254,7 @@ public class Player : KillableEntityInterface {
     {
         if (other.gameObject.CompareTag("Orb"))
         {
-            orbCount++;
+            GameManager.instance.orbsCollected++;
         }
     }
 
@@ -272,7 +262,7 @@ public class Player : KillableEntityInterface {
     {
         if (coll.gameObject.CompareTag("Orb"))
         {
-            orbCount++;
+            GameManager.instance.orbsCollected++;
         }
     }
 
