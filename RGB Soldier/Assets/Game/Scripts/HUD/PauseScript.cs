@@ -19,6 +19,6 @@ public class PauseScript : MonoBehaviour
     public void TogglePause()
     {
         paused = !paused;
-        print("Game paused: " + paused);
+        print("Time scale = " + Time.timeScale.ToString());
     }
 }

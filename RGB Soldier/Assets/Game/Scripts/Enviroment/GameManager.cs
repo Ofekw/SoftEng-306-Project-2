@@ -87,6 +87,6 @@ public class GameManager : MonoBehaviour
 
     void gameOver()
     {
-        print("You died lol");
+        //TODO: Game over stuff
     }
 }
