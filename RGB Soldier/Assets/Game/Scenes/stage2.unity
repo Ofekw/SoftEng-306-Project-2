@@ -551,7 +551,7 @@ Transform:
   m_LocalScale: {x: 5.99896193, y: 5.10470819, z: 6.35827017}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
 --- !u!68 &94588370
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -754,7 +754,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 460516, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.94000006
+      value: -1.26999998
       objectReference: {fileID: 0}
     - target: {fileID: 21289026, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
       propertyPath: m_Sprite
@@ -1335,11 +1335,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488700, guid: ceee47bdba2448d4ba490054ffe6c408, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458002, guid: ceee47bdba2448d4ba490054ffe6c408, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491068, guid: ceee47bdba2448d4ba490054ffe6c408, type: 2}
       propertyPath: m_AnchorMax.x

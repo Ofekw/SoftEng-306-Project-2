@@ -38,7 +38,7 @@ public class EntityMovement : MonoBehaviour
     {
         // The entity is grounded if a linecast to the groundcheck position hits anything on the ground layer.
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        if (grounded)
+        if (grounded && Time.time > (lastJumpTime + 0.5))
         {
             jumpCount = 0;
         }
