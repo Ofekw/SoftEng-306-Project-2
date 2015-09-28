@@ -186,6 +186,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Shoot () {
+        animator.SetTrigger("playerShoot");
         Rigidbody2D clone;
         //Shoot to the right
         if (entityMovement.facingRight) {
