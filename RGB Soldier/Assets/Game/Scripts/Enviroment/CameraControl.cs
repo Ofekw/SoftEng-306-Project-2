@@ -7,59 +7,66 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Enviroment
 {
+    /// <summary>
+    /// Contains methods to handle camera actions, such as following the player and shaking when the special attack is done
+    /// </summary>
     public class CameraControl : MonoBehaviour
     {
-        // Transform of the camera to shake. Grabs the gameObject's transform
-        // if null.
-        public Transform camTransform;
+        public float xThreshold = 1f;		
+        public float yThreshold = 1f;		
+        public float xSmooth = 5f;		
+        public float ySmooth = 5f;		
+        public Vector2 maxXAndY;		
+        public Vector2 minXAndY;		
 
-        // How long the object should shake for.
-        public float shake = 0f;
+        private Transform player;		
 
-        // Amplitude of the shake. A larger value shakes the camera harder.
-        public float shakeAmount = 0.7f;
-        public float decreaseFactor = 1.0f;
-
-        Vector3 originalPos;
-
-        //var currentpos = mainCam.transform.position;
-        //Vector3 vext = new Vector3(10, 10, -10);
-        //Camera.main.transform.position = vext;
-        //Vector3 decrementVector = new Vector3(-1, -1, 0);
-        //while (vext.x > 0)
-        //{
-        //    Debug.Log("Camera Moving");
-
-        //    vext = vext + decrementVector;
-        //    Camera.main.transform.position = vext; 
-        //}
 
         void Awake()
         {
-            if (camTransform == null)
-            {
-                camTransform = GetComponent(typeof(Transform)) as Transform;
-            }
+            player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        void OnEnable()
+        void FixedUpdate()
         {
-            originalPos = camTransform.localPosition;
+            FollowPlayer();
         }
 
-        void Update()
+        void FollowPlayer()
         {
-            if (shake > 0)
-            {
-                camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            //get the cameras current position
+            float currentX = transform.position.x;
+            float currentY = transform.position.y;
 
-                shake -= Time.deltaTime * decreaseFactor;
-            }
-            else
+            if (CheckXPosition())
             {
-                shake = 0f;
-                camTransform.localPosition = originalPos;
+                currentX = Mathf.Lerp(transform.position.x, player.position.x, xSmooth * Time.deltaTime);
             }
+            currentX = Mathf.Clamp(currentX, minXAndY.x, maxXAndY.x);
+
+            if (CheckYPosition())
+            {
+                currentY = Mathf.Lerp(transform.position.y, player.position.y, ySmooth * Time.deltaTime);
+            }
+
+            currentY = Mathf.Clamp(currentY, minXAndY.y, maxXAndY.y);
+
+            // Set the camera's position (z pos it the same)
+            transform.position = new Vector3(currentX, currentY, transform.position.z);
         }
+
+        //used to see if the player distance is greater than than the x threshold
+        bool CheckXPosition()
+        {
+            return Mathf.Abs(transform.position.x - player.position.x) > xThreshold;
+        }
+
+        //used to see if the player distance is greater than than the y threshold 
+
+        bool CheckYPosition()
+        {
+            return Mathf.Abs(transform.position.y - player.position.y) > yThreshold;
+        }
+
     }
 }

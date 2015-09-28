@@ -18,6 +18,7 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
+    int orbCount = 0;
     public Boolean specialAttack = false;
     //TODO move incrementing of special charge to game manager
     public int specialCharge = 0;
@@ -50,6 +51,8 @@ public class Player : KillableEntityInterface {
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 	    this.entityMovement = GetComponent<EntityMovement>();
+        Camera.main.GetComponent<CameraShake>().enabled = false;
+
         meleeCollider.enabled = false;
         attacking = false;
         specialAttack = false;
@@ -159,6 +162,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
+
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -172,6 +176,9 @@ public class Player : KillableEntityInterface {
         //If the meter is fully charged
         if (specialCharge >= specialChargeMeterLength)
         {
+            Camera.main.GetComponent<CameraShake>().enabled = true;
+
+            Camera.main.GetComponent<CameraShake>().shake = 2;
             specialAttack = true;
             specialCharge = 0;
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -180,6 +187,8 @@ public class Player : KillableEntityInterface {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
+            Camera.main.GetComponent<CameraShake>().enabled = false;
+
 
 
         }
@@ -187,6 +196,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Shoot () {
+        animator.SetTrigger("playerShoot");
         Rigidbody2D clone;
         //Shoot to the right
         if (entityMovement.facingRight) {
@@ -258,6 +268,22 @@ public class Player : KillableEntityInterface {
     {
         //Destroy(this.gameObject);
         print("YOU DIED!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Orb"))
+        {
+            orbCount++;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Orb"))
+        {
+            orbCount++;
+        }
     }
 
 }
