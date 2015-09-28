@@ -9,6 +9,7 @@ public class BaseEnemy : KillableEntityInterface {
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
+    public int experienceGiven = 5;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
@@ -69,6 +70,7 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void die()
     {
+        GameControl.control.giveExperience(experienceGiven);
         dead = true;
         Destroy(gameObject);
         if (Random.Range(0, 2) == 0)
