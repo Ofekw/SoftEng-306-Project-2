@@ -76,7 +76,7 @@ public class Player : KillableEntityInterface {
                 movement = movement.normalized * movementSpeed * Time.deltaTime;
                 playerRigidBody.MovePosition(transform.position + movement);
             }
-             * */
+             */
             //if pressing jump button, call jump method to toggle boolean
             if (Input.GetButtonDown("Jump"))
             {
