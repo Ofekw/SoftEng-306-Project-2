@@ -153,7 +153,6 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
-
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -177,10 +176,6 @@ public class Player : KillableEntityInterface {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
-            Camera.main.GetComponent<CameraShake>().enabled = false;
-
-
-
         }
 
     }
