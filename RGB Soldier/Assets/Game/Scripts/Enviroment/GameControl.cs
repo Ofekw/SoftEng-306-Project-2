@@ -51,7 +51,7 @@ public class GameControl : MonoBehaviour {
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
 
         PlayerData playerData = new PlayerData();
-
+        
         playerData.playerLevel = playerLevel;
         playerData.playerExp = playerExp;
         playerData.playerStr = playerStr;
