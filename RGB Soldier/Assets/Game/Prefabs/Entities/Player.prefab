@@ -47,6 +47,7 @@ GameObject:
   - 95: {fileID: 9552226}
   - 50: {fileID: 5066328}
   - 61: {fileID: 6134028}
+  - 114: {fileID: 11461234}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -209,6 +210,23 @@ MonoBehaviour:
   maxSpeed: 5
   jumpClips: []
   jumpForce: 1000
+  jumpCount: 0
+  lastJumpTime: 0
+--- !u!114 &11461234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb8b63a1e8165c4aa55f20b39ae3514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  projectileSpeed: 0
+  projectile: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
+  attackName: arrowAttack
 --- !u!114 &11468860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837e97253ca7d93429038752fd364aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &11487124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,7 +254,7 @@ MonoBehaviour:
   currentHealth: 3
   dead: 0
   entityMovement: {fileID: 0}
-  projectile: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
+  projectileSpawner: {fileID: 0}
   projectileSpeed: 20.6800003
   xProjectileOffset: .949999988
   yProjectileOffset: -.400000006
@@ -243,6 +262,17 @@ MonoBehaviour:
   attackCooldown: .300000012
   lastAttack: 0
   meleeCollider: {fileID: 6171000}
+  specialAttack: 0
+  specialCharge: 0
+  specialChargeMeterLength: 100
+  strength: 1
+  agility: 1
+  dexterity: 1
+  intelligence: 1
+  vitality: 1
+  temporaryInvulnerable: 0
+  temporaryInvulnerableTime: 0
+  invulnTime: 2
 --- !u!212 &21289026
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -275,7 +305,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: attackName
+      value: arrowAttack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160024}
