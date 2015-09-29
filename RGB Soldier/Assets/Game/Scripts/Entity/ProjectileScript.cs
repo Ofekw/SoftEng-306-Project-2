@@ -20,7 +20,7 @@ public class ProjectileScript : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D hit) {
-        if (hit.gameObject.tag == "Enemy")
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
             hit.gameObject.SendMessage("takeDamage", damage);
             Destroy(this.gameObject);

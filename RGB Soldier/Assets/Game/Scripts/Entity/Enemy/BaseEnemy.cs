@@ -9,11 +9,13 @@ public class BaseEnemy : KillableEntityInterface {
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
+    private EnemySpawnController spawnController;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
     void Start () {
+        this.spawnController = FindObjectOfType<EnemySpawnController>();
         this.entityMovement = GetComponent<EntityMovement>();
         this.animator = animator = GetComponent<Animator>();
 	}
@@ -71,9 +73,12 @@ public class BaseEnemy : KillableEntityInterface {
     {
         dead = true;
         Destroy(gameObject);
+        spawnController.spawn();
         if (Random.Range(0, 2) == 0)
         {
             Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
         }
     }
+
+   
 }
