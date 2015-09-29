@@ -18,7 +18,7 @@ public class ShaderController : MonoBehaviour {
 
         gray = this.gameObject.GetComponent<Grayscale>();
         lastSwitch = Time.time;
-        current = "grey";
+        current = "none";
     }
 
     void Update()
@@ -35,34 +35,54 @@ public class ShaderController : MonoBehaviour {
         if (current == "grey")
         {
             current = "red";
+            SetColourScheme(current);
+        }
+        else if (current == "red")
+        {
+            current = "green";
+            SetColourScheme(current);
+        }
+        else if (current == "green")
+        {
+            current = "blue";
+            SetColourScheme(current);
+        }
+        else if (current == "blue")
+        {
+            current = "grey";
+            SetColourScheme(current);
+        }
+    }
+
+    public void SetColourScheme(string colour)
+    {
+        if (colour == "grey")
+        {
+            red.enabled = false;
+            green.enabled = false;
+            blue.enabled = false;
+            gray.enabled = true;
+        }
+        else if (colour == "red")
+        {
             red.enabled = true;
             green.enabled = false;
             blue.enabled = false;
             gray.enabled = false;
         }
-        else if (current == "red")
+        else if (colour == "green")
         {
-            current = "green";
             red.enabled = false;
             green.enabled = true;
             blue.enabled = false;
             gray.enabled = false;
         }
-        else if (current == "green")
+        else if (colour == "blue")
         {
-            current = "blue";
             red.enabled = false;
             green.enabled = false;
             blue.enabled = true;
             gray.enabled = false;
-        }
-        else if (current == "blue")
-        {
-            current = "grey";
-            red.enabled = false;
-            green.enabled = false;
-            blue.enabled = false;
-            gray.enabled = true;
         }
     }
 }

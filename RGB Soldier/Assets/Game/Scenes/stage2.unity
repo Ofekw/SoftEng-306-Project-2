@@ -985,6 +985,7 @@ GameObject:
   - 114: {fileID: 666375885}
   - 114: {fileID: 666375889}
   - 114: {fileID: 666375888}
+  - 114: {fileID: 666375890}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1115,7 +1116,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666375877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243a781cad112c75d0008dfa8d76c639, type: 3}
   m_Name: 
@@ -1143,7 +1144,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666375877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75878e35f93788f4ca38cdb6442c9bf2, type: 3}
   m_Name: 
@@ -1157,7 +1158,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666375877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ead8e0eb971dab48b48e8646a40c5d4, type: 3}
   m_Name: 
@@ -1165,6 +1166,20 @@ MonoBehaviour:
   textureRamp: {fileID: 0}
   rampOffset: 0
   shader: {fileID: 4800000, guid: 55c73db2dac1db043ae5f7ca3257854a, type: 3}
+--- !u!114 &666375890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 666375877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536d930964d94ae48815b0dd76a84459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textureRamp: {fileID: 2800000, guid: d440902fad11e807d00044888d76c639, type: 3}
+  rampOffset: -.100000001
+  shader: {fileID: 4800000, guid: ab9d14da17d9d37428da6741b40e65aa, type: 3}
 --- !u!1 &686516070
 GameObject:
   m_ObjectHideFlags: 0
