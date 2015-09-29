@@ -22,7 +22,6 @@ fixed4 frag (v2f_img i) : SV_Target
 {
 	fixed4 orig = tex2D(_MainTex, i.uv);
 	fixed grayscale = Luminance(orig.rgb);
-
 	
 	fixed rr = tex2D(_RampTex, orig.rr).r;
 	fixed gg = tex2D(_RampTex, orig.gg).g;
