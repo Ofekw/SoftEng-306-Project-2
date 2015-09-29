@@ -6,6 +6,7 @@ public class ProjectileScript : MonoBehaviour {
     public int damage = 1;
     public Vector3 startPoint;
     public GameObject shooter;
+    public GameObject explosion;
 
 	void Start () {
         startPoint = this.gameObject.transform.position;
@@ -20,6 +21,8 @@ public class ProjectileScript : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D hit) {
+
+        Instantiate(explosion, transform.position, transform.rotation); 
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
             hit.gameObject.SendMessage("takeDamage", damage);
@@ -29,5 +32,6 @@ public class ProjectileScript : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+
     }
 }
