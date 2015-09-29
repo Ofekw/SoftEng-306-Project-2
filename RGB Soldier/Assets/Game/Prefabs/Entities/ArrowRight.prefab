@@ -73,7 +73,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   startPoint: {x: 0, y: 0, z: 0}
-  shooter: {fileID: 0}
+  shooter: {fileID: 160024, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+  shooterTag: Player
+  collidesWithTag: Enemy
 --- !u!212 &21299922
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,6 +125,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: 1024582385
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collidesWithTag
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shooter
+      value: 
+      objectReference: {fileID: 160024, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shooterTag
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -10,7 +10,7 @@ using Assets.Game.Scripts.Enviroment;
 public class Player : KillableEntityInterface {
 
     public EntityMovement entityMovement;
-    public Rigidbody2D projectile;
+    public ProjectileSpawner projectileSpawner;
     public float projectileSpeed = 10;
     public float xProjectileOffset = 0f;
     public float yProjectileOffset = 0f;
@@ -49,14 +49,14 @@ public class Player : KillableEntityInterface {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 	    this.entityMovement = GetComponent<EntityMovement>();
         Camera.main.GetComponent<CameraShake>().enabled = false;
-
+        projectileSpawner = GetComponent<PlayerProjectileSpawner>();
         meleeCollider.enabled = false;
         attacking = false;
         specialAttack = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
         //Get a component reference to the Player's animator component
-            animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -186,24 +186,11 @@ public class Player : KillableEntityInterface {
     }
 
     public void Shoot () {
-        Rigidbody2D clone;
         //Shoot to the right
         if (entityMovement.facingRight) {
-            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x + xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            //Set damage equal to dexterity stat
-            clone.GetComponent<ProjectileScript>().damage = dexterity;
-            //Set x speed 
-            clone.velocity = new Vector2(projectileSpeed, 0);
+            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
         } else {
-            //Shoot to the left
-            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x - xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            clone.GetComponent<ProjectileScript>().damage = dexterity;
-            //Invert prefab
-            Vector3 theScale = clone.transform.localScale;
-            theScale.x *= -1;
-            clone.transform.localScale = theScale;
-            //Set x speed
-            clone.velocity = new Vector2(-projectileSpeed, 0);
+            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
         }
     }
 
