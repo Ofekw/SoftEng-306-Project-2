@@ -26,12 +26,15 @@ public class EnemySpawnController : MonoBehaviour
         {
             spawnTimer = 0f;
 
-            int randomSpawnerIndex = Random.Range(0, spawners.Length - 1); // choose a random spawner to call
-
-            spawners[randomSpawnerIndex].Spawn();
+            spawn();
 
         }
-      
-        
+    }
+
+    public void spawn()
+    {
+        int randomSpawnerIndex = Random.Range(0, spawners.Length - 1); // choose a random spawner to call
+
+        spawners[randomSpawnerIndex].Spawn();
     }
 }
