@@ -177,7 +177,6 @@ public class Player : KillableEntityInterface
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
-            Camera.main.GetComponent<CameraShake>().enabled = false;
         }
 
     }
@@ -257,7 +256,6 @@ public class Player : KillableEntityInterface
 
     public override void die()
     {
-        //Destroy(this.gameObject);
         Application.LoadLevel(3);
         print("YOU DIED!");
     }
