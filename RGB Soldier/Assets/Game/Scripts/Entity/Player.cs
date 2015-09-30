@@ -109,6 +109,7 @@ public class Player : KillableEntityInterface {
             //If the shift button is pressed
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+            Debug.Log("pvoooopopo");
                 Shoot();
             }
 
@@ -181,7 +182,7 @@ public class Player : KillableEntityInterface {
     }
 
     public void Shoot () {
-        animator.SetTrigger("playerShoot");
+        //animator.SetTrigger("playerShoot");
         Rigidbody2D clone;
         //Shoot to the right
         if (entityMovement.facingRight) {

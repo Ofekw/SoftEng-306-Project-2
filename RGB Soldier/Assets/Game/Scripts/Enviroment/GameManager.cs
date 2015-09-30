@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public Slider healthSlider;
     public Slider chargeBar;
 
+ 
+
+
     void Awake()
     {
         if (instance == null)
@@ -83,6 +86,8 @@ public class GameManager : MonoBehaviour
             incrementSpecialAtkCounter(player);
         }
     }
+
+
 
     private void countEnemies()
     {

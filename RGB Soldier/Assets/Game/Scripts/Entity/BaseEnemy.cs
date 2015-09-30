@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -9,6 +10,9 @@ public class BaseEnemy : KillableEntityInterface {
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
+    private Text attackText;
+    private Transform Attack_Text;
+    private Vector3 textScaling;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
@@ -62,7 +66,10 @@ public class BaseEnemy : KillableEntityInterface {
     {
         //basic decrementing health
         currentHealth = currentHealth - damageReceived;
-        if(currentHealth <= 0){
+        attackText = GameObject.Find("AttackText").GetComponent<Text>();
+        attackText.text = "- " + damageReceived.ToString();
+        Instantiate(Attack_Text, transform.position + textScaling, transform.rotation);
+        if (currentHealth <= 0){
             die();
         }
     }
