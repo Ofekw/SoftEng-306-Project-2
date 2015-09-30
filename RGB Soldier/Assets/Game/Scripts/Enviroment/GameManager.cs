@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public int orbsCollected = 0;
-    public int specialCharge = 0;
+    public float specialCharge = 0;
     public const int SPECIAL_CHARGE_TARGET = 1000;
     public bool canSpecialAtk = false;
     public int enemiesOnScreen = 0;
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false; //set boolean true if player can special attack
         if (!canSpecialAtk)
         {
-            incrementSpecialAtkCounter();
+            incrementSpecialAtkCounter(player);
         }
     }
 
@@ -70,9 +70,9 @@ public class GameManager : MonoBehaviour
         enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
-    public void incrementSpecialAtkCounter()
+    public void incrementSpecialAtkCounter(Player player)
     {
-        specialCharge++;
+		specialCharge += (float)(player.intelligence) / 20;
     }
 
     public void resetSpecialAtkCounter()
