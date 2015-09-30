@@ -153,7 +153,12 @@ public class Player : KillableEntityInterface
 
     public void Melee()
     {
-
+        var enemies = GameObject.FindGameObjectsWithTag("Zombie");
+        foreach (GameObject enemy in enemies)
+        {
+            var e = enemy.GetComponent<BaseEnemy>();
+            e.die();
+        }
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -171,7 +176,7 @@ public class Player : KillableEntityInterface
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
             GameManager.instance.resetSpecialAtkCounter(); //reset counter
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var enemies = GameObject.FindGameObjectsWithTag("Zombie");
             foreach (GameObject enemy in enemies)
             {
                 var e = enemy.GetComponent<BaseEnemy>();
