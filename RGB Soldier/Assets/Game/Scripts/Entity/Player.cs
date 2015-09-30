@@ -257,6 +257,7 @@ public class Player : KillableEntityInterface {
     public override void die()
     {
         //Destroy(this.gameObject);
+        Application.LoadLevel(3);
         print("YOU DIED!");
     }
 
