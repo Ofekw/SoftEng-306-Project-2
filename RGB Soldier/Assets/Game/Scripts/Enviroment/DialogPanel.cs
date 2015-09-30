@@ -12,6 +12,7 @@ public class DialogPanel : MonoBehaviour
     public float letterPause = 0.2f;
 
     private bool keyPressed;
+    private bool firstLine;
     private static DialogPanel dialogPanel;
 
     public static DialogPanel Instance()
@@ -28,7 +29,7 @@ public class DialogPanel : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown || Input.touchCount > 0)
+        if (!firstLine && (Input.anyKeyDown || Input.touchCount > 0))
         {
             keyPressed = true;
         }
@@ -38,11 +39,13 @@ public class DialogPanel : MonoBehaviour
     public IEnumerator StartDialog(List<string> allText)
     {
         dialogPanelObject.SetActive(true);
+        firstLine = true;
         foreach (var text in allText)
         {
             yield return StartCoroutine(TypeText(text));
             yield return StartCoroutine(WaitForKeyPress());
         }
+        dialogPanelObject.SetActive(false);
     }
 
     IEnumerator WaitForKeyPress()
@@ -72,7 +75,7 @@ public class DialogPanel : MonoBehaviour
                 displayText.text += letter;
                 yield return new WaitForSeconds(letterPause);
             }
-
+            firstLine = false;
         }
     }
 
