@@ -3,8 +3,7 @@ using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using UnityEngine.UI;                   //Allows us to use UI.
-
+using UnityEngine.UI;         
 
 public class GameControl : MonoBehaviour {
 

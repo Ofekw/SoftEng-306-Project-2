@@ -11,7 +11,12 @@ public class GameManager : MonoBehaviour
     public const int SPECIAL_CHARGE_TARGET = 1000;
     public bool canSpecialAtk = false;
     public int enemiesOnScreen = 0;
-    public int stage;
+    public int level = 1;
+
+    private Text stageText;
+    private GameObject stageImage;
+
+
 
     public const int ORB_COUNT_TARGET = 20;
 
@@ -35,6 +40,12 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
+
+        stageImage = GameObject.Find("StageImage");
+        stageText = GameObject.Find("StageText").GetComponent<Text>();
+        stageText.text = "Stage " + level;
+        stageImage.SetActive(true);
+        Invoke("HideStageImage", 2);
         orbsCollected = 0;
         specialCharge = 0;
         enemiesOnScreen = 0;
@@ -42,7 +53,15 @@ public class GameManager : MonoBehaviour
         healthSlider.value = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().currentHealth;
         canSpecialAtk = false;
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
+
     }
+
+    void HideStageImage()
+    {
+        stageImage.SetActive(false);
+    }
+
+
     void Update()
     {
         countEnemies();

@@ -555,13 +555,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: 338.5, y: 172}
   m_SizeDelta: {x: 677, y: 344}
-=======
-  m_AnchoredPosition: {x: 453, y: 211.5}
-  m_SizeDelta: {x: 906, y: 423}
->>>>>>> e80293386c4649f12d2a69994306dbe8b671f4c6
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &175227433
 MonoBehaviour:
@@ -629,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsText: {fileID: 1759179775}
-  player: {fileID: 11487124, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+  player: {fileID: 0}
   strSlider: {fileID: 490669658}
   aglSlider: {fileID: 1952173566}
   dexSlider: {fileID: 684803912}
@@ -916,7 +911,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488036, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22488036, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -2515,7 +2510,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 409913499}
   loadingImage: {fileID: 409913500}
-  levelStartDelay: 2
 --- !u!1 &1141005018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,7 +2889,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1361076262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,7 +3277,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1137231599}
-        m_MethodName: ClickStageAsync
+        m_MethodName: ClickAsync
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
