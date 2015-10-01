@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
+[RequireComponent(typeof(LoadSceneAsync))]
 public class GameManager : MonoBehaviour
 {
 	public enum State {
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
     public Text orbCountDisp;
     public Slider chargeBar;
 	public Text healthDisp;
+    public string nextScene;
+    public LoadSceneAsync lsa;
 
 	private State state;
 
@@ -98,12 +101,14 @@ public class GameManager : MonoBehaviour
 
     void levelCleared()
     {
-        print("Level has been cleared!");
+        lsa.ClickAsync(nextScene);
     }
 
     void gameOver()
     {
-        //TODO: Game over stuff
+        Application.LoadLevel("game_over_screen");
+        
+
     }
 
 	public bool isPaused() {

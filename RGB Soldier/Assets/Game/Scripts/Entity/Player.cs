@@ -63,7 +63,6 @@ public class Player : KillableEntityInterface
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
-		print ("Vitality default is: " + vitality);
 		maxHealth = vitality;
 		currentHealth = maxHealth;
     }
@@ -263,8 +262,7 @@ public class Player : KillableEntityInterface
 
     public override void die()
     {
-        Application.LoadLevel(3);
-        print("YOU DIED!");
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other)
