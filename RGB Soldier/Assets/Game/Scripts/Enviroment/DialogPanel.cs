@@ -30,6 +30,7 @@ public class DialogPanel : MonoBehaviour
         return dialogPanel;
     }
 
+    // Checks input from player each player
     void Update()
     {
         if (!firstLine && (Input.anyKeyDown || Input.touchCount > 0))
@@ -38,7 +39,7 @@ public class DialogPanel : MonoBehaviour
         }
     }
 
-    // Insert Dialog
+    // Goes through the list printing the text
     public IEnumerator StartDialog(List<string> allText)
     {
         dialogPanelObject.SetActive(true);
@@ -61,6 +62,8 @@ public class DialogPanel : MonoBehaviour
         keyPressed = false;
     }
 
+
+    // Prints text one character a time
     IEnumerator TypeText(string text)
     {
         displayText.text = "";

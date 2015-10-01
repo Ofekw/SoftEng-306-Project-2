@@ -17,7 +17,7 @@ public class CutSceneStart : MonoBehaviour
         StartCoroutine(modalPanel.StartDialog(dialogText)); 
     }
 
-    //  Send to the Modal Panel to set up the Buttons and Functions to call
+    //  Sents the all the text to the script
     public void startDialog()
     {
         StartCoroutine(modalPanel.StartDialog(dialogText)); 
