@@ -19,6 +19,10 @@ public class ScreenLooper : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("PlayerEnemyCollider"))
+        {
+            return;
+        }
         other.transform.position = new Vector3(other.transform.position.x, spawnHeight, other.transform.position.z);
         if (other.gameObject.CompareTag("Zombie"))
         {

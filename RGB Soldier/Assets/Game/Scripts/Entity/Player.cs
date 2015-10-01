@@ -62,7 +62,6 @@ public class Player : KillableEntityInterface
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
-		print ("Vitality default is: " + vitality);
 		maxHealth = vitality;
 		currentHealth = maxHealth;
     }
