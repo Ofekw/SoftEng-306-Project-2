@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int enemiesOnScreen = 0;
     public int stage;
 
-    public const int ORB_COUNT_TARGET = 20;
+    public int ORB_COUNT_TARGET = 20;
 
     public Text orbCountDisp;
     public Slider chargeBar;
