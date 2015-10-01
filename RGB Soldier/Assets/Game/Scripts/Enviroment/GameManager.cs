@@ -5,6 +5,9 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+	public enum State {
+		Paused, Running
+	}
     public static GameManager instance;
     public int orbsCollected = 0;
     public float specialCharge = 0;
@@ -18,6 +21,16 @@ public class GameManager : MonoBehaviour
     public Text orbCountDisp;
     public Slider chargeBar;
 	public Text healthDisp;
+
+	private State state;
+
+	public State getState() {
+		return state;
+	}
+
+	public void SetState(State setState) {
+		state = setState;
+	}
 
     void Awake()
     {
@@ -41,9 +54,12 @@ public class GameManager : MonoBehaviour
         orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
         canSpecialAtk = false;
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
+		state = State.Running;
     }
     void Update()
     {
+		if (GameManager.instance.isPaused ())
+			return;
         countEnemies();
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         //update health counter
@@ -89,4 +105,11 @@ public class GameManager : MonoBehaviour
     {
         //TODO: Game over stuff
     }
+
+	public bool isPaused() {
+		if (GameManager.instance.getState ().Equals (GameManager.State.Paused)) {
+			return true;
+		}
+		return false;
+	}
 }

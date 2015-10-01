@@ -18,6 +18,7 @@ public class Player : KillableEntityInterface
     public Boolean attacking = false;
     public float attackCooldown = 0.3f;
     public float lastAttack;
+    public float attackDuration = 0.2f;
     public BoxCollider2D meleeCollider;
 
     public int strength;    //Strength - Melee
@@ -68,6 +69,8 @@ public class Player : KillableEntityInterface
 
     void Update()
     {
+		if (GameManager.instance.isPaused ())
+			return;
         var shakingAmount = Input.acceleration.magnitude;
         if (shakingAmount > 1.5)
         {
@@ -122,7 +125,7 @@ public class Player : KillableEntityInterface
         if (attacking == true)
         {
             meleeCollider.enabled = true;
-            if ((Time.time - lastAttack) > 0.1)
+            if ((Time.time - lastAttack) > attackDuration)
             {
                 attacking = false;
                 meleeCollider.enabled = false;
@@ -173,16 +176,12 @@ public class Player : KillableEntityInterface
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
             GameManager.instance.resetSpecialAtkCounter(); //reset counter
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var enemies = GameObject.FindGameObjectsWithTag("Zombie");
             foreach (GameObject enemy in enemies)
             {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
-            Camera.main.GetComponent<CameraShake>().enabled = false;
-
-
-
         }
 
     }
@@ -263,7 +262,7 @@ public class Player : KillableEntityInterface
 
     public override void die()
     {
-        //Destroy(this.gameObject);
+        Application.LoadLevel("game-over-scene");
         print("YOU DIED!");
     }
 
