@@ -262,8 +262,7 @@ public class Player : KillableEntityInterface
 
     public override void die()
     {
-        Application.LoadLevel("game-over-scene");
-        print("YOU DIED!");
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other)
