@@ -63,6 +63,9 @@ public class Player : KillableEntityInterface
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
+		print ("Vitality default is: " + vitality);
+		maxHealth = vitality;
+		currentHealth = maxHealth;
     }
 
     void Update()
@@ -252,6 +255,7 @@ public class Player : KillableEntityInterface
             currentHealth--;
             temporaryInvulnerable = true;
             temporaryInvulnerableTime = Time.time;
+			print("You lost a life");
         }
         if (currentHealth <= 0)
         {
