@@ -8,6 +8,7 @@ public class TestModalWindow : MonoBehaviour
 {
     private DialogPanel modalPanel;
     private DisplayManager displayManager;
+    public List<string> dialogText = new List<string>();
 
     void Awake()
     {
@@ -16,14 +17,8 @@ public class TestModalWindow : MonoBehaviour
     }
 
     //  Send to the Modal Panel to set up the Buttons and Functions to call
-    public void TestYNC()
+    public void startDialog()
     {
-        StartCoroutine(modalPanel.StartDialog(new List<string>() 
-        { "Our story is a simple one. You are a magical spartan trained in the art of sword fighting recovering from a drinking problem. ",
-            "Simply put, you have been sent from another universe to bring back the colour of this world.",
-            "What has happened to the colour you may be wondering?",
-            "Well, it has been stolen by an evil mage, set out to turn all universes and dimensions into colourless black holes. What a turd!",
-            "A word of caution, your quest will not be easy and on this quest you will fail. However you shall always return, more powerful and knowledgeable than you were before. You see, every time you die, the story resumes from another parallel universe where you have not yet failed. Simple right?"
-        }));
+        StartCoroutine(modalPanel.StartDialog(dialogText)); 
     }
 }
