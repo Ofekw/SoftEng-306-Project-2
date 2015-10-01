@@ -9,6 +9,12 @@ public class Zombie : BaseEnemy
     private EnemyTrailControl trailControl;
     private bool powerUp = false;
 
+   public override void Update()
+    {
+        aiModifiers();
+        base.Update();
+    }
+
     public void loopPowerup()
     {
         powerUp = true;
@@ -30,5 +36,15 @@ public class Zombie : BaseEnemy
         trailControl.trail.enabled = false;
         yield return new WaitForSeconds(0.25f);
         trailControl.trail.enabled = true;
+    }
+
+    //hook method
+    public void aiModifiers()
+    {
+        int rand = Random.Range(1, 500); // 1 in 500 chance to randomly change direction
+        if (rand == 10)
+        {
+            entityMovement.Flip();
+        }
     }
 }
