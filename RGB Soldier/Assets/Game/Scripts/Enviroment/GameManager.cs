@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     public const int ORB_COUNT_TARGET = 20;
 
     public Text orbCountDisp;
-    public Slider healthSlider;
     public Slider chargeBar;
+	public Text healthDisp;
 
  
 
@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
         specialCharge = 0;
         enemiesOnScreen = 0;
         orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
-        healthSlider.value = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().currentHealth;
         canSpecialAtk = false;
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
 
@@ -69,12 +68,13 @@ public class GameManager : MonoBehaviour
     {
         countEnemies();
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        healthSlider.value = player.currentHealth; //update health bar
-        orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
+        //update health counter
+		healthDisp.text = "x " + player.currentHealth;
+		orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
         chargeBar.value = specialCharge; // set value of special attack slider
         if (player.currentHealth <= 0)
         {
-            gameOver(); //NOTE: This seems redundant since Player already checks for health.
+            gameOver();
         }
         if (orbsCollected >= ORB_COUNT_TARGET)
         {

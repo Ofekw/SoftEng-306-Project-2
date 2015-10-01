@@ -7,7 +7,8 @@ using Assets.Game.Scripts.Enviroment;
 [RequireComponent(typeof(EntityMovement))]
 
 
-public class Player : KillableEntityInterface {
+public class Player : KillableEntityInterface
+{
 
     public EntityMovement entityMovement;
     public Rigidbody2D projectile;
@@ -22,7 +23,7 @@ public class Player : KillableEntityInterface {
     public int strength;    //Strength - Melee
     public int agility;    //Agility- Speed
     public int dexterity;   //Dexterity- Range
-    public int intelligence; //Intelligence - Special charge speed
+    public int intelligence; //Intelligence - Special
     public int vitality;    //Vitality - Health
 
     public int abilityPoints; // Points to spend on skill
@@ -42,9 +43,10 @@ public class Player : KillableEntityInterface {
 
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
-    void Start () {
+    void Start()
+    {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-	    this.entityMovement = GetComponent<EntityMovement>();
+        this.entityMovement = GetComponent<EntityMovement>();
         Camera.main.GetComponent<CameraShake>().enabled = false;
 
         meleeCollider.enabled = false;
@@ -60,6 +62,9 @@ public class Player : KillableEntityInterface {
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
+		print ("Vitality default is: " + vitality);
+		maxHealth = vitality;
+		currentHealth = maxHealth;
     }
 
     void Update()
@@ -69,69 +74,66 @@ public class Player : KillableEntityInterface {
         {
             Special();
         }
-            /*
-            if (moveRight)
-            {
-                movement.Set(1, 0, 0);
-                movement = movement.normalized * movementSpeed * Time.deltaTime;
-                playerRigidBody.MovePosition(transform.position + movement);
-            }
-             */
-            //if pressing jump button, call jump method to toggle boolean
-            if (Input.GetButtonDown("Jump"))
-            {
-                entityMovement.Jump();
-            }
+        //if pressing jump button, call jump method to toggle boolean
+        if (Input.GetButtonDown("Jump"))
+        {
+            entityMovement.Jump();
+        }
 
-            if (isJumping)
-            {
-                entityMovement.Jump();
-            }
-            //float hVelocity = Input.GetAxis("Horizontal");
-            float hVelocity = 0f;
-            if (moveRight && !moveLeft)
-            {
-                hVelocity = 1.0f;
-            }
-            else if (moveLeft && !moveRight)
-            {
-                hVelocity = -1.0f;
-            }
-            if (!moveRight && !moveLeft)
-            {
-                hVelocity = 0.0f;
-            }
+        if (isJumping)
+        {
+            entityMovement.Jump();
+        }
+        //float hVelocity = Input.GetAxis("Horizontal");
+        float hVelocity = 0f;
+        if (moveRight && !moveLeft)
+        {
+            hVelocity = 1.0f;
+        }
+        else if (moveLeft && !moveRight)
+        {
+            hVelocity = -1.0f;
+        }
+        if (!moveRight && !moveLeft)
+        {
+            hVelocity = 0.0f;
+        }
 
-            //hVelocity = Input.GetAxis("Horizontal");
-            //call the base movement module method to handle movement
-            entityMovement.Movement(hVelocity);
+        if (hVelocity == 0)
+        {
+            hVelocity = Input.GetAxis("Horizontal");
+        }
 
-            //If the shift button is pressed
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
+        //hVelocity = Input.GetAxis("Horizontal");
+        //call the base movement module method to handle movement
+        entityMovement.Movement(hVelocity);
+
+        //If the shift button is pressed
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
             Debug.Log("pvoooopopo");
-                Shoot();
-            }
+            Shoot();
+        }
 
-            //If the control button is pressed
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                Melee();
-            }
+        //If the control button is pressed
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Melee();
+        }
 
-            if (attacking == true)
+        if (attacking == true)
+        {
+            meleeCollider.enabled = true;
+            if ((Time.time - lastAttack) > 0.1)
             {
-                meleeCollider.enabled = true;
-                if ((Time.time - lastAttack) > 0.1)
-                {
-                    attacking = false;
-                    meleeCollider.enabled = false;
-                }
-            }
-            else
-            {
+                attacking = false;
                 meleeCollider.enabled = false;
             }
+        }
+        else
+        {
+            meleeCollider.enabled = false;
+        }
 
 
         if (temporaryInvulnerable)
@@ -142,9 +144,9 @@ public class Player : KillableEntityInterface {
             }
         }
 
-            UpdateStats();
-        }
-    
+        UpdateStats();
+    }
+
 
     public void UpdateStats()
     {
@@ -153,7 +155,9 @@ public class Player : KillableEntityInterface {
         //Strength and dexterity are called during damage calculations
     }
 
-    public void Melee() {
+    public void Melee()
+    {
+
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -171,7 +175,7 @@ public class Player : KillableEntityInterface {
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
             GameManager.instance.resetSpecialAtkCounter(); //reset counter
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var enemies = GameObject.FindGameObjectsWithTag("Zombie");
             foreach (GameObject enemy in enemies)
             {
                 var e = enemy.GetComponent<BaseEnemy>();
@@ -181,17 +185,20 @@ public class Player : KillableEntityInterface {
 
     }
 
-    public void Shoot () {
+    public void Shoot()
         //animator.SetTrigger("playerShoot");
         Rigidbody2D clone;
         //Shoot to the right
-        if (entityMovement.facingRight) {
+        if (entityMovement.facingRight)
+        {
             clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x + xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
             //Set damage equal to dexterity stat
             clone.GetComponent<ProjectileScript>().damage = dexterity;
             //Set x speed 
             clone.velocity = new Vector2(projectileSpeed, 0);
-        } else {
+        }
+        else
+        {
             //Shoot to the left
             clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x - xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
             clone.GetComponent<ProjectileScript>().damage = dexterity;
@@ -243,6 +250,7 @@ public class Player : KillableEntityInterface {
             currentHealth--;
             temporaryInvulnerable = true;
             temporaryInvulnerableTime = Time.time;
+			print("You lost a life");
         }
         if (currentHealth <= 0)
         {
@@ -252,7 +260,7 @@ public class Player : KillableEntityInterface {
 
     public override void die()
     {
-        //Destroy(this.gameObject);
+        Application.LoadLevel(3);
         print("YOU DIED!");
     }
 
