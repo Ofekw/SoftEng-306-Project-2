@@ -41,11 +41,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLevel: 0
   playerExp: 0
-  playerStr: 0
-  playerAgl: 0
-  playerDex: 0
-  playerInt: 0
-  playerVit: 0
+  playerStr: 1
+  playerAgl: 1
+  playerDex: 1
+  playerInt: 1
+  playerVit: 1
   currentGameLevel: 0
   abilityPoints: 0
 --- !u!1001 &100100000
@@ -54,7 +54,31 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: playerStr
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerAgl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerDex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerInt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerVit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: currentGameLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190956}
