@@ -18,6 +18,7 @@ public class Player : KillableEntityInterface
     public Boolean attacking = false;
     public float attackCooldown = 0.3f;
     public float lastAttack;
+    public float attackDuration = 0.2f;
     public BoxCollider2D meleeCollider;
 
     public int strength;    //Strength - Melee
@@ -123,7 +124,7 @@ public class Player : KillableEntityInterface
         if (attacking == true)
         {
             meleeCollider.enabled = true;
-            if ((Time.time - lastAttack) > 0.1)
+            if ((Time.time - lastAttack) > attackDuration)
             {
                 attacking = false;
                 meleeCollider.enabled = false;

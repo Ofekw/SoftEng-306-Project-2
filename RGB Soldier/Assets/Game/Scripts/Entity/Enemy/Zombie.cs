@@ -6,7 +6,6 @@ using System.Collections;
 
 public class Zombie : BaseEnemy
 {
-
     private EnemyTrailControl trailControl;
     private bool powerUp = false;
 
@@ -16,15 +15,12 @@ public class Zombie : BaseEnemy
         if (entityMovement.maxSpeed < entityMovement.maxMaxSpeed)
         {
             entityMovement.maxSpeed += 5;
-           // entityMovement.moveForce += 15;
+            entityMovement.moveForce += 15;
         }
 
         if (powerUp)
         {
             StartCoroutine(hideTrail());
-
-
-
         }
     }
 
@@ -35,5 +31,4 @@ public class Zombie : BaseEnemy
         yield return new WaitForSeconds(0.25f);
         trailControl.trail.enabled = true;
     }
-
 }
