@@ -7,6 +7,7 @@ public abstract class ProjectileScript : MonoBehaviour
     public int damage;
     public Vector3 startPoint;
     public GameObject shooter;
+    public GameObject explosion;
     public string shooterTag;
     public string collidesWithLayer;
     public System.Collections.Generic.List<string> collidesWithLayers = new System.Collections.Generic.List<string>();
@@ -19,10 +20,11 @@ public abstract class ProjectileScript : MonoBehaviour
     }
 
     void Update()
-    {
-        if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 5)
-        {
-            //Destroy(this.gameObject);
+	if (GameManager.instance.isPaused ()){
+			return;
+        }
+        if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
+            Destroy(this.gameObject);
         }
     }
 
@@ -38,6 +40,7 @@ public abstract class ProjectileScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
     }
 
     protected abstract void handleCollisonWithLayer(Collision2D hit, string layerTag);

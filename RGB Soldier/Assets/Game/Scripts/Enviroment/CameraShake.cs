@@ -36,6 +36,8 @@ namespace Assets.Game.Scripts.Enviroment
 
         void Update()
         {
+			if (GameManager.instance.isPaused ())
+				return;
             if (shake > 0)
             {
                 camTransform.localPosition = originalPos + UnityEngine.Random.insideUnitSphere * shakeAmount;

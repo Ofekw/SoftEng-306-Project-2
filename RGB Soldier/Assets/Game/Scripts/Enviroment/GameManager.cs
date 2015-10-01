@@ -5,9 +5,12 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+	public enum State {
+		Paused, Running
+	}
     public static GameManager instance;
     public int orbsCollected = 0;
-    public int specialCharge = 0;
+    public float specialCharge = 0;
     public const int SPECIAL_CHARGE_TARGET = 1000;
     public bool canSpecialAtk = false;
     public int enemiesOnScreen = 0;
@@ -16,8 +19,18 @@ public class GameManager : MonoBehaviour
     public const int ORB_COUNT_TARGET = 20;
 
     public Text orbCountDisp;
-    public Slider healthSlider;
     public Slider chargeBar;
+	public Text healthDisp;
+
+	private State state;
+
+	public State getState() {
+		return state;
+	}
+
+	public void SetState(State setState) {
+		state = setState;
+	}
 
     void Awake()
     {
@@ -39,20 +52,23 @@ public class GameManager : MonoBehaviour
         specialCharge = 0;
         enemiesOnScreen = 0;
         orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
-        healthSlider.value = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().currentHealth;
         canSpecialAtk = false;
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
+		state = State.Running;
     }
     void Update()
     {
+		if (GameManager.instance.isPaused ())
+			return;
         countEnemies();
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        healthSlider.value = player.currentHealth; //update health bar
-        orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
+        //update health counter
+		healthDisp.text = "x " + player.currentHealth;
+		orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
         chargeBar.value = specialCharge; // set value of special attack slider
         if (player.currentHealth <= 0)
         {
-            gameOver(); //NOTE: This seems redundant since Player already checks for health.
+            gameOver();
         }
         if (orbsCollected >= ORB_COUNT_TARGET)
         {
@@ -61,7 +77,7 @@ public class GameManager : MonoBehaviour
         canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false; //set boolean true if player can special attack
         if (!canSpecialAtk)
         {
-            incrementSpecialAtkCounter();
+            incrementSpecialAtkCounter(player);
         }
     }
 
@@ -70,9 +86,9 @@ public class GameManager : MonoBehaviour
         enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
-    public void incrementSpecialAtkCounter()
+    public void incrementSpecialAtkCounter(Player player)
     {
-        specialCharge++;
+		specialCharge += (float)(player.intelligence) / 20;
     }
 
     public void resetSpecialAtkCounter()
@@ -89,4 +105,11 @@ public class GameManager : MonoBehaviour
     {
         //TODO: Game over stuff
     }
+
+	public bool isPaused() {
+		if (GameManager.instance.getState ().Equals (GameManager.State.Paused)) {
+			return true;
+		}
+		return false;
+	}
 }

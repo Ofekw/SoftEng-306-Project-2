@@ -9,6 +9,7 @@ public class BaseEnemy : KillableEntityInterface {
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
+    public int experienceGiven = 5;
     private EnemySpawnController spawnController;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
@@ -22,6 +23,8 @@ public class BaseEnemy : KillableEntityInterface {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameManager.instance.isPaused ())
+			return;
         AIControl();
 
 	}
@@ -71,6 +74,7 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void die()
     {
+        GameControl.control.giveExperience(experienceGiven);
         dead = true;
         Destroy(gameObject);
         spawnController.spawn();

@@ -7,7 +7,8 @@ using Assets.Game.Scripts.Enviroment;
 [RequireComponent(typeof(EntityMovement))]
 
 
-public class Player : KillableEntityInterface {
+public class Player : KillableEntityInterface
+{
 
     public EntityMovement entityMovement;
     public ProjectileSpawner projectileSpawner;
@@ -17,6 +18,7 @@ public class Player : KillableEntityInterface {
     public Boolean attacking = false;
     public float attackCooldown = 0.3f;
     public float lastAttack;
+    public float attackDuration = 0.2f;
     public BoxCollider2D meleeCollider;
 
     public int strength;    //Strength - Melee
@@ -42,9 +44,10 @@ public class Player : KillableEntityInterface {
 
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
-    void Start () {
+    void Start()
+    {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-	    this.entityMovement = GetComponent<EntityMovement>();
+        this.entityMovement = GetComponent<EntityMovement>();
         Camera.main.GetComponent<CameraShake>().enabled = false;
         projectileSpawner = GetComponent<PlayerProjectileSpawner>();
         meleeCollider.enabled = false;
@@ -60,77 +63,79 @@ public class Player : KillableEntityInterface {
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
+		print ("Vitality default is: " + vitality);
+		maxHealth = vitality;
+		currentHealth = maxHealth;
     }
 
     void Update()
     {
+		if (GameManager.instance.isPaused ())
+			return;
         var shakingAmount = Input.acceleration.magnitude;
         if (shakingAmount > 1.5)
         {
             Special();
         }
-            /*
-            if (moveRight)
-            {
-                movement.Set(1, 0, 0);
-                movement = movement.normalized * movementSpeed * Time.deltaTime;
-                playerRigidBody.MovePosition(transform.position + movement);
-            }
-             */
-            //if pressing jump button, call jump method to toggle boolean
-            if (Input.GetButtonDown("Jump"))
-            {
-                entityMovement.Jump();
-            }
+        //if pressing jump button, call jump method to toggle boolean
+        if (Input.GetButtonDown("Jump"))
+        {
+            entityMovement.Jump();
+        }
 
-            if (isJumping)
-            {
-                entityMovement.Jump();
-            }
-            //float hVelocity = Input.GetAxis("Horizontal");
-            float hVelocity = 0f;
-            if (moveRight && !moveLeft)
-            {
-                hVelocity = 1.0f;
-            }
-            else if (moveLeft && !moveRight)
-            {
-                hVelocity = -1.0f;
-            }
-            if (!moveRight && !moveLeft)
-            {
-                hVelocity = 0.0f;
-            }
+        if (isJumping)
+        {
+            entityMovement.Jump();
+        }
+        //float hVelocity = Input.GetAxis("Horizontal");
+        float hVelocity = 0f;
+        if (moveRight && !moveLeft)
+        {
+            hVelocity = 1.0f;
+        }
+        else if (moveLeft && !moveRight)
+        {
+            hVelocity = -1.0f;
+        }
+        if (!moveRight && !moveLeft)
+        {
+            hVelocity = 0.0f;
+        }
 
-            //hVelocity = Input.GetAxis("Horizontal");
-            //call the base movement module method to handle movement
-            entityMovement.Movement(hVelocity);
+        if (hVelocity == 0)
+        {
+            hVelocity = Input.GetAxis("Horizontal");
+        }
 
-            //If the shift button is pressed
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                Shoot();
-            }
+        //hVelocity = Input.GetAxis("Horizontal");
+        //call the base movement module method to handle movement
+        entityMovement.Movement(hVelocity);
 
-            //If the control button is pressed
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                Melee();
-            }
+        //If the shift button is pressed
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Shoot();
+        }
 
-            if (attacking == true)
+        //If the control button is pressed
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Melee();
+        }
+
+        if (attacking == true)
+        {
+            meleeCollider.enabled = true;
+            if ((Time.time - lastAttack) > attackDuration)
             {
-                meleeCollider.enabled = true;
-                if ((Time.time - lastAttack) > 0.1)
-                {
-                    attacking = false;
-                    meleeCollider.enabled = false;
-                }
-            }
-            else
-            {
+                attacking = false;
                 meleeCollider.enabled = false;
             }
+        }
+        else
+        {
+            meleeCollider.enabled = false;
+        }
 
 
         if (temporaryInvulnerable)
@@ -141,9 +146,9 @@ public class Player : KillableEntityInterface {
             }
         }
 
-            UpdateStats();
-        }
-    
+        UpdateStats();
+    }
+
 
     public void UpdateStats()
     {
@@ -152,7 +157,9 @@ public class Player : KillableEntityInterface {
         //Strength and dexterity are called during damage calculations
     }
 
-    public void Melee() {
+    public void Melee()
+    {
+
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -170,7 +177,7 @@ public class Player : KillableEntityInterface {
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
             GameManager.instance.resetSpecialAtkCounter(); //reset counter
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var enemies = GameObject.FindGameObjectsWithTag("Zombie");
             foreach (GameObject enemy in enemies)
             {
                 var e = enemy.GetComponent<BaseEnemy>();
@@ -180,13 +187,17 @@ public class Player : KillableEntityInterface {
 
     }
 
-    public void Shoot () {
+    public void Shoot()
+    {
         animator.SetTrigger("playerShoot");
         //Shoot to the right
-        if (entityMovement.facingRight) {
+        if (entityMovement.facingRight)
+        {
             projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
-        } else {
-            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
+        }
+        else
+        {
+		projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
         }
     }
 
@@ -229,6 +240,7 @@ public class Player : KillableEntityInterface {
             currentHealth--;
             temporaryInvulnerable = true;
             temporaryInvulnerableTime = Time.time;
+			print("You lost a life");
         }
         if (currentHealth <= 0)
         {
@@ -238,7 +250,7 @@ public class Player : KillableEntityInterface {
 
     public override void die()
     {
-        //Destroy(this.gameObject);
+        Application.LoadLevel(3);
         print("YOU DIED!");
     }
 

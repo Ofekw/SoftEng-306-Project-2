@@ -75,6 +75,7 @@ MonoBehaviour:
   startPoint: {x: 0, y: 0, z: 0}
   shooter: {fileID: 160024, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
   shooterTag: Player
+  explosion: {fileID: 100000, guid: 888b968853fa09743aab10401796c39c, type: 2}
   collidesWithLayer: 
   collidesWithLayers:
   - Enemies
@@ -164,6 +165,10 @@ Prefab:
       propertyPath: collidesWithLayers.Array.data[1]
       value: BouncableOrb
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 100000, guid: 888b968853fa09743aab10401796c39c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194178}
