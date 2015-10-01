@@ -15,6 +15,8 @@ public class ProjectileScript : MonoBehaviour {
     }
 	
 	void Update () {
+		if (GameManager.instance.isPaused ())
+			return;
         if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
             Destroy(this.gameObject);
         }

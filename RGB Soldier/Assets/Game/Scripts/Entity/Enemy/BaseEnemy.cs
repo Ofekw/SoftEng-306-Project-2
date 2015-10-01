@@ -23,6 +23,8 @@ public class BaseEnemy : KillableEntityInterface {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameManager.instance.isPaused ())
+			return;
         AIControl();
 
 	}
