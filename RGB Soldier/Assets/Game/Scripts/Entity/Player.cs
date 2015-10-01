@@ -70,6 +70,8 @@ public class Player : KillableEntityInterface
 
     void Update()
     {
+		if (GameManager.instance.isPaused ())
+			return;
         var shakingAmount = Input.acceleration.magnitude;
         if (shakingAmount > 1.5)
         {
