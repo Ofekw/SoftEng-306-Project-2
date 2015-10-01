@@ -10,14 +10,14 @@ GameObject:
   - 4: {fileID: 467102}
   - 212: {fileID: 21201106}
   - 95: {fileID: 9587170}
-  - 114: {fileID: 11474940}
   - 50: {fileID: 5097420}
   - 61: {fileID: 6196176}
   - 114: {fileID: 11487940}
   - 114: {fileID: 11409828}
-  m_Layer: 10
+  - 114: {fileID: 11448574}
+  m_Layer: 17
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8499999, y: -.389999986, z: 0}
+  m_LocalPosition: {x: .725337148, y: -.0340125561, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6196176
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -60,9 +60,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -.0266335011}
   serializedVersion: 2
-  m_Size: {x: .280000001, y: .310000002}
+  m_Size: {x: .280000001, y: .363267004}
 --- !u!95 &9587170
 Animator:
   serializedVersion: 3
@@ -94,8 +94,11 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 3
   dead: 0
+  xProjectileOffset: 0
+  yProjectileOffset: 0
   entityMovement: {fileID: 0}
---- !u!114 &11474940
+  projectileSpawner: {fileID: 0}
+--- !u!114 &11448574
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -103,9 +106,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 124628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d5a928926437474a8872f479150c1eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d168d56f0eb64b478014692b49ed319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  projectileSpeed: 0
+  angularVelocity: 0
+  projectile: {fileID: 5033434, guid: 34ea7aa2fa3eea9468705549291c3060, type: 2}
+  attackName: blackOrbAttack
+  blackOrbSpeed: 15
 --- !u!114 &11487940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +130,7 @@ MonoBehaviour:
   jump: 0
   moveForce: 500
   maxSpeed: 10
+  maxMaxSpeed: 20
   jumpClips: []
   jumpForce: 150
   jumpCount: 0
@@ -161,6 +171,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5033434, guid: 34ea7aa2fa3eea9468705549291c3060, type: 2}
+    - target: {fileID: 0}
+      propertyPath: attackName
+      value: blackOrbAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

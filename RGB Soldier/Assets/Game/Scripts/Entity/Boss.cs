@@ -11,18 +11,26 @@ public class Boss : KillableEntityInterface
     bool isJumping = false;
     bool moveRight = false;
     bool moveLeft = false;
+    bool facingRight = false;
+    public float xProjectileOffset;
+    public float yProjectileOffset;
     public EntityMovement entityMovement;
-    public Rigidbody2D projectile;
+    public ProjectileSpawner projectileSpawner;
+    public int health = 30;
 
 
     public override void die()
     {
-        throw new NotImplementedException();
+        Destroy(this.gameObject);
     }
 
     public override void takeDamage(int damageReceived)
     {
-        throw new NotImplementedException();
+        health -= damageReceived;
+        if (health <= 0)
+        {
+            die();
+        }
     }
 
     // Use this for initialization
@@ -30,7 +38,10 @@ public class Boss : KillableEntityInterface
     {
         this.entityMovement = GetComponent<EntityMovement>();
         this.animator = GetComponent<Animator>();
-
+        projectileSpawner = GetComponent<BossProjectileSpawner>();
+        yProjectileOffset = -0.2f;
+        xProjectileOffset = 3f;
+        health = 30;
     }
 
     // Update is called once per frame
@@ -42,12 +53,14 @@ public class Boss : KillableEntityInterface
         {
             moveLeft = true;
             animator.SetBool("isMovingLeft", true);
+            facingRight = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad6))
         {
             moveRight = true;
             animator.SetBool("isMovingRight", true);
+            facingRight = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Keypad4))
@@ -98,25 +111,13 @@ public class Boss : KillableEntityInterface
 
     void attack()
     {
-        if ( animator.GetBool("isMovingRight"))
+        if ( facingRight)
         {
-            Rigidbody2D clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x + 5, transform.position.y, transform.position.z), transform.rotation);
-            //Set damage equal to dexterity stat
-            clone.GetComponent<ProjectileScript>().damage = 1;
-            //Set x speed 
-            clone.velocity = new Vector2(100, 0);
+            projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
         }
-        else if (animator.GetBool("isMovingLeft"))
+        else if (!(facingRight))
         {
-            //Shoot to the left
-            Rigidbody2D clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x - 5, transform.position.y, transform.position.z), transform.rotation);
-            clone.GetComponent<ProjectileScript>().damage = 1;
-            //Invert prefab
-            Vector3 theScale = clone.transform.localScale;
-            theScale.x *= -1;
-            clone.transform.localScale = theScale;
-            //Set x speed
-            clone.velocity = new Vector2(-100, 0);
+            projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
         }
     }
 }

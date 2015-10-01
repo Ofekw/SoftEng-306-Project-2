@@ -18,18 +18,14 @@ public class Player : KillableEntityInterface {
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public BoxCollider2D meleeCollider;
-    int orbCount = 0;
-    public Boolean specialAttack = false;
-    //TODO move incrementing of special charge to game manager
-    public int specialCharge = 0;
-    //TODO associate with skill set 
-    public int specialChargeMeterLength = 100;
 
-    public int strength = 1;    //Strength - Melee
-    public int agility = 1;     //Agility- Speed
-    public int dexterity = 1;   //Dexterity- Range
-    public int intelligence = 1;//Intelligence - Special
-    public int vitality = 1;    //Vitality - Health
+    public int strength;    //Strength - Melee
+    public int agility;    //Agility- Speed
+    public int dexterity;   //Dexterity- Range
+    public int intelligence; //Intelligence - Special
+    public int vitality;    //Vitality - Health
+
+    public int abilityPoints; // Points to spend on skill
 
     public Boolean temporaryInvulnerable = false;
     public float temporaryInvulnerableTime;
@@ -45,6 +41,7 @@ public class Player : KillableEntityInterface {
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
+    // Starts after everything has woken - must wait for gamecontrol
     void Start () {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 	    this.entityMovement = GetComponent<EntityMovement>();
@@ -52,17 +49,21 @@ public class Player : KillableEntityInterface {
         projectileSpawner = GetComponent<PlayerProjectileSpawner>();
         meleeCollider.enabled = false;
         attacking = false;
-        specialAttack = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
+
+        strength = GameControl.control.playerStr;
+        agility = GameControl.control.playerAgl;
+        dexterity = GameControl.control.playerDex;
+        intelligence = GameControl.control.playerInt;
+        vitality = GameControl.control.playerVit;
+        abilityPoints = GameControl.control.abilityPoints;
     }
 
     void Update()
     {
-        //TODO move incrementing of special charge to game manager
-        specialCharge++;
         var shakingAmount = Input.acceleration.magnitude;
         if (shakingAmount > 1.5)
         {
@@ -75,7 +76,7 @@ public class Player : KillableEntityInterface {
                 movement = movement.normalized * movementSpeed * Time.deltaTime;
                 playerRigidBody.MovePosition(transform.position + movement);
             }
-             * */
+             */
             //if pressing jump button, call jump method to toggle boolean
             if (Input.GetButtonDown("Jump"))
             {
@@ -152,7 +153,6 @@ public class Player : KillableEntityInterface {
     }
 
     public void Melee() {
-
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -164,28 +164,24 @@ public class Player : KillableEntityInterface {
     public void Special()
     {
         //If the meter is fully charged
-        if (specialCharge >= specialChargeMeterLength)
+        if (GameManager.instance.canSpecialAtk)
         {
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
-            specialAttack = true;
-            specialCharge = 0;
+            GameManager.instance.resetSpecialAtkCounter(); //reset counter
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
-            Camera.main.GetComponent<CameraShake>().enabled = false;
-
-
-
         }
 
     }
 
     public void Shoot () {
+        animator.SetTrigger("playerShoot");
         //Shoot to the right
         if (entityMovement.facingRight) {
             projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
@@ -250,7 +246,7 @@ public class Player : KillableEntityInterface {
     {
         if (other.gameObject.CompareTag("Orb"))
         {
-            orbCount++;
+            GameManager.instance.orbsCollected++;
         }
     }
 
@@ -258,7 +254,7 @@ public class Player : KillableEntityInterface {
     {
         if (coll.gameObject.CompareTag("Orb"))
         {
-            orbCount++;
+            GameManager.instance.orbsCollected++;
         }
     }
 
