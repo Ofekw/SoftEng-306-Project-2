@@ -174,16 +174,12 @@ public class Player : KillableEntityInterface
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
             GameManager.instance.resetSpecialAtkCounter(); //reset counter
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var enemies = GameObject.FindGameObjectsWithTag("Zombie");
             foreach (GameObject enemy in enemies)
             {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
-            Camera.main.GetComponent<CameraShake>().enabled = false;
-
-
-
         }
 
     }
@@ -264,7 +260,7 @@ public class Player : KillableEntityInterface
 
     public override void die()
     {
-        //Destroy(this.gameObject);
+        Application.LoadLevel(3);
         print("YOU DIED!");
     }
 
