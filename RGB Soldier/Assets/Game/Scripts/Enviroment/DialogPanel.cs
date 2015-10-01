@@ -8,8 +8,11 @@ public class DialogPanel : MonoBehaviour
 {
 
     public Text displayText;
-    public GameObject dialogPanelObject;
     public float letterPause = 0.2f;
+    public GameObject dialogPanelObject;
+    public LoadSceneAsync lsa;
+    public int scene_id;
+    
 
     private bool keyPressed;
     private bool firstLine;
@@ -46,6 +49,7 @@ public class DialogPanel : MonoBehaviour
             yield return StartCoroutine(WaitForKeyPress());
         }
         dialogPanelObject.SetActive(false);
+        lsa.ClickAsync(scene_id);
     }
 
     IEnumerator WaitForKeyPress()
