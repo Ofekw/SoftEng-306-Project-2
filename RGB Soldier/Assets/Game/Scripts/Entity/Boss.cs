@@ -16,7 +16,7 @@ public class Boss : KillableEntityInterface
     public float yProjectileOffset;
     public EntityMovement entityMovement;
     public ProjectileSpawner projectileSpawner;
-    public int health = 30;
+    private double xSpawnPoints = 17.5;
 
 
     public override void die()
@@ -26,10 +26,24 @@ public class Boss : KillableEntityInterface
 
     public override void takeDamage(int damageReceived)
     {
-        health -= damageReceived;
-        if (health <= 0)
+        currentHealth -= damageReceived;
+        if (currentHealth <= 0)
         {
             die();
+        }
+    }
+
+    public void AI()
+    {
+
+    }
+
+    private void teleAndAttack()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player.transform.position.x < 0)
+        {
+            
         }
     }
 
@@ -41,7 +55,7 @@ public class Boss : KillableEntityInterface
         projectileSpawner = GetComponent<BossProjectileSpawner>();
         yProjectileOffset = -0.2f;
         xProjectileOffset = 3f;
-        health = 30;
+        currentHealth = 10;
     }
 
     // Update is called once per frame

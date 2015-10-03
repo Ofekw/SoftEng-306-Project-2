@@ -19,9 +19,9 @@ public abstract class ProjectileScript : MonoBehaviour
         Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), shooter.gameObject.GetComponent<Collider2D>());
     }
 
-    void Update()
-	if (GameManager.instance.isPaused ()){
-			return;
+    void Update() {
+	    if (GameManager.instance.isPaused ()){
+			    return;
         }
         if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
             Destroy(this.gameObject);

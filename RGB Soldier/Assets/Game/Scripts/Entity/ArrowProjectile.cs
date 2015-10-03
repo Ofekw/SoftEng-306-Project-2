@@ -10,6 +10,7 @@ public class ArrowProjectile : ProjectileScript {
         {
             hit.gameObject.SendMessage("takeDamage", damage);
             Destroy(this.gameObject);
+            Instantiate(explosion, hit.gameObject.transform.position, hit.gameObject.transform.rotation);
         }
     }
 }
