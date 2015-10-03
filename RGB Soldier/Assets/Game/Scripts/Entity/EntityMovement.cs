@@ -22,7 +22,7 @@ public class EntityMovement : MonoBehaviour
     public float lastJumpTime;              //Time of last jump
 
     private Transform groundCheck;			// A position marking where to check if the entity is grounded.
-    private bool grounded = true;			// Whether or not the entity is grounded.
+    public bool grounded = true;			// Whether or not the entity is grounded.
     private Animator anim;					// Reference to the entity's animator component.
 
     // Use this for initialization

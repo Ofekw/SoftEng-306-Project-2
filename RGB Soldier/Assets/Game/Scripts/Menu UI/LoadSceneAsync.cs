@@ -10,15 +10,15 @@ public class LoadSceneAsync : MonoBehaviour {
     private AsyncOperation async;
 
     // scene_id is given by the build settings on the project
-    public void ClickAsync(int scene_id)
+    public void ClickAsync(string scene_name)
     {
         loadingImage.SetActive(true);
-        StartCoroutine(LoadLevelWithBar(scene_id));
+        StartCoroutine(LoadLevelWithBar(scene_name));
     }
 
-    IEnumerator LoadLevelWithBar(int scene_id)
+    IEnumerator LoadLevelWithBar(string scene_name)
     {
-        async = Application.LoadLevelAsync(scene_id);
+        async = Application.LoadLevelAsync(scene_name);
         // When scene is done loading in the background 
         while (!async.isDone)
         {

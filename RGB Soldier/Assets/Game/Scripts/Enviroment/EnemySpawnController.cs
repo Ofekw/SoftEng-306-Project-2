@@ -7,6 +7,7 @@ public class EnemySpawnController : MonoBehaviour
     public float spawnPeriod = 5f;
     public EnemySpawner[] spawners;
     private float spawnTimer = 0;
+    private int spawnerToCall = 0;
 
     // Use this for initialization
     void Start()
@@ -35,8 +36,9 @@ public class EnemySpawnController : MonoBehaviour
 
     public void spawn()
     {
-        int randomSpawnerIndex = Random.Range(0, spawners.Length - 1); // choose a random spawner to call
+        spawnerToCall++;
+        spawnerToCall = spawnerToCall % spawners.Length;
 
-        spawners[randomSpawnerIndex].Spawn();
+        spawners[spawnerToCall].Spawn();
     }
 }
