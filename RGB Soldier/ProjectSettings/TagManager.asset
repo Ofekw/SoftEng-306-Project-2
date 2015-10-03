@@ -20,6 +20,7 @@ TagManager:
   - HUD
   - GameManager
   - Zombie
+  - Boss
   - PlayerControl
   layers:
   - Default
@@ -37,10 +38,10 @@ TagManager:
   - Ground
   - HUD
   - Background
-  - 
-  - 
-  - 
-  - 
+  - BouncableOrb
+  - PlayerProjectile
+  - Boss
+  - PlayerMelee
   - 
   - 
   - 
