@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1803fb2423dd5294daf6d31711377130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 0
   startPoint: {x: 0, y: 0, z: 0}
   shooter: {fileID: 0}
   explosion: {fileID: 100000, guid: 888b968853fa09743aab10401796c39c, type: 2}
@@ -129,6 +129,10 @@ Prefab:
       propertyPath: explosion
       value: 
       objectReference: {fileID: 100000, guid: 888b968853fa09743aab10401796c39c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194178}

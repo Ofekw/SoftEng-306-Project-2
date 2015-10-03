@@ -270,7 +270,7 @@ public class Player : KillableEntityInterface
 
     private void knockBack(float dir)
     {
-        Vector2 direction = new Vector2(300 * dir, 200);
+        Vector2 direction = new Vector2(500 * dir, 400);
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(direction);
     }
 

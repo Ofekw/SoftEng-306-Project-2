@@ -72,14 +72,17 @@ public class BaseEnemy : KillableEntityInterface {
 
     private void knockBack(float dir)
     {
-        Vector2 force = new Vector2(300 * dir, 200);
+        Vector2 force = new Vector2(300000 * dir, 200000);
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(force);
     }
 
     public override void takeDamage(int damageReceived)
     {
         //basic decrementing health
+        Debug.Log("health:" + currentHealth + " and damage received: " + damageReceived);
         currentHealth = currentHealth - damageReceived;
+        Debug.Log("health:" + currentHealth);
+
         if(currentHealth <= 0){
             die();
         }
