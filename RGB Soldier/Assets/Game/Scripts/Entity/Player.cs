@@ -260,6 +260,20 @@ public class Player : KillableEntityInterface
         }
     }
 
+    public override void hit(Vector2 damageanddirection)
+    {
+        Debug.Log(" player " + damageanddirection);
+        knockBack(damageanddirection.y);
+        takeDamage((int)damageanddirection.x);
+    }
+
+
+    private void knockBack(float dir)
+    {
+        Vector2 direction = new Vector2(300 * dir, 200);
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(direction);
+    }
+
     public override void die()
     {
        

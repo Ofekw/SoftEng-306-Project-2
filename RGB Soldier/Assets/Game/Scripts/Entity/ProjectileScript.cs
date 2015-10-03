@@ -27,7 +27,7 @@ public class ProjectileScript : MonoBehaviour {
         Instantiate(explosion, transform.position, transform.rotation); 
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
-            hit.gameObject.SendMessage("takeDamage", damage);
+            hit.gameObject.SendMessage("hit", new Vector2(damage, Mathf.Sign(hit.transform.position.x - this.gameObject.transform.position.x)));
             Destroy(this.gameObject);
         }
         if (hit.gameObject.tag == "ground" || hit.gameObject.tag == "SideWall")

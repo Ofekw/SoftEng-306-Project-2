@@ -14,6 +14,11 @@ public class DesctructableCrate : KillableEntityInterface
         die();
     }
 
+    public override void hit(Vector2 damageAndDirection)
+    {
+        throw new NotImplementedException();
+    }
+
     // Use this for initialization
     void Start () {
 	

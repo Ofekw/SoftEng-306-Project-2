@@ -59,9 +59,21 @@ public class BaseEnemy : KillableEntityInterface {
         {
             Player player = other.GetComponentInParent<Player>();
             animator.SetTrigger("enemyAttack");
-            player.takeDamage(damageGiven);
-           
+            player.hit(new Vector2(damageGiven, Mathf.Sign(player.transform.position.x - this.gameObject.transform.position.x)));
+            Debug.Log(new Vector2(damageGiven, Mathf.Sign(player.transform.position.x - this.gameObject.transform.position.x)));
         }
+    }
+
+    public override void hit(Vector2 damageAndDirection)
+    {
+        knockBack(damageAndDirection.y);
+        takeDamage((int)damageAndDirection.x);
+    }
+
+    private void knockBack(float dir)
+    {
+        Vector2 force = new Vector2(300 * dir, 200);
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(force);
     }
 
     public override void takeDamage(int damageReceived)
