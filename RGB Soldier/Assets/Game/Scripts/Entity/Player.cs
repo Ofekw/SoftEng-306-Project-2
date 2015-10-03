@@ -9,7 +9,6 @@ using Assets.Game.Scripts.Enviroment;
 
 public class Player : KillableEntityInterface
 {
-
     public EntityMovement entityMovement;
     public Rigidbody2D projectile;
     public float projectileSpeed = 10;
@@ -63,7 +62,6 @@ public class Player : KillableEntityInterface
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
-		print ("Vitality default is: " + vitality);
 		maxHealth = vitality;
 		currentHealth = maxHealth;
     }
@@ -159,7 +157,6 @@ public class Player : KillableEntityInterface
 
     public void Melee()
     {
-
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -173,6 +170,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
+
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
@@ -183,6 +181,7 @@ public class Player : KillableEntityInterface
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
+
         }
 
     }
@@ -263,8 +262,7 @@ public class Player : KillableEntityInterface
 
     public override void die()
     {
-        Application.LoadLevel(3);
-        print("YOU DIED!");
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other)

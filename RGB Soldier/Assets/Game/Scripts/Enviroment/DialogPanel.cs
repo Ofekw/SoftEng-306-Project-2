@@ -8,10 +8,10 @@ public class DialogPanel : MonoBehaviour
 {
 
     public Text displayText;
-    public float letterPause = 0.2f;
+    public float letterPause = 0.01f;
     public GameObject dialogPanelObject;
     public LoadSceneAsync lsa;
-    public int scene_id;
+    public string scene_id;
     
 
     private bool keyPressed;
