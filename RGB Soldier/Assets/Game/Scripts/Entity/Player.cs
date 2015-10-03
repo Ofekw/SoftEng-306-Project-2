@@ -9,7 +9,6 @@ using Assets.Game.Scripts.Enviroment;
 
 public class Player : KillableEntityInterface
 {
-
     public EntityMovement entityMovement;
     public Rigidbody2D projectile;
     public float projectileSpeed = 10;
@@ -168,7 +167,7 @@ public class Player : KillableEntityInterface
 
     public void Special()
     {
-        ////If the meter is fully charged
+        //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
 
