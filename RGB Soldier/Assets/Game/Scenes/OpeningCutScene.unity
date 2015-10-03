@@ -197,11 +197,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 402286, guid: f8c4e0c7fa0d86d4a9a9acf535f81066, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .600000024
+      value: .970000029
       objectReference: {fileID: 0}
     - target: {fileID: 402286, guid: f8c4e0c7fa0d86d4a9a9acf535f81066, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.29999995
+      value: 4.48999977
       objectReference: {fileID: 0}
     - target: {fileID: 402286, guid: f8c4e0c7fa0d86d4a9a9acf535f81066, type: 2}
       propertyPath: m_LocalPosition.z
@@ -337,7 +337,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 798648831}
-  - 114: {fileID: 798648830}
   - 114: {fileID: 798648829}
   - 114: {fileID: 798648832}
   - 114: {fileID: 798648833}
@@ -363,21 +362,7 @@ MonoBehaviour:
   letterPause: .100000001
   dialogPanelObject: {fileID: 1019536186}
   lsa: {fileID: 798648833}
-  scene_id: 3
---- !u!114 &798648830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 798648828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1bbfc3990d15e42af6eb50cdc5f768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayText: {fileID: 1832399752}
-  displayTime: 0
-  fadeTime: 0
+  scene_id: stage2
 --- !u!4 &798648831
 Transform:
   m_ObjectHideFlags: 0
@@ -402,18 +387,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText:
-  - 'Our story is a simple one. You are a magical spartan trained in the art of sword
-    fighting recovering from a drinking problem. '
-  - Simply put, you have been sent from another universe to bring back the colour
-    of this world.
-  - What has happened to the colour you may be wondering?
-  - Well, it has been stolen by an evil mage, set out to turn all universes and dimensions
-    into colourless black holes. What a turd!
-  - A word of caution, your quest will not be easy and on this quest you will fail.
-    However you shall always return, more powerful and knowledgeable than you were
-    before. You see, every time you die, the story resumes from another parallel universe
-    where you have not yet failed. Simple right?
-  - Good luck...
+  - 'Welcome traveller, to the land of Luminaria. Although bleak at present, it once
+    was a thriving town, full of life and laughter. '
+  - 'Then the world was transformed when the evil archmage Asadon decided to claim
+    the nation for himself. '
+  - "The normally peaceful land was filled with the sound of screams as Asadon\u2019s
+    minions destroyed all in their path. To punish those that remained, Asadon stole
+    all the color from the world, subjecting the villagers to a bleak and dull world
+    in which no hope can survive. "
+  - "Your place in this story is to retrieve the colors that Asadon stole, and bring
+    the archmage to justice. The land is still full of his minions, so you must defeat
+    them, and collect the orbs of color they hold. Your journey begins now\u2026."
 --- !u!114 &798648833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,7 +640,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1535931219
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4905895957bc7cd499d5ac6310ad6e1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 524dadda55ffbbc46b6b69abb7e9211f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1107822201
 Transform:
@@ -788,8 +772,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -133}
-  m_SizeDelta: {x: -30, y: -290}
+  m_AnchoredPosition: {x: 0, y: -152}
+  m_SizeDelta: {x: -30, y: -304}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1309938382
 MonoBehaviour:
