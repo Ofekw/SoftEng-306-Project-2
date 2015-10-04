@@ -36,7 +36,7 @@ public class Player : KillableEntityInterface
 
     bool moveRight = false;
     bool moveLeft = false;
-    bool isJumping = false;
+    public bool isJumping = false;
 
     Vector3 movement;
 
