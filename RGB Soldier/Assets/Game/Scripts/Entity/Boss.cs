@@ -8,15 +8,16 @@ public class Boss : KillableEntityInterface
 {
 
     private Animator animator;
-    bool isJumping = false;
-    bool moveRight = false;
-    bool moveLeft = false;
-    bool facingRight = false;
+    //bool isJumping = false;
+    //bool moveRight = false;
+    // moveLeft = false;
     public float xProjectileOffset;
     public float yProjectileOffset;
     public EntityMovement entityMovement;
     public ProjectileSpawner projectileSpawner;
-    private double xSpawnPoints = 17.5;
+    private float xSpawnPoints = 17.5f;
+    private float attackTimer = 3f;
+    GameObject player;
 
 
     public override void die()
@@ -35,21 +36,47 @@ public class Boss : KillableEntityInterface
 
     public void AI()
     {
-
+        teleport();
+        blackOrbAttack();
     }
 
-    private void teleAndAttack()
+    private void teleport()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        float yPos = 0;
+        if (player.transform.position.y < -5)
+        {
+            yPos = -8.5f;
+        }
         if (player.transform.position.x < 0)
         {
-            
+            if (entityMovement.facingRight)
+            {
+                entityMovement.facingRight = false;
+                entityMovement.Flip();
+            }
+            entityMovement.facingRight = false;
+            animator.SetBool("isMovingLeft", true);
+            animator.SetBool("isMovingRight", false);
+            this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
+        } else if (player.transform.position.x >= 0)
+        {
+            if (!entityMovement.facingRight)
+            {
+                entityMovement.facingRight = true;
+                entityMovement.Flip();
+            }
+            entityMovement.facingRight = true;
+            animator.SetBool("isMovingRight", true);
+            animator.SetBool("isMovingLeft", false);
+            this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
         }
     }
+
 
     // Use this for initialization
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         this.entityMovement = GetComponent<EntityMovement>();
         this.animator = GetComponent<Animator>();
         projectileSpawner = GetComponent<BossProjectileSpawner>();
@@ -60,78 +87,40 @@ public class Boss : KillableEntityInterface
 
     // Update is called once per frame
     void Update()
-    {
-
-        //float hVelocity = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+    { 
+        if(Math.Abs(player.transform.position.x - this.transform.position.x)< 5)
         {
-            moveLeft = true;
-            animator.SetBool("isMovingLeft", true);
-            facingRight = false;
+            teleport();
         }
-
-        if (Input.GetKeyDown(KeyCode.Keypad6))
+        attackTimer -= Time.deltaTime;
+        if (attackTimer < 0)
         {
-            moveRight = true;
-            animator.SetBool("isMovingRight", true);
-            facingRight = true;
+            attackTimer = 5f;
+            spiritBomb();
         }
-
-        if (Input.GetKeyUp(KeyCode.Keypad4))
-        {
-            moveLeft = false;
-            animator.SetBool("isMovingLeft", false);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Keypad6))
-        {
-            moveRight = false;
-            animator.SetBool("isMovingRight", false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad8))
-        {
-            entityMovement.Jump();
-        }
-
-        if (isJumping)
-        {
-            entityMovement.Jump();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            attack();
-        }
-
-        float hVelocity = 0f;
-        if (moveRight && !moveLeft)
-        {
-            hVelocity = 1.0f;
-        }
-        else if (moveLeft && !moveRight)
-        {
-            hVelocity = -1.0f;
-        }
-        if (!moveRight && !moveLeft)
-        {
-            hVelocity = 0.0f;
-        }
-
-        //hVelocity = Input.GetAxis("Horizontal");
-        //call the base movement module method to handle movement
-        entityMovement.Movement(hVelocity);
     }
 
-    void attack()
+    void blackOrbAttack()
     {
-        if ( facingRight)
+        if (entityMovement.facingRight)
         {
             projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
         }
-        else if (!(facingRight))
+        else if (!(entityMovement.facingRight))
         {
             projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
+        }
+    }
+
+    void spiritBomb()
+    {
+        if (entityMovement.facingRight)
+        {
+            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
+        }
+        else if (!(entityMovement.facingRight))
+        {
+            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
         }
     }
 }

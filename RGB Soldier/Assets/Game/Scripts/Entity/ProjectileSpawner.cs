@@ -26,7 +26,7 @@ public abstract class ProjectileSpawner : MonoBehaviour {
         {
             direction = -1;
         }
-        setAttackSettings(attackName);
+        setAttackSettings(attackName, xPos, yPos);
         Rigidbody2D clone = (Rigidbody2D)Instantiate(projectiles[attackName], new Vector3(xPos + direction*xOffSet, yPos + yOffSet, 0), transform.rotation);
         //Set damage equal to dexterity stat
         clone.GetComponent<ProjectileScript>().damage = damage;
@@ -40,5 +40,5 @@ public abstract class ProjectileSpawner : MonoBehaviour {
     }
 
     //Method should be overridden in child class to define damage and speed settings for different attacks
-    public abstract void setAttackSettings(string attack);
+    public abstract void setAttackSettings(string attack, float xPos, float yPos);
 }
