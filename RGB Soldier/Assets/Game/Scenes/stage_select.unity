@@ -648,7 +648,7 @@ GameObject:
   - 222: {fileID: 315154599}
   - 114: {fileID: 315154598}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Stage2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2159,12 +2159,12 @@ GameObject:
   - 222: {fileID: 875736875}
   - 114: {fileID: 875736874}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Stage1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &875736873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2433,6 +2433,7 @@ GameObject:
   - 114: {fileID: 1137231597}
   - 114: {fileID: 1137231596}
   - 114: {fileID: 1137231599}
+  - 114: {fileID: 1137231600}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2528,6 +2529,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 409913499}
   loadingImage: {fileID: 409913500}
+--- !u!114 &1137231600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137231594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f613e1b3e6f034c8ad4f92c74a6655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockImage: {fileID: 21300000, guid: 1844de5671157df4d96acaf26c67234a, type: 3}
+  stageButtons:
+  - {fileID: 1517719297}
+  - {fileID: 1747039050}
+  - {fileID: 2100699275}
+  stageTexts:
+  - {fileID: 875736872}
+  - {fileID: 315154597}
+  - {fileID: 1361076262}
 --- !u!1 &1141005018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,7 +2940,7 @@ GameObject:
   - 222: {fileID: 1361076264}
   - 114: {fileID: 1361076263}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Stage3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3321,7 +3342,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1844de5671157df4d96acaf26c67234a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 669e21ac9a37b6c42ac06f98cd06680f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4326,7 +4347,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: .776447594}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -30, y: -15}
-  m_SizeDelta: {x: -710, y: -7}
+  m_SizeDelta: {x: -700, y: -7}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2100699275
 MonoBehaviour:
