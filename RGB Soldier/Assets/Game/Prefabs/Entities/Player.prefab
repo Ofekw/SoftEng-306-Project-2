@@ -212,6 +212,7 @@ MonoBehaviour:
   jumpForce: 1000
   jumpCount: 0
   lastJumpTime: 0
+  grounded: 1
 --- !u!114 &11468860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 160024}
   meleeMultiplier: 2
+  damageIndicator: {fileID: 100006, guid: da5e4c1631a76d04883aee26aa9b6347, type: 2}
 --- !u!114 &11487124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +249,7 @@ MonoBehaviour:
   attacking: 0
   attackCooldown: .300000012
   lastAttack: 0
+  attackDuration: .200000003
   meleeCollider: {fileID: 6171000}
   strength: 1
   agility: 1
@@ -295,6 +298,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300010, guid: fbe1e7b94bb1a4a099d5bcb15a00141c,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageIndicator
+      value: 
+      objectReference: {fileID: 100006, guid: da5e4c1631a76d04883aee26aa9b6347, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160024}

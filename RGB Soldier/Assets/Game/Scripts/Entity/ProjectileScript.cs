@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+[RequireComponent(typeof(DamageIndicators))]
 
 public class ProjectileScript : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class ProjectileScript : MonoBehaviour {
     public Vector3 startPoint;
     public GameObject shooter;
     public GameObject explosion;
+    public GameObject damageIndicator;
+    public Sprite[] dmg;
 
 	void Start () {
         startPoint = this.gameObject.transform.position;
@@ -22,11 +25,21 @@ public class ProjectileScript : MonoBehaviour {
         }
     }
 
+    void Awake()
+    {
+        // load all frames in array
+      //  Sprite[] dmg = Resources.LoadAll<Sprite>("damage");
+    }
+
     void OnCollisionEnter2D(Collision2D hit) {
 
-        Instantiate(explosion, transform.position, transform.rotation); 
+        Instantiate(explosion, transform.position, transform.rotation);
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
+            Instantiate(damageIndicator, transform.position, transform.rotation);
+            SpriteRenderer renderer = GameObject.Find("numeric-1").GetComponent<SpriteRenderer>();
+            renderer.sprite = dmg[damageIndicator.gameObject.GetComponent<DamageIndicators>().CalculateRangedDamageIndicator()];
+            
             hit.gameObject.SendMessage("takeDamage", damage);
             Destroy(this.gameObject);
         }
