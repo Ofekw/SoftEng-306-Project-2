@@ -252,14 +252,6 @@ public class Player : KillableEntityInterface
        
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Orb"))
-        {
-            GameManager.instance.orbsCollected++;
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.CompareTag("Orb"))
