@@ -16,7 +16,7 @@ namespace Assets.Game.Scripts.Enviroment
         public float shake = 0f;
 
         // Amplitude of the shake. A larger value shakes the camera harder.
-        public float shakeAmount = 0.2f;
+        public float shakeAmount = 0.1f;
         public float decreaseFactor = 1.0f;
 
         Vector3 originalPos;
@@ -36,6 +36,8 @@ namespace Assets.Game.Scripts.Enviroment
 
         void Update()
         {
+			if (GameManager.instance.isPaused ())
+				return;
             if (shake > 0)
             {
                 camTransform.localPosition = originalPos + UnityEngine.Random.insideUnitSphere * shakeAmount;
@@ -46,6 +48,8 @@ namespace Assets.Game.Scripts.Enviroment
             {
                 shake = 0f;
                 camTransform.localPosition = originalPos;
+                Camera.main.GetComponent<CameraShake>().enabled = false;
+
             }
         }
     }

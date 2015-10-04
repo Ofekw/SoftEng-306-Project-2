@@ -17,6 +17,7 @@ public class GameControl : MonoBehaviour {
     public int playerVit;
     public int currentGameLevel;
     public int abilityPoints;
+    public int experienceRequired;
 
 
     //Save code on enable and disable if you want auto saving.
@@ -35,9 +36,19 @@ public class GameControl : MonoBehaviour {
         
 	}
 
+    void Start()
+    {
+        experienceRequired = 15;
+    }
+
     void OnEnable()
     {
         Load();
+    }
+
+    void OnApplicationPause(bool pauseState)
+    {
+        Save();
     }
 
     void OnDisable()
@@ -86,6 +97,24 @@ public class GameControl : MonoBehaviour {
             playerVit = data.playerVit;
             currentGameLevel = data.currentGameLevel;
             abilityPoints = data.abilityPoints;
+        }
+    }
+
+    public void giveExperience(int experience)
+    {
+        playerExp += experience;
+        checkExperience();
+    }
+
+    public void checkExperience()
+    {
+        if (playerExp >= experienceRequired)
+        {
+            int experienceCarryOver = playerExp - experienceRequired;
+            playerExp = experienceCarryOver;
+            playerLevel++;
+            abilityPoints++;
+            experienceRequired = experienceRequired * 2;
         }
     }
 }

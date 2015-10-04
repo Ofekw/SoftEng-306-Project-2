@@ -19,6 +19,9 @@ TagManager:
   - Orb
   - HUD
   - GameManager
+  - Zombie
+  - Boss
+  - PlayerControl
   layers:
   - Default
   - TransparentFX
@@ -35,11 +38,11 @@ TagManager:
   - Ground
   - HUD
   - Background
-  - 
-  - 
-  - 
-  - 
-  - 
+  - BouncableOrb
+  - PlayerProjectile
+  - Boss
+  - PlayerMelee
+  - Pickups
   - 
   - 
   - 

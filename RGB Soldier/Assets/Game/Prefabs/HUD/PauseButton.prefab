@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11416726}
   m_Layer: 13
   m_Name: PauseButton
-  m_TagString: Untagged
+  m_TagString: PlayerControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0f81f5c15056949a8202a2777f4e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
+  pauseScreen: {fileID: 22351274, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
 --- !u!114 &11439192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,7 +130,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: 0}
+  m_AnchoredPosition: {x: 8, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &100100000
@@ -139,7 +139,16 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: PlayerControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 22351274, guid: f9795a4906ddadf4991941f5253861c3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143814}
