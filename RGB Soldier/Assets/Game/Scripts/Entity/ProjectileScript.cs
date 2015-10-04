@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+[RequireComponent(typeof(DamageIndicators))]
 
 public abstract class ProjectileScript : MonoBehaviour
 {
@@ -24,8 +25,17 @@ public abstract class ProjectileScript : MonoBehaviour
 			    return;
         }
         if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
-            Destroy(this.gameObject);
+            if (this.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+            {
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    void Awake()
+    {
+        // load all frames in array
+      //  Sprite[] dmg = Resources.LoadAll<Sprite>("damage");
     }
 
     void OnCollisionEnter2D(Collision2D hit) { 
@@ -34,6 +44,7 @@ public abstract class ProjectileScript : MonoBehaviour
             {
                 handleCollisonWithLayer(hit, collidesWith);
             }
+            
         }
         //All objects will be destroyed when hitting ground or side wall
         if (hit.gameObject.tag == "ground" || hit.gameObject.tag == "SideWall")

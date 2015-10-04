@@ -48,6 +48,7 @@ public class DialogPanel : MonoBehaviour
         {
             yield return StartCoroutine(TypeText(text));
             yield return StartCoroutine(WaitForKeyPress());
+            firstLine = true;
         }
         dialogPanelObject.SetActive(false);
         lsa.ClickAsync(scene_id);

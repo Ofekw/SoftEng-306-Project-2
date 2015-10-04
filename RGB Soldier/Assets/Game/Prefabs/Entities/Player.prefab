@@ -213,6 +213,7 @@ MonoBehaviour:
   jumpForce: 1000
   jumpCount: 0
   lastJumpTime: 0
+  grounded: 1
 --- !u!114 &11461234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   projectileSpeed: 0
+  angularVelocity: 0
   projectile: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
   attackName: arrowAttack
 --- !u!114 &11468860
@@ -241,6 +243,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 160024}
   meleeMultiplier: 2
+  dmg:
+  - {fileID: 21300018, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300000, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300002, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300004, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300006, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300008, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300010, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300012, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300014, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  - {fileID: 21300016, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
+  damageIndicator: {fileID: 100006, guid: da5e4c1631a76d04883aee26aa9b6347, type: 2}
 --- !u!114 &11487124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +277,7 @@ MonoBehaviour:
   attacking: 0
   attackCooldown: .300000012
   lastAttack: 0
+  attackDuration: .200000003
   meleeCollider: {fileID: 6171000}
   strength: 1
   agility: 1
@@ -307,6 +322,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: dmg.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
@@ -314,6 +333,60 @@ Prefab:
       propertyPath: attackName
       value: arrowAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damageIndicator
+      value: 
+      objectReference: {fileID: 100006, guid: da5e4c1631a76d04883aee26aa9b6347, type: 2}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300018, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300002, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300004, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300006, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300008, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300010, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300012, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300014, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: dmg.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300016, guid: bf62d4674c7bcea45965360d7e3d56fa,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160024}
