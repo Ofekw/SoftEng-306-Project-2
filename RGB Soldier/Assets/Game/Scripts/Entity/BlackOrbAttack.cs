@@ -9,7 +9,7 @@ public class BlackOrbAttack : ProjectileScript
     public int orbHitCount;
     public Boolean isGoingToPlayer = true;
 
-    protected void handleCollisonWithLayer(Collision2D hit, string layerTag)
+    protected override void handleCollisonWithLayer(Collision2D hit, string layerTag)
     {
        
         if (layerTag == "Player" || layerTag == "Boss")
