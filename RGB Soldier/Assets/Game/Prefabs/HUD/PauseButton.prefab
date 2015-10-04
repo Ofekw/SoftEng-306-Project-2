@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0f81f5c15056949a8202a2777f4e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
+  pauseScreen: {fileID: 22351274, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
 --- !u!114 &11439192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +144,11 @@ Prefab:
       propertyPath: m_TagString
       value: PlayerControl
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 22351274, guid: f9795a4906ddadf4991941f5253861c3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143814}

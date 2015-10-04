@@ -58,6 +58,8 @@ public class PauseScript : MonoBehaviour
 			Button button = b.GetComponent<Button>();
 			button.interactable = true;
 		}
+        //update stats from pause screen and continue
         pauseScreen.enabled = false;
+
     }
 }
