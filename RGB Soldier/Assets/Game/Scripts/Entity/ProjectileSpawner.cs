@@ -8,25 +8,17 @@ public abstract class ProjectileSpawner : MonoBehaviour {
     public float projectileSpeed;
     //in degree's per second
     public float angularVelocity;
-
-    // Use this for initialization
-    void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public int direction = 1;
 
     //Method should be called in the entity, passing the attackName to be used and the direction the attack is to go.
     public void spawnProjectile(string attackName, float xPos, float yPos, float xOffSet, float yOffSet, bool isMovingRight)
     {
-        int direction = 1;
+        direction = 1;
         if (!(isMovingRight))
         {
             direction = -1;
         }
-        setAttackSettings(attackName);
+        setAttackSettings(attackName, xPos, yPos);
         Rigidbody2D clone = (Rigidbody2D)Instantiate(projectiles[attackName], new Vector3(xPos + direction*xOffSet, yPos + yOffSet, 0), transform.rotation);
         //Set damage equal to dexterity stat
         clone.GetComponent<ProjectileScript>().damage = damage;
@@ -40,5 +32,5 @@ public abstract class ProjectileSpawner : MonoBehaviour {
     }
 
     //Method should be overridden in child class to define damage and speed settings for different attacks
-    public abstract void setAttackSettings(string attack);
+    public abstract void setAttackSettings(string attack, float xPos, float yPos);
 }
