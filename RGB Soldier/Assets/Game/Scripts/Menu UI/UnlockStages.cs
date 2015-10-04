@@ -12,7 +12,7 @@ public class UnlockStages : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         int gameLevel = GameControl.control.currentGameLevel;
-        if (gameLevel == 0)
+        if (gameLevel <= 0)
         {
             GameControl.control.currentGameLevel = 1;
         }
