@@ -59,7 +59,7 @@ public class BaseEnemy : KillableEntityInterface {
         {
             Player player = other.GetComponentInParent<Player>();
             animator.SetTrigger("enemyAttack");
-            player.takeDamage(damageGiven);
+            player.takeDamageKnockBack(damageGiven, Mathf.Sign(player.transform.position.x - this.transform.position.x));
            
         }
     }

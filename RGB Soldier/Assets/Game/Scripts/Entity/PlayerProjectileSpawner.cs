@@ -7,7 +7,7 @@ public class PlayerProjectileSpawner : ProjectileSpawner
     public Rigidbody2D projectile;
     public string attackName;
 
-    public override void setAttackSettings(string attack)
+    public override void setAttackSettings(string attack, float xPos, float yPos)
     {
         //Should set damage and projectileSpeed variables based on the key
         //This method is called when calling spawnProjectile.

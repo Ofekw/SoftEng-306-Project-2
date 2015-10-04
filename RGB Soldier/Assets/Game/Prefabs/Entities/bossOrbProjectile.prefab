@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21299922}
   - 50: {fileID: 5033434}
   - 114: {fileID: 11499586}
-  - 61: {fileID: 6181196}
+  - 58: {fileID: 5823012}
   m_Layer: 15
   m_Name: bossOrbProjectile
   m_TagString: Projectile
@@ -47,8 +47,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 2
---- !u!61 &6181196
-BoxCollider2D:
+--- !u!58 &5823012
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -59,7 +59,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .319999993, y: .319999993}
+  m_Radius: .159999996
 --- !u!114 &11499586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,6 +85,7 @@ MonoBehaviour:
   speed: 15
   orbHitCount: 0
   isGoingToPlayer: 1
+  startedRight: 0
 --- !u!212 &21299922
 SpriteRenderer:
   m_ObjectHideFlags: 1
