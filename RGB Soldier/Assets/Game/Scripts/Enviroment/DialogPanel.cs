@@ -12,7 +12,7 @@ public class DialogPanel : MonoBehaviour
     public GameObject dialogPanelObject;
     public LoadSceneAsync lsa;
     public string scene_id;
-    
+
 
     private bool keyPressed;
     private bool firstLine;
@@ -33,10 +33,22 @@ public class DialogPanel : MonoBehaviour
     // Checks input from player each player
     void Update()
     {
-        if (!firstLine && (Input.anyKeyDown || Input.touchCount > 0))
+        if (!firstLine) 
         {
-            keyPressed = true;
+            if (Application.platform == RuntimePlatform.Android && Input.touchCount > 0)
+            {
+                Touch current = Input.GetTouch(0);
+                if (!(current.phase == TouchPhase.Stationary || current.phase == TouchPhase.Moved || current.phase == TouchPhase.Ended))
+                {
+                    keyPressed = true;
+                }
+            }
+            else if (Input.anyKeyDown){
+                keyPressed = true;
+            }
+
         }
+
     }
 
     // Goes through the list printing the text
