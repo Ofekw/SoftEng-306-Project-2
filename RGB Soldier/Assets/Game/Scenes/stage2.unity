@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementRange: 35
-  axesToUse: 0
+  axesToUse: 1
   horizontalAxisName: Horizontal
   verticalAxisName: Vertical
 --- !u!114 &6805729
@@ -248,7 +248,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f88a87c964f1e34a840561e40772615, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -276,10 +276,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 720383935}
   m_RootOrder: 0
-  m_AnchorMin: {x: .0687500015, y: .21328041}
-  m_AnchorMax: {x: .158750013, y: .21328041}
-  m_AnchoredPosition: {x: -.5, y: 6}
-  m_SizeDelta: {x: -2, y: 70}
+  m_AnchorMin: {x: .115000002, y: .131999999}
+  m_AnchorMax: {x: .145000011, y: .131999999}
+  m_AnchoredPosition: {x: -.899999619, y: 5.20000076}
+  m_SizeDelta: {x: 46, y: 70}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &47115710
 GameObject:

@@ -387,8 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40122ff5925e6764083eaa8f976b0e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingBar: {fileID: 0}
-  loadingImage: {fileID: 0}
+  loadingBar: {fileID: 2145928569}
+  loadingImage: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
 --- !u!1001 &817411658
 Prefab:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -945,3 +945,9 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091099571}
+--- !u!114 &2145928569 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11434166, guid: 054af9fc86682194b8880c32b231e9f7,
+    type: 2}
+  m_PrefabInternal: {fileID: 817411658}
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}

@@ -109,7 +109,6 @@ public class Player : KillableEntityInterface
         */
         Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
         float hVelocity = CrossPlatformInputManager.GetAxis("Horizontal");
-        Debug.Log(hVelocity);
 
         if (hVelocity == 0)
         {
