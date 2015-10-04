@@ -85,7 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1001 &291996515
 Prefab:
   m_ObjectHideFlags: 0
@@ -285,7 +284,7 @@ MonoBehaviour:
   letterPause: .100000001
   dialogPanelObject: {fileID: 2093854278}
   lsa: {fileID: 798648833}
-  scene_id: stage3
+  scene_id: preboss_cutscene 2
 --- !u!114 &798648830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &798648832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,13 +320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText:
-  - Filler text introducing the player to the leveling system and special power
-  - sdfdsf
-  - fdsf
-  - fdsfd
-  - fvbhfdh
-  - gfdgfdg
-  - gfdgfd
+  - The last of the colors have been returned to the world, however your battle is
+    not yet won.
+  - The villagers will forever be tormented by Asadon if he is not destroyed.
+  - 'Hurry now! To his castle! '
 --- !u!114 &798648833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +508,7 @@ RectTransform:
   - {fileID: 291996516}
   - {fileID: 2093854279}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -823,7 +819,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1895884522
 GameObject:
   m_ObjectHideFlags: 0
