@@ -31,9 +31,9 @@ public class UnblockableOrbAttack : ProjectileScript
 
     // Use this for initialization
     void Start () {
-        targetScale = new Vector3(15f, 15f);
+        targetScale = new Vector3(14f, 14f);
         baseScale = new Vector3(2f, 2f);
-        speed = 1f;
+        speed = 0.8f;
         startScale = true;
     }
 
@@ -43,16 +43,21 @@ public class UnblockableOrbAttack : ProjectileScript
         if (startScale)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, speed * Time.deltaTime);
-            if (transform.localScale.x > (targetScale.x-2))
+            if (transform.localScale.x > (targetScale.x-1))
             {
                 startScale = false;
             }
         }
         else
         {
-            Rigidbody2D rb = this.gameObject.GetComponent<Rigidbody2D>();
-            float direction = rb.velocity.x / Math.Abs(rb.velocity.x);
-            rb.velocity = new Vector2(10 * direction, 0);
+            int direction = 1;
+            if (!BossProjectileSpawner.startedRight)
+            {
+                direction = -1;
+            }
+            Rigidbody2D body = this.gameObject.GetComponent<Rigidbody2D>();
+
+            body.velocity = new Vector2(direction * 25, 0);
         }
 
     }

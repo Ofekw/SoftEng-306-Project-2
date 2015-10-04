@@ -14,9 +14,9 @@ public class Boss : KillableEntityInterface
     public float xProjectileOffset;
     public float yProjectileOffset;
     public EntityMovement entityMovement;
-    public ProjectileSpawner projectileSpawner;
+    public BossProjectileSpawner projectileSpawner;
     private float xSpawnPoints = 17.5f;
-    private float attackTimer = 3f;
+    private float attackTimer = 1f;
     private System.Random rand = new System.Random();
     GameObject player;
 
@@ -24,6 +24,7 @@ public class Boss : KillableEntityInterface
     public override void die()
     {
         Destroy(this.gameObject);
+        Application.LoadLevel("start_screen");
     }
 
     public override void takeDamage(int damageReceived)
@@ -35,12 +36,6 @@ public class Boss : KillableEntityInterface
         }
     }
 
-    public void AI()
-    {
-        teleport();
-        blackOrbAttack();
-    }
-
     private void teleport()
     {
         float yPos = 0;
@@ -48,7 +43,22 @@ public class Boss : KillableEntityInterface
         {
             yPos = -8.5f;
         }
-        if (player.transform.position.x < 0)
+
+        float teleX = xSpawnPoints;
+        if (-12 < player.transform.position.x && player.transform.position.x < 12)
+        {
+            int random = rand.Next(1, 3);
+            if (random == 1)
+            {
+                teleX *= -1;
+            }
+        }
+        else if (player.transform.position.x >= 0)
+        {
+            teleX *= -1;
+        }
+
+        if (teleX > 0)
         {
             if (entityMovement.facingRight)
             {
@@ -59,7 +69,7 @@ public class Boss : KillableEntityInterface
             animator.SetBool("isMovingLeft", true);
             animator.SetBool("isMovingRight", false);
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
-        } else if (player.transform.position.x >= 0)
+        } else if (teleX <= 0)
         {
             if (!entityMovement.facingRight)
             {
@@ -94,10 +104,10 @@ public class Boss : KillableEntityInterface
             teleport();
         }
         attackTimer -= Time.deltaTime;
-        if (attackTimer < 0)
+        if (attackTimer <= 0)
         {
             attackTimer = 5f;
-            int attackNo = rand.Next(1, 1);
+            int attackNo = rand.Next(1, 5);
             if (attackNo == 1)
             {
                 teleport();
@@ -126,11 +136,11 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, false);
         }
     }
 }

@@ -8,8 +8,8 @@ public class BossProjectileSpawner : ProjectileSpawner {
     private string bounceOrbName;
     public Rigidbody2D unblockableOrb;
     private string unblockAbleOrbName;
-    public float blackOrbSpeed = 15;
-    public float unblockableOrbSpeed = 0.01f;
+    private float blackOrbSpeed = 15;
+    private float unblockableOrbSpeed = 0f;
     public static Boolean startedRight;
 
     public override void setAttackSettings(string attack, float xPos, float yPos)
@@ -41,7 +41,7 @@ public class BossProjectileSpawner : ProjectileSpawner {
     void Start()
     {
         bounceOrbName = "blackOrbAttack";
-        unblockAbleOrbName = "definetlyNotASpiritBomb";
+        unblockAbleOrbName = "unblockableAttack";
         projectiles = new System.Collections.Generic.Dictionary<string, Rigidbody2D>();
         projectiles.Add(bounceOrbName, bounceOrb);
         projectiles.Add(unblockAbleOrbName, unblockableOrb);
