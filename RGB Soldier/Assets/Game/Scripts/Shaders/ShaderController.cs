@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class ShaderController : MonoBehaviour {
-
+    public bool isDisco = true;
     public float lastSwitch;
     public Red red;
     public Grayscale gray;
@@ -18,14 +18,18 @@ public class ShaderController : MonoBehaviour {
 
         gray = this.gameObject.GetComponent<Grayscale>();
         lastSwitch = Time.time;
-        current = "none";
+
+        current = "grey";
     }
 
     void Update()
     {
         if (lastSwitch + 2 < Time.time)
         {
-            Switch();
+            if (isDisco)
+            {
+                Switch();
+            }
         }
     }
 

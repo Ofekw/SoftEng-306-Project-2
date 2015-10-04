@@ -15,21 +15,24 @@ CGPROGRAM
 
 uniform sampler2D _MainTex;
 uniform sampler2D _RampTex;
+uniform half _RampOffset;
+
 
 fixed4 frag (v2f_img i) : SV_Target
 {
 	fixed4 orig = tex2D(_MainTex, i.uv);
+	fixed grayscale = Luminance(orig.rgb);
 	
 	fixed rr = tex2D(_RampTex, orig.rr).r;
 	fixed gg = tex2D(_RampTex, orig.gg).g;
 	fixed bb = tex2D(_RampTex, orig.bb).b;
 	
-	fixed4 color = fixed4(rr*1, gg*0.5, bb*0.5, orig.a);
+	fixed4 color = fixed4(rr, grayscale+_RampOffset, grayscale+_RampOffset, orig.a);
 
 	return color;
 }
 ENDCG
-
+	
 	}
 }
 
