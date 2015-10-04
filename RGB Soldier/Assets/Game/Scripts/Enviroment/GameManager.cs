@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     public void incrementSpecialAtkCounter(Player player)
     {
-		specialCharge += (float)(player.intelligence) / 20;
+		specialCharge += (float)(player.intelligence) / 5;
     }
 
     public void resetSpecialAtkCounter()

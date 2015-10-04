@@ -1169,6 +1169,8 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13df1c56c21526e4d9441dcc5a56f766, type: 2}
   m_IsPrefabParent: 0
+  maxXAndY: {x: 5, y: 0}
+  minXAndY: {x: -5, y: -2}
 --- !u!1 &720383934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +1658,7 @@ Prefab:
       objectReference: {fileID: 212330226}
     - target: {fileID: 11475280, guid: bc8c29cb9d760b947a96ae46980ea73a, type: 2}
       propertyPath: nextScene
-      value: stage3
+      value: stage2_cutscene 1
       objectReference: {fileID: 0}
     - target: {fileID: 11475280, guid: bc8c29cb9d760b947a96ae46980ea73a, type: 2}
       propertyPath: lsa
@@ -1665,6 +1667,10 @@ Prefab:
     - target: {fileID: 11475280, guid: bc8c29cb9d760b947a96ae46980ea73a, type: 2}
       propertyPath: currentLevel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475280, guid: bc8c29cb9d760b947a96ae46980ea73a, type: 2}
+      propertyPath: ORB_COUNT_TARGET
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc8c29cb9d760b947a96ae46980ea73a, type: 2}
@@ -2063,7 +2069,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1398569009
 GameObject:
   m_ObjectHideFlags: 0
