@@ -162,6 +162,12 @@ public class Player : KillableEntityInterface
         this.maxHealth = vitality;
         entityMovement.maxSpeed = agility * 5.0f;
         //Strength and dexterity are called during damage calculations
+        strength = GameControl.control.playerStr;
+        agility = GameControl.control.playerAgl;
+        dexterity = GameControl.control.playerDex;
+        intelligence = GameControl.control.playerInt;
+        vitality = GameControl.control.playerVit;
+        abilityPoints = GameControl.control.abilityPoints;
     }
 
     public void Melee()
@@ -259,14 +265,6 @@ public class Player : KillableEntityInterface
     public override void die()
     {
        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Orb"))
-        {
-            GameManager.instance.orbsCollected++;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D coll)

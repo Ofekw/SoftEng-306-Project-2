@@ -47,8 +47,6 @@ public class PauseScript : MonoBehaviour
 			button.interactable = false;
 		}
         pauseScreen.enabled = true;
-
-
 	}
 
 	public void onResume() {

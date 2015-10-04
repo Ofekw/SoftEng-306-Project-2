@@ -8,6 +8,7 @@ public class BlackOrbAttack : ProjectileScript
     public int speed;
     public int orbHitCount;
     public Boolean isGoingToPlayer = true;
+    public Boolean startedRight;
 
     protected override void handleCollisonWithLayer(Collision2D hit, string layerTag)
     {
@@ -20,7 +21,7 @@ public class BlackOrbAttack : ProjectileScript
                 bounceOrb(hit, layerTag);
             } else
             {
-                //If boss or player hit destroy orn
+                //If boss or player hit destroy orb
                 hit.gameObject.SendMessage("takeDamage", damage);
                 Destroy(this.gameObject);
             }
@@ -28,6 +29,10 @@ public class BlackOrbAttack : ProjectileScript
         else if (layerTag == "PlayerProjectile" || layerTag == "PlayerMelee")
         {
             bounceOrb(hit, layerTag);
+        } else if (layerTag == "BouncableOrb")
+        {
+            Destroy(this.gameObject);
+            Destroy(hit.gameObject);
         }
     }
 
@@ -40,6 +45,7 @@ public class BlackOrbAttack : ProjectileScript
             orbHitCount++;
         }
         else
+        //must have been a melee collision
         {
             orbHitCount += 3;
         }
@@ -47,15 +53,28 @@ public class BlackOrbAttack : ProjectileScript
         //Takes three hits to rebound orb attack
         if (isGoingToPlayer && orbHitCount > 2)
         {
-            body.velocity = new Vector2(speed, 0);
-            orbHitCount = 0;
+            //if the orb is moving left, move it right and vice versa
+            if (!startedRight)
+            {
+                body.velocity = new Vector2(speed, 0);
+            } else
+            {
+                body.velocity = new Vector2(-speed, 0);
+            }
             isGoingToPlayer = false;
+            body.angularVelocity *= -1;
         }
         else
         {
-            body.velocity = new Vector2(-speed, 0);
+            //if the orb is moving right/left ensure it's speed is maintained and only if the orb is going to the player
+            if (startedRight && isGoingToPlayer)
+            {
+                body.velocity = new Vector2(speed, 0);
+            } else if(!startedRight && isGoingToPlayer)
+            {
+                body.velocity = new Vector2(-speed, 0);
+            }
         }
-        body.angularVelocity *= -1;
     }
 
     void Update()
@@ -65,6 +84,7 @@ public class BlackOrbAttack : ProjectileScript
 
     void Start()
     {
+        startedRight = BossProjectileSpawner.startedRight;
         speed = 15;
         orbHitCount = 0;
     }

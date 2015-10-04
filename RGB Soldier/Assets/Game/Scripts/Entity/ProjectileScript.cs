@@ -25,7 +25,10 @@ public abstract class ProjectileScript : MonoBehaviour
 			    return;
         }
         if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
-            Destroy(this.gameObject);
+            if (this.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

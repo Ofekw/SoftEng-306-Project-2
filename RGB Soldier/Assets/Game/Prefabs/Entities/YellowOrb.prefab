@@ -15,7 +15,7 @@ GameObject:
   - 50: {fileID: 5035512}
   - 114: {fileID: 11485830}
   - 114: {fileID: 11489044}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: YellowOrb
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.00237083, y: -7.32812929, z: 0}
+  m_LocalPosition: {x: 5.93949842, y: 1.80999994, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
 --- !u!58 &5882898
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -60,9 +60,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0149999997, y: -.00999999978}
+  m_Offset: {x: .0149999997, y: -.150000006}
   serializedVersion: 2
-  m_Radius: .171728611
+  m_Radius: .258813381
 --- !u!61 &6136948
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -85,7 +85,7 @@ Animator:
   m_GameObject: {fileID: 148164}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 294cee36894ffda44b141026aec12e5a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,10 +108,12 @@ MonoBehaviour:
   jump: 0
   moveForce: 500
   maxSpeed: 10
+  maxMaxSpeed: 20
   jumpClips: []
   jumpForce: 150
   jumpCount: 0
   lastJumpTime: 0
+  grounded: 1
 --- !u!114 &11489044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +150,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1024582385
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a502f3cc01bb9f04f8ecf00bbe92efd5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c188089e5efc5146a056ab24d349126, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -159,15 +161,23 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 294cee36894ffda44b141026aec12e5a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

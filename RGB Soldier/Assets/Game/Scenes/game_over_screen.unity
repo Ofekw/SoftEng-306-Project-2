@@ -272,7 +272,7 @@ GameObject:
   - 222: {fileID: 921232157}
   - 114: {fileID: 921232156}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,8 +292,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 786, y: 319}
+  m_AnchoredPosition: {x: 1.43051147e-05, y: -9.53674316e-06}
+  m_SizeDelta: {x: 1010, y: 410}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &921232156
 MonoBehaviour:
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .838235259, g: .197231814, b: .197231814, a: .372000009}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -445,10 +445,10 @@ RectTransform:
   - {fileID: 1657728594}
   m_Father: {fileID: 1407195787}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1.52587891e-05, y: -15}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: .385121107}
+  m_AnchorMax: {x: 1, y: .564999998}
+  m_AnchoredPosition: {x: 0, y: .5}
+  m_SizeDelta: {x: -540, y: -17}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1077131961
 MonoBehaviour:
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .5, g: .264705896, b: .264705896, a: 1}
+  m_Color: {r: .298039228, g: .298039228, b: .298039228, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -590,7 +590,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -769,7 +769,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -797,7 +797,7 @@ GameObject:
   - 222: {fileID: 1781900982}
   - 114: {fileID: 1781900981}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -884,10 +884,10 @@ RectTransform:
   - {fileID: 1339690483}
   m_Father: {fileID: 1407195787}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -66}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: .217242137}
+  m_AnchorMax: {x: 1, y: .400784642}
+  m_AnchoredPosition: {x: 0, y: .5}
+  m_SizeDelta: {x: -540, y: -17}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1829190012
 MonoBehaviour:
@@ -953,7 +953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .498039216, g: .262745112, b: .262745112, a: 1}
+  m_Color: {r: .301470578, g: .301470578, b: .301470578, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
