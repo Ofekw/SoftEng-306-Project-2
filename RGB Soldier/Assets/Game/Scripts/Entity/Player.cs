@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using Assets.Game.Scripts.Enviroment;
+using UnityStandardAssets.CrossPlatformInput;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -86,6 +87,7 @@ public class Player : KillableEntityInterface
             entityMovement.Jump();
         }
         //float hVelocity = Input.GetAxis("Horizontal");
+        /*
         float hVelocity = 0f;
         if (moveRight && !moveLeft)
         {
@@ -104,8 +106,15 @@ public class Player : KillableEntityInterface
         {
             hVelocity = Input.GetAxis("Horizontal");
         }
+        */
+        Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
+        float hVelocity = CrossPlatformInputManager.GetAxis("Horizontal");
 
-        //hVelocity = Input.GetAxis("Horizontal");
+        if (hVelocity == 0)
+        {
+            hVelocity = Input.GetAxis("Horizontal");
+        }
+
         //call the base movement module method to handle movement
         entityMovement.Movement(hVelocity);
 
