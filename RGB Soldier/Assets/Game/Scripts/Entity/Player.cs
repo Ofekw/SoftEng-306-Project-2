@@ -9,15 +9,15 @@ using Assets.Game.Scripts.Enviroment;
 
 public class Player : KillableEntityInterface
 {
-
     public EntityMovement entityMovement;
-    public Rigidbody2D projectile;
+    public ProjectileSpawner projectileSpawner;
     public float projectileSpeed = 10;
     public float xProjectileOffset = 0f;
     public float yProjectileOffset = 0f;
     public Boolean attacking = false;
     public float attackCooldown = 0.3f;
     public float lastAttack;
+    public float attackDuration = 0.2f;
     public BoxCollider2D meleeCollider;
 
     public int strength;    //Strength - Melee
@@ -48,7 +48,7 @@ public class Player : KillableEntityInterface
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         this.entityMovement = GetComponent<EntityMovement>();
         Camera.main.GetComponent<CameraShake>().enabled = false;
-
+        projectileSpawner = GetComponent<PlayerProjectileSpawner>();
         meleeCollider.enabled = false;
         attacking = false;
         lastAttack = Time.time;
@@ -62,10 +62,14 @@ public class Player : KillableEntityInterface
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
+		maxHealth = vitality;
+		currentHealth = maxHealth;
     }
 
     void Update()
     {
+		if (GameManager.instance.isPaused ())
+			return;
         var shakingAmount = Input.acceleration.magnitude;
         if (shakingAmount > 1.5)
         {
@@ -120,7 +124,7 @@ public class Player : KillableEntityInterface
         if (attacking == true)
         {
             meleeCollider.enabled = true;
-            if ((Time.time - lastAttack) > 0.1)
+            if ((Time.time - lastAttack) > attackDuration)
             {
                 attacking = false;
                 meleeCollider.enabled = false;
@@ -153,7 +157,6 @@ public class Player : KillableEntityInterface
 
     public void Melee()
     {
-
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -167,19 +170,17 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
+
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
             GameManager.instance.resetSpecialAtkCounter(); //reset counter
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var enemies = GameObject.FindGameObjectsWithTag("Zombie");
             foreach (GameObject enemy in enemies)
             {
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
-            Camera.main.GetComponent<CameraShake>().enabled = false;
-
-
 
         }
 
@@ -188,27 +189,14 @@ public class Player : KillableEntityInterface
     public void Shoot()
     {
         animator.SetTrigger("playerShoot");
-        Rigidbody2D clone;
         //Shoot to the right
         if (entityMovement.facingRight)
         {
-            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x + xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            //Set damage equal to dexterity stat
-            clone.GetComponent<ProjectileScript>().damage = dexterity;
-            //Set x speed 
-            clone.velocity = new Vector2(projectileSpeed, 0);
+            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
         }
         else
         {
-            //Shoot to the left
-            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x - xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            clone.GetComponent<ProjectileScript>().damage = dexterity;
-            //Invert prefab
-            Vector3 theScale = clone.transform.localScale;
-            theScale.x *= -1;
-            clone.transform.localScale = theScale;
-            //Set x speed
-            clone.velocity = new Vector2(-projectileSpeed, 0);
+		projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
         }
     }
 
@@ -251,6 +239,7 @@ public class Player : KillableEntityInterface
             currentHealth--;
             temporaryInvulnerable = true;
             temporaryInvulnerableTime = Time.time;
+			print("You lost a life");
         }
         if (currentHealth <= 0)
         {
@@ -260,8 +249,7 @@ public class Player : KillableEntityInterface
 
     public override void die()
     {
-        //Destroy(this.gameObject);
-        print("YOU DIED!");
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other)
