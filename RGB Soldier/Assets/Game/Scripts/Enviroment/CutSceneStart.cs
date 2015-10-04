@@ -7,13 +7,11 @@ using System.Collections.Generic;
 public class CutSceneStart : MonoBehaviour
 {
     private DialogPanel modalPanel;
-    private DisplayManager displayManager;
     public List<string> dialogText = new List<string>();
 
     void Awake()
     {
         modalPanel = DialogPanel.Instance();
-        displayManager = DisplayManager.Instance();
         StartCoroutine(modalPanel.StartDialog(dialogText)); 
     }
 
