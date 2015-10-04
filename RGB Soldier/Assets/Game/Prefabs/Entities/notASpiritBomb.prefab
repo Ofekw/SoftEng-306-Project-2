@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.2800007, y: -8.14000034, z: 0}
+  m_LocalPosition: {x: 16.7800007, y: -6.86999989, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,7 +46,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 6
 --- !u!58 &5823012
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -80,6 +80,7 @@ MonoBehaviour:
   collidesWithLayers:
   - Player
   - PlayerProjectile
+  startScale: 0
 --- !u!212 &21299922
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -128,7 +129,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_Constraints
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID

@@ -8,8 +8,8 @@ public class BossProjectileSpawner : ProjectileSpawner {
     private string bounceOrbName;
     public Rigidbody2D unblockableOrb;
     private string unblockAbleOrbName;
-    public int blackOrbSpeed = 15;
-    public int unblockableOrbSpeed = 0;
+    public float blackOrbSpeed = 15;
+    public float unblockableOrbSpeed = 0.01f;
     public static Boolean startedRight;
 
     public override void setAttackSettings(string attack, float xPos, float yPos)
@@ -33,7 +33,7 @@ public class BossProjectileSpawner : ProjectileSpawner {
         {
             damage = 10;
             projectileSpeed = unblockableOrbSpeed;
-            angularVelocity = 180;
+            angularVelocity = 0;
         }
     }
 

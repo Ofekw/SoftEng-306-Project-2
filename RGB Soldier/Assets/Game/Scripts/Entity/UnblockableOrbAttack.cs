@@ -7,7 +7,8 @@ public class UnblockableOrbAttack : ProjectileScript
 
     private Vector3 targetScale;
     private Vector3 baseScale;
-    private int speed;
+    private float speed;
+    public Boolean startScale;
 
     protected override void handleCollisonWithLayer(Collision2D hit, string layerTag)
     {
@@ -30,14 +31,29 @@ public class UnblockableOrbAttack : ProjectileScript
 
     // Use this for initialization
     void Start () {
-        targetScale = new Vector3(20f, 20f);
+        targetScale = new Vector3(15f, 15f);
         baseScale = new Vector3(2f, 2f);
-        speed = 1;
-	}
+        speed = 1f;
+        startScale = true;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, speed * Time.deltaTime);
+        if (startScale)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, speed * Time.deltaTime);
+            if (transform.localScale.x > (targetScale.x-2))
+            {
+                startScale = false;
+            }
+        }
+        else
+        {
+            Rigidbody2D rb = this.gameObject.GetComponent<Rigidbody2D>();
+            float direction = rb.velocity.x / Math.Abs(rb.velocity.x);
+            rb.velocity = new Vector2(10 * direction, 0);
+        }
+
     }
 }

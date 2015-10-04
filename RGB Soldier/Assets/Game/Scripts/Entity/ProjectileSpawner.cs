@@ -8,6 +8,7 @@ public abstract class ProjectileSpawner : MonoBehaviour {
     public float projectileSpeed;
     //in degree's per second
     public float angularVelocity;
+    public int direction;
 
     // Use this for initialization
     void Start () {
@@ -21,7 +22,7 @@ public abstract class ProjectileSpawner : MonoBehaviour {
     //Method should be called in the entity, passing the attackName to be used and the direction the attack is to go.
     public void spawnProjectile(string attackName, float xPos, float yPos, float xOffSet, float yOffSet, bool isMovingRight)
     {
-        int direction = 1;
+        direction = 1;
         if (!(isMovingRight))
         {
             direction = -1;

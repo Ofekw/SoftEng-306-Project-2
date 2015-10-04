@@ -17,6 +17,7 @@ public class Boss : KillableEntityInterface
     public ProjectileSpawner projectileSpawner;
     private float xSpawnPoints = 17.5f;
     private float attackTimer = 3f;
+    private System.Random rand = new System.Random();
     GameObject player;
 
 
@@ -96,7 +97,16 @@ public class Boss : KillableEntityInterface
         if (attackTimer < 0)
         {
             attackTimer = 5f;
-            spiritBomb();
+            int attackNo = rand.Next(1, 1);
+            if (attackNo == 1)
+            {
+                teleport();
+                spiritBomb();
+            } else
+            {
+                teleport();
+                blackOrbAttack();
+            }
         }
     }
 
@@ -116,11 +126,11 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("definetlyNotASpiritBomb", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, false);
         }
     }
 }
