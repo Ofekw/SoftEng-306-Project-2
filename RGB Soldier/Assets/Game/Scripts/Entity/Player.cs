@@ -40,7 +40,7 @@ public class Player : KillableEntityInterface
 
     Vector3 movement;
 
-    private Animator animator;                  //Used to store a reference to the Player's animator component.
+    public Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
@@ -259,7 +259,7 @@ public class Player : KillableEntityInterface
         if (currentHealth <= 0)
         {
             die();
-        }
+        }x
     }
 
     public override void die()
