@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646a5c5e59471bf41affe4f9b1fe10a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 10
+  currentHealth: 10
   dead: 0
   xProjectileOffset: 0
   yProjectileOffset: 0
@@ -112,10 +112,9 @@ MonoBehaviour:
   damage: 0
   projectileSpeed: 0
   angularVelocity: 0
+  direction: 1
   bounceOrb: {fileID: 5033434, guid: 34ea7aa2fa3eea9468705549291c3060, type: 2}
   unblockableOrb: {fileID: 5033434, guid: 77fea0bdf68064c4486b4cc07d709f13, type: 2}
-  blackOrbSpeed: 15
-  unblockableOrbSpeed: 5
 --- !u!114 &11487940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,6 +197,14 @@ Prefab:
       propertyPath: unblockableOrb
       value: 
       objectReference: {fileID: 5033434, guid: 77fea0bdf68064c4486b4cc07d709f13, type: 2}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124628}
