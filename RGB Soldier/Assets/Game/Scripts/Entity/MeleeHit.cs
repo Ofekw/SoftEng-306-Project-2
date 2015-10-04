@@ -5,7 +5,7 @@ public class MeleeHit : MonoBehaviour {
 
     public GameObject player;
     public int meleeMultiplier = 2;
-    private Sprite[] dmg = Resources.LoadAll<Sprite>("damage");
+    public Sprite[] dmg;
     public GameObject damageIndicator;
 
 
