@@ -16,6 +16,12 @@ TagManager:
   - SideWall
   - PlayerEnemyCollider
   - Projectile
+  - Orb
+  - HUD
+  - GameManager
+  - Zombie
+  - Boss
+  - PlayerControl
   layers:
   - Default
   - TransparentFX
@@ -30,13 +36,13 @@ TagManager:
   - Enemies
   - Pickups
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - HUD
+  - Background
+  - BouncableOrb
+  - PlayerProjectile
+  - Boss
+  - PlayerMelee
+  - Pickups
   - 
   - 
   - 
@@ -59,12 +65,18 @@ TagManager:
   - name: Background
     uniqueID: 1535931219
     locked: 1
-  - name: Character
-    uniqueID: 2511236001
-    locked: 0
   - name: Foreground
     uniqueID: 1024582385
     locked: 1
+  - name: Character
+    uniqueID: 2511236001
+    locked: 0
+  - name: Enemies
+    uniqueID: 3037724457
+    locked: 0
+  - name: Pickups
+    uniqueID: 4016605433
+    locked: 0
   - name: UI
     uniqueID: 149272721
     locked: 0
