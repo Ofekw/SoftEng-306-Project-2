@@ -14,6 +14,6 @@ public class DamageIndicators : MonoBehaviour {
     public int CalculateMeleedDamageIndicator()
     {
         int meleeDmg = GameControl.control.playerStr;
-        return meleeDmg*2;
+        return meleeDmg*1;
     }
 }
