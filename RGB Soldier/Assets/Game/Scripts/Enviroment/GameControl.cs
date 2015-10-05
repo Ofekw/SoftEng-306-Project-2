@@ -18,6 +18,7 @@ public class GameControl : MonoBehaviour {
     public int currentGameLevel;
     public int abilityPoints;
     public int experienceRequired;
+    public PlayerData playerData;
 
 
     //Save code on enable and disable if you want auto saving.
@@ -43,26 +44,33 @@ public class GameControl : MonoBehaviour {
 
     void OnEnable()
     {
-        Load();
+        setupLoad();
     }
 
     void OnApplicationPause(bool pauseState)
     {
-        Save();
+        setupSave();
     }
 
     void OnDisable()
     {
-        Save();
+        setupSave();
     }
 
-    public void Save()
+    public void setupSave()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
 
-        PlayerData playerData = new PlayerData();
-        
+        Save();
+
+        bf.Serialize(file, playerData);
+
+        file.Close();
+    }
+
+    public void Save()
+    {
         playerData.playerLevel = playerLevel;
         playerData.playerExp = playerExp;
         playerData.playerStr = playerStr;
@@ -72,32 +80,31 @@ public class GameControl : MonoBehaviour {
         playerData.playerVit = playerVit;
         playerData.currentGameLevel = currentGameLevel;
         playerData.abilityPoints = abilityPoints;
-        
-
-        bf.Serialize(file, playerData);
-
-        file.Close();
     }
 
-    public void Load()
+    public void setupLoad()
     {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-            PlayerData data = (PlayerData) bf.Deserialize(file);
+            playerData = (PlayerData) bf.Deserialize(file);
+            Load();
             file.Close();
-
-            playerLevel = data.playerLevel;
-            playerExp = data.playerExp;
-            playerStr = data.playerStr;
-            playerAgl = data.playerAgl;
-            playerDex = data.playerDex;
-            playerInt = data.playerInt;
-            playerVit = data.playerVit;
-            currentGameLevel = data.currentGameLevel;
-            abilityPoints = data.abilityPoints;
         }
+    }
+
+    public void Load()
+    {
+        playerLevel = playerData.playerLevel;
+        playerExp = playerData.playerExp;
+        playerStr = playerData.playerStr;
+        playerAgl = playerData.playerAgl;
+        playerDex = playerData.playerDex;
+        playerInt = playerData.playerInt;
+        playerVit = playerData.playerVit;
+        currentGameLevel = playerData.currentGameLevel;
+        abilityPoints = playerData.abilityPoints;
     }
 
     public void giveExperience(int experience)
@@ -120,9 +127,8 @@ public class GameControl : MonoBehaviour {
 }
 
 [Serializable]
-class PlayerData
+public class PlayerData
 {
-    //Implement getter and setters later.
     public int playerLevel;
     public int playerExp;
     public int playerStr;

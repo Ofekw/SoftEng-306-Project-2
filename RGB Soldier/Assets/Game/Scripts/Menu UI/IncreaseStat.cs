@@ -87,6 +87,13 @@ public class IncreaseStat : MonoBehaviour {
     // For testing purposes
     public void resetStats()
     {
+        doReset();
+        // resets sliders to values set above
+        Start();
+    }
+
+    public void doReset()
+    {
         player.strength = 1;
         GameControl.control.playerStr = 1;
         player.agility = 1;
@@ -99,8 +106,5 @@ public class IncreaseStat : MonoBehaviour {
         GameControl.control.playerVit = 1;
         player.abilityPoints = 5;
         GameControl.control.abilityPoints = 5;
-
-        // resets sliders to values set above
-        Start();
     }
 }

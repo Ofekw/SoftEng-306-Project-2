@@ -37,11 +37,11 @@ public class Player : KillableEntityInterface
 
     bool moveRight = false;
     bool moveLeft = false;
-    bool isJumping = false;
+    public bool isJumping = false;
 
     Vector3 movement;
 
-    private Animator animator;                  //Used to store a reference to the Player's animator component.
+    public Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
@@ -87,28 +87,6 @@ public class Player : KillableEntityInterface
         {
             entityMovement.Jump();
         }
-        //float hVelocity = Input.GetAxis("Horizontal");
-        /*
-        float hVelocity = 0f;
-        if (moveRight && !moveLeft)
-        {
-            hVelocity = 1.0f;
-        }
-        else if (moveLeft && !moveRight)
-        {
-            hVelocity = -1.0f;
-        }
-        if (!moveRight && !moveLeft)
-        {
-            hVelocity = 0.0f;
-        }
-
-        if (hVelocity == 0)
-        {
-            hVelocity = Input.GetAxis("Horizontal");
-        }
-        */
-        Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
         float hVelocity = CrossPlatformInputManager.GetAxis("Horizontal");
 
         if (hVelocity == 0)
@@ -216,26 +194,6 @@ public class Player : KillableEntityInterface
         }
     }
 
-    public void rightButtonPressed()
-    {
-        moveRight = true;
-    }
-
-    public void rightButtonReleased()
-    {
-        moveRight = false;
-    }
-
-    public void leftButtonPressed()
-    {
-        moveLeft = true;
-    }
-
-    public void leftButtonReleased()
-    {
-        moveLeft = false;
-    }
-
     public void jumpPressed()
     {
         isJumping = true;
@@ -252,15 +210,20 @@ public class Player : KillableEntityInterface
         if (!temporaryInvulnerable)
         {
             animator.SetTrigger("playerHit");
-            currentHealth--;
-            temporaryInvulnerable = true;
-            temporaryInvulnerableTime = Time.time;
-			print("You lost a life");
+            calculateDamage(damageReceived);
         }
         if (currentHealth <= 0)
         {
             die();
         }
+    }
+
+    public void calculateDamage(int damageReceived)
+    {
+        currentHealth--;
+        temporaryInvulnerable = true;
+        temporaryInvulnerableTime = Time.time;
+        print("You lost a life");
     }
 
     public void takeDamageKnockBack(int damageReceived, float dir)
