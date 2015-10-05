@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         stageImage = GameObject.Find("StageImage");
         stageText = GameObject.Find("StageText").GetComponent<Text>();
-        stageText.text = "Stage " + stage;
+        stageText.text = "Stage " + currentLevel;
         stageImage.SetActive(true);
         Invoke("HideStageImage", 2);
         orbsCollected = 0;
