@@ -114,4 +114,39 @@ public class UnitTests
         Assert.That(subGameControl.currentGameLevel == 3);
         Assert.That(subGameControl.abilityPoints == 2);
     }
+
+    [Test]
+    public void resetStat()
+    {
+        IncreaseStat subIS = new IncreaseStat();
+        GameControl subGameControl = new GameControl();
+        GameControl.control = subGameControl;
+        Player subPlayer = new Player();
+
+        subPlayer.strength = 5;
+        subPlayer.dexterity = 5;
+        subPlayer.vitality = 5;
+        subPlayer.intelligence = 5;
+        subPlayer.agility = 5;
+        subIS.player = subPlayer;
+
+        subGameControl.playerStr = 5;
+        subGameControl.playerDex = 5;
+        subGameControl.playerVit = 5;
+        subGameControl.playerInt = 5;
+        subGameControl.playerAgl = 5;
+
+        subIS.doReset();
+
+        Assert.That(subPlayer.strength == 1);
+        Assert.That(subPlayer.dexterity == 1);
+        Assert.That(subPlayer.vitality == 1);
+        Assert.That(subPlayer.intelligence == 1);
+        Assert.That(subPlayer.agility == 1);
+        Assert.That(subGameControl.playerStr == 1);
+        Assert.That(subGameControl.playerDex == 1);
+        Assert.That(subGameControl.playerVit == 1);
+        Assert.That(subGameControl.playerInt == 1);
+        Assert.That(subGameControl.playerAgl == 1);
+    }
 }
