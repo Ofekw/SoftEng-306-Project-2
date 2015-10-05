@@ -260,7 +260,7 @@ public class Player : KillableEntityInterface
         if (currentHealth <= 0)
         {
             die();
-        }x
+        }
     }
 
     public void takeDamageKnockBack(int damageReceived, float dir)
