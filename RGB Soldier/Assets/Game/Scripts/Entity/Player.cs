@@ -218,6 +218,14 @@ public class Player : KillableEntityInterface
         }
     }
 
+    public void calculateDamage(int damageReceived)
+    {
+        currentHealth--;
+        temporaryInvulnerable = true;
+        temporaryInvulnerableTime = Time.time;
+        print("You lost a life");
+    }
+
     public void takeDamageKnockBack(int damageReceived, float dir)
     {
         if (!temporaryInvulnerable)
