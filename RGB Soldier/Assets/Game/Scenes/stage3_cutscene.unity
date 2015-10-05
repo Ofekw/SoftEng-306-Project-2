@@ -85,7 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1001 &291996515
 Prefab:
   m_ObjectHideFlags: 0
@@ -285,7 +284,7 @@ MonoBehaviour:
   letterPause: .100000001
   dialogPanelObject: {fileID: 2093854278}
   lsa: {fileID: 798648833}
-  scene_id: stage3
+  scene_id: stage5
 --- !u!114 &798648830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &798648832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,13 +320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText:
-  - Filler text introducing the player to the leveling system and special power
-  - sdfdsf
-  - fdsf
-  - fdsfd
-  - fvbhfdh
-  - gfdgfdg
-  - gfdgfd
+  - Once again, you have managed to defeat your foes.
+  - Notice how what was once grey and dull is now beginning to shine with the vibrancy
+    of life.
+  - 'Be careful now though, for Asadon is sure to have noticed this disturbance. '
 --- !u!114 &798648833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +508,7 @@ RectTransform:
   - {fileID: 291996516}
   - {fileID: 2093854279}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -823,7 +819,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1895884522
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +883,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &1895884525

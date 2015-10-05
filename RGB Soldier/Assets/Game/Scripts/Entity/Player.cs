@@ -20,6 +20,7 @@ public class Player : KillableEntityInterface
     public float lastAttack;
     public float attackDuration = 0.2f;
     public BoxCollider2D meleeCollider;
+    public float knockBackStrength = 500;
 
     public int strength;    //Strength - Melee
     public int agility;    //Agility- Speed
@@ -217,12 +218,18 @@ public class Player : KillableEntityInterface
         }
     }
 
-    public void calculateDamage(int damageReceived)
+    public void takeDamageKnockBack(int damageReceived, float dir)
     {
-        currentHealth--;
-        temporaryInvulnerable = true;
-        temporaryInvulnerableTime = Time.time;
-        print("You lost a life");
+        if (!temporaryInvulnerable)
+        {
+            knockBack(dir);
+            takeDamage(damageReceived);
+        }
+    }
+
+    private void knockBack(float dir)
+    {
+        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(knockBackStrength * dir, knockBackStrength));
     }
 
     public override void die()
