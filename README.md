@@ -11,7 +11,7 @@ A fun 2D action RPG game about a hero, an unspeakable evil and zombies.
       
     Open up the project in Unity and build.
     
- 2. Althernatively you can download the apk from here and deploy straight to your phone:
+ 2. Althernatively you can download the apk from here and deploy straight to your phone: [here](https://drive.google.com/file/d/0B-JyoIm6AJBdVEE2V3Q2LW9sREk/view?usp=sharing)
   
 
 ###Running the program on Android
