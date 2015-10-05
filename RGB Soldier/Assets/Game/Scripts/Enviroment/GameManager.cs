@@ -25,7 +25,11 @@ public class GameManager : MonoBehaviour
     public string nextScene;
     public LoadSceneAsync lsa;
 
-	private State state;
+
+    private Text stageText;
+    private GameObject stageImage;
+
+    private State state;
 
 	public State getState() {
 		return state;
@@ -51,6 +55,12 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
+
+        stageImage = GameObject.Find("StageImage");
+        stageText = GameObject.Find("StageText").GetComponent<Text>();
+        stageText.text = "Stage " + stage;
+        stageImage.SetActive(true);
+        Invoke("HideStageImage", 2);
         orbsCollected = 0;
         specialCharge = 0;
         enemiesOnScreen = 0;
@@ -82,6 +92,12 @@ public class GameManager : MonoBehaviour
         {
             incrementSpecialAtkCounter(player);
         }
+    }
+
+
+    void HideStageImage()
+    {
+        stageImage.SetActive(false);
     }
 
     private void countEnemies()
