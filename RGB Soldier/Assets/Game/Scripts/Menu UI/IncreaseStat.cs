@@ -12,6 +12,11 @@ public class IncreaseStat : MonoBehaviour {
     public Slider dexSlider;
     public Slider intSlider;
     public Slider vitSlider;
+    public Text strText;
+    public Text aglText;
+    public Text dexText;
+    public Text intText;
+    public Text vitText;
  
     //Update with player points
     int points;
@@ -27,6 +32,7 @@ public class IncreaseStat : MonoBehaviour {
         vitSlider.value = GameControl.control.playerVit;
 
         pointsText.text = "Points: " + points;
+        setStatText();
     }
 
     public void clickAdd(Slider statBar) {
@@ -64,12 +70,29 @@ public class IncreaseStat : MonoBehaviour {
             pointsText.text = "Points: " + points;
             player.abilityPoints = points;
             GameControl.control.abilityPoints = points;
+            setStatText();
         }
 
     }
 
+    public void setStatText()
+    {
+        strText.text = "" + GameControl.control.playerStr;
+        aglText.text = "" + GameControl.control.playerAgl;
+        dexText.text = "" + GameControl.control.playerDex;
+        intText.text = "" + GameControl.control.playerInt;
+        vitText.text = "" + GameControl.control.playerVit;
+    }
+
     // For testing purposes
     public void resetStats()
+    {
+        doReset();
+        // resets sliders to values set above
+        Start();
+    }
+
+    public void doReset()
     {
         player.strength = 1;
         GameControl.control.playerStr = 1;
@@ -83,8 +106,5 @@ public class IncreaseStat : MonoBehaviour {
         GameControl.control.playerVit = 1;
         player.abilityPoints = 5;
         GameControl.control.abilityPoints = 5;
-
-        // resets sliders to values set above
-        Start();
     }
 }

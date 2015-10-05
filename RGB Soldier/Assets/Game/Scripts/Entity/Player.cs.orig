@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using Assets.Game.Scripts.Enviroment;
+using UnityStandardAssets.CrossPlatformInput;
 
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
@@ -9,7 +10,6 @@ using Assets.Game.Scripts.Enviroment;
 
 public class Player : KillableEntityInterface
 {
-
     public EntityMovement entityMovement;
     public ProjectileSpawner projectileSpawner;
     public float projectileSpeed = 10;
@@ -20,6 +20,7 @@ public class Player : KillableEntityInterface
     public float lastAttack;
     public float attackDuration = 0.2f;
     public BoxCollider2D meleeCollider;
+    public float knockBackStrength = 500;
 
     public int strength;    //Strength - Melee
     public int agility;    //Agility- Speed
@@ -36,11 +37,11 @@ public class Player : KillableEntityInterface
 
     bool moveRight = false;
     bool moveLeft = false;
-    bool isJumping = false;
+    public bool isJumping = false;
 
     Vector3 movement;
 
-    private Animator animator;                  //Used to store a reference to the Player's animator component.
+    public Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
@@ -63,7 +64,6 @@ public class Player : KillableEntityInterface
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
-		print ("Vitality default is: " + vitality);
 		maxHealth = vitality;
 		currentHealth = maxHealth;
     }
@@ -87,27 +87,13 @@ public class Player : KillableEntityInterface
         {
             entityMovement.Jump();
         }
-        //float hVelocity = Input.GetAxis("Horizontal");
-        float hVelocity = 0f;
-        if (moveRight && !moveLeft)
-        {
-            hVelocity = 1.0f;
-        }
-        else if (moveLeft && !moveRight)
-        {
-            hVelocity = -1.0f;
-        }
-        if (!moveRight && !moveLeft)
-        {
-            hVelocity = 0.0f;
-        }
+        float hVelocity = CrossPlatformInputManager.GetAxis("Horizontal");
 
         if (hVelocity == 0)
         {
             hVelocity = Input.GetAxis("Horizontal");
         }
 
-        //hVelocity = Input.GetAxis("Horizontal");
         //call the base movement module method to handle movement
         entityMovement.Movement(hVelocity);
 
@@ -155,11 +141,16 @@ public class Player : KillableEntityInterface
         this.maxHealth = vitality;
         entityMovement.maxSpeed = agility * 5.0f;
         //Strength and dexterity are called during damage calculations
+        strength = GameControl.control.playerStr;
+        agility = GameControl.control.playerAgl;
+        dexterity = GameControl.control.playerDex;
+        intelligence = GameControl.control.playerInt;
+        vitality = GameControl.control.playerVit;
+        abilityPoints = GameControl.control.abilityPoints;
     }
 
     public void Melee()
     {
-
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -173,6 +164,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
+
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
@@ -183,6 +175,7 @@ public class Player : KillableEntityInterface
                 var e = enemy.GetComponent<BaseEnemy>();
                 e.die();
             }
+
         }
 
     }
@@ -191,53 +184,14 @@ public class Player : KillableEntityInterface
     {
         animator.SetTrigger("playerShoot");
         //Shoot to the right
-<<<<<<< HEAD
-        if (entityMovement.facingRight) {
-            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
-        } else {
-            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
-=======
         if (entityMovement.facingRight)
         {
-            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x + xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            //Set damage equal to dexterity stat
-            clone.GetComponent<ProjectileScript>().damage = dexterity;
-            //Set x speed 
-            clone.velocity = new Vector2(projectileSpeed, 0);
+            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
         }
         else
         {
-            //Shoot to the left
-            clone = (Rigidbody2D)Instantiate(projectile, new Vector3(transform.position.x - xProjectileOffset, transform.position.y + yProjectileOffset, transform.position.z), transform.rotation);
-            clone.GetComponent<ProjectileScript>().damage = dexterity;
-            //Invert prefab
-            Vector3 theScale = clone.transform.localScale;
-            theScale.x *= -1;
-            clone.transform.localScale = theScale;
-            //Set x speed
-            clone.velocity = new Vector2(-projectileSpeed, 0);
->>>>>>> develop
+		projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
         }
-    }
-
-    public void rightButtonPressed()
-    {
-        moveRight = true;
-    }
-
-    public void rightButtonReleased()
-    {
-        moveRight = false;
-    }
-
-    public void leftButtonPressed()
-    {
-        moveLeft = true;
-    }
-
-    public void leftButtonReleased()
-    {
-        moveLeft = false;
     }
 
     public void jumpPressed()
@@ -256,10 +210,7 @@ public class Player : KillableEntityInterface
         if (!temporaryInvulnerable)
         {
             animator.SetTrigger("playerHit");
-            currentHealth--;
-            temporaryInvulnerable = true;
-            temporaryInvulnerableTime = Time.time;
-			print("You lost a life");
+            calculateDamage(damageReceived);
         }
         if (currentHealth <= 0)
         {
@@ -267,18 +218,32 @@ public class Player : KillableEntityInterface
         }
     }
 
-    public override void die()
+<<<<<<< HEAD
+    public void calculateDamage(int damageReceived)
     {
-        Application.LoadLevel(3);
-        print("YOU DIED!");
+        currentHealth--;
+        temporaryInvulnerable = true;
+        temporaryInvulnerableTime = Time.time;
+        print("You lost a life");
+=======
+    public void takeDamageKnockBack(int damageReceived, float dir)
+    {
+        if (!temporaryInvulnerable)
+        {
+            knockBack(dir);
+            takeDamage(damageReceived);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void knockBack(float dir)
     {
-        if (other.gameObject.CompareTag("Orb"))
-        {
-            GameManager.instance.orbsCollected++;
-        }
+        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(knockBackStrength * dir, knockBackStrength));
+>>>>>>> develop
+    }
+
+    public override void die()
+    {
+       
     }
 
     private void OnCollisionEnter2D(Collision2D coll)

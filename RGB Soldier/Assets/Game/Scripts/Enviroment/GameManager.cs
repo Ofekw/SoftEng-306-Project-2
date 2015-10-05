@@ -24,8 +24,13 @@ public class GameManager : MonoBehaviour
 	public Text healthDisp;
     public string nextScene;
     public LoadSceneAsync lsa;
+    public int currentLevel;
 
-	private State state;
+
+    private Text stageText;
+    private GameObject stageImage;
+
+    private State state;
 
 	public State getState() {
 		return state;
@@ -51,6 +56,12 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
+
+        stageImage = GameObject.Find("StageImage");
+        stageText = GameObject.Find("StageText").GetComponent<Text>();
+        stageText.text = "Stage " + currentLevel;
+        stageImage.SetActive(true);
+        Invoke("HideStageImage", 2);
         orbsCollected = 0;
         specialCharge = 0;
         enemiesOnScreen = 0;
@@ -84,6 +95,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    void HideStageImage()
+    {
+        stageImage.SetActive(false);
+    }
+
     private void countEnemies()
     {
         enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
@@ -91,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void incrementSpecialAtkCounter(Player player)
     {
-		specialCharge += (float)(player.intelligence) / 20;
+		specialCharge += (float)(player.intelligence) / 5;
     }
 
     public void resetSpecialAtkCounter()
@@ -101,6 +118,12 @@ public class GameManager : MonoBehaviour
 
     void levelCleared()
     {
+        // only moves up the current level if its the current 
+        if (currentLevel == GameControl.control.currentGameLevel)
+        {
+            Debug.Log("HELLO xx" + currentLevel);
+            GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
+        }
         lsa.ClickAsync(nextScene);
     }
 
