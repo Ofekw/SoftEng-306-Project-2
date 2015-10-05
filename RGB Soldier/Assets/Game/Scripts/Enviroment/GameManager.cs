@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 	public Text healthDisp;
     public string nextScene;
     public LoadSceneAsync lsa;
+    public int currentLevel;
 
 
     private Text stageText;
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void incrementSpecialAtkCounter(Player player)
     {
-		specialCharge += (float)(player.intelligence) / 20;
+		specialCharge += (float)(player.intelligence) / 5;
     }
 
     public void resetSpecialAtkCounter()
@@ -117,6 +118,12 @@ public class GameManager : MonoBehaviour
 
     void levelCleared()
     {
+        // only moves up the current level if its the current 
+        if (currentLevel == GameControl.control.currentGameLevel)
+        {
+            Debug.Log("HELLO xx" + currentLevel);
+            GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
+        }
         lsa.ClickAsync(nextScene);
     }
 
