@@ -34,6 +34,7 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
+    public Shader shader;
 
     bool moveRight = false;
     bool moveLeft = false;
@@ -66,6 +67,12 @@ public class Player : KillableEntityInterface
         abilityPoints = GameControl.control.abilityPoints;
 		maxHealth = vitality;
 		currentHealth = maxHealth;
+
+        Renderer rend = this.gameObject.GetComponent<SpriteRenderer>();
+        rend.sharedMaterial = new Material(shader);
+        rend.sortingLayerName = "Foreground";
+
+
     }
 
     void Update()
