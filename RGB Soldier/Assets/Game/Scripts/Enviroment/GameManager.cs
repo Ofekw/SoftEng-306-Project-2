@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public LoadSceneAsync lsa;
     public int currentLevel;
 
+    public bool isMultiplayer = false;
+
 
     private Text stageText;
     private GameObject stageImage;
@@ -62,14 +64,17 @@ public class GameManager : MonoBehaviour
         stageText.text = "Stage " + currentLevel;
         stageImage.SetActive(true);
         Invoke("HideStageImage", 2);
-        orbsCollected = 0;
-        specialCharge = 0;
-        enemiesOnScreen = 0;
-        orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
-        canSpecialAtk = false;
-        if (chargeBar != null)
+        if (!isMultiplayer)
         {
-            chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
+            orbsCollected = 0;
+            specialCharge = 0;
+            enemiesOnScreen = 0;
+            orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
+            canSpecialAtk = false;
+            if (chargeBar != null)
+            {
+                chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
+            }
         }
             state = State.Running;
     }
@@ -77,27 +82,30 @@ public class GameManager : MonoBehaviour
     {
 		if (GameManager.instance.isPaused ())
 			return;
-        countEnemies();
-        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        //update health counter
-		healthDisp.text = "x " + player.currentHealth;
-		orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
-        if (chargeBar != null)
+        if (!isMultiplayer)
         {
-            chargeBar.value = specialCharge; // set value of special attack slider
-        }
-        if (player.currentHealth <= 0)
-        {
-            gameOver();
-        }
-        if (orbsCollected >= ORB_COUNT_TARGET)
-        {
-            levelCleared();
-        }
-        canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false; //set boolean true if player can special attack
-        if (!canSpecialAtk)
-        {
-            incrementSpecialAtkCounter(player);
+            countEnemies();
+            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            //update health counter
+            healthDisp.text = "x " + player.currentHealth;
+            orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
+            if (chargeBar != null)
+            {
+                chargeBar.value = specialCharge; // set value of special attack slider
+            }
+            if (player.currentHealth <= 0)
+            {
+                gameOver();
+            }
+            if (orbsCollected >= ORB_COUNT_TARGET)
+            {
+                levelCleared();
+            }
+            canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false; //set boolean true if player can special attack
+            if (!canSpecialAtk)
+            {
+                incrementSpecialAtkCounter(player);
+            }
         }
     }
 
@@ -127,7 +135,6 @@ public class GameManager : MonoBehaviour
         // only moves up the current level if its the current 
         if (currentLevel == GameControl.control.currentGameLevel)
         {
-            Debug.Log("HELLO xx" + currentLevel);
             GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
         }
         lsa.ClickAsync(nextScene);

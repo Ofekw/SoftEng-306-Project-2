@@ -13,7 +13,10 @@ public class PlayerProjectileSpawner : ProjectileSpawner
         //This method is called when calling spawnProjectile.
         if (attack == "arrowAttack")
         {
-            damage = 1*this.gameObject.GetComponent<Player>().dexterity;
+            damage = 1;
+            if (this.gameObject.GetComponent<Player>() != null){
+                damage = damage*this.gameObject.GetComponent<Player>().dexterity;
+            }
             projectileSpeed = 20;
         }
     }
