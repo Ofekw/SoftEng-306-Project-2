@@ -26,7 +26,7 @@ public class ScreenLooper : MonoBehaviour
         other.transform.position = new Vector3(other.transform.position.x, spawnHeight, other.transform.position.z);
         if (other.gameObject.CompareTag("Zombie"))
         {
-            Zombie enemy = other.GetComponent<Zombie>();
+            BaseEnemy enemy = other.GetComponent<BaseEnemy>();
             enemy.loopPowerup();
         }
     }
