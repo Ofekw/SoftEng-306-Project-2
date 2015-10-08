@@ -277,7 +277,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11479024, guid: 51f28a2f13515e548820b2a0998a2e44, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11468430, guid: 51f28a2f13515e548820b2a0998a2e44, type: 2}
       propertyPath: m_Enabled
@@ -3488,6 +3488,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170346691}
+--- !u!1 &1182911339 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 116870, guid: 51f28a2f13515e548820b2a0998a2e44, type: 2}
+  m_PrefabInternal: {fileID: 125477699}
+--- !u!114 &1182911341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1182911339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a3c61987a96634ca023b038e267b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textureRamp: {fileID: 2800000, guid: d440902fad11e807d00044888d76c639, type: 3}
+  rampOffset: 0
+  shader: {fileID: 4800000, guid: 1a5a663026f82c04686c0557c1bcf999, type: 3}
 --- !u!1001 &1227969498
 Prefab:
   m_ObjectHideFlags: 0
