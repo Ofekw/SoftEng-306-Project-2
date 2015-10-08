@@ -10,7 +10,7 @@ public class PauseScript : MonoBehaviour
     void Start()
     {
         paused = false;
-        GameObject.Find("PausedGUI").GetComponentInChildren<Canvas>().enabled = false;
+        pauseScreen.enabled = false;
     }
 
     // Update is called once per frame
