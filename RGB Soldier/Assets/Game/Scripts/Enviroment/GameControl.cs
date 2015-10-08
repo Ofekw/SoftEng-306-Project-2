@@ -124,7 +124,6 @@ public class GameControl : MonoBehaviour {
             abilityPoints++;
             experienceRequired = experienceRequired * 2;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            print("LEVEL UP");
             Instantiate(lvlup, player.transform.position, player.transform.rotation);
         }
     }
