@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5033434}
   - 58: {fileID: 5823012}
   - 114: {fileID: 11461110}
+  - 95: {fileID: 9524736}
   m_Layer: 15
   m_Name: notASpiritBomb
   m_TagString: Projectile
@@ -25,9 +26,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194178}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.7800007, y: -6.86999989, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalRotation: {x: 0, y: .00335606886, z: 0, w: .999994397}
+  m_LocalPosition: {x: 8.44186974, y: 3.37598109, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,9 +58,26 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -.400000006, y: 0}
   serializedVersion: 2
-  m_Radius: .159999996
+  m_Radius: .637605429
+--- !u!95 &9524736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194178}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a779e16d5617e714cb16d1927e62c9f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11461110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,6 +99,7 @@ MonoBehaviour:
   - Player
   - PlayerProjectile
   startScale: 0
+  isCorrectionDirection: 0
 --- !u!212 &21299922
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -105,7 +124,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1024582385
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 89d32ec2f55b0964e99db091c3445dcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7752da8b51dadb042b19ffcec27bdf92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -125,7 +144,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 89d32ec2f55b0964e99db091c3445dcb,
+      objectReference: {fileID: 21300000, guid: 7752da8b51dadb042b19ffcec27bdf92,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_Constraints
@@ -205,16 +224,20 @@ Prefab:
       objectReference: {fileID: 100000, guid: 888b968853fa09743aab10401796c39c, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a779e16d5617e714cb16d1927e62c9f7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194178}

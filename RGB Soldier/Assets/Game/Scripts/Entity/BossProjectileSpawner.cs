@@ -26,9 +26,9 @@ public class BossProjectileSpawner : ProjectileSpawner {
         }
         if (attack == "blackOrbAttack")
         {
-            damage = 2;
+            damage = 1;
             projectileSpeed = blackOrbSpeed;
-            angularVelocity = 360;
+            angularVelocity = 0;
         } else if (attack == "unblockableAttack")
         {
             damage = 10;

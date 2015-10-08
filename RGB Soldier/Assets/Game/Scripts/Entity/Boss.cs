@@ -107,7 +107,7 @@ public class Boss : KillableEntityInterface
         if (attackTimer <= 0)
         {
             attackTimer = 5f;
-            int attackNo = rand.Next(1, 5);
+            int attackNo = rand.Next(1, 4);
             if (attackNo == 1)
             {
                 teleport();
@@ -136,11 +136,11 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, false);
         }
     }
 }
