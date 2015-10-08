@@ -71,10 +71,10 @@
 				
 				fixed4 color;
 				
-				if(orig.b > orig.g && orig.r > orig.g){
+				if(orig.b > orig.g && orig.b > orig.r && (orig.r + orig.g) < 100){
 					color = fixed4(orig.r*1.5, orig.g*0.5, orig.b*1.5, orig.a);
-				}else if(orig.g > orig.b && orig.g > orig.r){
-					color = fixed4(orig.r, orig.g, orig.b, orig.a);
+				}else if(orig.r > 200 && orig.g > 200 && orig.b < 100){
+					color = fixed4(orig.r*0.5, orig.g*1.5, orig.b*0.5, orig.a);
 				}else if(orig.r > orig.b && orig.r > orig.g && (orig.b+orig.g) < 100){
 					color = fixed4(orig.r, orig.g*0.5, orig.b*0, orig.a);
 				}else{
