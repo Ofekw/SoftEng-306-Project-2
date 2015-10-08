@@ -29,7 +29,6 @@ public class MeleeHit : MonoBehaviour {
             //Tell the meleed object that it has taken damage
             //Damage is equal to players strength
             int meleeDmg = meleeMultiplier*player.GetComponent<Player>().strength;
-            print("MELEE DMG IS" + meleeDmg);
             hit.gameObject.SendMessage("takeDamage", meleeDmg );
             if (meleeDmg < dmg.Length-1)
             {
@@ -37,7 +36,6 @@ public class MeleeHit : MonoBehaviour {
             }
             else
             {
-                print("GETTING TO MAX " + meleeDmg);
                 SpriteRenderer renderer2 = GameObject.Find("numeric-0b").GetComponent<SpriteRenderer>();
                 SpriteRenderer renderer3 = GameObject.Find("numeric-0a").GetComponent<SpriteRenderer>();
                 renderer.sprite = dmg[9];
