@@ -76,6 +76,7 @@ GameObject:
   - 224: {fileID: 22462264}
   - 222: {fileID: 22283696}
   - 114: {fileID: 11481814}
+  - 114: {fileID: 11411732}
   m_Layer: 5
   m_Name: CharacterPanel
   m_TagString: Untagged
@@ -306,6 +307,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11411732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11eb8a1ec205d64490ef2878aaa56d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressTxt: {fileID: 11474662}
+  currentLevel: {fileID: 11439760}
+  xpSlider: {fileID: 11468772}
 --- !u!114 &11421124
 MonoBehaviour:
   m_ObjectHideFlags: 1
