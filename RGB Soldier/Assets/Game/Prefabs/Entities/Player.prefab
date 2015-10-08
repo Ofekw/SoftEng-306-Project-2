@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 461820}
   - 61: {fileID: 6171000}
   - 114: {fileID: 11468860}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: meleeHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 471512}
   - 61: {fileID: 6141142}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: EnemyTrigger
   m_TagString: PlayerEnemyCollider
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - 50: {fileID: 5066328}
   - 61: {fileID: 6134028}
   - 114: {fileID: 11461234}
-  m_Layer: 9
+  m_Layer: 20
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -63,10 +63,26 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460516}
-  m_Layer: 9
+  m_Layer: 20
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: -2065832391, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &198380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 475138}
+  - 114: {fileID: 11493350}
+  m_Layer: 0
+  m_Name: ColourBlindController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -77,12 +93,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.9500008, y: -7.76000023, z: 0}
+  m_LocalPosition: {x: -3.79999995, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460516}
   - {fileID: 471512}
   - {fileID: 461820}
+  - {fileID: 475138}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &460516
@@ -121,6 +138,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 449540}
   m_RootOrder: 1
+--- !u!4 &475138
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.79999995, y: 1.65611517, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 449540}
+  m_RootOrder: 3
 --- !u!50 &5066328
 Rigidbody2D:
   serializedVersion: 2
@@ -228,6 +257,7 @@ MonoBehaviour:
   damage: 0
   projectileSpeed: 0
   angularVelocity: 0
+  direction: 1
   projectile: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
   attackName: arrowAttack
 --- !u!114 &11468860
@@ -279,6 +309,7 @@ MonoBehaviour:
   lastAttack: 0
   attackDuration: .200000003
   meleeCollider: {fileID: 6171000}
+  knockBackStrength: 500
   strength: 1
   agility: 1
   dexterity: 1
@@ -288,6 +319,26 @@ MonoBehaviour:
   temporaryInvulnerable: 0
   temporaryInvulnerableTime: 0
   invulnTime: 2
+  isJumping: 0
+  animator: {fileID: 0}
+--- !u!114 &11493350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d3f0e64e72fdb41b4968e27365717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  redGreenShader: {fileID: 4800000, guid: 9e250dde68b4f6d43b7a514e778e17ef, type: 3}
+  blueYellowShader: {fileID: 4800000, guid: 595de75a5898e0c4596c695df0e77226, type: 3}
+  current: 0
 --- !u!212 &21289026
 SpriteRenderer:
   m_ObjectHideFlags: 1
