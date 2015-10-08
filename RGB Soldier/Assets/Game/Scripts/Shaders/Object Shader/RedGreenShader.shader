@@ -1,4 +1,4 @@
-﻿Shader "ObjectShader"
+﻿Shader "RedGreenShader"
 {
     Properties
     {
