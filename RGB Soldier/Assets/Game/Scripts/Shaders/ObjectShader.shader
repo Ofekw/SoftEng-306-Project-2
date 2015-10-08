@@ -69,7 +69,19 @@
             {
                 half4 orig = tex2D (_MainTex, IN.texcoord);   
 				
-				fixed4 color = fixed4(orig.r, orig.g, orig.b*0, orig.a);
+				fixed4 color;
+				
+				if(orig.b > orig.g && orig.r > orig.g){
+					color = fixed4(orig.r*1.5, orig.g*0.5, orig.b*1.5, orig.a);
+				}else if(orig.g > orig.b && orig.g > orig.r){
+					color = fixed4(orig.r, orig.g, orig.b, orig.a);
+				}else if(orig.r > orig.b && orig.r > orig.g && (orig.b+orig.g) < 100){
+					color = fixed4(orig.r, orig.g*0.5, orig.b*0, orig.a);
+				}else{
+					color = fixed4(orig.r, orig.g, orig.b, orig.a);
+				}
+
+				//fixed4 color = fixed4(orig., orig.g, orig.b, orig.a);
             
                 //texcol.rgb = lerp(texcol.rgb, dot(texcol.rgb, float3(0.3, 0.59, 0.11)), _EffectAmount);
                 //texcol = texcol * IN.color;
