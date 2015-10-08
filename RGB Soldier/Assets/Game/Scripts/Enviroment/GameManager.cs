@@ -67,8 +67,11 @@ public class GameManager : MonoBehaviour
         enemiesOnScreen = 0;
         orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
         canSpecialAtk = false;
-        chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
-		state = State.Running;
+        if (chargeBar != null)
+        {
+            chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
+        }
+            state = State.Running;
     }
     void Update()
     {
@@ -79,7 +82,10 @@ public class GameManager : MonoBehaviour
         //update health counter
 		healthDisp.text = "x " + player.currentHealth;
 		orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
-        chargeBar.value = specialCharge; // set value of special attack slider
+        if (chargeBar != null)
+        {
+            chargeBar.value = specialCharge; // set value of special attack slider
+        }
         if (player.currentHealth <= 0)
         {
             gameOver();

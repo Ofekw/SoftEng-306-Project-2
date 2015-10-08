@@ -15,7 +15,7 @@ public class Player : KillableEntityInterface
     public float projectileSpeed = 10;
     public float xProjectileOffset = 0f;
     public float yProjectileOffset = 0f;
-    public Boolean attacking = false;
+    public bool attacking = false;
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public float attackDuration = 0.2f;
@@ -30,7 +30,7 @@ public class Player : KillableEntityInterface
 
     public int abilityPoints; // Points to spend on skill
 
-    public Boolean temporaryInvulnerable = false;
+    public bool temporaryInvulnerable = false;
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
