@@ -19,6 +19,7 @@ public class GameControl : MonoBehaviour {
     public int abilityPoints;
     public int experienceRequired;
     public PlayerData playerData;
+    public GameObject lvlup;
 
 
     //Save code on enable and disable if you want auto saving.
@@ -122,6 +123,8 @@ public class GameControl : MonoBehaviour {
             playerLevel++;
             abilityPoints++;
             experienceRequired = experienceRequired * 2;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Instantiate(lvlup, player.transform.position, player.transform.rotation);
         }
     }
 }
