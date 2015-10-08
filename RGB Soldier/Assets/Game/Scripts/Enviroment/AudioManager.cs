@@ -8,8 +8,7 @@ namespace Assets.Game.Scripts.Enviroment
 {
     class AudioManager : MonoBehaviour
     {
-
-        private AudioSource mySource;
+        private AudioSource audioSource;
         public AudioClip pyramidSong;
         public AudioClip menuSong;
         public AudioClip forestSong;
@@ -19,6 +18,7 @@ namespace Assets.Game.Scripts.Enviroment
         public AudioClip bossSong;
         public AudioClip finalRoadSong;
         public AudioClip shrineSong;
+
         void Awake()
         {
             DontDestroyOnLoad(gameObject);
@@ -31,6 +31,7 @@ namespace Assets.Game.Scripts.Enviroment
         // Use this for initialization
         void Start()
         {
+            //loads in the audio tracks
             menuSong = Resources.Load("Audio/Visager_-_19_-_Village_Dreaming_Loop") as AudioClip;
             pyramidSong = Resources.Load("Audio/Visager_-_15_-_Pyramid_Level_Loop") as AudioClip;
             forestSong = Resources.Load("Audio/Visager_-_19_-_The_Great_Forest_Loop") as AudioClip; ;
@@ -40,42 +41,48 @@ namespace Assets.Game.Scripts.Enviroment
             bossSong = Resources.Load("Audio/Visager_-_18_-_Dark_Sanctum_Boss_Fight_Loop") as AudioClip; ;
             finalRoadSong = Resources.Load("Audio/Visager_-_20_-_The_Final_Road_Loop") as AudioClip; ;
             shrineSong = Resources.Load("Audio/Visager_-_03_-_Shrine") as AudioClip; ;
-            mySource = GetComponent<AudioSource>();
+            audioSource = GetComponent<AudioSource>();
 
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            
+            //audioSource.volume = AudioSettings.volumne;
             if (Application.loadedLevelName == "start_screen 1")
             {
-                mySource.clip = menuSong;
-                if (!mySource.isPlaying)
+                //example of changing the music
+                audioSource.clip = menuSong;
+                if (!audioSource.isPlaying)
                 {
-                    mySource.Play();
+                    audioSource.Play();
                 }
             }
             else if (Application.loadedLevelName == "stage_select 1")
             {
-                if (!mySource.isPlaying)
+                //does not change the music
+                if (!audioSource.isPlaying)
                 {
-                    mySource.Play();
+                    audioSource.Play();
                 }
             }
             else if (Application.loadedLevelName == "OpeningCutScene 1")
             {
-                mySource.clip = shrineSong;
+                audioSource.clip = shrineSong;
 
-                if (!mySource.isPlaying)
+                if (!audioSource.isPlaying)
                 {
-                    mySource.Play();
+                    audioSource.Play();
                 }
             }
-            else if (!mySource.isPlaying)
+            else if (!audioSource.isPlaying)
             {
-                mySource.Play();
+                audioSource.Play();
             }
+        }
+        public void meleeAttackSound()
+        {
         }
     }
 }

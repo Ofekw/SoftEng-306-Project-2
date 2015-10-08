@@ -1,0 +1,20 @@
+To add in audio;
+
+Background music
+Load into the class
+            menuSong = Resources.Load("Audio/Visager_-_19_-_Village_Dreaming_Loop") as AudioClip;
+  if (Application.loadedLevelName == "start_screen 1")
+            {
+                //example of changing the music
+                audioSource.clip = menuSong;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+
+Soundbites
+In the constructor add
+    public AudioClip meleeAttackSound;
+define in unity then when you want it to play
+        AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position);
