@@ -16,16 +16,19 @@ namespace Assets.Game.Scripts.Enviroment
 
         void Awake()
         {
-            //if (instance != null && instance != this)
-            //{
-            //    Destroy(this.gameObject);
-            //    return;
-            //}
-            //else
-            //{
-            //    instance = this;
-            //}
-            //DontDestroyOnLoad(this.gameObject);
+            var haha = GameObject.FindGameObjectWithTag("Audio");
+            AudioListener.Destroy(haha);
+
+            if (instance != null && instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+            else
+            {
+                instance = this;
+            }
+            DontDestroyOnLoad(this.gameObject);
         }
 
     }
