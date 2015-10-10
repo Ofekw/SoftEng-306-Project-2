@@ -9,12 +9,14 @@ public class Movement : Objective
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
-        initial_x = player.transform.position.x; 
-        yield return new WaitForSeconds(3);
+        initial_x = player.transform.position.x;
+        GameControl.control.playerAgl = 2;
+        yield return new WaitForSeconds(1);
         while (!isCompleted())
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
         }
+        GameControl.control.playerAgl = 0;
     }
 
     public override bool isCompleted()

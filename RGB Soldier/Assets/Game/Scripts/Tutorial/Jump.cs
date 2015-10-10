@@ -3,27 +3,29 @@ using System.Collections;
 
 public class Jump : Objective {
     private GameObject player;
-    private float initial_x;
+    private float required_y = (float)-11.59513;
+    public GameObject jumpButton;
 
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
-        initial_x = player.transform.position.x;
-        yield return new WaitForSeconds(3);
+        GameControl.control.playerAgl = 2;
+        jumpButton.SetActive(true);
         while (!isCompleted())
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
         }
+        jumpButton.SetActive(false);
+        GameControl.control.playerAgl = 0;
     }
 
     public override bool isCompleted()
     {
-        float current_x = player.transform.position.x;
-        return (current_x > initial_x) || (initial_x > current_x);
+        return (player.transform.position.y  == required_y);
     }
 
     public override string getDescription()
     {
-        return "Now, tap the Up Arrow to jump";
+        return "Tap the Up Arrow twice to double jump";
     }
 }
