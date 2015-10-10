@@ -787,6 +787,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11487124, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: meleeAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8eb80fa98d85ce34fae7affcdfb64c6c, type: 3}
+    - target: {fileID: 11487124, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: specialAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d7f1aa9225c1ab4db8ecfbe7021dc1f, type: 3}
+    - target: {fileID: 11487124, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: rangedAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d1ebeb31f0a74a744a27218316562405, type: 3}
+    - target: {fileID: 11487124, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: damageTakenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d7f1aa9225c1ab4db8ecfbe7021dc1f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
   m_IsPrefabParent: 0
@@ -1166,6 +1182,10 @@ MonoBehaviour:
   temporaryInvulnerable: 0
   temporaryInvulnerableTime: 0
   invulnTime: 2
+  meleeAttackSound: {fileID: 0}
+  specialAttackSound: {fileID: 0}
+  rangedAttackSound: {fileID: 0}
+  damageTakenSound: {fileID: 0}
   isJumping: 0
   animator: {fileID: 0}
 --- !u!1001 &1554394214
