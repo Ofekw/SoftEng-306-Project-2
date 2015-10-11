@@ -171,7 +171,7 @@ MonoBehaviour:
   entityMovement: {fileID: 0}
   damageGiven: 1
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
-  experienceGiven: 5
+  experienceGiven: 0
 --- !u!114 &11470268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,6 +252,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: jumpForce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: experienceGiven
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
