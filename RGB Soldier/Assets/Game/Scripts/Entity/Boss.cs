@@ -61,7 +61,7 @@ public class Boss : KillableEntityInterface
         float teleX = xSpawnPoints;
         if (-12 < player.transform.position.x && player.transform.position.x < 12)
         {
-            int random = rand.Next(1, 2);
+            int random = rand.Next(1, 3);
             if (random == 1)
             {
                 teleX *= -1;
@@ -141,8 +141,7 @@ public class Boss : KillableEntityInterface
         if (attackTimer <= 0)
         {
             attackTimer = 5f;
-            int attackNo = rand.Next(1, 4);
-            attackNo = 1;
+            int attackNo = rand.Next(1, 3);
             if (attackNo == 1)
             {
                 teleport();
