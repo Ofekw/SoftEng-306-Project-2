@@ -31,7 +31,6 @@ public class Looper : Objective
 
     public override bool isCompleted()
     {
-        print(player.transform.position.y);
         return (player.transform.position.y >= required_y);
     }
 
