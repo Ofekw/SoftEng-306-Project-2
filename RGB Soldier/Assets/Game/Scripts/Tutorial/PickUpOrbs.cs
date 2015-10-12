@@ -10,7 +10,7 @@ public class PickUpOrbs : Objective {
     {
         player = GameObject.FindWithTag("Player");
         Vector3 position = new Vector3(player.transform.position.x - 6, player.transform.position.y + 1);
-        orb = (GameObject)Instantiate(orbPrefab, position, this.transform.rotation);
+        orb = (GameObject)Instantiate(orbPrefab, position, player.transform.rotation);
         GameControl.control.playerAgl = 1;
         yield return new WaitForSeconds(2);
         while (!isCompleted())
