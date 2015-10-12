@@ -11,7 +11,7 @@ public class BaseEnemy : KillableEntityInterface {
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
-    public int experienceGiven = 5;
+    public int experienceGiven = 0;
     private EnemySpawnController spawnController;
     private bool powerUp = false;
     private EnemyTrailControl trailControl;
