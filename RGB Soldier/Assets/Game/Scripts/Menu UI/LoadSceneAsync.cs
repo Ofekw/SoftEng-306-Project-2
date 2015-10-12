@@ -27,4 +27,8 @@ public class LoadSceneAsync : MonoBehaviour {
             yield return null;
         }
     }
+
+    public void LoadSceneAdditive(string scene_name) {
+        Application.LoadLevelAdditive(scene_name);
+    }
 }
