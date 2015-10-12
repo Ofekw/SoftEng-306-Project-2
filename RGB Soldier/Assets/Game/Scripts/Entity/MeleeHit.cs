@@ -25,10 +25,23 @@ public class MeleeHit : MonoBehaviour {
 
             Instantiate(damageIndicator, transform.position, transform.rotation);
             SpriteRenderer renderer = GameObject.Find("numeric-1").GetComponent<SpriteRenderer>();
-            renderer.sprite = dmg[damageIndicator.gameObject.GetComponent<DamageIndicators>().CalculateMeleedDamageIndicator()];
+            
             //Tell the meleed object that it has taken damage
             //Damage is equal to players strength
-            hit.gameObject.SendMessage("takeDamage", meleeMultiplier*player.GetComponent<Player>().strength);
+            int meleeDmg = meleeMultiplier*player.GetComponent<Player>().strength;
+            hit.gameObject.SendMessage("takeDamage", meleeDmg );
+            if (meleeDmg < dmg.Length-1)
+            {
+                renderer.sprite = dmg[meleeDmg];
+            }
+            else
+            {
+                SpriteRenderer renderer2 = GameObject.Find("numeric-0b").GetComponent<SpriteRenderer>();
+                SpriteRenderer renderer3 = GameObject.Find("numeric-0a").GetComponent<SpriteRenderer>();
+                renderer.sprite = dmg[9];
+                renderer2.sprite = dmg[9];
+                renderer3.sprite = dmg[9];
+            }
         }
     }    
 }
