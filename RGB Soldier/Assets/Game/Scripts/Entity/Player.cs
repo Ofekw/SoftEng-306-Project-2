@@ -261,6 +261,21 @@ public class Player : KillableEntityInterface
         {
             GameManager.instance.orbsCollected++;
         }
+
+        if(coll.transform.tag == "MovingPlatform")
+        {
+            transform.parent = coll.transform;
+        }
     }
+
+    private void onCollisionExit2D(Collision2D coll)
+    {
+        if (coll.transform.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+            Debug.Log("wasssuuppp");
+        }
+    }
+
 
 }
