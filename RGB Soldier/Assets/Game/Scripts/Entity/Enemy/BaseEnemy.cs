@@ -11,10 +11,11 @@ public class BaseEnemy : KillableEntityInterface {
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
-    public int experienceGiven = 0;
+    public int experienceGiven = 5;
     private EnemySpawnController spawnController;
     private bool powerUp = false;
     private EnemyTrailControl trailControl;
+    public float knockBackStrength = 300;
 
 
 
@@ -74,6 +75,8 @@ public class BaseEnemy : KillableEntityInterface {
     public override void takeDamage(int damageReceived)
     {
         //basic decrementing health
+        GameObject player = GameObject.FindWithTag("Player");
+        knockBack(Mathf.Sign(this.transform.position.x - player.transform.position.x));
         currentHealth = currentHealth - damageReceived;
         if(currentHealth <= 0){
             die();
@@ -85,7 +88,8 @@ public class BaseEnemy : KillableEntityInterface {
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
         Destroy(gameObject);
-        spawnController.spawn();
+        spawnController.spawnCount--;
+        spawnController.OnDeathSpawn();
         if (Random.Range(0, 2) == 0)
         {
             Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
@@ -104,6 +108,11 @@ public class BaseEnemy : KillableEntityInterface {
         {
             StartCoroutine(hideTrail());
         }
+    }
+
+    private void knockBack(float dir)
+    {
+        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(knockBackStrength * dir, 0));
     }
 
     IEnumerator hideTrail()
