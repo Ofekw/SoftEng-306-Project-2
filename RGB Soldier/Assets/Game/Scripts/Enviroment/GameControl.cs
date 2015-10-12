@@ -18,8 +18,8 @@ public class GameControl : MonoBehaviour {
     public int currentGameLevel;
     public int abilityPoints;
     public int experienceRequired;
-    public int backgroundVolume;
-    public int soundBitsVolume;
+    public int backgroundVolume = 100;
+    public int soundBitsVolume = 100;
     public int colourMode;
     public PlayerData playerData;
     public GameObject lvlup;

@@ -166,11 +166,10 @@ public class Player : KillableEntityInterface
 
     public void Special()
     {
-        AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
-
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
