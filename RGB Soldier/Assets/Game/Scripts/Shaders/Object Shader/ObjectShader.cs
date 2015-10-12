@@ -18,7 +18,7 @@ public class ObjectShader : MonoBehaviour {
         materials[0] = new Material(rend.sharedMaterial);
         materials[1] = new Material(redGreenShader);
         materials[2] = new Material(blueYellowShader);
-        //ChangeColourBlindMode(GameControl.control.colourMode);
+        ChangeColourBlindMode(GameControl.control.colourMode);
 	}
 	
 	// Update is called once per frame
