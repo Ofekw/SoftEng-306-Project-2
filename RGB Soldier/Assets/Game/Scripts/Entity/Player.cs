@@ -34,6 +34,13 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
+    public SpriteRenderer renderer;
+    public float opacitySwitchTime;
+
+    public AudioClip meleeAttackSound;
+    public AudioClip specialAttackSound;
+    public AudioClip rangedAttackSound;
+    public AudioClip damageTakenSound;
 
     bool moveRight = false;
     bool moveLeft = false;
@@ -46,7 +53,7 @@ public class Player : KillableEntityInterface
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
     void Start()
-    {
+    {   
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         this.entityMovement = GetComponent<EntityMovement>();
         Camera.main.GetComponent<CameraShake>().enabled = false;
@@ -55,6 +62,8 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
+        renderer = this.gameObject.GetComponent<SpriteRenderer>();
+
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
 
@@ -126,9 +135,20 @@ public class Player : KillableEntityInterface
 
         if (temporaryInvulnerable)
         {
+            if (renderer.color.a == 1f && Time.time > opacitySwitchTime)
+            {
+                opacitySwitchTime = Time.time + 0.25f;
+                renderer.color = new Color(1f, 1f, 1f, .5f);
+            }
+            if (renderer.color.a == .5f && Time.time > opacitySwitchTime)
+            {
+                opacitySwitchTime = Time.time + 0.25f;
+                renderer.color = new Color(1f, 1f, 1f, 1f);
+            }
             if (Time.time > temporaryInvulnerableTime + invulnTime)
             {
                 temporaryInvulnerable = false;
+                renderer.color = new Color(1f,1f,1f,1f);
             }
         }
 
@@ -151,6 +171,7 @@ public class Player : KillableEntityInterface
 
     public void Melee()
     {
+        AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position);
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -164,7 +185,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
-
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
@@ -182,6 +203,8 @@ public class Player : KillableEntityInterface
 
     public void Shoot()
     {
+        AudioSource.PlayClipAtPoint(rangedAttackSound, transform.position);
+
         animator.SetTrigger("playerShoot");
         //Shoot to the right
         if (entityMovement.facingRight)
@@ -207,6 +230,8 @@ public class Player : KillableEntityInterface
 
     public override void takeDamage(int damageReceived)
     {
+        AudioSource.PlayClipAtPoint(damageTakenSound, transform.position);
+
         if (!temporaryInvulnerable)
         {
             animator.SetTrigger("playerHit");
@@ -251,6 +276,20 @@ public class Player : KillableEntityInterface
         {
             GameManager.instance.orbsCollected++;
         }
+
+        if(coll.transform.tag == "MovingPlatform")
+        {
+            transform.parent = coll.transform;
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.transform.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+        }
+    }
+
 
 }
