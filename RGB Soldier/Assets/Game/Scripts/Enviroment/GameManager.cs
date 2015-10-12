@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool canSpecialAtk = false;
     public int enemiesOnScreen = 0;
     public int stage;
+    public bool isTutorial;
 
     public int ORB_COUNT_TARGET = 20;
 
@@ -56,12 +57,14 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
-
-        stageImage = GameObject.Find("StageImage");
-        stageText = GameObject.Find("StageText").GetComponent<Text>();
-        stageText.text = "Stage " + currentLevel;
-        stageImage.SetActive(true);
-        Invoke("HideStageImage", 2);
+        if (!isTutorial)
+        {
+            stageImage = GameObject.Find("StageImage");
+            stageText = GameObject.Find("StageText").GetComponent<Text>();
+            stageText.text = "Stage " + currentLevel;
+            stageImage.SetActive(true);
+            Invoke("HideStageImage", 2);
+        }
         orbsCollected = 0;
         specialCharge = 0;
         enemiesOnScreen = 0;

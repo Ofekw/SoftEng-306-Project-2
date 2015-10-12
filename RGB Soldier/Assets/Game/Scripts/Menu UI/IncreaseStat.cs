@@ -106,5 +106,7 @@ public class IncreaseStat : MonoBehaviour {
         GameControl.control.playerVit = 1;
         player.abilityPoints = 5;
         GameControl.control.abilityPoints = 5;
+        GameControl.control.playerLevel = 1;
+        GameControl.control.playerExp = 0;
     }
 }

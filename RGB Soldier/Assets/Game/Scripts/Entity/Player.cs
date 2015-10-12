@@ -34,6 +34,10 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
+    public AudioClip meleeAttackSound;
+    public AudioClip specialAttackSound;
+    public AudioClip rangedAttackSound;
+    public AudioClip damageTakenSound;
 
     bool moveRight = false;
     bool moveLeft = false;
@@ -46,7 +50,7 @@ public class Player : KillableEntityInterface
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
     void Start()
-    {
+    {   
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         this.entityMovement = GetComponent<EntityMovement>();
         Camera.main.GetComponent<CameraShake>().enabled = false;
@@ -151,6 +155,7 @@ public class Player : KillableEntityInterface
 
     public void Melee()
     {
+        AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position);
         animator.SetTrigger("playerMelee");
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -164,7 +169,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
-
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
@@ -182,6 +187,8 @@ public class Player : KillableEntityInterface
 
     public void Shoot()
     {
+        AudioSource.PlayClipAtPoint(rangedAttackSound, transform.position);
+
         animator.SetTrigger("playerShoot");
         //Shoot to the right
         if (entityMovement.facingRight)
@@ -207,6 +214,8 @@ public class Player : KillableEntityInterface
 
     public override void takeDamage(int damageReceived)
     {
+        AudioSource.PlayClipAtPoint(damageTakenSound, transform.position);
+
         if (!temporaryInvulnerable)
         {
             animator.SetTrigger("playerHit");
