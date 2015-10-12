@@ -8,6 +8,7 @@ public class EnemySpawnController : MonoBehaviour
     public EnemySpawner[] spawners;
     private float spawnTimer = 0;
     private int spawnerToCall = 0;
+    public int spawnCount = 0;
 
     // Use this for initialization
     void Start()
@@ -40,5 +41,25 @@ public class EnemySpawnController : MonoBehaviour
         spawnerToCall = spawnerToCall % spawners.Length;
 
         spawners[spawnerToCall].Spawn();
+        spawnCount++;
+    }
+
+    public void OnDeathSpawn()
+    {
+        if (spawnCount < 10)
+        {
+            StartCoroutine(Wait());
+        }
+
+        spawnCount++;
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
+        spawnerToCall++;
+        spawnerToCall = spawnerToCall % spawners.Length;
+        print("ON DEATH SPAWN");
+        spawners[spawnerToCall].OnDeathSpawn();
     }
 }

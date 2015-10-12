@@ -14,4 +14,17 @@ public class EnemySpawner : MonoBehaviour {
             clone.gameObject.GetComponent<EntityMovement>().Flip();
         }
     }
+
+    public void OnDeathSpawn()
+    {
+        if (Random.Range(0, 10) > 5)
+        {
+            GameObject clone = (GameObject)Instantiate(enemySpawned, this.transform.position, this.transform.rotation);
+        }
+        else
+        {
+            GameObject clone = (GameObject)Instantiate(enemySpawned, this.transform.position, this.transform.rotation);
+            clone.gameObject.GetComponent<EntityMovement>().Flip();
+        }
+    }
 }
