@@ -12,10 +12,6 @@ public class UnlockStages : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         int gameLevel = GameControl.control.currentGameLevel +1;
-        //if (gameLevel <= 0)
-        //{
-           // GameControl.control.currentGameLevel = 1;
-        //}
 
         // for all unlocked stages - show level stage number 
         for (int i = 0; i < gameLevel; i++)
