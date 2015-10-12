@@ -15,10 +15,6 @@ public class Zombie : BaseEnemy
     //hook method
     public void aiModifiers()
     {
-        int rand = Random.Range(1, 500); // 1 in 500 chance to randomly change direction
-        if (rand == 10)
-        {
-            entityMovement.Flip();
-        }
+        
     }
 }
