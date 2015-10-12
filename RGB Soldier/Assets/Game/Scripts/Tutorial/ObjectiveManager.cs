@@ -45,6 +45,7 @@ public class ObjectiveManager : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
         stageTextObject.SetActive(false);
+        gameControl.SetActive(true);
     }
 
 }

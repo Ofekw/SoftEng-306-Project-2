@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Special : Objective {
+    public GameObject stageTextObject;
     public GameObject enemyPrefab;
     private GameObject player;
     private GameObject enemy1;
@@ -10,9 +12,13 @@ public class Special : Objective {
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
+        Text stageText = stageTextObject.GetComponent<Text>();
+        stageText.text = "When the middle bar is full, your special is ready";
         GameManager.instance.specialCharge = 1000;
-        Vector3 position1 = new Vector3(player.transform.position.x + 10, player.transform.position.y);
-        Vector3 position2 = new Vector3(player.transform.position.x + 5, player.transform.position.y);
+        yield return new WaitForSeconds(2);
+        stageText.text = getDescription();
+        Vector3 position1 = new Vector3(player.transform.position.x - 10, player.transform.position.y);
+        Vector3 position2 = new Vector3(player.transform.position.x - 5, player.transform.position.y);
         enemy1 = (GameObject)Instantiate(enemyPrefab, position1, this.transform.rotation);
         enemy2 = (GameObject)Instantiate(enemyPrefab, position2, this.transform.rotation);
         yield return new WaitForSeconds(2);

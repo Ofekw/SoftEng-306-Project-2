@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Jump : Objective {
     private GameObject player;
-    private float required_y = (float)-11.59513;
+    private float required_x = (float)-12;
     public GameObject jumpButton;
 
     public override IEnumerator startObjective()
@@ -13,7 +13,7 @@ public class Jump : Objective {
         jumpButton.SetActive(true);
         while (!isCompleted())
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
         }
         jumpButton.SetActive(false);
         GameControl.control.playerAgl = 0;
@@ -21,7 +21,7 @@ public class Jump : Objective {
 
     public override bool isCompleted()
     {
-        return (player.transform.position.y  == required_y);
+        return (player.transform.position.x  > required_x);
     }
 
     public override string getDescription()

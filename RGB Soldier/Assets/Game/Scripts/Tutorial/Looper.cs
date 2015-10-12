@@ -6,7 +6,7 @@ public class Looper : Objective
 {
     public GameObject stageTextObject;
     private GameObject player;
-    private float required_y = (float)-0.8211294;
+    private float required_y = (float)1.6788;
     private string description = "";
 
     public override IEnumerator startObjective()
@@ -22,16 +22,17 @@ public class Looper : Objective
         GameControl.control.playerAgl = 2;
         while (!isCompleted())
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds((float)0.1);
         }
-        stageText.text = "Remember! Enemies get a speed boost when they drop into a gap";
-        yield return new WaitForSeconds(2);
         GameControl.control.playerAgl = 0;
+        stageText.text = "Remember! Enemies get a speed boost when they drop into a gap";
+        yield return new WaitForSeconds(3);
     }
 
     public override bool isCompleted()
     {
-        return (player.transform.position.y == required_y);
+        print(player.transform.position.y);
+        return (player.transform.position.y >= required_y);
     }
 
     public override string getDescription()
