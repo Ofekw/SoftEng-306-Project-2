@@ -7,12 +7,22 @@ using System;
 public class ChangeColourMode : MonoBehaviour {
 
     public ToggleGroup colourModes;
-
+    public bool isEnabled;
 	// Use this for initialization
 	void Start () {
+        // set the colour mode from persisted data
         Toggle[] t = colourModes.GetComponentsInChildren<Toggle>();
         int colourMode =  GameControl.control.colourMode;
         t[colourMode].isOn = true;
+
+        // on pause screen dont allow toggling
+        if (!isEnabled)
+        {
+            foreach (Toggle i in t) {
+                i.enabled = false;
+
+            }
+        }
 	}
 	
 	// Update is called once per frame
@@ -22,10 +32,11 @@ public class ChangeColourMode : MonoBehaviour {
 
     public void colourModeUpdate(bool update)
     {
-        Toggle active = colourModes.ActiveToggles().FirstOrDefault();
+        // toggle group only allows 1 active toggle
+        Toggle activeToggle = colourModes.ActiveToggles().FirstOrDefault();
         Toggle[] t = colourModes.GetComponentsInChildren<Toggle>();
-        int i = Array.IndexOf(t, active);
-        GameControl.control.colourMode = i;
 
+        int i = Array.IndexOf(t, activeToggle);
+        GameControl.control.colourMode = i;
     }
 }

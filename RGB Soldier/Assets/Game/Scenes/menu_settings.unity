@@ -255,7 +255,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BlueOrange
+  m_Text: RedGreen
 --- !u!222 &143549980
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -885,7 +885,7 @@ GameObject:
   - 224: {fileID: 1113320061}
   - 114: {fileID: 1113320062}
   m_Layer: 5
-  m_Name: Other
+  m_Name: BlueYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1111,7 +1111,7 @@ GameObject:
   - 224: {fileID: 1244445004}
   - 114: {fileID: 1244445005}
   m_Layer: 5
-  m_Name: BlueOrange
+  m_Name: RedGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1646,7 +1646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Other
+  m_Text: BlueYellow
 --- !u!222 &1623915252
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2635,3 +2635,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colourModes: {fileID: 2128281943}
+  isEnabled: 1
