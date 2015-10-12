@@ -127,14 +127,18 @@ public class GameControl : MonoBehaviour {
     {
         if (playerExp >= experienceRequired)
         {
-            int experienceCarryOver = playerExp - experienceRequired;
-            playerExp = experienceCarryOver;
-            playerLevel++;
-            abilityPoints++;
-            experienceRequired = experienceRequired * 2;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Instantiate(lvlup, player.transform.position, player.transform.rotation);
         }
+    }
+
+    public void levelAndCarryOver()
+    {
+        int experienceCarryOver = playerExp - experienceRequired;
+        playerExp = experienceCarryOver;
+        playerLevel++;
+        abilityPoints++;
+        experienceRequired = experienceRequired * 2;
     }
 }
 

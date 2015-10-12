@@ -58,7 +58,7 @@ public class UnitTests
         subGameControl.playerLevel = 1;
         subGameControl.playerExp = 100;
         subGameControl.experienceRequired = 40;
-        subGameControl.checkExperience();
+        subGameControl.levelAndCarryOver();
 
         Assert.That(subGameControl.playerExp == 60);
         Assert.That(subGameControl.playerLevel == 2);
