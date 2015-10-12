@@ -268,12 +268,11 @@ public class Player : KillableEntityInterface
         }
     }
 
-    private void onCollisionExit2D(Collision2D coll)
+    private void OnCollisionExit2D(Collision2D coll)
     {
         if (coll.transform.tag == "MovingPlatform")
         {
             transform.parent = null;
-            Debug.Log("wasssuuppp");
         }
     }
 
