@@ -15,7 +15,7 @@ GameObject:
   - 95: {fileID: 9524736}
   m_Layer: 15
   m_Name: notASpiritBomb
-  m_TagString: Projectile
+  m_TagString: UnblockableOrbAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Projectile
+      value: UnblockableOrbAttack
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite

@@ -18,8 +18,19 @@ public class Boss : KillableEntityInterface
     private float xSpawnPoints = 17.5f;
     private float attackTimer = 1f;
     private System.Random rand = new System.Random();
-    GameObject player;
+    private GameObject player;
+    private GameObject healthBar;
+    private Vector3 healthBarScale;
 
+
+    public IEnumerator coroutine;
+
+
+    public Boolean isShrinking;
+    public Boolean isIncreasing;
+
+
+    public GameObject portal;
 
     public override void die()
     {
@@ -30,13 +41,16 @@ public class Boss : KillableEntityInterface
     public override void takeDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
+        print(currentHealth / maxHealth);
+        print(healthBarScale.x);
+        healthBar.transform.localScale = new Vector3((currentHealth*1.0f/maxHealth)*healthBarScale.x, healthBarScale.y, 1);
         if (currentHealth <= 0)
         {
             die();
         }
     }
 
-    private void teleport()
+    public void teleport()
     {
         float yPos = 0;
         if (player.transform.position.y < -5)
@@ -47,7 +61,7 @@ public class Boss : KillableEntityInterface
         float teleX = xSpawnPoints;
         if (-12 < player.transform.position.x && player.transform.position.x < 12)
         {
-            int random = rand.Next(1, 3);
+            int random = rand.Next(1, 2);
             if (random == 1)
             {
                 teleX *= -1;
@@ -68,7 +82,11 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = false;
             animator.SetBool("isMovingLeft", true);
             animator.SetBool("isMovingRight", false);
+            // Instantiate(portal, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            // portal.GetComponent<Portal>().Setup(new Vector2(xSpawnPoints, yPos));
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
+
         } else if (teleX <= 0)
         {
             if (!entityMovement.facingRight)
@@ -79,10 +97,23 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = true;
             animator.SetBool("isMovingRight", true);
             animator.SetBool("isMovingLeft", false);
+            // Instantiate(portal, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            //portal.GetComponent<Portal>().Setup(new Vector2(-xSpawnPoints, yPos));
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
         }
     }
 
+    private void checkForAttack()
+    {
+        //check if any orb attacks are charging when teleport is called. If they are they should be 
+        GameObject orbAttack = GameObject.FindGameObjectWithTag("UnblockableOrbAttack");
+        //check that there is an orbattack and it is scaling, not already launched.
+        if (orbAttack != null && orbAttack.GetComponent<UnblockableOrbAttack>().startScale)
+        {
+            Destroy(orbAttack);
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -94,12 +125,15 @@ public class Boss : KillableEntityInterface
         yProjectileOffset = -0.2f;
         xProjectileOffset = 3f;
         currentHealth = 10;
+        maxHealth = 10;
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        healthBarScale = healthBar.transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     { 
-        if(Math.Abs(player.transform.position.x - this.transform.position.x)< 5)
+        if(Math.Abs(player.transform.position.x - this.transform.position.x)< 10)
         {
             teleport();
         }
@@ -108,6 +142,7 @@ public class Boss : KillableEntityInterface
         {
             attackTimer = 5f;
             int attackNo = rand.Next(1, 4);
+            attackNo = 1;
             if (attackNo == 1)
             {
                 teleport();
