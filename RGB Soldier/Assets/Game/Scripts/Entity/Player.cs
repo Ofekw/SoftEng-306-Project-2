@@ -34,6 +34,9 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
+    public SpriteRenderer renderer;
+    public float opacitySwitchTime;
+
     public AudioClip meleeAttackSound;
     public AudioClip specialAttackSound;
     public AudioClip rangedAttackSound;
@@ -59,6 +62,8 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
+        renderer = this.gameObject.GetComponent<SpriteRenderer>();
+
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
 
@@ -130,9 +135,20 @@ public class Player : KillableEntityInterface
 
         if (temporaryInvulnerable)
         {
+            if (renderer.color.a == 1f && Time.time > opacitySwitchTime)
+            {
+                opacitySwitchTime = Time.time + 0.25f;
+                renderer.color = new Color(1f, 1f, 1f, .5f);
+            }
+            if (renderer.color.a == .5f && Time.time > opacitySwitchTime)
+            {
+                opacitySwitchTime = Time.time + 0.25f;
+                renderer.color = new Color(1f, 1f, 1f, 1f);
+            }
             if (Time.time > temporaryInvulnerableTime + invulnTime)
             {
                 temporaryInvulnerable = false;
+                renderer.color = new Color(1f,1f,1f,1f);
             }
         }
 
@@ -260,6 +276,20 @@ public class Player : KillableEntityInterface
         {
             GameManager.instance.orbsCollected++;
         }
+
+        if(coll.transform.tag == "MovingPlatform")
+        {
+            transform.parent = coll.transform;
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.transform.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+        }
+    }
+
 
 }
