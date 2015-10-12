@@ -26,7 +26,7 @@ public class EnemySpawnController : MonoBehaviour
 			return;
         spawnTimer += Time.deltaTime; // Delta time is the time between frames, we increment this until we hit the spawn time
 
-        if (spawnTimer > spawnPeriod)
+        if (spawnTimer > spawnPeriod || spawnCount == 0)
         {
             spawnTimer = 0f;
 
