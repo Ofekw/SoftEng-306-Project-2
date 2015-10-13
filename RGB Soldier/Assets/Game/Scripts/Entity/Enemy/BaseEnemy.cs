@@ -20,7 +20,7 @@ public float knockBackStrength = 300;
     public AudioSource source;
 	private Vector2 _startVector;
     private AudioClip dieSound;
-
+	private Rigidbody2D _body;
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
@@ -33,8 +33,13 @@ public float knockBackStrength = 300;
 	
 	// Update is called once per frame
 	public virtual void Update () {
-		if (GameManager.instance.isPaused () || GameManager.instance.isBulletTime)
+		if (GameManager.instance.isPaused ())
 			return;
+		if (GameManager.instance.isBulletTime) {
+			_body = gameObject.GetComponent<Rigidbody2D>();
+			_body.velocity = Vector2.zero;
+			return;
+		}
         AIControl();
 
 
@@ -95,12 +100,14 @@ public float knockBackStrength = 300;
         if (spawnController != null)
         {
             spawnController.spawnCount--;
-		spawnController.OnDeathSpawn();
+			spawnController.OnDeathSpawn();
         }
-		if (Random.Range (0, 2) == 0) {
-
+		if (Random.Range (0, 2) == 0)
+		{
 			Instantiate (orb, gameObject.transform.position, gameObject.transform.rotation);
-		} else if (Random.Range(0, 9) == 0) {
+		}
+		else if (Random.Range(0, 1) == 0)
+		{
 			Instantiate (bulletTimeOrb, gameObject.transform.position, gameObject.transform.rotation);
 		}
     }
