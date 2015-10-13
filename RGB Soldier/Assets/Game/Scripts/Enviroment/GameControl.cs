@@ -116,7 +116,7 @@ public class GameControl : MonoBehaviour {
         backgroundVolume = playerData.backgroundVolume;
         soundBitsVolume = playerData.soundBitsVolume;
         colourMode = playerData.colourMode;
-        experienceRequired = playerData.experienceRequired;
+        experienceRequired = (playerData.experienceRequired != 0 ) ? playerData.experienceRequired : 15;
     }
 
     public void giveExperience(int experience)
