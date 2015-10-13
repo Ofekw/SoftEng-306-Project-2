@@ -49,6 +49,9 @@ MonoBehaviour:
   currentGameLevel: 0
   abilityPoints: 0
   experienceRequired: 0
+  backgroundVolume: 100
+  soundBitsVolume: 100
+  colourMode: 0
   playerData:
     playerLevel: 0
     playerExp: 0
@@ -59,7 +62,12 @@ MonoBehaviour:
     playerVit: 0
     currentGameLevel: 0
     abilityPoints: 0
+    backgroundVolume: 0
+    soundBitsVolume: 0
+    colourMode: 0
+    experienceRequired: 0
   lvlup: {fileID: 100006, guid: f79fec9732590e940903525bc1f28365, type: 2}
+  isTutorial: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

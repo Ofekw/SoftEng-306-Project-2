@@ -6,12 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyTrailControl))]
 
 
-public class BaseEnemy : KillableEntityInterface {
+public class BaseEnemy : KillableEntityInterface
+{
 
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
-    public int experienceGiven = 5;
+    public int experienceGiven = 0;
+    public bool isSpecialLevel;
     private EnemySpawnController spawnController;
     private bool powerUp = false;
     private EnemyTrailControl trailControl;
@@ -22,7 +24,8 @@ public float knockBackStrength = 300;
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
     // Use this for initialization
-    public void Start () {
+    public void Start()
+    {
         this.spawnController = FindObjectOfType<EnemySpawnController>();
         this.entityMovement = GetComponent<EntityMovement>();
         this.animator = animator = GetComponent<Animator>();
@@ -36,14 +39,14 @@ public float knockBackStrength = 300;
         AIControl();
 
 
-	}
+    }
 
     public virtual void AIControl()
     {
-         float velocity = 1.0f;
+        float velocity = 1.0f;
 
-         //Moving left so invert velocity
-        if(!entityMovement.facingRight)
+        //Moving left so invert velocity
+        if (!entityMovement.facingRight)
         {
             velocity *= -1;
         }
@@ -52,13 +55,13 @@ public float knockBackStrength = 300;
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
-     {
+    {
         //Hit side wall so reverse direction of movement
-        if(coll.gameObject.CompareTag("SideWall"))
+        if (coll.gameObject.CompareTag("SideWall"))
         {
             entityMovement.Flip();
         }
-     }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -69,7 +72,7 @@ public float knockBackStrength = 300;
             this.animator = animator = GetComponent<Animator>();
             animator.SetTrigger("enemyAttack");
             player.takeDamageKnockBack(damageGiven, Mathf.Sign(player.transform.position.x - this.transform.position.x));
-           
+
         }
     }
 
@@ -79,7 +82,8 @@ public float knockBackStrength = 300;
         GameObject player = GameObject.FindWithTag("Player");
         knockBack(Mathf.Sign(this.transform.position.x - player.transform.position.x));
         currentHealth = currentHealth - damageReceived;
-        if(currentHealth <= 0){
+        if (currentHealth <= 0)
+        {
             die();
         }
     }
@@ -90,16 +94,14 @@ public float knockBackStrength = 300;
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
         Destroy(gameObject);
-        if (spawnController != null)
-        {
-            spawnController.spawnCount--;
-            spawnController.OnDeathSpawn();
-        }
-
-        if (Random.Range(0, 2) == 0)
-        {
-            Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
-        }
+	if (!isSpecialLevel){
+        	spawnController.spawnCount--;
+        	spawnController.OnDeathSpawn();
+        	if (Random.Range(0, 2) == 0)
+        	{
+            	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
+        	} 
+    	}
     }
     public void loopPowerup()
     {
@@ -128,5 +130,5 @@ public float knockBackStrength = 300;
         yield return new WaitForSeconds(0.25f);
         trailControl.trail.enabled = true;
     }
-   
+
 }

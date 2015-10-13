@@ -12,14 +12,13 @@ public class ObjectiveManager : MonoBehaviour
     public GameObject meleeButton;
     public GameObject rangeButton;
     public GameObject jumpButton;
+    public GameObject joyStick;
     private Text stageText;
     //private Objective current;
 
     void Start()
     {
-        gameControl.SetActive(false);
-        GameControl.control.playerInt = 0;
-        GameControl.control.playerAgl = 0;
+        joyStick.SetActive(false);
         meleeButton.SetActive(false);
         rangeButton.SetActive(false);
         jumpButton.SetActive(false);
@@ -45,7 +44,5 @@ public class ObjectiveManager : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
         stageTextObject.SetActive(false);
-        gameControl.SetActive(true);
     }
-
 }

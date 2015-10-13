@@ -4,7 +4,8 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class GameControl : MonoBehaviour {
+public class GameControl : MonoBehaviour
+{
 
     public static GameControl control;
 
@@ -24,11 +25,11 @@ public class GameControl : MonoBehaviour {
     public PlayerData playerData;
     public GameObject lvlup;
 
-
     //Save code on enable and disable if you want auto saving.
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake()
+    {
         if (control == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -38,12 +39,11 @@ public class GameControl : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        
-	}
+
+    }
 
     void Start()
     {
-
     }
 
     void OnEnable()
@@ -54,11 +54,13 @@ public class GameControl : MonoBehaviour {
     void OnApplicationPause(bool pauseState)
     {
         setupSave();
+
     }
 
     void OnDisable()
     {
         setupSave();
+
     }
 
     public void setupSave()
@@ -96,7 +98,7 @@ public class GameControl : MonoBehaviour {
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-            playerData = (PlayerData) bf.Deserialize(file);
+            playerData = (PlayerData)bf.Deserialize(file);
             Load();
             file.Close();
         }
@@ -116,7 +118,7 @@ public class GameControl : MonoBehaviour {
         backgroundVolume = playerData.backgroundVolume;
         soundBitsVolume = playerData.soundBitsVolume;
         colourMode = playerData.colourMode;
-        experienceRequired = (playerData.experienceRequired != 0 ) ? playerData.experienceRequired : 15;
+        experienceRequired = (playerData.experienceRequired != 0) ? playerData.experienceRequired : 15;
     }
 
     public void giveExperience(int experience)
