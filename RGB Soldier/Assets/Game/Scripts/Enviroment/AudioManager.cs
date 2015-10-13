@@ -14,20 +14,23 @@ namespace Assets.Game.Scripts.Enviroment
         private AudioClip iceSong;
         private AudioClip bossSong;
         private AudioClip shrineSong;
+        private AudioClip tutorialSong;
+
 
         void Awake()
         {
             DontDestroyOnLoad(gameObject);
             if (Application.loadedLevelName == "menu_start_screeen")
             {
-                Destroy(gameObject);
+               Destroy(gameObject);
             }
         }
 
         // Use this for initialization
         void Start()
         {
-            //loads in the audio tracks
+            //loads in the audio tracks(
+            tutorialSong = Resources.Load("Audio/tutorial_song") as AudioClip;
             menuSong = Resources.Load("Audio/menu_song") as AudioClip;
             lavaSong = Resources.Load("Audio/lava_song") as AudioClip;
             bossSong = Resources.Load("Audio/boss_battle_loop") as AudioClip;
@@ -40,28 +43,26 @@ namespace Assets.Game.Scripts.Enviroment
         // Update is called once per frame
         void Update()
         {
-
-            //audioSource.volume = AudioSettings.volumne;
-            if (Application.loadedLevelName == "menu_start_screen")
+           audioSource.volume = (float)(GameControl.control.backgroundVolume) / 100;
+            if (Application.loadedLevelName.Contains("menu"))
             {
                 if (audioSource.clip != menuSong)
                 {
                     audioSource.clip = menuSong;
                 }
-                //example of changing the music
-                audioSource.clip = menuSong;
+               //audioClip.clip = menuSong;
+  
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
                 }
             }
-            else if (Application.loadedLevelName == "menu_stage_select")
+            else if (Application.loadedLevelName == "stage_tutorial")
             {
-                if (audioSource.clip != menuSong)
+                if (audioSource.clip != tutorialSong)
                 {
-                    audioSource.clip = menuSong;
+                    audioSource.clip = tutorialSong;
                 }
-                //does not change the music
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
@@ -86,6 +87,29 @@ namespace Assets.Game.Scripts.Enviroment
                     audioSource.clip = iceSong;
                 }
                 //does not change the music
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+            else if (Application.loadedLevelName == "stage_3")
+            {
+                if (audioSource.clip != iceSong)
+                {
+                    audioSource.clip = iceSong;
+                }
+                //does not change the music
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+            else if (Application.loadedLevelName == "stage_4")
+            {
+                if (audioSource.clip != iceSong)
+                {
+                    audioSource.clip = iceSong;
+                }
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
