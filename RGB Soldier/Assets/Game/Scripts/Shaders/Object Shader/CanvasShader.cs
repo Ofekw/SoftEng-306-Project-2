@@ -8,7 +8,6 @@ public class CanvasShader : MonoBehaviour {
     public bool allColours;
     public float lastChange;
 
-
 	void Start () {
         rend = this.gameObject.GetComponent<CanvasRenderer>();
         canvas = this.gameObject.GetComponent<Canvas>();
@@ -32,18 +31,14 @@ public class CanvasShader : MonoBehaviour {
     //2 is Red
     void ChangeColourMode(int mode)
     {
-        CanvasRenderer[] renderers = GetComponentsInChildren<CanvasRenderer>();
-        Debug.Log(renderers.Length);
+        CanvasRenderer[] renderers = GetComponentsInChildren<CanvasRenderer>(true);
         for (int i = 0; i < renderers.Length; i++ )
         {
             if (renderers[i].CompareTag("DontChangeCanvasColour"))
             {
-                Debug.Log("Not rendering " + renderers[i].gameObject.name);
             }
             else
             {
-                Debug.Log("IUYEGWUEJRG " + renderers[i].gameObject.name);
-
                 if (mode == 0)
                 {
                     renderers[i].SetColor(Color.green);
