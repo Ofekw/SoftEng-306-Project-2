@@ -652,6 +652,8 @@ MonoBehaviour:
   rend: {fileID: 0}
   canvas: {fileID: 0}
   current: 0
+  allColours: 0
+  lastChange: 0
 --- !u!1 &211737925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1055,46 @@ Prefab:
     - target: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169500, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 139134, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: DontChangeCanvasColour
+      objectReference: {fileID: 0}
+    - target: {fileID: 179294, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: DontChangeCanvasColour
+      objectReference: {fileID: 0}
+    - target: {fileID: 126314, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: DontChangeCanvasColour
+      objectReference: {fileID: 0}
+    - target: {fileID: 169960, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: DontChangeCanvasColour
+      objectReference: {fileID: 0}
+    - target: {fileID: 190214, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: DontChangeCanvasColour
+      objectReference: {fileID: 0}
+    - target: {fileID: 129704, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: DontChangeCanvasColour
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467536, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 11467536, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
@@ -2733,6 +2775,8 @@ MonoBehaviour:
   rend: {fileID: 0}
   canvas: {fileID: 0}
   current: 0
+  allColours: 0
+  lastChange: 0
 --- !u!1 &1141005018
 GameObject:
   m_ObjectHideFlags: 0
