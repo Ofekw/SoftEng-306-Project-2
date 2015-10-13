@@ -82,7 +82,7 @@ public class GameControl : MonoBehaviour {
         playerData.playerDex = playerDex;
         playerData.playerInt = playerInt;
         playerData.playerVit = playerVit;
-        playerData.experienceRequired = experienceRequired;
+        playerData.experienceRequired = (experienceRequired != 0) ? experienceRequired : 15;
         playerData.currentGameLevel = currentGameLevel;
         playerData.abilityPoints = abilityPoints;
         playerData.backgroundVolume = backgroundVolume;
