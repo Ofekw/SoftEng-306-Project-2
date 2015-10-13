@@ -11,6 +11,7 @@ public class BaseEnemy : KillableEntityInterface {
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
+	public GameObject bulletTimeOrb;
     public int experienceGiven = 0;
     private EnemySpawnController spawnController;
     private bool powerUp = false;
@@ -29,7 +30,7 @@ public class BaseEnemy : KillableEntityInterface {
 	
 	// Update is called once per frame
 	public virtual void Update () {
-		if (GameManager.instance.isPaused ())
+		if (GameManager.instance.isPaused () || GameManager.instance.isBulletTime)
 			return;
         AIControl();
 
@@ -86,10 +87,13 @@ public class BaseEnemy : KillableEntityInterface {
         dead = true;
         Destroy(gameObject);
         spawnController.spawn();
-        if (Random.Range(0, 2) == 0)
-        {
-            Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
-        }
+		if (Random.Range (0, 9) == 0) {
+			Instantiate (bulletTimeOrb, gameObject.transform.position, gameObject.transform.rotation);
+		} else if (Random.Range (0, 2) == 0) {
+			Instantiate (orb, gameObject.transform.position, gameObject.transform.rotation);
+		} else {
+			Instantiate (bulletTimeOrb, gameObject.transform.position, gameObject.transform.rotation);
+		}
     }
     public void loopPowerup()
     {

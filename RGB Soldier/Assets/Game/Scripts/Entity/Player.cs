@@ -265,6 +265,11 @@ public class Player : KillableEntityInterface
         {
             transform.parent = coll.transform;
         }
+
+		if (coll.gameObject.CompareTag ("BulletTime"))
+		{
+			GameManager.instance.activateBulletTime();
+		}
     }
 
     private void OnCollisionExit2D(Collision2D coll)

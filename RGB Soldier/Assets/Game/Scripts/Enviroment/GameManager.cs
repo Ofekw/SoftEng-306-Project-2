@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int enemiesOnScreen = 0;
     public int stage;
     public bool isTutorial;
+	public bool isBulletTime;
 
     public int ORB_COUNT_TARGET = 20;
 
@@ -142,5 +143,20 @@ public class GameManager : MonoBehaviour
 			return true;
 		}
 		return false;
+	}
+
+	public void activateBulletTime() {
+		if (isBulletTime)
+			return;
+		isBulletTime = true;
+		StartCoroutine (StartBulletTime ());
+		print ("Bullet time ON: " + isBulletTime);
+	}
+
+	IEnumerator StartBulletTime() {
+		isBulletTime = true;
+		yield return new WaitForSeconds(5);
+		isBulletTime = false;
+		print ("Bullet time OFF: " + isBulletTime);
 	}
 }

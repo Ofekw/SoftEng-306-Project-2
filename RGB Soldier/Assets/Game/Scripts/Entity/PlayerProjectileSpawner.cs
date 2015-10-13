@@ -26,6 +26,6 @@ public class PlayerProjectileSpawner : ProjectileSpawner
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }
