@@ -8,9 +8,6 @@ public class Boss : KillableEntityInterface
 {
 
     private Animator animator;
-    //bool isJumping = false;
-    //bool moveRight = false;
-    // moveLeft = false;
     public float xProjectileOffset;
     public float yProjectileOffset;
     public EntityMovement entityMovement;
@@ -22,16 +19,6 @@ public class Boss : KillableEntityInterface
     private GameObject healthBar;
     private Vector3 healthBarScale;
 
-
-    public IEnumerator coroutine;
-
-
-    public Boolean isShrinking;
-    public Boolean isIncreasing;
-
-
-    public GameObject portal;
-
     public override void die()
     {
         Destroy(this.gameObject);
@@ -41,8 +28,6 @@ public class Boss : KillableEntityInterface
     public override void takeDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
-        print(currentHealth / maxHealth);
-        print(healthBarScale.x);
         healthBar.transform.localScale = new Vector3((currentHealth*1.0f/maxHealth)*healthBarScale.x, healthBarScale.y, 1);
         if (currentHealth <= 0)
         {
@@ -82,8 +67,6 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = false;
             animator.SetBool("isMovingLeft", true);
             animator.SetBool("isMovingRight", false);
-            // Instantiate(portal, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            // portal.GetComponent<Portal>().Setup(new Vector2(xSpawnPoints, yPos));
             checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
 
@@ -97,8 +80,6 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = true;
             animator.SetBool("isMovingRight", true);
             animator.SetBool("isMovingLeft", false);
-            // Instantiate(portal, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            //portal.GetComponent<Portal>().Setup(new Vector2(-xSpawnPoints, yPos));
             checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
         }
@@ -133,14 +114,10 @@ public class Boss : KillableEntityInterface
     // Update is called once per frame
     void Update()
     { 
-        if(Math.Abs(player.transform.position.x - this.transform.position.x)< 10)
-        {
-            teleport();
-        }
         attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
+        if (attackTimer <= 0 || Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
         {
-            attackTimer = 5f;
+            attackTimer = 4f;
             int attackNo = rand.Next(1, 3);
             if (attackNo == 1)
             {

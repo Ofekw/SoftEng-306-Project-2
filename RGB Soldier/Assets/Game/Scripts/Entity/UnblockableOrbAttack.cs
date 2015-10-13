@@ -22,6 +22,7 @@ public class UnblockableOrbAttack : ProjectileScript
         else if (layerTag == "PlayerProjectile")
         {
             Destroy(hit.gameObject);
+            Instantiate(explosion, hit.gameObject.transform.position, hit.gameObject.transform.rotation);
         }
         else
         {
