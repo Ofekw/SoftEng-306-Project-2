@@ -9,6 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     private float spawnTimer = 0;
     private int spawnerToCall = 0;
     public int spawnCount = 0;
+	private bool _isDisabled = false;
 
     // Use this for initialization
     void Start()
@@ -26,10 +27,13 @@ public class EnemySpawnController : MonoBehaviour
 			return;
 		if (GameManager.instance.isBulletTime) {
 			spawnTimer -= Time.deltaTime; //counteract spawn timer increment
+			_isDisabled = true;
+		} else {
+			_isDisabled = false;
 		}
         spawnTimer += Time.deltaTime; // Delta time is the time between frames, we increment this until we hit the spawn time
 
-        if (spawnTimer > spawnPeriod || spawnCount == 0)
+        if ((spawnTimer > spawnPeriod || spawnCount == 0) && !_isDisabled)
         {
             spawnTimer = 0f;
 
@@ -63,6 +67,7 @@ public class EnemySpawnController : MonoBehaviour
         spawnerToCall++;
         spawnerToCall = spawnerToCall % spawners.Length;
         print("ON DEATH SPAWN");
-        spawners[spawnerToCall].OnDeathSpawn();
+		if (!_isDisabled)
+        	spawners[spawnerToCall].OnDeathSpawn();
     }
 }

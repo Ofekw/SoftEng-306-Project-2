@@ -91,11 +91,9 @@ public class BaseEnemy : KillableEntityInterface {
         Destroy(gameObject);
         spawnController.spawnCount--;
 		spawnController.OnDeathSpawn();
-		if (Random.Range (0, 9) == 0) {
-			Instantiate (bulletTimeOrb, gameObject.transform.position, gameObject.transform.rotation);
-		} else if (Random.Range (0, 2) == 0) {
+		if (Random.Range (0, 2) == 0) {
 			Instantiate (orb, gameObject.transform.position, gameObject.transform.rotation);
-		} else {
+		} else if (Random.Range(0, 9) == 0) {
 			Instantiate (bulletTimeOrb, gameObject.transform.position, gameObject.transform.rotation);
 		}
     }

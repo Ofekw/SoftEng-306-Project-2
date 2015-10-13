@@ -26,6 +26,7 @@ public class ArrowProjectile : ProjectileScript {
 
 	void Update() {
 		if (_first) {
+			//run through this code on first update. Can't use Start() for this as it somehow breaks things
 			_first = false;
 			_arrow = gameObject.GetComponent<Rigidbody2D> ();
 			_direction = _arrow.velocity.x > 0 ? 1 : -1; //1 is right, -1 is left
