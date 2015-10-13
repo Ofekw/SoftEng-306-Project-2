@@ -2,14 +2,11 @@
 using System.Collections;
 
 public class CanvasShader : MonoBehaviour {
-
-    public Material[] materials = new Material[3];
-    public Shader redGreenShader;
-    public Shader blueYellowShader;
-
     public CanvasRenderer rend;
     public Canvas canvas;
     public int current = 0;
+    public bool allColours;
+    public float lastChange;
 
 
 	void Start () {
@@ -17,12 +14,16 @@ public class CanvasShader : MonoBehaviour {
         canvas = this.gameObject.GetComponent<Canvas>();
 
         ChangeColourMode(GameControl.control.currentGameLevel);
+        allColours = GameControl.control.currentGameLevel > 3;
+        lastChange = Time.time;
 	}
 	
 	void Update () {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            ChangeColourMode(Mathf.RoundToInt(Random.value*3));
+            current++;
+            current = current % 3;
+            ChangeColourMode(current);
         }
 	}
 
@@ -32,20 +33,30 @@ public class CanvasShader : MonoBehaviour {
     void ChangeColourMode(int mode)
     {
         CanvasRenderer[] renderers = GetComponentsInChildren<CanvasRenderer>();
+        Debug.Log(renderers.Length);
         for (int i = 0; i < renderers.Length; i++ )
         {
-            if (mode == 0)
+            if (renderers[i].CompareTag("DontChangeCanvasColour"))
             {
-                renderers[i].SetColor(Color.green);
-            } else if (mode == 1)
+                Debug.Log("Not rendering " + renderers[i].gameObject.name);
+            }
+            else
             {
-                renderers[i].SetColor(Color.blue);
-            } else if (mode == 2)
-            {
-                renderers[i].SetColor(Color.red);
-            } 
-        }
+                Debug.Log("IUYEGWUEJRG " + renderers[i].gameObject.name);
 
-    
+                if (mode == 0)
+                {
+                    renderers[i].SetColor(Color.green);
+                }
+                else if (mode == 1)
+                {
+                    renderers[i].SetColor(Color.blue);
+                }
+                else if (mode == 2)
+                {
+                    renderers[i].SetColor(Color.red);
+                }
+            }
+        }
     }
 }

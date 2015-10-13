@@ -98,7 +98,7 @@ GameObject:
   - 114: {fileID: 13623771}
   m_Layer: 5
   m_Name: DexButton
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ GameObject:
   - 114: {fileID: 35226770}
   m_Layer: 5
   m_Name: AglButton
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,7 +479,7 @@ GameObject:
   - 224: {fileID: 158339613}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -649,12 +649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7865ad525bd396e4ea5c5fa6aef478a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  redGreenShader: {fileID: 0}
-  blueYellowShader: {fileID: 0}
   rend: {fileID: 0}
   canvas: {fileID: 0}
   current: 0
@@ -879,7 +873,7 @@ GameObject:
   - 224: {fileID: 354307186}
   m_Layer: 5
   m_Name: Handle Slide Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -914,7 +908,7 @@ GameObject:
   - 114: {fileID: 396350712}
   m_Layer: 5
   m_Name: IntImage
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1089,7 +1083,7 @@ GameObject:
   - 114: {fileID: 473204917}
   m_Layer: 5
   m_Name: VitSlider
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1174,7 +1168,7 @@ GameObject:
   - 114: {fileID: 481994662}
   m_Layer: 5
   m_Name: VitImage
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1240,7 +1234,7 @@ GameObject:
   - 114: {fileID: 490669658}
   m_Layer: 5
   m_Name: StrSlider
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1323,7 +1317,7 @@ GameObject:
   - 224: {fileID: 515220335}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1400,7 +1394,7 @@ GameObject:
   - 114: {fileID: 577437676}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1468,7 +1462,7 @@ GameObject:
   - 114: {fileID: 619713844}
   m_Layer: 5
   m_Name: IntButton
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1586,7 +1580,7 @@ GameObject:
   - 114: {fileID: 684803912}
   m_Layer: 5
   m_Name: DexSlider
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1743,7 +1737,7 @@ GameObject:
   - 114: {fileID: 808826743}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1809,7 +1803,7 @@ GameObject:
   - 114: {fileID: 815772706}
   m_Layer: 5
   m_Name: IntSlider
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1895,7 +1889,7 @@ GameObject:
   - 114: {fileID: 829799741}
   m_Layer: 0
   m_Name: ResetStats
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2098,7 +2092,7 @@ GameObject:
   - 224: {fileID: 834435718}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2134,7 +2128,7 @@ GameObject:
   - 114: {fileID: 860788442}
   m_Layer: 5
   m_Name: StrButton
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2325,7 +2319,7 @@ GameObject:
   - 114: {fileID: 921930479}
   m_Layer: 5
   m_Name: AglImage
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2459,7 +2453,7 @@ GameObject:
   - 114: {fileID: 1051435792}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2736,12 +2730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7865ad525bd396e4ea5c5fa6aef478a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  redGreenShader: {fileID: 0}
-  blueYellowShader: {fileID: 0}
   rend: {fileID: 0}
   canvas: {fileID: 0}
   current: 0
@@ -2829,7 +2817,7 @@ GameObject:
   - 114: {fileID: 1141089345}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2894,7 +2882,7 @@ GameObject:
   - 224: {fileID: 1159527166}
   m_Layer: 5
   m_Name: Handle Slide Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2929,7 +2917,7 @@ GameObject:
   - 114: {fileID: 1171657646}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3117,7 +3105,7 @@ GameObject:
   - 114: {fileID: 1209461744}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3184,7 +3172,7 @@ GameObject:
   - 114: {fileID: 1226262590}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3462,7 +3450,7 @@ GameObject:
   - 224: {fileID: 1384195604}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3497,7 +3485,7 @@ GameObject:
   - 114: {fileID: 1386313602}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3564,7 +3552,7 @@ GameObject:
   - 114: {fileID: 1475120114}
   m_Layer: 5
   m_Name: DexImage
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3752,7 +3740,7 @@ GameObject:
   - 114: {fileID: 1522885378}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3886,7 +3874,7 @@ GameObject:
   - 114: {fileID: 1587453991}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4072,7 +4060,7 @@ GameObject:
   - 224: {fileID: 1627288728}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4298,7 +4286,7 @@ GameObject:
   - 224: {fileID: 1770773729}
   m_Layer: 5
   m_Name: Handle Slide Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4405,7 +4393,7 @@ GameObject:
   - 114: {fileID: 1872302336}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4545,7 +4533,7 @@ GameObject:
   - 114: {fileID: 1938964634}
   m_Layer: 5
   m_Name: VitButton
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4662,7 +4650,7 @@ GameObject:
   - 224: {fileID: 1941413504}
   m_Layer: 5
   m_Name: Handle Slide Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4696,7 +4684,7 @@ GameObject:
   - 114: {fileID: 1952173566}
   m_Layer: 5
   m_Name: AglSlider
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5090,7 +5078,7 @@ GameObject:
   - 114: {fileID: 2127873599}
   m_Layer: 5
   m_Name: StrImage
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5155,7 +5143,7 @@ GameObject:
   - 224: {fileID: 2128806848}
   m_Layer: 5
   m_Name: Handle Slide Area
-  m_TagString: Untagged
+  m_TagString: DontChangeCanvasColour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
