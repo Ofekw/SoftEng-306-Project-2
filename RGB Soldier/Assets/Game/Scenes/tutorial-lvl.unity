@@ -6680,11 +6680,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22498954, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22486510, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11497042, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6749,6 +6749,10 @@ Prefab:
     - target: {fileID: 11416950, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
       propertyPath: ORB_COUNT_TARGET
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416950, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: currentLevel
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
