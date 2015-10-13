@@ -514,6 +514,7 @@ GameObject:
   - 114: {fileID: 175227434}
   - 114: {fileID: 175227433}
   - 114: {fileID: 175227436}
+  - 114: {fileID: 175227437}
   m_Layer: 5
   m_Name: StatCanvas
   m_TagString: Untagged
@@ -637,6 +638,26 @@ MonoBehaviour:
   dexText: {fileID: 1894311342}
   intText: {fileID: 726332795}
   vitText: {fileID: 211737926}
+--- !u!114 &175227437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175227431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7865ad525bd396e4ea5c5fa6aef478a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  redGreenShader: {fileID: 0}
+  blueYellowShader: {fileID: 0}
+  rend: {fileID: 0}
+  canvas: {fileID: 0}
+  current: 0
 --- !u!1 &211737925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,6 +2599,7 @@ GameObject:
   - 114: {fileID: 1137231596}
   - 114: {fileID: 1137231599}
   - 114: {fileID: 1137231600}
+  - 114: {fileID: 1137231601}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2703,6 +2725,26 @@ MonoBehaviour:
   - {fileID: 1361076262}
   - {fileID: 1112558100}
   - {fileID: 1830106800}
+--- !u!114 &1137231601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137231594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7865ad525bd396e4ea5c5fa6aef478a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  redGreenShader: {fileID: 0}
+  blueYellowShader: {fileID: 0}
+  rend: {fileID: 0}
+  canvas: {fileID: 0}
+  current: 0
 --- !u!1 &1141005018
 GameObject:
   m_ObjectHideFlags: 0
