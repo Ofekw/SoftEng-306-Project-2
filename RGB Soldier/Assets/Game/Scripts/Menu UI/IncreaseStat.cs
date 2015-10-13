@@ -35,7 +35,7 @@ public class IncreaseStat : MonoBehaviour {
         setStatText();
     }
 
-    public void update()
+    void Update()
     {
         points = GameControl.control.abilityPoints;
         strSlider.value = GameControl.control.playerStr;
