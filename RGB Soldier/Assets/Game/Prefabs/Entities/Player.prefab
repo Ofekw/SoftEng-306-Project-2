@@ -33,6 +33,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &159692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 465284}
+  - 114: {fileID: 11416782}
+  m_Layer: 9
+  m_Name: ColourBlindController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &160024
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +99,7 @@ Transform:
   - {fileID: 460516}
   - {fileID: 471512}
   - {fileID: 461820}
+  - {fileID: 465284}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &460516
@@ -109,6 +126,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 449540}
   m_RootOrder: 2
+--- !u!4 &465284
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 449540}
+  m_RootOrder: 3
 --- !u!4 &471512
 Transform:
   m_ObjectHideFlags: 1
@@ -214,6 +243,24 @@ MonoBehaviour:
   jumpCount: 0
   lastJumpTime: 0
   grounded: 1
+--- !u!114 &11416782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d3f0e64e72fdb41b4968e27365717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  redGreenShader: {fileID: 4800000, guid: 9e250dde68b4f6d43b7a514e778e17ef, type: 3}
+  blueYellowShader: {fileID: 4800000, guid: 595de75a5898e0c4596c695df0e77226, type: 3}
+  current: 0
 --- !u!114 &11461234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,6 +275,7 @@ MonoBehaviour:
   damage: 0
   projectileSpeed: 0
   angularVelocity: 0
+  direction: 1
   projectile: {fileID: 5033434, guid: 04020f5024006ea44b9094532dde10a0, type: 2}
   attackName: arrowAttack
 --- !u!114 &11468860
@@ -279,6 +327,7 @@ MonoBehaviour:
   lastAttack: 0
   attackDuration: .200000003
   meleeCollider: {fileID: 6171000}
+  knockBackStrength: 500
   strength: 1
   agility: 1
   dexterity: 1
@@ -288,6 +337,12 @@ MonoBehaviour:
   temporaryInvulnerable: 0
   temporaryInvulnerableTime: 0
   invulnTime: 2
+  meleeAttackSound: {fileID: 8300000, guid: 431089af75629444c92e6bb7260b0c4e, type: 3}
+  specialAttackSound: {fileID: 8300000, guid: 796c752560609d44d9504944ba3a995b, type: 3}
+  rangedAttackSound: {fileID: 8300000, guid: d1ebeb31f0a74a744a27218316562405, type: 3}
+  damageTakenSound: {fileID: 8300000, guid: 4d7f1aa9225c1ab4db8ecfbe7021dc1f, type: 3}
+  isJumping: 0
+  animator: {fileID: 0}
 --- !u!212 &21289026
 SpriteRenderer:
   m_ObjectHideFlags: 1
