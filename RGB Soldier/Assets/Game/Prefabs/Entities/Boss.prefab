@@ -184,6 +184,7 @@ MonoBehaviour:
   yProjectileOffset: -.200000003
   entityMovement: {fileID: 11487940}
   projectileSpawner: {fileID: 11448574}
+  shield: {fileID: 140542, guid: cfc7f21df010b3240ab4103fe55d4d88, type: 2}
 --- !u!114 &11448574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,6 +356,10 @@ Prefab:
       propertyPath: portal
       value: 
       objectReference: {fileID: 149630, guid: 90e7fc076f1623c45a7e526e7e68d464, type: 2}
+    - target: {fileID: 0}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 140542, guid: cfc7f21df010b3240ab4103fe55d4d88, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124628}

@@ -19,6 +19,9 @@ public class Boss : KillableEntityInterface
     private GameObject healthBar;
     private Vector3 healthBarScale;
 
+    public GameObject shield;
+    private Boolean isShielded = false;
+
     public override void die()
     {
         Destroy(this.gameObject);
@@ -38,13 +41,14 @@ public class Boss : KillableEntityInterface
     public void teleport()
     {
         float yPos = 0;
+        //if player is on lower half, set y tele pos
         if (player.transform.position.y < -5)
         {
             yPos = -8.5f;
         }
-
+        //find x tele position
         float teleX = xSpawnPoints;
-        if (-12 < player.transform.position.x && player.transform.position.x < 12)
+        if (-8 < player.transform.position.x && player.transform.position.x < 8)
         {
             int random = rand.Next(1, 3);
             if (random == 1)
@@ -55,6 +59,28 @@ public class Boss : KillableEntityInterface
         else if (player.transform.position.x >= 0)
         {
             teleX *= -1;
+        }
+        if (isShielded)
+        {
+            //check if player is sitting above boss
+            float yRelative = transform.position.y - player.transform.position.y;
+            float playerX = player.transform.position.x;
+            float sign = Mathf.Sign(yRelative);
+            //player is above boss so teleport to other side at same level
+            if (sign == -1)
+            {
+                yPos = 0f;
+            }
+            //player is sitting below the boss so teleport to other side at same level
+            else if (sign == 1)
+            {
+                yPos = -8.5f;
+            }
+            //else simply don't move and fire at player for being s
+            else
+            {
+                return;
+            }
         }
 
         if (teleX > 0)
@@ -113,9 +139,27 @@ public class Boss : KillableEntityInterface
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        //check if shield and boss can unshield as player is valid distance away
+        if (isShielded)
+        {
+            if (Math.Abs(player.transform.position.x - this.transform.position.x) > 10)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("BossShield"));
+                isShielded = false;
+            }
+        }
+        //else check if player is close and shield should be generated
+        else
+        {
+            if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
+            {
+                isShielded = true;
+                Instantiate(shield, gameObject.transform.position, gameObject.transform.rotation);
+            }
+        }
         attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0 || Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
+        if (attackTimer <= 0)
         {
             attackTimer = 4f;
             int attackNo = rand.Next(1, 3);
@@ -123,7 +167,8 @@ public class Boss : KillableEntityInterface
             {
                 teleport();
                 spiritBomb();
-            } else
+            }
+            else
             {
                 teleport();
                 blackOrbAttack();
