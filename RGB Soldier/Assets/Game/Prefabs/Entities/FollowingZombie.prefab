@@ -168,7 +168,7 @@ MonoBehaviour:
   facingRight: 1
   jump: 0
   moveForce: 60
-  maxSpeed: 5
+  maxSpeed: 3
   maxMaxSpeed: 20
   jumpClips: []
   jumpForce: 150
@@ -186,14 +186,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3779f3fdba7354148b4c0ff429160719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  currentHealth: 2
+  maxHealth: 10
+  currentHealth: 10
   dead: 0
   entityMovement: {fileID: 11423496}
   damageGiven: 1
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
   bulletTimeOrb: {fileID: 138140, guid: d9451fed90749d64e870579600a2fc61, type: 2}
-  experienceGiven: 5
+  experienceGiven: 10
+  knockBackStrength: 300
 --- !u!114 &11492406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +244,21 @@ Prefab:
       propertyPath: bulletTimeOrb
       value: 
       objectReference: {fileID: 138140, guid: d9451fed90749d64e870579600a2fc61, type: 2}
+      propertyPath: maxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: experienceGiven
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116706}

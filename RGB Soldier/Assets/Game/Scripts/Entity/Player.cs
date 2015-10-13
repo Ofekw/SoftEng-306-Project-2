@@ -34,6 +34,9 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
+    public SpriteRenderer renderer;
+    public float opacitySwitchTime;
+
     public AudioClip meleeAttackSound;
     public AudioClip specialAttackSound;
     public AudioClip rangedAttackSound;
@@ -59,6 +62,8 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
+        renderer = this.gameObject.GetComponent<SpriteRenderer>();
+
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
 
@@ -130,9 +135,27 @@ public class Player : KillableEntityInterface
 
         if (temporaryInvulnerable)
         {
+            Color color = new Color(1f, 1f, 1f, 1f);
+            if (renderer.material.color.a == 1f && Time.time > opacitySwitchTime)
+            {
+                opacitySwitchTime = Time.time + 0.25f;
+                color = renderer.material.color;
+                color.a = .5f;
+                renderer.material.color = color;
+            }
+            if (renderer.material.color.a == .5f && Time.time > opacitySwitchTime)
+            {
+                opacitySwitchTime = Time.time + 0.25f;
+                color = renderer.material.color;
+                color.a = 1f;
+                renderer.material.color = color;
+            }
             if (Time.time > temporaryInvulnerableTime + invulnTime)
             {
                 temporaryInvulnerable = false;
+                color = renderer.material.color;
+                color.a = 1f;
+                renderer.material.color = color;
             }
         }
 

@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour
         // only moves up the current level if its the current 
         if (currentLevel == GameControl.control.currentGameLevel)
         {
-            Debug.Log("HELLO xx" + currentLevel);
             GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
         }
         lsa.ClickAsync(nextScene);
