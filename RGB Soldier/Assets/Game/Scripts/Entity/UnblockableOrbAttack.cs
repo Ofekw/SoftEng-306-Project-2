@@ -15,7 +15,6 @@ public class UnblockableOrbAttack : ProjectileScript
     {
         if (layerTag == "Player")
         {
-            print("Sending damage");
             hit.gameObject.SendMessage("takeDamage", damage);
             Destroy(this.gameObject);
         }
