@@ -35,6 +35,19 @@ public class IncreaseStat : MonoBehaviour {
         setStatText();
     }
 
+    void Update()
+    {
+        points = GameControl.control.abilityPoints;
+        strSlider.value = GameControl.control.playerStr;
+        aglSlider.value = GameControl.control.playerAgl;
+        dexSlider.value = GameControl.control.playerDex;
+        intSlider.value = GameControl.control.playerInt;
+        vitSlider.value = GameControl.control.playerVit;
+
+        pointsText.text = "Points: " + points;
+        setStatText();
+    }
+
     public void clickAdd(Slider statBar) {
         if (statBar.value != 5 && points > 0)
         {
@@ -108,5 +121,6 @@ public class IncreaseStat : MonoBehaviour {
         GameControl.control.abilityPoints = 5;
         GameControl.control.playerLevel = 1;
         GameControl.control.playerExp = 0;
+        GameControl.control.experienceRequired= 15;
     }
 }
