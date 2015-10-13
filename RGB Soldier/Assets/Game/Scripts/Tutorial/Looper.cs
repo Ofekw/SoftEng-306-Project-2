@@ -8,6 +8,7 @@ public class Looper : Objective
     private GameObject player;
     private float required_y = (float)1.6788;
     private string description = "";
+    public GameObject joyStick;
 
     public override IEnumerator startObjective()
     {
@@ -19,19 +20,18 @@ public class Looper : Objective
         }
         Text stageText = stageTextObject.GetComponent<Text>();
         stageText.text = "Drop down the gap to respawn above";
-        GameControl.control.playerAgl = 2;
+        joyStick.SetActive(true);
         while (!isCompleted())
         {
             yield return new WaitForSeconds((float)0.1);
         }
-        GameControl.control.playerAgl = 0;
+        joyStick.SetActive(false);
         stageText.text = "Remember! Enemies get a speed boost when they drop into a gap";
         yield return new WaitForSeconds(3);
     }
 
     public override bool isCompleted()
     {
-        print(player.transform.position.y);
         return (player.transform.position.y >= required_y);
     }
 

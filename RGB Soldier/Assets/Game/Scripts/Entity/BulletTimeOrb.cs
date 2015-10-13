@@ -3,16 +3,17 @@ using UnityEngine;
 // Enforces these modules to be loaded up with this module when placed on a prefab/game object
 [RequireComponent(typeof(EntityMovement))]
 public class BulletTimeOrb : CollectibleEntity {
-	
-	public EntityMovement entityMovement;
-	// Use this for initialization
-	void Start()
-	{
-		this.entityMovement = GetComponent<EntityMovement>();
-	}
-	
+
+    private PowerupSpawnController spawnController;
+
+    void Start()
+    {
+        spawnController = FindObjectOfType<PowerupSpawnController>();
+    }
+
 	public override void entityCollected()
 	{
+        spawnController.enableSpawner();
 		Destroy(gameObject);
 	}
 	
