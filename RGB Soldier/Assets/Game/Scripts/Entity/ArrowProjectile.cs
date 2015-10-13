@@ -7,7 +7,9 @@ public class ArrowProjectile : ProjectileScript {
 
     public GameObject damageIndicator;
     public Sprite[] dmg;
-	private Vector2 origVel;
+	private int _direction;
+	private Rigidbody2D _arrow;
+	private bool _first = true;
 
     protected override void handleCollisonWithLayer(Collision2D hit, string layerTag)
     {
@@ -22,16 +24,16 @@ public class ArrowProjectile : ProjectileScript {
         }
     }
 
-	void Start() {
-		origVel = gameObject.GetComponent<Rigidbody2D> ().velocity;
-	}
-
 	void Update() {
-		Rigidbody2D arrow = gameObject.GetComponent<Rigidbody2D> ();
+		if (_first) {
+			_first = false;
+			_arrow = gameObject.GetComponent<Rigidbody2D> ();
+			_direction = _arrow.velocity.x > 0 ? 1 : -1; //1 is right, -1 is left
+		}
 		if (GameManager.instance.isBulletTime) {
-			arrow.velocity = Vector2.zero;
+			_arrow.velocity = Vector2.zero;
 		} else {
-			arrow.velocity = origVel;
+			_arrow.velocity = new Vector2(20*_direction, 0);
 		}
 	}
 }

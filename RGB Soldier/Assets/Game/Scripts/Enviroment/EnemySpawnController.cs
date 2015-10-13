@@ -22,8 +22,11 @@ public class EnemySpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (GameManager.instance.isPaused () || GameManager.instance.isBulletTime)
+		if (GameManager.instance.isPaused ())
 			return;
+		if (GameManager.instance.isBulletTime) {
+			spawnTimer -= Time.deltaTime; //counteract spawn timer increment
+		}
         spawnTimer += Time.deltaTime; // Delta time is the time between frames, we increment this until we hit the spawn time
 
         if (spawnTimer > spawnPeriod || spawnCount == 0)

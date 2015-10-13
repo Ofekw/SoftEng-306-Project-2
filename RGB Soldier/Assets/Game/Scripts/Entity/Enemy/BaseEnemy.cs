@@ -17,7 +17,7 @@ public class BaseEnemy : KillableEntityInterface {
     private bool powerUp = false;
     private EnemyTrailControl trailControl;
     public float knockBackStrength = 300;
-
+	private Vector2 _startVector;
 
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
@@ -90,8 +90,8 @@ public class BaseEnemy : KillableEntityInterface {
         dead = true;
         Destroy(gameObject);
         spawnController.spawnCount--;
+		spawnController.OnDeathSpawn();
 		if (Random.Range (0, 9) == 0) {
-        spawnController.OnDeathSpawn();
 			Instantiate (bulletTimeOrb, gameObject.transform.position, gameObject.transform.rotation);
 		} else if (Random.Range (0, 2) == 0) {
 			Instantiate (orb, gameObject.transform.position, gameObject.transform.rotation);
