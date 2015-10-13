@@ -222,8 +222,8 @@ public class Player : KillableEntityInterface
 
     public void Shoot()
     {
+        hasRanged = true;
         source.PlayOneShot(rangedAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
-
 
         animator.SetTrigger("playerShoot");
         //Shoot to the right
@@ -240,9 +240,12 @@ public class Player : KillableEntityInterface
     public void jumpPressed()
     {
         source.PlayOneShot(jumpSound, ((float)GameControl.control.soundBitsVolume) / 100);
+        setJumping();
+    }
 
+    public void setJumping()
+    {
         isJumping = true;
-
     }
 
     public void jumpReleased()

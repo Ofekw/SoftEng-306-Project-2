@@ -84,6 +84,7 @@ public float knockBackStrength = 300;
 
     public override void die()
     {
+        GameControl.control.enemyKilledAchievement();
         source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
         dead = true;

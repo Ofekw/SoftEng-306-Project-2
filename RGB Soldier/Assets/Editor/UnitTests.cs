@@ -12,8 +12,7 @@ public class UnitTests
 
         Assert.True(!sub.isJumping);
 
-        sub.jumpPressed();
-
+        sub.setJumping();
 
         Assert.True(sub.isJumping);
     }

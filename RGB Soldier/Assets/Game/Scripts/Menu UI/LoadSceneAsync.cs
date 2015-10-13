@@ -14,7 +14,7 @@ public class LoadSceneAsync : MonoBehaviour {
     {
         if (GameControl.control.currentGameLevel == 0)
         {
-            scene_name = "tutorial-lvl";
+            scene_name = "stage_tutorial";
         }
         loadingImage.SetActive(true);
         StartCoroutine(LoadLevelWithBar(scene_name));
