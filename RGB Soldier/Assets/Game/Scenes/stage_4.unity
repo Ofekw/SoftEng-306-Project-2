@@ -3757,7 +3757,7 @@ Transform:
   m_LocalScale: {x: 1.49999511, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 20
 --- !u!1001 &717877237
 Prefab:
   m_ObjectHideFlags: 0
@@ -6354,7 +6354,7 @@ Transform:
   - {fileID: 1475038885}
   - {fileID: 642238239}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 19
 --- !u!114 &1083589509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7255,7 +7255,7 @@ Transform:
   m_LocalScale: {x: 21.9274006, y: 20.3018246, z: 25.8286743}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 14
 --- !u!1 &1258329175
 GameObject:
   m_ObjectHideFlags: 0
@@ -9202,11 +9202,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22498954, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22486510, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11428830, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
