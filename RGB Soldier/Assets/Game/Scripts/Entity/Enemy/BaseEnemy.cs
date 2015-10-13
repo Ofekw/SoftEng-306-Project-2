@@ -90,8 +90,12 @@ public float knockBackStrength = 300;
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
         Destroy(gameObject);
-        spawnController.spawnCount--;
-        spawnController.OnDeathSpawn();
+        if (spawnController != null)
+        {
+            spawnController.spawnCount--;
+            spawnController.OnDeathSpawn();
+        }
+
         if (Random.Range(0, 2) == 0)
         {
             Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
