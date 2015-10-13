@@ -155,7 +155,6 @@ public class GameManager : MonoBehaviour
                     });
                 }
             }
-            Debug.Log("HELLO xx" + currentLevel);
             GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
         }
         lsa.ClickAsync(nextScene);
