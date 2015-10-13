@@ -297,6 +297,8 @@ public class Player : KillableEntityInterface
             GameManager.instance.orbsCollected++;
         }
 
+        // If a player is in contact with a moving platform, the parent of the player becomes the platform. This is so
+        // that the character moves along with the platform, instead of sliding off.
         if(coll.transform.tag == "MovingPlatform")
         {
             transform.parent = coll.transform;
@@ -305,6 +307,7 @@ public class Player : KillableEntityInterface
 
     private void OnCollisionExit2D(Collision2D coll)
     {
+        // Make the parent no longer the moving platform once the player is not on the platform.
         if (coll.transform.tag == "MovingPlatform")
         {
             transform.parent = null;
