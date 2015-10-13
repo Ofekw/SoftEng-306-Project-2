@@ -15,8 +15,8 @@ public class BaseEnemy : KillableEntityInterface {
     private EnemySpawnController spawnController;
     private bool powerUp = false;
     private EnemyTrailControl trailControl;
-
-
+    private AudioClip dieSound;
+    public AudioSource source;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
 
@@ -25,6 +25,7 @@ public class BaseEnemy : KillableEntityInterface {
         this.spawnController = FindObjectOfType<EnemySpawnController>();
         this.entityMovement = GetComponent<EntityMovement>();
         this.animator = animator = GetComponent<Animator>();
+        dieSound = Resources.Load("Audio/monster_die") as AudioClip;
 	}
 	
 	// Update is called once per frame
@@ -82,6 +83,7 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void die()
     {
+        source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
         Destroy(gameObject);
