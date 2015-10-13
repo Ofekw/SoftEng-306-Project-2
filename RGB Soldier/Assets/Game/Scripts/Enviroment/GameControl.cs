@@ -17,7 +17,7 @@ public class GameControl : MonoBehaviour {
     public int playerVit;
     public int currentGameLevel;
     public int abilityPoints;
-    public int experienceRequired;
+    public int experienceRequired = 15;
     public int backgroundVolume = 100;
     public int soundBitsVolume = 100;
     public int colourMode;
@@ -43,7 +43,7 @@ public class GameControl : MonoBehaviour {
 
     void Start()
     {
-        experienceRequired = 15;
+
     }
 
     void OnEnable()
@@ -82,6 +82,7 @@ public class GameControl : MonoBehaviour {
         playerData.playerDex = playerDex;
         playerData.playerInt = playerInt;
         playerData.playerVit = playerVit;
+        playerData.experienceRequired = experienceRequired;
         playerData.currentGameLevel = currentGameLevel;
         playerData.abilityPoints = abilityPoints;
         playerData.backgroundVolume = backgroundVolume;
@@ -115,6 +116,7 @@ public class GameControl : MonoBehaviour {
         backgroundVolume = playerData.backgroundVolume;
         soundBitsVolume = playerData.soundBitsVolume;
         colourMode = playerData.colourMode;
+        experienceRequired = (playerData.experienceRequired != 0 ) ? playerData.experienceRequired : 15;
     }
 
     public void giveExperience(int experience)
@@ -153,4 +155,5 @@ public class PlayerData
     public int backgroundVolume;
     public int soundBitsVolume;
     public int colourMode;
+    public int experienceRequired;
 }
