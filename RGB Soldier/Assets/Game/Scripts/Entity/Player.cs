@@ -16,6 +16,7 @@ public class Player : KillableEntityInterface
     public float xProjectileOffset = 0f;
     public float yProjectileOffset = 0f;
     public Boolean attacking = false;
+    public Boolean rangedAttack = false;
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public float attackDuration = 0.2f;
@@ -124,6 +125,7 @@ public class Player : KillableEntityInterface
             if ((Time.time - lastAttack) > attackDuration)
             {
                 attacking = false;
+                animator.ResetTrigger("Attack");
                 meleeCollider.enabled = false;
             }
         }
@@ -131,6 +133,17 @@ public class Player : KillableEntityInterface
         {
             meleeCollider.enabled = false;
         }
+
+        if( attacking == true)
+        {
+            if ((Time.time - lastAttack) > attackDuration)
+            {
+                animator.ResetTrigger("Attack");
+                attacking = false;
+            }
+
+        }
+
 
 
         if (temporaryInvulnerable)
@@ -179,7 +192,7 @@ public class Player : KillableEntityInterface
     public void Melee()
     {
         AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position);
-        animator.SetTrigger("playerMelee");
+        animator.SetTrigger("Attack");
         if (Time.time > (lastAttack + attackCooldown))
         {
             attacking = true;
@@ -212,16 +225,17 @@ public class Player : KillableEntityInterface
     {
         AudioSource.PlayClipAtPoint(rangedAttackSound, transform.position);
 
-        animator.SetTrigger("playerShoot");
+        animator.SetTrigger("Attack");
         //Shoot to the right
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y + 1, xProjectileOffset, yProjectileOffset, true);
         }
         else
         {
-		projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
+		projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y + 1, xProjectileOffset, yProjectileOffset, false);
         }
+
     }
 
     public void jumpPressed()
