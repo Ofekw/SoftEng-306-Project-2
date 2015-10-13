@@ -12,6 +12,10 @@ public class LoadSceneAsync : MonoBehaviour {
     // scene_id is given by the build settings on the project
     public void ClickAsync(string scene_name)
     {
+        if (GameControl.control.currentGameLevel == 0)
+        {
+            scene_name = "tutorial-lvl";
+        }
         loadingImage.SetActive(true);
         StartCoroutine(LoadLevelWithBar(scene_name));
     }

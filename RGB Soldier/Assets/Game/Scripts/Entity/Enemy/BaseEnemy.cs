@@ -32,8 +32,6 @@ public class BaseEnemy : KillableEntityInterface {
 		if (GameManager.instance.isPaused ())
 			return;
         AIControl();
-
-
 	}
 
     public virtual void AIControl()
@@ -82,6 +80,7 @@ public class BaseEnemy : KillableEntityInterface {
 
     public override void die()
     {
+        GameControl.control.enemyKilledAchievement();
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
         Destroy(gameObject);
@@ -90,6 +89,8 @@ public class BaseEnemy : KillableEntityInterface {
         {
             Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
         }
+
+
     }
     public void loopPowerup()
     {

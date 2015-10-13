@@ -43,6 +43,8 @@ public class Player : KillableEntityInterface
     bool moveLeft = false;
     public bool isJumping = false;
 
+    public bool hasRanged = false;
+
     Vector3 movement;
 
     public Animator animator;                  //Used to store a reference to the Player's animator component.
@@ -187,6 +189,8 @@ public class Player : KillableEntityInterface
 
     public void Shoot()
     {
+        hasRanged = true;
+
         AudioSource.PlayClipAtPoint(rangedAttackSound, transform.position);
 
         animator.SetTrigger("playerShoot");

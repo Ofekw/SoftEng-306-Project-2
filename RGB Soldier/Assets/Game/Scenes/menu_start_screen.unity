@@ -1016,9 +1016,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065785706}
-        m_MethodName: ClickAsync
-        m_Mode: 3
+      - m_Target: {fileID: 1972077652}
+        m_MethodName: showAchievements
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1258,7 +1258,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1998019345
 GameObject:
   m_ObjectHideFlags: 0

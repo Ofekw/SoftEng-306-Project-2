@@ -3,6 +3,9 @@ using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi.SavedGame;
+using GooglePlayGames.BasicApi;
 
 public class GameControl : MonoBehaviour {
 
@@ -24,6 +27,15 @@ public class GameControl : MonoBehaviour {
     public PlayerData playerData;
     public GameObject lvlup;
 
+    //Play Service fields
+    public DateTime loadedTime;
+    public TimeSpan playingTime;
+
+    public string autoSaveName;
+    public bool save;
+    public byte[] cloudData;
+    public TimeSpan timePlayed;
+
 
     //Save code on enable and disable if you want auto saving.
 
@@ -33,12 +45,18 @@ public class GameControl : MonoBehaviour {
         {
             DontDestroyOnLoad(gameObject);
             control = this;
+            loadedTime = DateTime.Now;
         }
         else if (control != this)
         {
             Destroy(gameObject);
         }
-        
+
+        PlayGamesPlatform.Activate();
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
 	}
 
     void Start()
@@ -64,11 +82,35 @@ public class GameControl : MonoBehaviour {
     public void setupSave()
     {
         BinaryFormatter bf = new BinaryFormatter();
+
+        //Local save.
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+
+        //Cloud save.
+        MemoryStream ms = new MemoryStream();
 
         Save();
 
+
+        //Local save.
         bf.Serialize(file, playerData);
+
+        //Cloud save.
+        //Serialise playerData.
+        bf.Serialize(ms, playerData);
+        byte[] cloudData = ms.ToArray();
+        //Set playerData to cloud data.
+        this.cloudData = cloudData;
+        //Enable saving.
+        this.save = true;
+        //Calculate play time and total playtime.
+        TimeSpan delta = DateTime.Now.Subtract(loadedTime);
+        playingTime += delta;
+        this.timePlayed = playingTime;
+        //Open saved game and do the save operation.
+        this.OpenSavedGame();
+
+        ms.Close();
 
         file.Close();
     }
@@ -94,10 +136,18 @@ public class GameControl : MonoBehaviour {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
+            //Local load.
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+
             playerData = (PlayerData) bf.Deserialize(file);
             Load();
             file.Close();
+
+            //Cloud load.
+            //Set operation to load.
+            this.save = false;
+            //Do load.
+            this.OpenSavedGame();
         }
     }
 
@@ -140,6 +190,131 @@ public class GameControl : MonoBehaviour {
         abilityPoints++;
         experienceRequired = experienceRequired * 2;
     }
+
+    public void enemyKilledAchievement()
+    {
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.IncrementAchievement("CgkIpKjLyoEdEAIQCQ", 1, (bool success) =>
+            {
+            });
+        }
+    }
+
+    //Play Service Methods
+    //Opening a saved game.
+    public void OpenSavedGame()
+    {
+        string fileName = "SavedGame";
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.OpenWithAutomaticConflictResolution(fileName, DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
+    }
+
+    public void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            if (this.save)
+            {
+                SaveGame(game, cloudData, timePlayed);
+            }
+            else
+            {
+                LoadGameData(game);
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+    //Writing a saved game.
+    public void SaveGame(ISavedGameMetadata game, byte[] savedData, TimeSpan totalPlaytime)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+
+        SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+
+        builder = builder.WithUpdatedPlayedTime(totalPlaytime);
+
+        SavedGameMetadataUpdate updatedMetadata = builder.Build();
+        savedGameClient.CommitUpdate(game, updatedMetadata, savedData, OnSavedGameWritten);
+    }
+
+    public void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    //Reading saved game.
+    public void LoadGameData(ISavedGameMetadata game)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.ReadBinaryData(game, OnSavedGameDataRead);
+    }
+
+    public void OnSavedGameDataRead(SavedGameRequestStatus status, byte[] data)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            ms.Write(data, 0, data.Length);
+            ms.Seek(0, SeekOrigin.Begin);
+            playerData = (PlayerData)bf.Deserialize(ms);
+
+            GameControl.control.playerLevel = playerData.playerLevel;
+            GameControl.control.playerExp = playerData.playerExp;
+            GameControl.control.playerStr = playerData.playerStr;
+            GameControl.control.playerAgl = playerData.playerAgl;
+            GameControl.control.playerDex = playerData.playerDex;
+            GameControl.control.playerInt = playerData.playerInt;
+            GameControl.control.playerVit = playerData.playerVit;
+            GameControl.control.currentGameLevel = playerData.currentGameLevel;
+            GameControl.control.abilityPoints = playerData.abilityPoints;
+            GameControl.control.backgroundVolume = playerData.backgroundVolume;
+            GameControl.control.soundBitsVolume = playerData.soundBitsVolume;
+            GameControl.control.colourMode = playerData.colourMode;
+
+            ms.Close();
+        }
+        else
+        {
+
+        }
+    }
+
+    //Display saved games.
+    public void ShowSelectUI()
+    {
+        uint maxNumToDisplay = 5;
+        bool allowCreateNew = false;
+        bool allowDelete = true;
+
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.ShowSelectSavedGameUI("Select Saved Game", maxNumToDisplay, allowCreateNew, allowDelete, OnSavedGameSelected);
+    }
+
+    public void OnSavedGameSelected(SelectUIStatus status, ISavedGameMetadata game)
+    {
+        if (status == SelectUIStatus.SavedGameSelected)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
 }
 
 [Serializable]

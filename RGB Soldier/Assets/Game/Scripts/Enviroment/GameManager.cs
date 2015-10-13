@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using GooglePlayGames;
 
 [RequireComponent(typeof(LoadSceneAsync))]
 public class GameManager : MonoBehaviour
@@ -53,6 +54,15 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         InitGame();
+    }
+
+    void Start()
+    {
+        PlayGamesPlatform.Activate();
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
     }
 
     void InitGame()
@@ -121,9 +131,30 @@ public class GameManager : MonoBehaviour
 
     void levelCleared()
     {
+        Debug.Log(currentLevel);
         // only moves up the current level if its the current 
         if (currentLevel == GameControl.control.currentGameLevel)
         {
+            if (currentLevel == 0)
+            {
+                if (Social.localUser.authenticated)
+                {
+                    Social.ReportProgress("CgkIpKjLyoEdEAIQAg", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+            }
+
+            if (currentLevel == 1)
+            {
+                Debug.Log("LEVEL ONE CLEARED");
+                if (Social.localUser.authenticated)
+                {
+                    Social.ReportProgress("CgkIpKjLyoEdEAIQBA", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+            }
             Debug.Log("HELLO xx" + currentLevel);
             GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
         }
@@ -133,8 +164,6 @@ public class GameManager : MonoBehaviour
     void gameOver()
     {
         Application.LoadLevel("game_over_screen");
-        
-
     }
 
 	public bool isPaused() {
