@@ -102,7 +102,18 @@ public class Player : KillableEntityInterface
         if (hVelocity == 0)
         {
             hVelocity = Input.GetAxis("Horizontal");
+            animator.ResetTrigger("Walk");
+            Debug.Log("Set");
         }
+
+
+        if (hVelocity != 0)
+        {
+            animator.SetTrigger("Walk");
+            Debug.Log("Not");
+        }
+
+
 
         //call the base movement module method to handle movement
         entityMovement.Movement(hVelocity);
