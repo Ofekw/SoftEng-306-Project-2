@@ -855,9 +855,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124446}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .00872616004, y: 0, z: 0, w: -.999961913}
   m_LocalPosition: {x: 4.78999996, y: -.879999995, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: -1}
+  m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 401712}
   - {fileID: 465674}
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   dead: 0
   entityMovement: {fileID: 0}
   damageGiven: 1
-  orb: {fileID: 0}
+  orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
   experienceGiven: 5
   knockBackStrength: 300
 --- !u!114 &11477966

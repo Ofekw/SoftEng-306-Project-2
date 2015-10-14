@@ -62,13 +62,12 @@ public class BaseEnemy : KillableEntityInterface {
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Hit side wall so reverse direction of movement
-        if (other.gameObject.CompareTag("PlayerEnemyCollider"))
+        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead)
         {
             Player player = other.GetComponentInParent<Player>();
             this.animator = animator = GetComponent<Animator>();
             animator.SetTrigger("enemyAttack");
             player.takeDamageKnockBack(damageGiven, Mathf.Sign(player.transform.position.x - this.transform.position.x));
-           
         }
     }
 
@@ -87,7 +86,29 @@ public class BaseEnemy : KillableEntityInterface {
     {
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
+
+        // ignores collision between dead enemy and player
+        Collider2D collider = GetComponent<Collider2D>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Physics2D.IgnoreCollision(collider, player.GetComponent<Collider2D>());
+        entityMovement.moveForce = 0F;
+        damageGiven = 0;
+
+        animator.SetBool("Dead", true);
+
+        // kills the enemy after death animation
+        //TODO: want to add flashing enemy or fade out
+        StartCoroutine(delayDie());
+    }
+
+    IEnumerator delayDie()
+    {
+        // grabs the animation length of the death animation and waits for that many seconds
+        float deathLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(deathLength);
+
         Destroy(gameObject);
+
         spawnController.spawnCount--;
         spawnController.OnDeathSpawn();
         if (Random.Range(0, 2) == 0)
@@ -95,6 +116,7 @@ public class BaseEnemy : KillableEntityInterface {
             Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
         }
     }
+
     public void loopPowerup()
     {
         powerUp = true;
