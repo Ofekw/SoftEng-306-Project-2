@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11426800}
   - 96: {fileID: 9663026}
   - 114: {fileID: 11413208}
+  - 58: {fileID: 5849368}
   m_Layer: 10
   m_Name: Zombie
   m_TagString: Zombie
@@ -61,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.38000011, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: .894623816, y: .894623816, z: .894623816}
   m_Children: []
   m_Father: {fileID: 493408}
@@ -85,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.55983973, y: 3.73061275, z: 0}
+  m_LocalPosition: {x: -5.77909136, y: 4.0590992, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 415352}
@@ -108,6 +109,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5849368
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109272}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .0711814836, y: -.349999994}
+  serializedVersion: 2
+  m_Radius: .899999976
 --- !u!61 &6147168
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -282,8 +296,9 @@ MonoBehaviour:
   entityMovement: {fileID: 0}
   damageGiven: 1
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
-  bulletTimeOrb: {fileID: 138140, guid: d9451fed90749d64e870579600a2fc61, type: 2}
   experienceGiven: 5
+  isSpecialLevel: 0
+  knockBackStrength: 300
   source: {fileID: 8231094}
 --- !u!114 &11483886
 MonoBehaviour:
@@ -398,7 +413,6 @@ Prefab:
       objectReference: {fileID: 100006, guid: da5e4c1631a76d04883aee26aa9b6347, type: 2}
     - target: {fileID: 0}
       propertyPath: bulletTimeOrb
-      propertyPath: source
       value: 
       objectReference: {fileID: 8231094}
     m_RemovedComponents: []
