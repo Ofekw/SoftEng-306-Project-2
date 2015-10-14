@@ -136,23 +136,13 @@ public class Player : KillableEntityInterface
             if ((Time.time - lastAttack) > attackDuration)
             {
                 attacking = false;
-                animator.ResetTrigger("Attack");
+                animator.ResetTrigger("Melee");
                 meleeCollider.enabled = false;
             }
         }
         else
         {
             meleeCollider.enabled = false;
-        }
-
-        if( attacking == true)
-        {
-            if ((Time.time - lastAttack) > attackDuration)
-            {
-                animator.ResetTrigger("Attack");
-                attacking = false;
-            }
-
         }
 
 
