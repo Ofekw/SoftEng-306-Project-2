@@ -21,6 +21,8 @@ public class Boss : KillableEntityInterface
 
     public GameObject shield;
     private Boolean isShielded = false;
+    private GameObject shieldClone;
+    private Boolean canTeleport = true;
 
     public override void die()
     {
@@ -145,33 +147,43 @@ public class Boss : KillableEntityInterface
         {
             if (Math.Abs(player.transform.position.x - this.transform.position.x) > 10)
             {
-                Destroy(GameObject.FindGameObjectWithTag("BossShield"));
-                isShielded = false;
+                shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(0.1f, 0.1f), 4 * Time.deltaTime);
+                if (shieldClone.transform.localScale.x < 0.25)
+                {
+                    Destroy(shieldClone);
+                    isShielded = false;
+                    canTeleport = true;
+                }
+            }
+            else if (shieldClone.transform.localScale.x < 1)
+            {
+                shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.2f, 1.2f), 5 * Time.deltaTime);
             }
         }
         //else check if player is close and shield should be generated
-        else
+        else if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
         {
-            if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
-            {
-                isShielded = true;
-                Instantiate(shield, gameObject.transform.position, gameObject.transform.rotation);
-            }
+            isShielded = true;
+            shieldClone = (GameObject)Instantiate(shield, gameObject.transform.position, gameObject.transform.rotation);
+            canTeleport = false;
         }
         attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
+        if (canTeleport)
         {
-            attackTimer = 4f;
-            int attackNo = rand.Next(1, 3);
-            if (attackNo == 1)
+            if (attackTimer <= 0)
             {
-                teleport();
-                spiritBomb();
-            }
-            else
-            {
-                teleport();
-                blackOrbAttack();
+                attackTimer = 4f;
+                int attackNo = rand.Next(1, 3);
+                if (attackNo == 1)
+                {
+                    teleport();
+                    spiritBomb();
+                }
+                else
+                {
+                    teleport();
+                    blackOrbAttack();
+                }
             }
         }
     }
