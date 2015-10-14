@@ -31,9 +31,6 @@ GameObject:
   - 50: {fileID: 5053144}
   - 61: {fileID: 6133702}
   - 96: {fileID: 9667842}
-  - 114: {fileID: 11489768}
-  - 114: {fileID: 11426194}
-  - 114: {fileID: 11485986}
   m_Layer: 10
   m_Name: RookieGoblin
   m_TagString: Zombie
@@ -569,7 +566,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106066}
   m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: 5.5, y: 1.30999994, z: -.0299999993}
+  m_LocalPosition: {x: -18.1000004, y: 1.30999994, z: -.0299999993}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 416930}
@@ -1095,27 +1092,6 @@ TrailRenderer:
       rgba: 16777215
   m_MinVertexDistance: .100000001
   m_Autodestruct: 0
---- !u!114 &11426194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d3981092f85bb64ea83e57a55687a09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facingRight: 1
-  jump: 0
-  moveForce: 200
-  maxSpeed: 5
-  maxMaxSpeed: 20
-  jumpClips: []
-  jumpForce: 150
-  jumpCount: 0
-  lastJumpTime: 0
-  grounded: 1
 --- !u!114 &11451020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1127,13 +1103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6fe42f7f7c40e4e914a789d66fb423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 2
+  currentHealth: 2
   dead: 0
   entityMovement: {fileID: 0}
   damageGiven: 1
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
-  experienceGiven: 5
+  experienceGiven: 1
   knockBackStrength: 300
 --- !u!114 &11461612
 MonoBehaviour:
@@ -1168,37 +1144,6 @@ MonoBehaviour:
   jumpCount: 0
   lastJumpTime: 0
   grounded: 1
---- !u!114 &11485986
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a6250f7e6ff5c408365371623cb3d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trail: {fileID: 0}
---- !u!114 &11489768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6fe42f7f7c40e4e914a789d66fb423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 3
-  dead: 0
-  entityMovement: {fileID: 0}
-  damageGiven: 1
-  orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
-  experienceGiven: 5
-  knockBackStrength: 300
 --- !u!137 &13752414
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

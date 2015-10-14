@@ -592,7 +592,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128832}
   m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: -2.6500001, y: -.280000001, z: 0}
+  m_LocalPosition: {x: -.920000017, y: 2.83999991, z: -.0599999987}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 482670}
@@ -1089,13 +1089,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6fe42f7f7c40e4e914a789d66fb423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   dead: 0
   entityMovement: {fileID: 0}
   damageGiven: 1
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
-  experienceGiven: 5
+  experienceGiven: 7
   knockBackStrength: 300
 --- !u!114 &11456958
 MonoBehaviour:
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   facingRight: 1
   jump: 0
   moveForce: 200
-  maxSpeed: 5
+  maxSpeed: 7
   maxMaxSpeed: 20
   jumpClips: []
   jumpForce: 150
