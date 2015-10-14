@@ -5,18 +5,19 @@ public class Movement : Objective
 {
     private GameObject player;
     private float initial_x;
+    public GameObject joyStick;
 
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
         initial_x = player.transform.position.x;
-        GameControl.control.playerAgl = 2;
+        joyStick.SetActive(true);
         yield return new WaitForSeconds(1);
         while (!isCompleted())
         {
             yield return new WaitForSeconds(1);
         }
-        GameControl.control.playerAgl = 0;
+        joyStick.SetActive(false);
     }
 
     public override bool isCompleted()

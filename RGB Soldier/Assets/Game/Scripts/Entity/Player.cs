@@ -38,14 +38,16 @@ public class Player : KillableEntityInterface
     public SkinnedMeshRenderer renderer;
     public float opacitySwitchTime;
 
-    public AudioClip meleeAttackSound;
-    public AudioClip specialAttackSound;
-    public AudioClip rangedAttackSound;
-    public AudioClip damageTakenSound;
+    private AudioClip meleeAttackSound;
+    private AudioClip specialAttackSound;
+    private AudioClip rangedAttackSound;
+    private AudioClip damageTakenSound;
+    private AudioClip jumpSound;
 
     bool moveRight = false;
     bool moveLeft = false;
     public bool isJumping = false;
+    public AudioSource source;
 
     Vector3 movement;
 
@@ -64,6 +66,12 @@ public class Player : KillableEntityInterface
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
         renderer = this.gameObject.transform.FindChild("p_sotai").gameObject.GetComponent<SkinnedMeshRenderer>();
+        meleeAttackSound = Resources.Load("Audio/melee_attack") as AudioClip;
+        specialAttackSound = Resources.Load("Audio/special_attack") as AudioClip;
+        rangedAttackSound = Resources.Load("Audio/range_attack") as AudioClip;
+        damageTakenSound= Resources.Load("Audio/player_ugh") as AudioClip;
+        jumpSound = Resources.Load("Audio/player_jump") as AudioClip;
+
 
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
@@ -190,10 +198,12 @@ public class Player : KillableEntityInterface
 
     public void Melee()
     {
-        AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position);
         animator.SetTrigger("Attack");
+
         if (Time.time > (lastAttack + attackCooldown))
         {
+            source.PlayOneShot(meleeAttackSound, ((float)GameControl.control.soundBitsVolume )/100);
+            AudioSource.PlayClipAtPoint(meleeAttackSound, transform.position);
             attacking = true;
             lastAttack = Time.time;
         }
@@ -204,7 +214,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
-            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            source.PlayOneShot(specialAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
             Camera.main.GetComponent<CameraShake>().shake = 2;
@@ -222,7 +232,7 @@ public class Player : KillableEntityInterface
 
     public void Shoot()
     {
-        AudioSource.PlayClipAtPoint(rangedAttackSound, transform.position);
+        source.PlayOneShot(rangedAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
         animator.SetTrigger("Attack");
         //Shoot to the right
@@ -239,7 +249,10 @@ public class Player : KillableEntityInterface
 
     public void jumpPressed()
     {
+        source.PlayOneShot(jumpSound, ((float)GameControl.control.soundBitsVolume) / 100);
+
         isJumping = true;
+
     }
 
     public void jumpReleased()
@@ -301,6 +314,11 @@ public class Player : KillableEntityInterface
         {
             transform.parent = coll.transform;
         }
+
+		if (coll.gameObject.CompareTag ("BulletTime"))
+		{
+			GameManager.instance.activateBulletTime();
+		}
     }
 
     private void OnCollisionExit2D(Collision2D coll)

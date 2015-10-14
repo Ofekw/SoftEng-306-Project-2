@@ -31,6 +31,10 @@ public abstract class ProjectileSpawner : MonoBehaviour {
         clone.angularVelocity = angularVelocity;
     }
 
+	void Update() {
+
+	}
+
     //Method should be overridden in child class to define damage and speed settings for different attacks
     public abstract void setAttackSettings(string attack, float xPos, float yPos);
 }
