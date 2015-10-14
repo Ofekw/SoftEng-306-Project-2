@@ -37,7 +37,6 @@ public class GameControl : MonoBehaviour
     public byte[] cloudData;
     public TimeSpan timePlayed;
 
-
     //Save code on enable and disable if you want auto saving.
 
     // Use this for initialization
@@ -67,7 +66,6 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void OnEnable()
@@ -78,11 +76,13 @@ public class GameControl : MonoBehaviour
     void OnApplicationPause(bool pauseState)
     {
         setupSave();
+
     }
 
     void OnDisable()
     {
         setupSave();
+
     }
 
     public void SaveToCloud()

@@ -282,6 +282,7 @@ MonoBehaviour:
   entityMovement: {fileID: 0}
   damageGiven: 1
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
+  bulletTimeOrb: {fileID: 138140, guid: d9451fed90749d64e870579600a2fc61, type: 2}
   experienceGiven: 5
   source: {fileID: 8231094}
 --- !u!114 &11483886
@@ -396,6 +397,7 @@ Prefab:
       value: 
       objectReference: {fileID: 100006, guid: da5e4c1631a76d04883aee26aa9b6347, type: 2}
     - target: {fileID: 0}
+      propertyPath: bulletTimeOrb
       propertyPath: source
       value: 
       objectReference: {fileID: 8231094}

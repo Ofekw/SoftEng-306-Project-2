@@ -18,12 +18,14 @@ public class GameManager : MonoBehaviour
     public int enemiesOnScreen = 0;
     public int stage;
     public bool isTutorial;
+	public bool isBulletTime;
 
     public int ORB_COUNT_TARGET = 20;
 
     public Text orbCountDisp;
     public Slider chargeBar;
 	public Text healthDisp;
+    public Text powerupCountdown;
     public string nextScene;
     public LoadSceneAsync lsa;
     public int currentLevel;
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private Text stageText;
     private GameObject stageImage;
+
+    private const float POWERUP_TIME = 5f;
 
     private State state;
 
@@ -50,7 +54,7 @@ public class GameManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(gameObject); //this enforces Singleton pattern
+            Destroy(gameObject);  //this enforces Singleton pattern
         }
         DontDestroyOnLoad(gameObject);
         InitGame();
@@ -79,8 +83,9 @@ public class GameManager : MonoBehaviour
         specialCharge = 0;
         enemiesOnScreen = 0;
         orbCountDisp.text = "0 / " + ORB_COUNT_TARGET.ToString();
+        powerupCountdown.text = "";
         canSpecialAtk = false;
-        chargeBar.maxValue = SPECIAL_CHARGE_TARGET; // set max value of attack charge slider
+        chargeBar.maxValue = SPECIAL_CHARGE_TARGET;  // set max value of attack charge slider
 		state = State.Running;
     }
     void Update()
@@ -92,16 +97,19 @@ public class GameManager : MonoBehaviour
         //update health counter
 		healthDisp.text = "x " + player.currentHealth;
 		orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
-        chargeBar.value = specialCharge; // set value of special attack slider
+        chargeBar.value = specialCharge;  // set value of special attack slider
+        //health check
         if (player.currentHealth <= 0)
         {
             gameOver();
         }
+        //orb check
         if (orbsCollected >= ORB_COUNT_TARGET)
         {
             levelCleared();
         }
-        canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false; //set boolean true if player can special attack
+        //special attack check
+        canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false;  //set boolean true if player can special attack
         if (!canSpecialAtk)
         {
             incrementSpecialAtkCounter(player);
@@ -170,5 +178,24 @@ public class GameManager : MonoBehaviour
 			return true;
 		}
 		return false;
+	}
+
+	public void activateBulletTime() {
+		if (isBulletTime)
+			return;
+		isBulletTime = true;
+		StartCoroutine (StartBulletTime ());
+	}
+
+    IEnumerator StartBulletTime() {
+		isBulletTime = true;
+        // go through countdown timer
+        for (int i = (int)POWERUP_TIME; i > 0; i--)
+        {
+            powerupCountdown.text = "" + i;
+            yield return new WaitForSeconds(1f);
+        }
+        powerupCountdown.text = "";  // rest countdown timer text
+		isBulletTime = false;
 	}
 }
