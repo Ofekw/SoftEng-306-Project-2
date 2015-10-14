@@ -76,13 +76,11 @@ public class GameControl : MonoBehaviour
     void OnApplicationPause(bool pauseState)
     {
         setupSave();
-
     }
 
     void OnDisable()
     {
         setupSave();
-
     }
 
     public void SaveToCloud()
@@ -242,6 +240,10 @@ public class GameControl : MonoBehaviour
             Load();
             file.Close();
             
+        }
+        else
+        {
+            experienceRequired = 15;
         }
     }
 
