@@ -96,6 +96,8 @@ public class GameManager : MonoBehaviour
         {
             incrementSpecialAtkCounter(player);
         }
+
+
     }
 
 

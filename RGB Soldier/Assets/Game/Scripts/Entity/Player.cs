@@ -35,7 +35,7 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
-    public SpriteRenderer renderer;
+    public SkinnedMeshRenderer renderer;
     public float opacitySwitchTime;
 
     public AudioClip meleeAttackSound;
@@ -63,7 +63,7 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
-        renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        renderer = this.gameObject.transform.FindChild("p_sotai").gameObject.GetComponent<SkinnedMeshRenderer>();
 
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
@@ -103,14 +103,12 @@ public class Player : KillableEntityInterface
         {
             hVelocity = Input.GetAxis("Horizontal");
             animator.ResetTrigger("Walk");
-            Debug.Log("Set");
         }
 
 
         if (hVelocity != 0)
         {
             animator.SetTrigger("Walk");
-            Debug.Log("Not");
         }
 
 
