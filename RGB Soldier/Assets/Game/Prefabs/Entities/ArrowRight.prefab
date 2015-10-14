@@ -79,6 +79,7 @@ MonoBehaviour:
   collidesWithLayer: 
   collidesWithLayers:
   - Enemies
+  - Boss
   damageIndicator: {fileID: 100006, guid: da5e4c1631a76d04883aee26aa9b6347, type: 2}
   dmg:
   - {fileID: 21300018, guid: bf62d4674c7bcea45965360d7e3d56fa, type: 3}
@@ -130,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collidesWithLayers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
@@ -179,7 +180,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collidesWithLayers.Array.data[1]
-      value: BouncableOrb
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosion
