@@ -54,13 +54,11 @@ public class GameControl : MonoBehaviour
     void OnApplicationPause(bool pauseState)
     {
         setupSave();
-
     }
 
     void OnDisable()
     {
         setupSave();
-
     }
 
     public void setupSave()
@@ -101,6 +99,10 @@ public class GameControl : MonoBehaviour
             playerData = (PlayerData)bf.Deserialize(file);
             Load();
             file.Close();
+        }
+        else
+        {
+            experienceRequired = 15;
         }
     }
 
