@@ -34,10 +34,7 @@ public class CanvasShader : MonoBehaviour {
         CanvasRenderer[] renderers = GetComponentsInChildren<CanvasRenderer>(true);
         for (int i = 0; i < renderers.Length; i++ )
         {
-            if (renderers[i].CompareTag("DontChangeCanvasColour"))
-            {
-            }
-            else
+            if (renderers[i].CompareTag("AllowColourCanvas"))
             {
                 if (mode == 0)
                 {
