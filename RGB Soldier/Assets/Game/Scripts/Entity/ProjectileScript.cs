@@ -21,7 +21,7 @@ public abstract class ProjectileScript : MonoBehaviour
     }
 
     void Update() {
-	    if (GameManager.instance.isPaused ()){
+	    if (GameManager.instance.isPaused () || GameManager.instance.isBulletTime){
 			    return;
         }
         if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
