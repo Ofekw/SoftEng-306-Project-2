@@ -38,15 +38,15 @@ public class CanvasShader : MonoBehaviour {
             {
                 if (mode == 0)
                 {
-                    renderers[i].SetColor(Color.green);
+                    renderers[i].SetColor(new Color(0.4f,1f,0.4f,1.0f));
                 }
                 else if (mode == 1)
                 {
-                    renderers[i].SetColor(Color.blue);
+                    renderers[i].SetColor(new Color(0.0f, 0.9f, 0.9f, 1.0f));
                 }
                 else if (mode == 2)
                 {
-                    renderers[i].SetColor(Color.red);
+                    renderers[i].SetColor(new Color(1f, 0.2f, 0.2f, 1.0f));
                 }
             }
         }
