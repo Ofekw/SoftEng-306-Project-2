@@ -7,7 +7,8 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi.SavedGame;
 using GooglePlayGames.BasicApi;
 
-public class GameControl : MonoBehaviour {
+public class GameControl : MonoBehaviour
+{
 
     public static GameControl control;
 
@@ -32,15 +33,16 @@ public class GameControl : MonoBehaviour {
     public TimeSpan playingTime;
 
     public string autoSaveName;
-    public bool save;
+    public bool doSave;
     public byte[] cloudData;
     public TimeSpan timePlayed;
 
 
     //Save code on enable and disable if you want auto saving.
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake()
+    {
         if (control == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -52,12 +54,16 @@ public class GameControl : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
+
+        PlayGamesPlatform.InitializeInstance(config);
+
         PlayGamesPlatform.Activate();
 
         Social.localUser.Authenticate((bool success) =>
         {
         });
-	}
+    }
 
     void Start()
     {
@@ -79,6 +85,24 @@ public class GameControl : MonoBehaviour {
         setupSave();
     }
 
+    public void SaveToCloud()
+    {
+        doSave = true;
+        CloudSync();
+    }
+
+    public void DoLoadFromCloud()
+    {
+        doSave = false;
+        CloudSync();
+    }
+
+    public void CloudSync()
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.OpenWithAutomaticConflictResolution("SavedGame", DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseLongestPlaytime, OpenCloudSave);
+    }
+
     public void setupSave()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -87,7 +111,7 @@ public class GameControl : MonoBehaviour {
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
 
         //Cloud save.
-        MemoryStream ms = new MemoryStream();
+        //MemoryStream ms = new MemoryStream();
 
         Save();
 
@@ -95,8 +119,10 @@ public class GameControl : MonoBehaviour {
         //Local save.
         bf.Serialize(file, playerData);
 
+        
         //Cloud save.
         //Serialise playerData.
+        /*
         bf.Serialize(ms, playerData);
         byte[] cloudData = ms.ToArray();
         //Set playerData to cloud data.
@@ -111,8 +137,79 @@ public class GameControl : MonoBehaviour {
         this.OpenSavedGame();
 
         ms.Close();
+        */
 
         file.Close();
+        
+    }
+
+    public void OpenCloudSave(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            if (doSave)
+            {
+                CloudSave(status, game);
+            }
+            else
+            {
+                CloudLoad(game);
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+    public void CloudSave(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        Save();
+
+        byte[] data = ToBytes(this.playerData);
+        //Calculate play time and total playtime.
+        TimeSpan delta = DateTime.Now.Subtract(loadedTime);
+        playingTime += delta;
+        this.timePlayed = playingTime;
+
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+        builder = builder.WithUpdatedPlayedTime(this.timePlayed).WithUpdatedDescription("Current Level: " + playerData.currentGameLevel + "Current Player Level: " + playerData.playerLevel);
+
+        SavedGameMetadataUpdate updatedMetadata = builder.Build();
+        savedGameClient.CommitUpdate(game, updatedMetadata, data, OnSaveWritten);
+    }
+
+    public void CloudLoad(ISavedGameMetadata game)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.ReadBinaryData(game, OnCloudLoad);
+    }
+
+    public void OnSaveWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    public void OnCloudLoad(SavedGameRequestStatus status, byte[] data)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            PlayerData thePlayerData = FromBytes(data);
+            this.playerData = thePlayerData;
+            Load();
+            setupSave();
+        }
+        else
+        {
+        }
     }
 
     public void Save()
@@ -136,19 +233,15 @@ public class GameControl : MonoBehaviour {
     {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
+            
             BinaryFormatter bf = new BinaryFormatter();
             //Local load.
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 
-            playerData = (PlayerData) bf.Deserialize(file);
+            playerData = (PlayerData)bf.Deserialize(file);
             Load();
             file.Close();
-
-            //Cloud load.
-            //Set operation to load.
-            this.save = false;
-            //Do load.
-            this.OpenSavedGame();
+            
         }
     }
 
@@ -166,7 +259,7 @@ public class GameControl : MonoBehaviour {
         backgroundVolume = playerData.backgroundVolume;
         soundBitsVolume = playerData.soundBitsVolume;
         colourMode = playerData.colourMode;
-        experienceRequired = (playerData.experienceRequired != 0 ) ? playerData.experienceRequired : 15;
+        experienceRequired = (playerData.experienceRequired != 0) ? playerData.experienceRequired : 15;
     }
 
     public void giveExperience(int experience)
@@ -203,7 +296,38 @@ public class GameControl : MonoBehaviour {
         }
     }
 
+    
+
+    public PlayerData FromBytes(byte[] data)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        MemoryStream ms = new MemoryStream();
+        ms.Write(data, 0, data.Length);
+        ms.Seek(0, SeekOrigin.Begin);
+        playerData = (PlayerData)bf.Deserialize(ms);
+
+        ms.Close();
+
+        return playerData;
+    }
+
+    public byte[] ToBytes(PlayerData thePlayerData)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        MemoryStream ms = new MemoryStream();
+
+        //Serialise playerData.
+        bf.Serialize(ms, thePlayerData);
+        byte[] cloudData = ms.ToArray();
+
+        ms.Close();
+
+        return cloudData;
+    }
+
+
     //Play Service Methods
+    /*
     //Opening a saved game.
     public void OpenSavedGame()
     {
@@ -238,7 +362,7 @@ public class GameControl : MonoBehaviour {
 
         SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
 
-        builder = builder.WithUpdatedPlayedTime(totalPlaytime);
+        builder = builder.WithUpdatedPlayedTime(totalPlaytime).WithUpdatedDescription("Game: str: " + playerData.playerStr + " agl: " + playerData.playerAgl + " cLevel: " + playerData.currentGameLevel + " level: " + playerData.playerLevel);
 
         SavedGameMetadataUpdate updatedMetadata = builder.Build();
         savedGameClient.CommitUpdate(game, updatedMetadata, savedData, OnSavedGameWritten);
@@ -316,6 +440,7 @@ public class GameControl : MonoBehaviour {
 
         }
     }
+     * */
 
 }
 

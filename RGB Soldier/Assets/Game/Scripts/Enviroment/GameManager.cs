@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
 
     void levelCleared()
     {
-        Debug.Log(currentLevel);
+        GameControl.control.SaveToCloud();
         // only moves up the current level if its the current 
         if (currentLevel == GameControl.control.currentGameLevel)
         {
