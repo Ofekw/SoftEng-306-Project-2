@@ -8,9 +8,6 @@ public class Boss : KillableEntityInterface
 {
 
     private Animator animator;
-    //bool isJumping = false;
-    //bool moveRight = false;
-    // moveLeft = false;
     public float xProjectileOffset;
     public float yProjectileOffset;
     public EntityMovement entityMovement;
@@ -18,8 +15,12 @@ public class Boss : KillableEntityInterface
     private float xSpawnPoints = 17.5f;
     private float attackTimer = 1f;
     private System.Random rand = new System.Random();
-    GameObject player;
+    private GameObject player;
+    private GameObject healthBar;
+    private Vector3 healthBarScale;
 
+    public GameObject shield;
+    private Boolean isShielded = false;
 
     public override void die()
     {
@@ -30,22 +31,24 @@ public class Boss : KillableEntityInterface
     public override void takeDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
+        healthBar.transform.localScale = new Vector3((currentHealth*1.0f/maxHealth)*healthBarScale.x, healthBarScale.y, 1);
         if (currentHealth <= 0)
         {
             die();
         }
     }
 
-    private void teleport()
+    public void teleport()
     {
         float yPos = 0;
+        //if player is on lower half, set y tele pos
         if (player.transform.position.y < -5)
         {
             yPos = -8.5f;
         }
-
+        //find x tele position
         float teleX = xSpawnPoints;
-        if (-12 < player.transform.position.x && player.transform.position.x < 12)
+        if (-8 < player.transform.position.x && player.transform.position.x < 8)
         {
             int random = rand.Next(1, 3);
             if (random == 1)
@@ -56,6 +59,28 @@ public class Boss : KillableEntityInterface
         else if (player.transform.position.x >= 0)
         {
             teleX *= -1;
+        }
+        if (isShielded)
+        {
+            //check if player is sitting above boss
+            float yRelative = transform.position.y - player.transform.position.y;
+            float playerX = player.transform.position.x;
+            float sign = Mathf.Sign(yRelative);
+            //player is above boss so teleport to other side at same level
+            if (sign == -1)
+            {
+                yPos = 0f;
+            }
+            //player is sitting below the boss so teleport to other side at same level
+            else if (sign == 1)
+            {
+                yPos = -8.5f;
+            }
+            //else simply don't move and fire at player for being s
+            else
+            {
+                return;
+            }
         }
 
         if (teleX > 0)
@@ -68,7 +93,9 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = false;
             animator.SetBool("isMovingLeft", true);
             animator.SetBool("isMovingRight", false);
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
+
         } else if (teleX <= 0)
         {
             if (!entityMovement.facingRight)
@@ -79,10 +106,21 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = true;
             animator.SetBool("isMovingRight", true);
             animator.SetBool("isMovingLeft", false);
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
         }
     }
 
+    private void checkForAttack()
+    {
+        //check if any orb attacks are charging when teleport is called. If they are they should be 
+        GameObject orbAttack = GameObject.FindGameObjectWithTag("UnblockableOrbAttack");
+        //check that there is an orbattack and it is scaling, not already launched.
+        if (orbAttack != null && orbAttack.GetComponent<UnblockableOrbAttack>().startScale)
+        {
+            Destroy(orbAttack);
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -94,25 +132,43 @@ public class Boss : KillableEntityInterface
         yProjectileOffset = -0.2f;
         xProjectileOffset = 3f;
         currentHealth = 10;
+        maxHealth = 10;
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        healthBarScale = healthBar.transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
-    { 
-        if(Math.Abs(player.transform.position.x - this.transform.position.x)< 5)
+    {
+        //check if shield and boss can unshield as player is valid distance away
+        if (isShielded)
         {
-            teleport();
+            if (Math.Abs(player.transform.position.x - this.transform.position.x) > 10)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("BossShield"));
+                isShielded = false;
+            }
+        }
+        //else check if player is close and shield should be generated
+        else
+        {
+            if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
+            {
+                isShielded = true;
+                Instantiate(shield, gameObject.transform.position, gameObject.transform.rotation);
+            }
         }
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-            attackTimer = 5f;
-            int attackNo = rand.Next(1, 5);
+            attackTimer = 4f;
+            int attackNo = rand.Next(1, 3);
             if (attackNo == 1)
             {
                 teleport();
                 spiritBomb();
-            } else
+            }
+            else
             {
                 teleport();
                 blackOrbAttack();
@@ -136,11 +192,11 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1, xProjectileOffset+2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, false);
         }
     }
 }
