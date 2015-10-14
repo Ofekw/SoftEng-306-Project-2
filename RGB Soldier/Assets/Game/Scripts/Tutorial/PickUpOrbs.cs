@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PickUpOrbs : Objective {
     public GameObject orbPrefab;
     private GameObject player;
     private GameObject orb;
     public GameObject joyStick;
+    public Joystick joyStickScript;
 
     public override IEnumerator startObjective()
     {
@@ -18,7 +20,7 @@ public class PickUpOrbs : Objective {
         {
             yield return new WaitForSeconds(2);
         }
-        joyStick.SetActive(false);
+        joyStickScript.isTutorial = false;
     }
 
     public override bool isCompleted()
