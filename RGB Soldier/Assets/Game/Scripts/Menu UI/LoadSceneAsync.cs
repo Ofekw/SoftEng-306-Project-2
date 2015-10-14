@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class LoadSceneAsync : MonoBehaviour {
 
@@ -18,6 +19,11 @@ public class LoadSceneAsync : MonoBehaviour {
 
     IEnumerator LoadLevelWithBar(string scene_name)
     {
+        if (GameObject.Find("TutorialManager") != null)
+        {
+            Joystick joystick = GameObject.Find("MobileJoystick").GetComponent<Joystick>();
+            joystick.isTutorial = false;
+        }
         async = Application.LoadLevelAsync(scene_name);
         // When scene is done loading in the background 
         while (!async.isDone)

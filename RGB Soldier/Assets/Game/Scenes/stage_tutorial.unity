@@ -382,6 +382,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbPrefab: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
   joyStick: {fileID: 716453280}
+  joyStickScript: {fileID: 366388600}
+--- !u!114 &366388600 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11455010, guid: 3df920d51cedd0e4ba22e66b913fc628,
+    type: 2}
+  m_PrefabInternal: {fileID: 2009934999}
+  m_Script: {fileID: 11500000, guid: 00c3c865782347f41b6358d9fba14b48, type: 3}
 --- !u!1 &459735184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1080,7 @@ MonoBehaviour:
   rangeButton: {fileID: 117350357}
   jumpButton: {fileID: 1249857218}
   joyStick: {fileID: 716453280}
+  joyStickScript: {fileID: 366388600}
 --- !u!4 &1234409176
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,7 +1153,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22422564, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 22422564, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: m_AnchoredPosition.x
