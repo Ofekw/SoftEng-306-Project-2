@@ -14,6 +14,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 			OnlyVertical // Only vertical
 		}
 
+        public bool isTutorial;
 		public int MovementRange = 100;
 		public AxisOption axesToUse = AxisOption.Both; // The options for the axes that the still will use
 		public string horizontalAxisName = "Horizontal"; // The name given to the horizontal axis for the cross platform input
@@ -102,15 +103,22 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 		void OnDisable()
 		{
-			// remove the joysticks from the cross platform input
-			if (m_UseX)
-			{
-				m_HorizontalVirtualAxis.Remove();
-			}
-			if (m_UseY)
-			{
-				m_VerticalVirtualAxis.Remove();
-			}
+            if (!isTutorial)
+            {
+                // remove the joysticks from the cross platform input
+                if (m_UseX)
+                {
+                    m_HorizontalVirtualAxis.Remove();
+                }
+                if (m_UseY)
+                {
+                    m_VerticalVirtualAxis.Remove();
+                }
+            }
+            else
+            {
+                OnPointerUp(null);
+            }
 		} 
 	}
 }

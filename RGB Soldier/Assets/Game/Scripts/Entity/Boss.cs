@@ -27,7 +27,7 @@ public class Boss : KillableEntityInterface
     public override void die()
     {
         Destroy(this.gameObject);
-        Application.LoadLevel("start_screen");
+        Application.LoadLevel("menu_start_screen");
     }
 
     public override void takeDamage(int damageReceived)
