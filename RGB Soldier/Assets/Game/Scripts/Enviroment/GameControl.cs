@@ -274,6 +274,7 @@ public class GameControl : MonoBehaviour
     {
         if (playerExp >= experienceRequired)
         {
+            levelAndCarryOver();
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Instantiate(lvlup, player.transform.position, player.transform.rotation);
         }
