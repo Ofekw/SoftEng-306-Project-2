@@ -1,0 +1,859 @@
+fileFormatVersion: 2
+guid: d1fa9aa874a079e438ada3fe63893472
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: all_scale
+    100002: atama
+    100004: kokansetsu1
+    100006: kokansetsu2
+    100008: koshi
+    100010: kubi
+    100012: l_ashi1
+    100014: l_ashi2
+    100016: l_ashi3
+    100018: l_buki_0
+    100020: l_buki_1
+    100022: l_ude1
+    100024: l_ude2
+    100026: l_ude3
+    100028: manto1
+    100030: manto2
+    100032: manto3
+    100034: p_sotai
+    100036: r_ashi1
+    100038: r_ashi2
+    100040: r_ashi3
+    100042: r_buki_0
+    100044: r_buki_1
+    100046: R_kata
+    100048: R_koshi
+    100050: R_l_buki
+    100052: R_l_kata
+    100054: R_l_kokansetsu
+    100056: R_manto
+    100058: R_r_buki
+    100060: R_r_kata
+    100062: R_r_kokansetsu
+    100064: r_ude1
+    100066: r_ude2
+    100068: r_ude3
+    100070: se
+    100072: sotai
+    100074: //RootNode
+    400000: all_scale
+    400002: atama
+    400004: kokansetsu1
+    400006: kokansetsu2
+    400008: koshi
+    400010: kubi
+    400012: l_ashi1
+    400014: l_ashi2
+    400016: l_ashi3
+    400018: l_buki_0
+    400020: l_buki_1
+    400022: l_ude1
+    400024: l_ude2
+    400026: l_ude3
+    400028: manto1
+    400030: manto2
+    400032: manto3
+    400034: p_sotai
+    400036: r_ashi1
+    400038: r_ashi2
+    400040: r_ashi3
+    400042: r_buki_0
+    400044: r_buki_1
+    400046: R_kata
+    400048: R_koshi
+    400050: R_l_buki
+    400052: R_l_kata
+    400054: R_l_kokansetsu
+    400056: R_manto
+    400058: R_r_buki
+    400060: R_r_kata
+    400062: R_r_kokansetsu
+    400064: r_ude1
+    400066: r_ude2
+    400068: r_ude3
+    400070: se
+    400072: sotai
+    400074: //RootNode
+    4300000: p_sotai
+    7400000: Idle
+    7400002: Walk
+    7400004: Run
+    7400006: Attack01
+    7400008: Attack02
+    7400010: Skill
+    7400012: Dead
+    9500000: //RootNode
+    13700000: p_sotai
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/sotai
+        weight: 1
+      - path: all_scale/sotai/R_koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2/l_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2/r_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi/atama
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0/l_buki_1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2/manto3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0/r_buki_1
+        weight: 1
+      - path: p_sotai
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 43
+      lastFrame: 82
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/sotai
+        weight: 1
+      - path: all_scale/sotai/R_koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2/l_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2/r_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi/atama
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0/l_buki_1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2/manto3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0/r_buki_1
+        weight: 1
+      - path: p_sotai
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 85
+      lastFrame: 114
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/sotai
+        weight: 1
+      - path: all_scale/sotai/R_koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2/l_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2/r_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi/atama
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0/l_buki_1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2/manto3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0/r_buki_1
+        weight: 1
+      - path: p_sotai
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack01
+      takeName: Take 001
+      firstFrame: 117
+      lastFrame: 142
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/sotai
+        weight: 1
+      - path: all_scale/sotai/R_koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2/l_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2/r_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi/atama
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0/l_buki_1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2/manto3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0/r_buki_1
+        weight: 1
+      - path: p_sotai
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack02
+      takeName: Take 001
+      firstFrame: 145
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/sotai
+        weight: 1
+      - path: all_scale/sotai/R_koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2/l_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2/r_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi/atama
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0/l_buki_1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2/manto3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0/r_buki_1
+        weight: 1
+      - path: p_sotai
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Skill
+      takeName: Take 001
+      firstFrame: 173
+      lastFrame: 207
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/sotai
+        weight: 1
+      - path: all_scale/sotai/R_koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2/l_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2/r_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi/atama
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0/l_buki_1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2/manto3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0/r_buki_1
+        weight: 1
+      - path: p_sotai
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Dead
+      takeName: Take 001
+      firstFrame: 210
+      lastFrame: 265
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/sotai
+        weight: 1
+      - path: all_scale/sotai/R_koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_l_kokansetsu/l_ashi1/l_ashi2/l_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/kokansetsu1/kokansetsu2/R_r_kokansetsu/r_ashi1/r_ashi2/r_ashi3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_kata/kubi/atama
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_l_kata/l_ude1/l_ude2/l_ude3/R_l_buki/l_buki_0/l_buki_1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_manto/manto1/manto2/manto3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0
+        weight: 1
+      - path: all_scale/sotai/R_koshi/koshi/se/R_r_kata/r_ude1/r_ude2/r_ude3/R_r_buki/r_buki_0/r_buki_1
+        weight: 1
+      - path: p_sotai
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
