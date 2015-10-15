@@ -173,12 +173,22 @@ public class Player : KillableEntityInterface
 
     public void UpdateStats()
     {
+		PowerupController control = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
         this.maxHealth = vitality;
         entityMovement.maxSpeed = agility * 5.0f;
         //Strength and dexterity are called during damage calculations
-        strength = GameControl.control.playerStr;
-        agility = GameControl.control.playerAgl;
-        dexterity = GameControl.control.playerDex;
+		if (control.isAttackBoost()) {
+			strength = GameControl.control.playerStr + 1;
+			dexterity = GameControl.control.playerDex + 1;
+		} else {
+			strength = GameControl.control.playerStr;
+			dexterity = GameControl.control.playerDex;
+		}
+		if (control.isAgilityBoost()) {
+			agility = GameControl.control.playerAgl + 1;
+		} else {
+			agility = GameControl.control.playerAgl;
+		}
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
@@ -305,6 +315,14 @@ public class Player : KillableEntityInterface
 		if (coll.gameObject.CompareTag ("BulletTime"))
 		{
 			GameManager.instance.activateBulletTime();
+		}
+
+		if (coll.gameObject.CompareTag ("Powerup")) 
+		{
+			Powerup powerup = coll.gameObject.GetComponent<Powerup>();
+			PowerupController control = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
+			control.activatePowerup(powerup);
+
 		}
     }
 
