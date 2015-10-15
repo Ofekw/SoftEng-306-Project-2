@@ -23,7 +23,7 @@ public class FollowingEnemy : BaseEnemy
         // OR player is directly below the enemy - due to platform creation decides a random way
         if (((playerPosition.y > enemyPosition.y) && (playerPosition.y - enemyPosition.y) > 5) ||
             ((playerPosition.y < enemyPosition.y) && (enemyPosition.y - playerPosition.y) > 5) &&
-            (Mathf.Abs(Mathf.Abs(playerPosition.x) - Mathf.Abs(enemyPosition.x)) < 10))
+            (Mathf.Abs(Mathf.Abs(playerPosition.x) - Mathf.Abs(enemyPosition.x)) < 15))
         {
             // does normal behaviour
             base.AIControl();

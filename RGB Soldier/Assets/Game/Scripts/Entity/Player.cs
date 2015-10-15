@@ -48,7 +48,6 @@ public class Player : KillableEntityInterface
     bool moveLeft = false;
     public bool isJumping = false;
     public AudioSource source;
-
     public bool hasRanged = false;
 
     Vector3 movement;
@@ -216,6 +215,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
+            Vibration.Vibrate(3000);
             source.PlayOneShot(specialAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
@@ -255,7 +255,6 @@ public class Player : KillableEntityInterface
         source.PlayOneShot(jumpSound, ((float)GameControl.control.soundBitsVolume) / 100);
         setJumping();
     }
-
     public void setJumping()
     {
         isJumping = true;
@@ -273,6 +272,7 @@ public class Player : KillableEntityInterface
 
         if (!temporaryInvulnerable)
         {
+            Vibration.Vibrate(100);
             animator.SetTrigger("playerHit");
             calculateDamage(damageReceived);
         }
@@ -284,7 +284,7 @@ public class Player : KillableEntityInterface
 
     public void calculateDamage(int damageReceived)
     {
-        currentHealth-=damageReceived;
+        currentHealth -= damageReceived;
         temporaryInvulnerable = true;
         temporaryInvulnerableTime = Time.time;
         print("You lost a life");
