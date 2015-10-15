@@ -155,7 +155,6 @@ public class GameManager : MonoBehaviour
 
             if (currentLevel == 1)
             {
-                Debug.Log("LEVEL ONE CLEARED");
                 if (Social.localUser.authenticated)
                 {
                     Social.ReportProgress("CgkIpKjLyoEdEAIQBA", 100.0f, (bool success) =>

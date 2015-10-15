@@ -85,8 +85,11 @@ public class GameControl : MonoBehaviour
 
     public void SaveToCloud()
     {
-        doSave = true;
-        CloudSync();
+        if (Social.localUser.authenticated)
+        {
+            doSave = true;
+            CloudSync();
+        }
     }
 
     public void DoLoadFromCloud()
