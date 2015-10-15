@@ -41,6 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPeriod: 30
   spawners: []
+  focus: {fileID: 100006, guid: 9ad605547dad41349b8abbe117afa092, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -52,6 +53,10 @@ Prefab:
       propertyPath: spawnPeriod
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 100006, guid: 9ad605547dad41349b8abbe117afa092, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 119266}
