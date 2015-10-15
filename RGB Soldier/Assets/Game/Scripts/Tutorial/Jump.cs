@@ -5,18 +5,19 @@ public class Jump : Objective {
     private GameObject player;
     private float required_x = (float)-12;
     public GameObject jumpButton;
+    public GameObject joyStick;
 
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
-        GameControl.control.playerAgl = 2;
+        joyStick.SetActive(true);
         jumpButton.SetActive(true);
         while (!isCompleted())
         {
             yield return new WaitForSeconds(1);
         }
         jumpButton.SetActive(false);
-        GameControl.control.playerAgl = 0;
+        joyStick.SetActive(false);
     }
 
     public override bool isCompleted()

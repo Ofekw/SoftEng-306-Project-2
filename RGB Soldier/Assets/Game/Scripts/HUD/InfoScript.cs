@@ -11,22 +11,12 @@ public class InfoScript : MonoBehaviour {
     {
         showInfo = false;
         infoScreen.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Time.timeScale = showInfo ? 0 : 1;
-        GameManager.State gameState = showInfo ? GameManager.State.Paused : GameManager.State.Running;
-        GameManager.instance.SetState(gameState);
-
+        statPanel.SetActive(true);
     }
 
     public void ToggleInfo()
     {
         showInfo = !showInfo;
-        GameManager.State gameState = showInfo ? GameManager.State.Paused : GameManager.State.Running;
-        GameManager.instance.SetState(gameState);
         if (showInfo)
         {
             onInfo();
