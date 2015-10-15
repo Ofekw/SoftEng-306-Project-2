@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: redOrbAttack_1
+  m_Name: unblockableChargeAttack
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isCharging
@@ -69,7 +69,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a82cfeb4095a3284b822b450217cbeee, type: 2}
+  m_Motion: {fileID: 7400000, guid: eab1f16ff0ea86d438263cd47790c0aa, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -93,7 +93,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 975ffa8e51663da469e114f9c5bb8b09, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1b19a25ece0228e4188d1d945bbb4da3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
