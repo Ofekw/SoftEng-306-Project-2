@@ -268,7 +268,7 @@ MonoBehaviour:
   currentHealth: 2
   dead: 0
   entityMovement: {fileID: 0}
-  damageGiven: 1
+  damageGiven: 0
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
   experienceGiven: 0
   isSpecialLevel: 1
@@ -368,6 +368,10 @@ Prefab:
       propertyPath: source
       value: 
       objectReference: {fileID: 8259272}
+    - target: {fileID: 0}
+      propertyPath: damageGiven
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 189824}
