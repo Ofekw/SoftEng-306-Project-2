@@ -12,8 +12,7 @@ public class PickUpOrbs : Objective {
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
-        Vector3 position = new Vector3(player.transform.position.x - 6, player.transform.position.y + 1);
-        orb = (GameObject)Instantiate(orbPrefab, position, player.transform.rotation);
+        orb = (GameObject)Instantiate(orbPrefab, new Vector3(player.transform.position.x - 6, player.transform.position.y + 1), player.transform.rotation);
         joyStick.SetActive(true);
         yield return new WaitForSeconds(2);
         while (!isCompleted())
