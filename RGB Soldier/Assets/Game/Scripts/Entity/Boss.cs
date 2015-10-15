@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using GooglePlayGames;
 
 [RequireComponent(typeof(EntityMovement))]
 
@@ -26,6 +27,24 @@ public class Boss : KillableEntityInterface
 
     public override void die()
     {
+        if (Social.localUser.authenticated)
+        {
+            Social.ReportProgress("CgkIpKjLyoEdEAIQBQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+        Player checkPlayer = player.GetComponent<Player>();
+        if (checkPlayer.hasRanged == false)
+        {
+            if (Social.localUser.authenticated)
+            {
+                Social.ReportProgress("CgkIpKjLyoEdEAIQBg", 100.0f, (bool success) =>
+                {
+                });
+            }
+        }
+
         Destroy(this.gameObject);
         Application.LoadLevel("menu_start_screen");
     }
@@ -137,6 +156,11 @@ public class Boss : KillableEntityInterface
         maxHealth = 10;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScale = healthBar.transform.localScale;
+
+        PlayGamesPlatform.Activate();
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
     }
 
     // Update is called once per frame
