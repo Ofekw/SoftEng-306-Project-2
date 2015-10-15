@@ -211,7 +211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &6805728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,6 +1209,10 @@ Prefab:
       propertyPath: damageTakenSound
       value: 
       objectReference: {fileID: 8300000, guid: 4d7f1aa9225c1ab4db8ecfbe7021dc1f, type: 3}
+    - target: {fileID: 11487124, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
+      propertyPath: agility
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c269a6783e877e640ac709cdb86097b4, type: 2}
   m_IsPrefabParent: 0
@@ -3927,6 +3931,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466566, guid: b1c57f27cb1a0ab4c9990493cfba5b49, type: 2}
       propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447062, guid: b1c57f27cb1a0ab4c9990493cfba5b49, type: 2}
+      propertyPath: playerAgl
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []

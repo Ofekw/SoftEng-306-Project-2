@@ -111,34 +111,10 @@ public class GameControl : MonoBehaviour
         //Local save.
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
 
-        //Cloud save.
-        //MemoryStream ms = new MemoryStream();
-
         Save();
-
 
         //Local save.
         bf.Serialize(file, playerData);
-
-        
-        //Cloud save.
-        //Serialise playerData.
-        /*
-        bf.Serialize(ms, playerData);
-        byte[] cloudData = ms.ToArray();
-        //Set playerData to cloud data.
-        this.cloudData = cloudData;
-        //Enable saving.
-        this.save = true;
-        //Calculate play time and total playtime.
-        TimeSpan delta = DateTime.Now.Subtract(loadedTime);
-        playingTime += delta;
-        this.timePlayed = playingTime;
-        //Open saved game and do the save operation.
-        this.OpenSavedGame();
-
-        ms.Close();
-        */
 
         file.Close();
         
