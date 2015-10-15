@@ -10,12 +10,12 @@ GameObject:
   - 4: {fileID: 414608}
   - 212: {fileID: 21299922}
   - 50: {fileID: 5033434}
+  - 114: {fileID: 11499586}
   - 58: {fileID: 5823012}
-  - 114: {fileID: 11461110}
-  - 95: {fileID: 9524736}
+  - 95: {fileID: 9566676}
   m_Layer: 15
-  m_Name: notASpiritBomb
-  m_TagString: UnblockableOrbAttack
+  m_Name: bossOrbProjectile
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194178}
-  m_LocalRotation: {x: 0, y: .00335606886, z: 0, w: .999994397}
-  m_LocalPosition: {x: 8.44186974, y: 3.37598109, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.01265526, y: 2.87045074, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,7 +39,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194178}
-  m_Mass: 1000
+  m_Mass: 9.99999975e-05
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
@@ -58,10 +58,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.400000006, y: 0}
+  m_Offset: {x: -.25, y: 0}
   serializedVersion: 2
-  m_Radius: .637605429
---- !u!95 &9524736
+  m_Radius: .705236912
+--- !u!95 &9566676
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -70,7 +70,7 @@ Animator:
   m_GameObject: {fileID: 194178}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a779e16d5617e714cb16d1927e62c9f7, type: 2}
+  m_Controller: {fileID: 9100000, guid: df3e4bdbb75789c41911617f5e32ea15, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -78,7 +78,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11461110
+--- !u!114 &11499586
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 194178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc00103bd0c8022449c0bac0d046c6b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 486d049ab3b5fac4a8bc34f3e2e72ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
@@ -98,8 +98,12 @@ MonoBehaviour:
   collidesWithLayers:
   - Player
   - PlayerProjectile
-  startScale: 0
-  isCorrectionDirection: 0
+  - Boss
+  - PlayerMelee
+  speed: 15
+  orbHitCount: 0
+  isGoingToPlayer: 1
+  startedRight: 0
 --- !u!212 &21299922
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +128,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1024582385
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7752da8b51dadb042b19ffcec27bdf92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfd1b1a8365cfaa4ca5d5afd18720e36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -139,16 +143,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: UnblockableOrbAttack
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7752da8b51dadb042b19ffcec27bdf92,
+      objectReference: {fileID: 21300000, guid: bfd1b1a8365cfaa4ca5d5afd18720e36,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_Constraints
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
@@ -223,6 +227,10 @@ Prefab:
       value: 
       objectReference: {fileID: 100000, guid: 888b968853fa09743aab10401796c39c, type: 2}
     - target: {fileID: 0}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 651e828fd5519a041965f8db28642163, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
@@ -231,13 +239,13 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_Mass
-      value: 1000
+      propertyPath: m_AnimatePhysics
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a779e16d5617e714cb16d1927e62c9f7, type: 2}
+      objectReference: {fileID: 9100000, guid: df3e4bdbb75789c41911617f5e32ea15, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194178}

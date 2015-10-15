@@ -66,7 +66,7 @@ public class UnblockableOrbAttack : ProjectileScript
             }
             Rigidbody2D body = this.gameObject.GetComponent<Rigidbody2D>();
 
-            body.velocity = new Vector2(direction * 25, 0);
+            body.velocity = new Vector2(direction * 30, 0);
         }
 
     }

@@ -1212,7 +1212,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9d32c2efdb8794de3b449ab1bbc6459b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1226,9 +1226,9 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1535931219
   m_SortingOrder: 0
-  m_Time: 5
-  m_StartWidth: 1
-  m_EndWidth: 1
+  m_Time: 1
+  m_StartWidth: 2
+  m_EndWidth: 0
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   dead: 0
   entityMovement: {fileID: 11457566}
   damageGiven: 1
-  orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
+  orb: {fileID: 148164, guid: 54a7d89941869454db29a54732048ace, type: 2}
   experienceGiven: 5
   isSpecialLevel: 0
   knockBackStrength: 300
