@@ -7,19 +7,18 @@ public class PowerupController : MonoBehaviour
 	public Image agilitySprite;
 	public Image atkSprite;
 
+	public GameObject agilityPowerup;
+	public GameObject healthPowerup;
+	public GameObject attackPowerup;
+	public GameObject specialPowerup;
+	
 	private bool _agilBoost;
-	private bool _dexBoost;
 	private bool _attackBoost;
 	private const float _powerupDuration = 15f;
 
 	public bool isAgilityBoost()
 	{
 		return _agilBoost;
-	}
-
-	public bool isDexBoost()
-	{
-		return _dexBoost;
 	}
 
 	public bool isAttackBoost()
@@ -32,11 +31,6 @@ public class PowerupController : MonoBehaviour
 		_agilBoost = boost;
 	}
 
-	public void setDexBoost(bool boost)
-	{
-		_dexBoost = boost;
-	}
-
 	public void setAttackBoost(bool boost)
 	{
 		_attackBoost = boost;
@@ -45,7 +39,6 @@ public class PowerupController : MonoBehaviour
 	void Start()
 	{
 		setAgilBoost (false);
-		setDexBoost (false);
 		setAttackBoost (false);
 
 		atkSprite.enabled = false;
@@ -119,6 +112,25 @@ public class PowerupController : MonoBehaviour
 		GameManager.instance.specialCharge += GameManager.SPECIAL_CHARGE_TARGET / 2;
 		if (GameManager.instance.specialCharge > GameManager.SPECIAL_CHARGE_TARGET)
 			GameManager.instance.specialCharge = GameManager.SPECIAL_CHARGE_TARGET;
+	}
+
+	public void spawnRandomPowerup(Vector3 position, Quaternion rotation)
+	{
+		switch (Random.Range (0, 3))
+		{
+		case 0: 
+			Instantiate(agilityPowerup, position, rotation);
+			break;
+		case 1: 
+			Instantiate(attackPowerup, position, rotation);
+			break;
+		case 2: 
+			Instantiate(healthPowerup, position, rotation);
+			break;
+		case 3: 
+			Instantiate(specialPowerup, position, rotation);
+			break;
+		}
 	}
 
 }

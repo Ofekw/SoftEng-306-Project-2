@@ -119,24 +119,24 @@ public class BaseEnemy : KillableEntityInterface
     {
         // grabs the animation length of the death animation and waits for that many seconds
         float deathLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(deathLength);
-
-        Destroy(gameObject);
+        yield return new WaitForSeconds(deathLength);        
 	    if (!isSpecialLevel)
         {
-        	spawnController.spawnCount--;
-        	spawnController.OnDeathSpawn();
+			spawnController.spawnCount--;
+
         	if (Random.Range(0, 2) == 0)
         	{
             	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
-        	} else if (Random.Range(0,0) == 0)
+        	} 
+			else if (Random.Range(0, 19) == 0)
 			{
-				//1 / 20 chance spawn a player powerup
+				//  1 / 20 chance spawn a player powerup
 				PowerupController powerupControl = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
-				Powerup powerup = new Powerup();
-				Instantiate(powerup, gameObject.transform.position, gameObject.transform.rotation);
+				powerupControl.spawnRandomPowerup(gameObject.transform.position, gameObject.transform.rotation);
 			}
+			spawnController.OnDeathSpawn();
     	}
+		Destroy(gameObject);
     }
     public void loopPowerup()
     {
