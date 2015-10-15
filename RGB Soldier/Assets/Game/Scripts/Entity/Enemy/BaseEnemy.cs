@@ -17,7 +17,7 @@ public class BaseEnemy : KillableEntityInterface
     private EnemySpawnController spawnController;
     private bool powerUp = false;
     private EnemyTrailControl trailControl;
-public float knockBackStrength = 300;
+    public float knockBackStrength = 300;
     public AudioSource source;
 	private Vector2 _startVector;
     private AudioClip dieSound;
@@ -72,7 +72,7 @@ public float knockBackStrength = 300;
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Hit side wall so reverse direction of movement
-        if (other.gameObject.CompareTag("PlayerEnemyCollider"))
+        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead)
         {
             Player player = other.GetComponentInParent<Player>();
             this.animator = animator = GetComponent<Animator>();
@@ -87,6 +87,7 @@ public float knockBackStrength = 300;
         //basic decrementing health
         GameObject player = GameObject.FindWithTag("Player");
         knockBack(Mathf.Sign(this.transform.position.x - player.transform.position.x));
+        Debug.Log("asd");
         currentHealth = currentHealth - damageReceived;
         if (currentHealth <= 0)
         {
@@ -96,9 +97,31 @@ public float knockBackStrength = 300;
 
     public override void die()
     {
-        source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
+
+       source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
+
+        // ignores collision between dead enemy and player
+        Collider2D collider = GetComponent<Collider2D>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Physics2D.IgnoreCollision(collider, player.GetComponent<Collider2D>());
+        entityMovement.moveForce = 0F;
+        damageGiven = 0;
+
+        animator.SetBool("Dead", true);
+
+        // kills the enemy after death animation
+        //TODO: want to add flashing enemy or fade out
+        StartCoroutine(delayDie());
+    }
+
+    IEnumerator delayDie()
+    {
+        // grabs the animation length of the death animation and waits for that many seconds
+        float deathLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(deathLength);
+
         Destroy(gameObject);
 	    if (!isSpecialLevel)
         {
