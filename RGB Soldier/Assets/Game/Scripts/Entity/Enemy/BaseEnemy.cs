@@ -43,6 +43,8 @@ public class BaseEnemy : KillableEntityInterface
 			return;
 		}
         AIControl();
+
+
     }
 
     public virtual void AIControl()
@@ -100,11 +102,12 @@ public class BaseEnemy : KillableEntityInterface
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
 
+
         // ignores collision between dead enemy and player
         Collider2D collider = GetComponent<Collider2D>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(collider, player.GetComponent<Collider2D>());
-        entityMovement.moveForce = 0F;
+
         damageGiven = 0;
 
         animator.SetBool("Dead", true);

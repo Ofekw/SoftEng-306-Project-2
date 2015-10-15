@@ -136,6 +136,7 @@ GameObject:
   - 114: {fileID: 11412198}
   - 114: {fileID: 11477966}
   - 114: {fileID: 11494882}
+  - 58: {fileID: 5804000}
   m_Layer: 10
   m_Name: Troll
   m_TagString: Zombie
@@ -511,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0799999982, y: -.180000007, z: 0}
+  m_LocalPosition: {x: -.0799999982, y: -.0320000015, z: 0}
   m_LocalScale: {x: -.894623816, y: .894623816, z: -.894623816}
   m_Children: []
   m_Father: {fileID: 484656}
@@ -883,8 +884,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124446}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.9200058, y: 60.7639999, z: 0}
+  m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
+  m_LocalPosition: {x: 1.79999995, y: 2.29999995, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 401712}
@@ -948,6 +949,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5804000
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124446}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.119999997, y: .5}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6168956
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -958,9 +972,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0233720783, y: .779097795}
+  m_Offset: {x: -.0957298279, y: .769441247}
   serializedVersion: 2
-  m_Size: {x: 1.43939722, y: 1.69590986}
+  m_Size: {x: 1.20119464, y: 1.39332986}
 --- !u!82 &8229148
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1058,7 +1072,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9d32c2efdb8794de3b449ab1bbc6459b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1072,9 +1086,9 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 5
-  m_StartWidth: 1
-  m_EndWidth: 1
+  m_Time: .349999994
+  m_StartWidth: 2
+  m_EndWidth: 0
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -1120,7 +1134,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124446}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88a6250f7e6ff5c408365371623cb3d4, type: 3}
   m_Name: 
@@ -1142,7 +1156,7 @@ MonoBehaviour:
   dead: 0
   entityMovement: {fileID: 11412198}
   damageGiven: 1
-  orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
+  orb: {fileID: 148164, guid: 8d4317182140b2242817219a7b640bfc, type: 2}
   experienceGiven: 15
   isSpecialLevel: 0
   knockBackStrength: 300
@@ -1213,6 +1227,10 @@ Prefab:
       propertyPath: source
       value: 
       objectReference: {fileID: 8229148}
+    - target: {fileID: 0}
+      propertyPath: m_Time
+      value: .349999994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124446}
