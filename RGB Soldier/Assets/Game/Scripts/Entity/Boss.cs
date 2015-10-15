@@ -23,6 +23,7 @@ public class Boss : KillableEntityInterface
     private Boolean isShielded = false;
     private GameObject shieldClone;
     private Boolean canTeleport = true;
+    private SpriteRenderer renderer;
 
     public override void die()
     {
@@ -33,7 +34,7 @@ public class Boss : KillableEntityInterface
     public override void takeDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
-        healthBar.transform.localScale = new Vector3((currentHealth*1.0f/maxHealth)*healthBarScale.x, healthBarScale.y, 1);
+        healthBar.transform.localScale = new Vector3((currentHealth * 1.0f / maxHealth) * healthBarScale.x, healthBarScale.y, 1);
         if (currentHealth <= 0)
         {
             die();
@@ -98,7 +99,8 @@ public class Boss : KillableEntityInterface
             checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
 
-        } else if (teleX <= 0)
+        }
+        else if (teleX <= 0)
         {
             if (!entityMovement.facingRight)
             {
@@ -137,6 +139,7 @@ public class Boss : KillableEntityInterface
         maxHealth = 10;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScale = healthBar.transform.localScale;
+        renderer = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -176,13 +179,11 @@ public class Boss : KillableEntityInterface
                 int attackNo = rand.Next(1, 3);
                 if (attackNo == 1)
                 {
-                    teleport();
-                    spiritBomb();
+                    StartCoroutine(teleFlicker(10, 0.01f, 0.01f, spiritBomb));
                 }
                 else
                 {
-                    teleport();
-                    blackOrbAttack();
+                    StartCoroutine(teleFlicker(10, 0.01f, 0.01f, blackOrbAttack));
                 }
             }
         }
@@ -204,11 +205,32 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.1f, xProjectileOffset + 2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.1f, xProjectileOffset + 2, yProjectileOffset, false);
         }
+    }
+
+    IEnumerator teleFlicker(int nTimes, float timeOn, float timeOff, Func<Void> attack)
+    {
+
+        while (nTimes > 0)
+        {
+            if (canTeleport)
+            {
+                renderer.material.color = new Color(0f, 0f, 0f, 0f);
+                yield return new WaitForSeconds(timeOn);
+                renderer.material.color = new Color(1f, 1f, 1f, 1f);
+                yield return new WaitForSeconds(timeOff);
+                nTimes--;
+            } else
+            {
+                return false;
+            }
+        }
+        teleport();
+        attack();
     }
 }
