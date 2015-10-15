@@ -265,7 +265,7 @@ public class Player : KillableEntityInterface
 
     public void calculateDamage(int damageReceived)
     {
-        currentHealth--;
+        currentHealth-=damageReceived;
         temporaryInvulnerable = true;
         temporaryInvulnerableTime = Time.time;
         print("You lost a life");

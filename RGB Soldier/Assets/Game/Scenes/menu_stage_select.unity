@@ -181,7 +181,7 @@ GameObject:
   - 114: {fileID: 30744871}
   m_Layer: 5
   m_Name: AglText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,7 +420,7 @@ GameObject:
   - 114: {fileID: 63371018}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,7 +554,7 @@ GameObject:
   - 114: {fileID: 78594719}
   m_Layer: 5
   m_Name: StageTutorialText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -626,7 +626,7 @@ GameObject:
   - 114: {fileID: 138021920}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -760,7 +760,7 @@ GameObject:
   - 114: {fileID: 187976898}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,7 +947,7 @@ GameObject:
   - 114: {fileID: 315154598}
   m_Layer: 5
   m_Name: Stage2Text
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1285,6 +1285,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 169500, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: AllowColourCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 129704, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_TagString
+      value: AllowColourCanvas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
   m_IsPrefabParent: 0
@@ -1535,7 +1543,7 @@ GameObject:
   - 114: {fileID: 485707986}
   m_Layer: 5
   m_Name: IntText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2093,7 +2101,7 @@ GameObject:
   - 114: {fileID: 675425768}
   m_Layer: 5
   m_Name: VitText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2676,7 +2684,7 @@ GameObject:
   - 114: {fileID: 875736874}
   m_Layer: 5
   m_Name: Stage1Text
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2736,6 +2744,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 875736872}
+--- !u!1001 &879030150
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401106, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a83cc89f36c32bd4a8773bdd078bf04b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &993955243
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,7 +3208,7 @@ GameObject:
   - 114: {fileID: 1112558102}
   m_Layer: 5
   m_Name: Stage4Text
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3232,6 +3282,7 @@ GameObject:
   - 114: {fileID: 1137231599}
   - 114: {fileID: 1137231600}
   - 114: {fileID: 1137231601}
+  - 114: {fileID: 1137231602}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3379,6 +3430,22 @@ MonoBehaviour:
   progressTxt: {fileID: 1545757571}
   currentLevel: {fileID: 1303659325}
   xpSlider: {fileID: 2092026524}
+--- !u!114 &1137231602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137231594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7865ad525bd396e4ea5c5fa6aef478a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 0}
+  canvas: {fileID: 0}
+  current: 0
+  allColours: 0
+  lastChange: 0
 --- !u!1 &1140501029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,7 +3526,7 @@ GameObject:
   - 114: {fileID: 1174693820}
   m_Layer: 5
   m_Name: StageBossButton
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3567,80 +3634,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1174693818}
---- !u!1 &1237136573
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1237136577}
-  - 114: {fileID: 1237136576}
-  - 114: {fileID: 1237136575}
-  - 114: {fileID: 1237136574}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1237136574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237136573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ForceModuleActive: 0
---- !u!114 &1237136575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237136573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: .5
-  m_ForceModuleActive: 0
---- !u!114 &1237136576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237136573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
---- !u!4 &1237136577
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1237136573}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
 --- !u!1 &1252577649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,7 +3947,7 @@ GameObject:
   - 114: {fileID: 1335845717}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4021,7 +4014,7 @@ GameObject:
   - 114: {fileID: 1351398294}
   m_Layer: 5
   m_Name: DexText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4093,7 +4086,7 @@ GameObject:
   - 114: {fileID: 1361076263}
   m_Layer: 5
   m_Name: Stage3Text
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4420,7 +4413,7 @@ GameObject:
   - 114: {fileID: 1517719297}
   m_Layer: 5
   m_Name: Stage1Button
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4821,7 +4814,7 @@ GameObject:
   - 114: {fileID: 1613722210}
   m_Layer: 5
   m_Name: StrText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4894,7 +4887,7 @@ GameObject:
   - 114: {fileID: 1616554858}
   m_Layer: 5
   m_Name: Stage4Button
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5338,7 +5331,7 @@ GameObject:
   - 114: {fileID: 1747039050}
   m_Layer: 5
   m_Name: Stage2Button
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5667,7 +5660,7 @@ GameObject:
   - 114: {fileID: 1830106802}
   m_Layer: 5
   m_Name: StageBossText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5739,7 +5732,7 @@ GameObject:
   - 114: {fileID: 1849938409}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6124,7 +6117,7 @@ GameObject:
   - 114: {fileID: 1971409888}
   m_Layer: 5
   m_Name: StageTutorialButton
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6395,7 +6388,7 @@ GameObject:
   - 114: {fileID: 2078718028}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6549,7 +6542,7 @@ GameObject:
   - 114: {fileID: 2100699275}
   m_Layer: 5
   m_Name: Stage3Button
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
