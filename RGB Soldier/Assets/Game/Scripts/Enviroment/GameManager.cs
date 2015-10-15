@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     public string nextScene;
     public LoadSceneAsync lsa;
     public int currentLevel;
-
+    public GameObject player;
+    public SkinnedMeshRenderer skin;
 
     private Text stageText;
     private GameObject stageImage;
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
             stageImage.SetActive(true);
             Invoke("HideStageImage", 2);
         }
+
         orbsCollected = 0;
         specialCharge = 0;
         enemiesOnScreen = 0;
@@ -77,6 +79,33 @@ public class GameManager : MonoBehaviour
         canSpecialAtk = false;
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET;  // set max value of attack charge slider
 		state = State.Running;
+
+        var i = GameControl.control.playerSprite;
+        player = GameObject.Find("Player");
+        skin = player.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
+        if (i == 1) {
+            skin.materials[0] = (Material)Resources.Load("ch034");
+            skin.materials[1] = (Material)Resources.Load("ch034");
+            skin.materials[2] = (Material)Resources.Load("ch034");
+            skin.materials[3] = (Material)Resources.Load("ch034");
+
+        }
+        else if (i == 2)
+        {
+            skin.materials[0] = (Material)Resources.Load("ch032");
+            skin.materials[1] = (Material)Resources.Load("ch032");
+            skin.materials[2] = (Material)Resources.Load("ch032");
+            skin.materials[3] = (Material)Resources.Load("ch032");
+        }
+        else if (i == 3)
+        {
+            skin.materials[0] = (Material)Resources.Load("ch029");
+            skin.materials[1] = (Material)Resources.Load("ch029");
+            skin.materials[2] = (Material)Resources.Load("ch029");
+            skin.materials[3] = (Material)Resources.Load("ch029");
+        }
+
+
     }
     void Update()
     {

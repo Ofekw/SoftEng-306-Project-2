@@ -30,6 +30,7 @@ public class CharacterChanger : MonoBehaviour {
                 character.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = true;
             }
         }
+        GameControl.control.playerSprite = selectedCharacter;
 	}
 
     public void switchUp()
