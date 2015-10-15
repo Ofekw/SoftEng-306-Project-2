@@ -9,6 +9,7 @@ public class GameControl : MonoBehaviour
 
     public static GameControl control;
 
+    public int playerSprite;
     public int playerLevel;
     public int playerExp;
     public int playerStr;

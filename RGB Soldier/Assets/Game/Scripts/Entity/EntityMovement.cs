@@ -69,6 +69,7 @@ public class EntityMovement : MonoBehaviour
         if (hVelocity * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
             // ... add a force to the entity.
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * hVelocity * moveForce);
+            
 
         // If the entity's horizontal velocity is greater than the maxSpeed...
         if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
