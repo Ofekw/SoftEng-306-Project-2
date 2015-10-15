@@ -23,7 +23,7 @@ public class MeleeHit : MonoBehaviour {
         if (hit.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
 
-            Instantiate(damageIndicator, transform.position, transform.rotation);
+            Instantiate(damageIndicator, hit.gameObject.transform.position, hit.gameObject.transform.rotation);
             SpriteRenderer renderer = GameObject.Find("numeric-1").GetComponent<SpriteRenderer>();
             
             //Tell the meleed object that it has taken damage

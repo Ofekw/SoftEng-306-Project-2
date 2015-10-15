@@ -175,7 +175,7 @@ public class BaseEnemy : KillableEntityInterface
     {
         this.trailControl = GetComponent<EnemyTrailControl>();
         trailControl.trail.enabled = false;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         trailControl.trail.enabled = true;
     }
 
