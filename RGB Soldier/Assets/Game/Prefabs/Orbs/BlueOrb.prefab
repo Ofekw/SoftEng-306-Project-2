@@ -12,7 +12,6 @@ GameObject:
   - 58: {fileID: 5882898}
   - 95: {fileID: 9563174}
   - 50: {fileID: 5035512}
-  - 114: {fileID: 11485830}
   - 114: {fileID: 11489044}
   m_Layer: 11
   m_Name: BlueOrb
@@ -79,27 +78,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11485830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148164}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d3981092f85bb64ea83e57a55687a09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facingRight: 1
-  jump: 0
-  moveForce: 500
-  maxSpeed: 10
-  maxMaxSpeed: 20
-  jumpClips: []
-  jumpForce: 150
-  jumpCount: 0
-  lastJumpTime: 0
-  grounded: 1
 --- !u!114 &11489044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ace0bac5bb12f3498671c5055096f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityMovement: {fileID: 0}
 --- !u!212 &21238916
 SpriteRenderer:
   m_ObjectHideFlags: 1

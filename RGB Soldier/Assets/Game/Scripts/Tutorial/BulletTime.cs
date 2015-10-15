@@ -8,7 +8,7 @@ public class BulletTime : Objective
     private GameObject player;
     public NormalEnemy enemyPrefab;
     private List<NormalEnemy> enemies = new List<NormalEnemy>();
-    public PowerupSpawnController powerupSpawnController;
+    public BulletTimeSpawnController powerupSpawnController;
 
     public GameObject jumpButton;
     public GameObject meleeButton;
@@ -19,7 +19,7 @@ public class BulletTime : Objective
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
-        PowerupSpawner powerDrop = powerupSpawnController.spawners[0];
+        BulletTimeSpawner powerDrop = powerupSpawnController.spawners[0];
         powerDrop.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5);
         enemyPrefab.GetComponent<EntityMovement>().moveForce = 60;
         enemyPrefab.GetComponent<EntityMovement>().maxSpeed = 5f;

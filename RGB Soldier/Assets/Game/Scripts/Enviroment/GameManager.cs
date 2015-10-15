@@ -26,9 +26,11 @@ public class GameManager : MonoBehaviour
     public Slider chargeBar;
 	public Text healthDisp;
     public Text powerupCountdown;
+    public Text levelDisp;
     public string nextScene;
     public LoadSceneAsync lsa;
     public int currentLevel;
+	public GameObject focus;
     public GameObject player;
     public SkinnedMeshRenderer skin;
     public Material[] materials;
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
     private Text stageText;
     private GameObject stageImage;
 
-    private const float POWERUP_TIME = 5f;
+    private const float POWERUP_TIME = 10f;
 
     private State state;
 
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET;  // set max value of attack charge slider
 		state = State.Running;
 
-        var i = GameControl.control.playerSprite;
+        var i = GameControl.control != null ? GameControl.control.playerSprite : 1;
         player = GameObject.Find("Player");
         skin = player.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
         materials = skin.materials;
@@ -148,6 +150,7 @@ public class GameManager : MonoBehaviour
 		healthDisp.text = "x " + player.currentHealth;
 		orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
         chargeBar.value = specialCharge;  // set value of special attack slider
+        levelDisp.text = "Level: " + GameControl.control.playerLevel; //update player level text
         //health check
         if (player.currentHealth <= 0)
         {
@@ -240,6 +243,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartBulletTime() {
 		isBulletTime = true;
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		Instantiate(focus, player.transform.position, player.transform.rotation);
         // go through countdown timer
         for (int i = (int)POWERUP_TIME; i > 0; i--)
         {

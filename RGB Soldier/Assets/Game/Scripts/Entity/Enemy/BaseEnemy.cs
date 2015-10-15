@@ -75,7 +75,7 @@ public class BaseEnemy : KillableEntityInterface
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Hit side wall so reverse direction of movement
-        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead)
+        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead && !GameManager.instance.isBulletTime)
         {
             Player player = other.GetComponentInParent<Player>();
             this.animator = animator = GetComponent<Animator>();
@@ -136,20 +136,24 @@ public class BaseEnemy : KillableEntityInterface
     IEnumerator delayDie(float deathLength)
     {
         // waits before destroying the object
-        yield return new WaitForSeconds(deathLength);
-
-        Destroy(gameObject);
+        yield return new WaitForSeconds(deathLength);        
 	    if (!isSpecialLevel)
         {
-        	spawnController.spawnCount--;
-        	spawnController.OnDeathSpawn();
+			spawnController.spawnCount--;
+
         	if (Random.Range(0, 2) == 0)
         	{
             	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
-        	}
-
-
+        	} 
+			else if (Random.Range(0, 19) == 0)
+			{
+				//  1 / 20 chance spawn a player powerup
+				PowerupController powerupControl = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
+				powerupControl.spawnRandomPowerup(gameObject.transform.position, gameObject.transform.rotation);
+			}
+			spawnController.OnDeathSpawn();
     	}
+		Destroy(gameObject);
     }
     public void loopPowerup()
     {

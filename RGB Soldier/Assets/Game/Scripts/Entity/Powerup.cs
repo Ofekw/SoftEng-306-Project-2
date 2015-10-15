@@ -1,17 +1,16 @@
 using UnityEngine;
 
-public class BulletTimeOrb : CollectibleEntity {
+public class Powerup : CollectibleEntity {
 
-    private BulletTimeSpawnController spawnController;
+	public PowerupType type; // initialise type
 
-    void Start()
-    {
-        spawnController = FindObjectOfType<BulletTimeSpawnController>();
-    }
+	public PowerupType getType()
+	{
+		return type;
+	}
 
 	public override void entityCollected()
 	{
-        spawnController.enableSpawner();
 		Destroy(gameObject);
 	}
 	
@@ -23,4 +22,9 @@ public class BulletTimeOrb : CollectibleEntity {
 			entityCollected();
 		}
 	}
+}
+
+public enum PowerupType
+{
+	AGILITY, HEALTH, ATTACK, SPECIAL
 }

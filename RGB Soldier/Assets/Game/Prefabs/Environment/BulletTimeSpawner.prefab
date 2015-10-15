@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 423998}
   - 114: {fileID: 11400014}
   m_Layer: 0
-  m_Name: PowerupSpawner
+  m_Name: BulletTimeSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 143336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7b241880855a24ea2254ee9bde091d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fa78c2021b3e8c49b6bb961636d5dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   powerup: {fileID: 138140, guid: d9451fed90749d64e870579600a2fc61, type: 2}
