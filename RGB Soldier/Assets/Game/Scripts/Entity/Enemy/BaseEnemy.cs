@@ -87,7 +87,6 @@ public class BaseEnemy : KillableEntityInterface
         //basic decrementing health
         GameObject player = GameObject.FindWithTag("Player");
         knockBack(Mathf.Sign(this.transform.position.x - player.transform.position.x));
-        Debug.Log("asd");
         currentHealth = currentHealth - damageReceived;
         if (currentHealth <= 0)
         {

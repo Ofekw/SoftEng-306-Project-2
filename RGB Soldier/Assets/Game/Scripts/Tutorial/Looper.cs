@@ -19,7 +19,7 @@ public class Looper : Objective
             joyStick.UpdateVirtualAxes(new Vector3(129, 59));
             yield return new WaitForSeconds((float)0.01);
         }
-        joyStick.UpdateVirtualAxes(new Vector3(94, 59));
+        joyStick.OnPointerUp(null);
         
         Text stageText = stageTextObject.GetComponent<Text>();
         stageText.text = "Drop down the gap to respawn above";
