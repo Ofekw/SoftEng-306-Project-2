@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class BaseEnemy : KillableEntityInterface
 {
-
     public EntityMovement entityMovement;
     public int damageGiven = 1;
     public GameObject orb;
@@ -43,8 +42,6 @@ public class BaseEnemy : KillableEntityInterface
 			return;
 		}
         AIControl();
-
-
     }
 
     public virtual void AIControl()
@@ -159,5 +156,4 @@ public class BaseEnemy : KillableEntityInterface
         yield return new WaitForSeconds(0.25f);
         trailControl.trail.enabled = true;
     }
-
 }
