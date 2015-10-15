@@ -16,6 +16,7 @@ public class Player : KillableEntityInterface
     public float xProjectileOffset = 0f;
     public float yProjectileOffset = 0f;
     public Boolean attacking = false;
+    public Boolean rangedAttack = false;
     public float attackCooldown = 0.3f;
     public float lastAttack;
     public float attackDuration = 0.2f;
@@ -34,7 +35,7 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
-    public SpriteRenderer renderer;
+    public SkinnedMeshRenderer renderer;
     public float opacitySwitchTime;
 
     private AudioClip meleeAttackSound;
@@ -66,7 +67,7 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
-        renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        renderer = this.gameObject.transform.FindChild("p_sotai").gameObject.GetComponent<SkinnedMeshRenderer>();
         meleeAttackSound = Resources.Load("Audio/melee_attack") as AudioClip;
         specialAttackSound = Resources.Load("Audio/special_attack") as AudioClip;
         rangedAttackSound = Resources.Load("Audio/range_attack") as AudioClip;
@@ -111,7 +112,16 @@ public class Player : KillableEntityInterface
         if (hVelocity == 0)
         {
             hVelocity = Input.GetAxis("Horizontal");
+            animator.ResetTrigger("Walk");
         }
+
+
+        if (hVelocity != 0)
+        {
+            animator.SetTrigger("Walk");
+        }
+
+
 
         //call the base movement module method to handle movement
         entityMovement.Movement(hVelocity);
@@ -134,6 +144,7 @@ public class Player : KillableEntityInterface
             if ((Time.time - lastAttack) > attackDuration)
             {
                 attacking = false;
+                animator.ResetTrigger("Attack");
                 meleeCollider.enabled = false;
             }
         }
@@ -141,6 +152,7 @@ public class Player : KillableEntityInterface
         {
             meleeCollider.enabled = false;
         }
+
 
 
         if (temporaryInvulnerable)
@@ -188,7 +200,7 @@ public class Player : KillableEntityInterface
 
     public void Melee()
     {
-        animator.SetTrigger("playerMelee");
+        animator.SetTrigger("Attack");
 
         if (Time.time > (lastAttack + attackCooldown))
         {
@@ -225,16 +237,17 @@ public class Player : KillableEntityInterface
         hasRanged = true;
         source.PlayOneShot(rangedAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
-        animator.SetTrigger("playerShoot");
+        animator.SetTrigger("Attack");
         //Shoot to the right
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y + 1, xProjectileOffset, yProjectileOffset, true);
         }
         else
         {
-		projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
+		projectileSpawner.spawnProjectile("arrowAttack", transform.position.x, transform.position.y + 1, xProjectileOffset, yProjectileOffset, false);
         }
+
     }
 
     public void jumpPressed()
