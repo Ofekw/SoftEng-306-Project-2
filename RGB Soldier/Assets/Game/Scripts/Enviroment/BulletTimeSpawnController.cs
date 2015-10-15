@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class PowerupSpawnController : MonoBehaviour
+public class BulletTimeSpawnController : MonoBehaviour
 {
 
     public float spawnPeriod = 30f;
-    public PowerupSpawner[] spawners;
+    public BulletTimeSpawner[] spawners;
     private float spawnTimer = 0;
     private int spawnerToCall = 0;
     private bool _canSpawn = true;  // when false spawnTimer doesn't increase and no new orbs can spawn

@@ -107,7 +107,13 @@ public float knockBackStrength = 300;
         	if (Random.Range(0, 2) == 0)
         	{
             	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
-        	}
+        	} else if (Random.Range(0,0) == 0)
+			{
+				//1 / 20 chance spawn a player powerup
+				PowerupController powerupControl = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
+				Powerup powerup = new Powerup();
+				Instantiate(powerup, gameObject.transform.position, gameObject.transform.rotation);
+			}
     	}
     }
     public void loopPowerup()

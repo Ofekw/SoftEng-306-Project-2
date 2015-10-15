@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PowerupSpawner : MonoBehaviour
+public class BulletTimeSpawner : MonoBehaviour
 {
     public GameObject powerup;
 

@@ -13,7 +13,6 @@ GameObject:
   - 58: {fileID: 5811780}
   - 95: {fileID: 9587844}
   - 50: {fileID: 5017734}
-  - 114: {fileID: 11415284}
   - 114: {fileID: 11470546}
   m_Layer: 11
   m_Name: BulletTimeOrb
@@ -93,27 +92,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11415284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d3981092f85bb64ea83e57a55687a09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facingRight: 1
-  jump: 0
-  moveForce: 500
-  maxSpeed: 10
-  maxMaxSpeed: 20
-  jumpClips: []
-  jumpForce: 150
-  jumpCount: 0
-  lastJumpTime: 0
-  grounded: 1
 --- !u!114 &11470546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298135477edecdf4ba059226a57ca066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityMovement: {fileID: 0}
 --- !u!212 &21298096
 SpriteRenderer:
   m_ObjectHideFlags: 1
