@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public GameObject player;
     public SkinnedMeshRenderer skin;
+    public Material[] materials;
+    public Texture[] textures;
 
     private Text stageText;
     private GameObject stageImage;
@@ -83,26 +85,45 @@ public class GameManager : MonoBehaviour
         var i = GameControl.control.playerSprite;
         player = GameObject.Find("Player");
         skin = player.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
+        materials = skin.materials;
+        Debug.Log(materials);
+        Debug.Log(i);
         if (i == 1) {
-            skin.materials[0] = (Material)Resources.Load("ch034");
-            skin.materials[1] = (Material)Resources.Load("ch034");
-            skin.materials[2] = (Material)Resources.Load("ch034");
-            skin.materials[3] = (Material)Resources.Load("ch034");
+            for (i = 0; i < 4; i++) {
+                materials[i].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+
+            }
+
+            materials[0].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+            materials[1].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+            materials[2].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+            materials[3].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+
+
 
         }
         else if (i == 2)
         {
-            skin.materials[0] = (Material)Resources.Load("ch032");
-            skin.materials[1] = (Material)Resources.Load("ch032");
-            skin.materials[2] = (Material)Resources.Load("ch032");
-            skin.materials[3] = (Material)Resources.Load("ch032");
+            for (i = 0; i < 4; i++)
+            {
+                materials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
+            }
+            //materials[0] = Resources.Load("ch032") as Material;
+            //materials[1] = Resources.Load("ch032") as Material;
+            //materials[2] = Resources.Load("ch032") as Material;
+            //materials[3] = Resources.Load("ch032") as Material;
         }
         else if (i == 3)
         {
-            skin.materials[0] = (Material)Resources.Load("ch029");
-            skin.materials[1] = (Material)Resources.Load("ch029");
-            skin.materials[2] = (Material)Resources.Load("ch029");
-            skin.materials[3] = (Material)Resources.Load("ch029");
+            for (i = 0; i < 4; i++)
+            {
+                materials[i].mainTexture = Resources.Load("ch029", typeof(Texture2D)) as Texture2D;
+
+            }
+           //materials[0] = Resources.Load("ch029") as Material;
+            //materials[1] = Resources.Load("ch029") as Material;
+            //materials[2] = Resources.Load("ch029") as Material;
+            //materials[3] = Resources.Load("ch029") as Material;
         }
 
 
