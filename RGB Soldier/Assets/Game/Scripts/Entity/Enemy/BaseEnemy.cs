@@ -43,8 +43,6 @@ public class BaseEnemy : KillableEntityInterface
 			return;
 		}
         AIControl();
-
-
     }
 
     public virtual void AIControl()
@@ -98,7 +96,8 @@ public class BaseEnemy : KillableEntityInterface
     public override void die()
     {
 
-       source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
+        GameControl.control.enemyKilledAchievement();
+        source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
 
@@ -131,6 +130,8 @@ public class BaseEnemy : KillableEntityInterface
         	{
             	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
         	}
+
+
     	}
     }
     public void loopPowerup()

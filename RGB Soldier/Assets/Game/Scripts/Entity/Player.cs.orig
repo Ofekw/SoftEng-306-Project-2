@@ -49,6 +49,8 @@ public class Player : KillableEntityInterface
     public bool isJumping = false;
     public AudioSource source;
 
+    public bool hasRanged = false;
+
     Vector3 movement;
 
     public Animator animator;                  //Used to store a reference to the Player's animator component.
@@ -244,6 +246,11 @@ public class Player : KillableEntityInterface
         source.PlayOneShot(rangedAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
         animator.SetTrigger("Attack");
+        AudioSource.PlayClipAtPoint(rangedAttackSound, transform.position);
+=======
+        source.PlayOneShot(rangedAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
+>>>>>>> develop
+
         //Shoot to the right
         if (entityMovement.facingRight)
         {
@@ -328,6 +335,14 @@ public class Player : KillableEntityInterface
 		{
 			GameManager.instance.activateBulletTime();
 		}
+    }
+
+    private void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.transform.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D coll)
