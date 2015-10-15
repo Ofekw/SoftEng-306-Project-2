@@ -17,7 +17,7 @@ public class BaseEnemy : KillableEntityInterface
     private EnemySpawnController spawnController;
     private bool powerUp = false;
     private EnemyTrailControl trailControl;
-public float knockBackStrength = 300;
+    public float knockBackStrength = 300;
     public AudioSource source;
 	private Vector2 _startVector;
     private AudioClip dieSound;
@@ -96,7 +96,8 @@ public float knockBackStrength = 300;
 
     public override void die()
     {
-        source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
+
+       source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
 
