@@ -24,6 +24,8 @@ public class Boss : KillableEntityInterface
     private GameObject shieldClone;
     private SpriteRenderer renderer;
 
+    private Func<Void> currentAttack;
+
     public override void die()
     {
         Destroy(this.gameObject);
@@ -42,11 +44,12 @@ public class Boss : KillableEntityInterface
 
     public void teleport()
     {
-        float yPos = 0;
+        //top spawn point
+        float yPos = 0f;
         //if player is on lower half, set y tele pos
         if (player.transform.position.y < -5)
         {
-            yPos = -8.5f;
+            yPos = -7.5f;
         }
         //find x tele position
         float teleX = xSpawnPoints;
@@ -76,7 +79,7 @@ public class Boss : KillableEntityInterface
             //player is sitting below the boss so teleport to other side at same level
             else if (sign == 1)
             {
-                yPos = -8.5f;
+                yPos = -7.5f;
             }
             //else simply don't move and fire at player for being s
             else
@@ -125,7 +128,7 @@ public class Boss : KillableEntityInterface
         maxHealth = 10;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScale = healthBar.transform.localScale;
-        renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        //renderer = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -146,19 +149,21 @@ public class Boss : KillableEntityInterface
             //else if shielded and shield isn't it's correct size, increase the size
             else if (shieldClone.transform.localScale.x < 1)
             {
-                shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.2f, 1.2f), 5 * Time.deltaTime);
+                shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.25f, 1.25f), 5 * Time.deltaTime);
             }
         }
         //else check if player is close and shield should be generated
         else if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
         {
             isShielded = true;
-            shieldClone = (GameObject)Instantiate(shield, gameObject.transform.position, gameObject.transform.rotation);
+            Vector3 pos = gameObject.transform.position;
+            pos.y += 1.4f;
+            shieldClone = (GameObject)Instantiate(shield, pos, gameObject.transform.rotation);
         }
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-            attackTimer = 3f;
+            attackTimer = 4f;
             int attackNo = rand.Next(1, 3);
             if (attackNo == 1)
             {
@@ -175,11 +180,11 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y+0.6f, xProjectileOffset, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y, xProjectileOffset, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y+0.6f, xProjectileOffset, yProjectileOffset, false);
         }
     }
 
@@ -187,11 +192,11 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 0.7f, xProjectileOffset + 2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 0.7f, xProjectileOffset + 2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, false);
         }
     }
 
@@ -200,9 +205,9 @@ public class Boss : KillableEntityInterface
         //do teleport flickering
         while (nTimes > 0)
         {
-            renderer.material.color = new Color(0f, 0f, 0f, 0f);
+            //renderer.material.color = new Color(0f, 0f, 0f, 0f);
             yield return new WaitForSeconds(timeOn);
-            renderer.material.color = new Color(1f, 1f, 1f, 1f);
+            //renderer.material.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(timeOff);
             nTimes--;
         }
@@ -212,6 +217,7 @@ public class Boss : KillableEntityInterface
             Destroy(shieldClone);
             isShielded = false;
         }
+        //teleport and set current attack for when attack animation finishes the doAttack fires the attack
         teleport();
         attack();
     }
