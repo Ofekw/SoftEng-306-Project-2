@@ -9,7 +9,8 @@
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
 
     <!-- replaced during setup -->
-    
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+<uses-permission android:name="android.permission.USE_CREDENTIALS"/>
 
     <application>
 

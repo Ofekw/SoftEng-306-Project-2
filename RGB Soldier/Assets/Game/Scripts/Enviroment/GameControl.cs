@@ -172,7 +172,7 @@ public class GameControl : MonoBehaviour
 
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
-        builder = builder.WithUpdatedPlayedTime(this.timePlayed).WithUpdatedDescription("Current Level: " + playerData.currentGameLevel + "Current Player Level: " + playerData.playerLevel);
+        builder = builder.WithUpdatedPlayedTime(this.timePlayed).WithUpdatedDescription("Current Level: " + playerData.currentGameLevel + " Current Player Level: " + playerData.playerLevel);
 
         SavedGameMetadataUpdate updatedMetadata = builder.Build();
         savedGameClient.CommitUpdate(game, updatedMetadata, data, OnSaveWritten);
