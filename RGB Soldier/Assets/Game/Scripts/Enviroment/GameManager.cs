@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using GooglePlayGames;
 
 [RequireComponent(typeof(LoadSceneAsync))]
 public class GameManager : MonoBehaviour
@@ -29,6 +30,10 @@ public class GameManager : MonoBehaviour
     public LoadSceneAsync lsa;
     public int currentLevel;
 	public GameObject focus;
+    public GameObject player;
+    public SkinnedMeshRenderer skin;
+    public Material[] materials;
+    public Texture[] textures;
 
     private Text stageText;
     private GameObject stageImage;
@@ -59,6 +64,15 @@ public class GameManager : MonoBehaviour
         InitGame();
     }
 
+    void Start()
+    {
+        PlayGamesPlatform.Activate();
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
+    }
+
     void InitGame()
     {
         if (!isTutorial)
@@ -69,6 +83,7 @@ public class GameManager : MonoBehaviour
             stageImage.SetActive(true);
             Invoke("HideStageImage", 2);
         }
+
         orbsCollected = 0;
         specialCharge = 0;
         enemiesOnScreen = 0;
@@ -77,6 +92,52 @@ public class GameManager : MonoBehaviour
         canSpecialAtk = false;
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET;  // set max value of attack charge slider
 		state = State.Running;
+
+        var i = GameControl.control.playerSprite;
+        player = GameObject.Find("Player");
+        skin = player.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
+        materials = skin.materials;
+        Debug.Log(materials);
+        Debug.Log(i);
+        if (i == 1) {
+            for (i = 0; i < 4; i++) {
+                materials[i].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+
+            }
+
+            materials[0].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+            materials[1].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+            materials[2].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+            materials[3].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
+
+
+
+        }
+        else if (i == 2)
+        {
+            for (i = 0; i < 4; i++)
+            {
+                materials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
+            }
+            //materials[0] = Resources.Load("ch032") as Material;
+            //materials[1] = Resources.Load("ch032") as Material;
+            //materials[2] = Resources.Load("ch032") as Material;
+            //materials[3] = Resources.Load("ch032") as Material;
+        }
+        else if (i == 3)
+        {
+            for (i = 0; i < 4; i++)
+            {
+                materials[i].mainTexture = Resources.Load("ch029", typeof(Texture2D)) as Texture2D;
+
+            }
+           //materials[0] = Resources.Load("ch029") as Material;
+            //materials[1] = Resources.Load("ch029") as Material;
+            //materials[2] = Resources.Load("ch029") as Material;
+            //materials[3] = Resources.Load("ch029") as Material;
+        }
+
+
     }
     void Update()
     {
@@ -104,6 +165,8 @@ public class GameManager : MonoBehaviour
         {
             incrementSpecialAtkCounter(player);
         }
+
+
     }
 
 
@@ -129,9 +192,29 @@ public class GameManager : MonoBehaviour
 
     void levelCleared()
     {
+        GameControl.control.SaveToCloud();
         // only moves up the current level if its the current 
         if (currentLevel == GameControl.control.currentGameLevel)
         {
+            if (currentLevel == 0)
+            {
+                if (Social.localUser.authenticated)
+                {
+                    Social.ReportProgress("CgkIpKjLyoEdEAIQAg", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+            }
+
+            if (currentLevel == 1)
+            {
+                if (Social.localUser.authenticated)
+                {
+                    Social.ReportProgress("CgkIpKjLyoEdEAIQBA", 100.0f, (bool success) =>
+                    {
+                    });
+                }
+            }
             GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
         }
         lsa.ClickAsync(nextScene);
@@ -140,8 +223,6 @@ public class GameManager : MonoBehaviour
     void gameOver()
     {
         Application.LoadLevel("game_over_screen");
-        
-
     }
 
 	public bool isPaused() {

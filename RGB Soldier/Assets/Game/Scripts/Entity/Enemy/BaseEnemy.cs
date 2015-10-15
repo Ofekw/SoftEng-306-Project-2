@@ -43,8 +43,6 @@ public class BaseEnemy : KillableEntityInterface
 			return;
 		}
         AIControl();
-
-
     }
 
     public virtual void AIControl()
@@ -87,6 +85,7 @@ public class BaseEnemy : KillableEntityInterface
         //basic decrementing health
         GameObject player = GameObject.FindWithTag("Player");
         knockBack(Mathf.Sign(this.transform.position.x - player.transform.position.x));
+        Debug.Log("asd");
         currentHealth = currentHealth - damageReceived;
         if (currentHealth <= 0)
         {
@@ -97,7 +96,8 @@ public class BaseEnemy : KillableEntityInterface
     public override void die()
     {
 
-       source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
+        GameControl.control.enemyKilledAchievement();
+        source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
 
