@@ -48,6 +48,8 @@ public class Player : KillableEntityInterface
     bool moveLeft = false;
     public bool isJumping = false;
     public AudioSource source;
+    public bool hasRanged = false;
+
     Vector3 movement;
 
     public Animator animator;                  //Used to store a reference to the Player's animator component.
@@ -232,6 +234,7 @@ public class Player : KillableEntityInterface
 
     public void Shoot()
     {
+        hasRanged = true;
         source.PlayOneShot(rangedAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
         animator.SetTrigger("Attack");
@@ -250,6 +253,10 @@ public class Player : KillableEntityInterface
     public void jumpPressed()
     {
         source.PlayOneShot(jumpSound, ((float)GameControl.control.soundBitsVolume) / 100);
+        setJumping();
+    }
+    public void setJumping()
+    {
         isJumping = true;
     }
 
@@ -277,7 +284,7 @@ public class Player : KillableEntityInterface
 
     public void calculateDamage(int damageReceived)
     {
-        currentHealth-=damageReceived;
+        currentHealth -= damageReceived;
         temporaryInvulnerable = true;
         temporaryInvulnerableTime = Time.time;
         print("You lost a life");
