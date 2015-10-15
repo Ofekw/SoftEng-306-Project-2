@@ -23,6 +23,7 @@ public class GameControl : MonoBehaviour
     public int backgroundVolume = 100;
     public int soundBitsVolume = 100;
     public int colourMode;
+    public bool vibrateOn;
     public PlayerData playerData;
     public GameObject lvlup;
 
@@ -91,6 +92,7 @@ public class GameControl : MonoBehaviour
         playerData.backgroundVolume = backgroundVolume;
         playerData.soundBitsVolume = soundBitsVolume;
         playerData.colourMode = colourMode;
+        playerData.vibrateOn = vibrateOn;
     }
 
     public void setupLoad()
@@ -120,6 +122,7 @@ public class GameControl : MonoBehaviour
         soundBitsVolume = playerData.soundBitsVolume;
         colourMode = playerData.colourMode;
         experienceRequired = (playerData.experienceRequired != 0) ? playerData.experienceRequired : 15;
+        vibrateOn = playerData.vibrateOn;
     }
 
     public void giveExperience(int experience)
@@ -159,4 +162,5 @@ public class PlayerData
     public int soundBitsVolume;
     public int colourMode;
     public int experienceRequired;
+    public bool vibrateOn;
 }

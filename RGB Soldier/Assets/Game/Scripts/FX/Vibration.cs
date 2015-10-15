@@ -16,27 +16,36 @@ public static class Vibration
 
     public static void Vibrate()
     {
-        if (isAndroid())
-            vibrator.Call("vibrate");
-        else
-            Handheld.Vibrate();
+        if (GameControl.control.vibrateOn)
+        {
+            if (isAndroid())
+                vibrator.Call("vibrate");
+            else
+                Handheld.Vibrate();
+        }
     }
 
 
     public static void Vibrate(long milliseconds)
     {
-        if (isAndroid())
-            vibrator.Call("vibrate", milliseconds);
-        else
-            Handheld.Vibrate();
+        if (GameControl.control.vibrateOn)
+        {
+            if (isAndroid())
+                vibrator.Call("vibrate", milliseconds);
+            else
+                Handheld.Vibrate();
+        }
     }
 
     public static void Vibrate(long[] pattern, int repeat)
     {
-        if (isAndroid())
-            vibrator.Call("vibrate", pattern, repeat);
-        else
-            Handheld.Vibrate();
+        if (GameControl.control.vibrateOn)
+        {
+            if (isAndroid())
+                vibrator.Call("vibrate", pattern, repeat);
+            else
+                Handheld.Vibrate();
+        }
     }
 
     public static bool HasVibrator()
