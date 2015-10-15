@@ -736,9 +736,13 @@ MonoBehaviour:
   chargeBar: {fileID: 11495976}
   healthDisp: {fileID: 11499232}
   powerupCountdown: {fileID: 11410058}
-  nextScene: cutscene_2
+  nextScene: cutscene_4
   lsa: {fileID: 11491062}
-  currentLevel: 1
+  currentLevel: 3
+  player: {fileID: 0}
+  skin: {fileID: 0}
+  materials: []
+  textures: []
 --- !u!114 &11417376
 MonoBehaviour:
   m_ObjectHideFlags: 1
