@@ -177,14 +177,14 @@ public class Player : KillableEntityInterface
         this.maxHealth = vitality;
         entityMovement.maxSpeed = agility * 5.0f;
         //Strength and dexterity are called during damage calculations
-		if (control.isAttackBoost) {
+		if (control.isAttackBoost()) {
 			strength = GameControl.control.playerStr + 1;
 			dexterity = GameControl.control.playerDex + 1;
 		} else {
 			strength = GameControl.control.playerStr;
 			dexterity = GameControl.control.playerDex;
 		}
-		if (control.isAgilityBoost) {
+		if (control.isAgilityBoost()) {
 			agility = GameControl.control.playerAgl + 1;
 		} else {
 			agility = GameControl.control.playerAgl;
@@ -275,7 +275,7 @@ public class Player : KillableEntityInterface
 
     public void calculateDamage(int damageReceived)
     {
-        currentHealth--;
+        currentHealth-=damageReceived;
         temporaryInvulnerable = true;
         temporaryInvulnerableTime = Time.time;
         print("You lost a life");
