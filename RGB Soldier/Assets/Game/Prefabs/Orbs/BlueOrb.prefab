@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 479630}
   - 212: {fileID: 21238916}
-  - 61: {fileID: 6136948}
   - 58: {fileID: 5882898}
   - 95: {fileID: 9563174}
   - 50: {fileID: 5035512}
@@ -29,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.6451054, y: 2.01003981, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -9.01165771, y: 2.11435747, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -60,22 +59,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0149999997, y: -.150000006}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: .258813381
---- !u!61 &6136948
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148164}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: .0183091164, y: -.15247035}
-  serializedVersion: 2
-  m_Size: {x: .106648445, y: .0507075191}
+  m_Radius: .536932468
 --- !u!95 &9563174
 Animator:
   serializedVersion: 3
@@ -85,7 +71,7 @@ Animator:
   m_GameObject: {fileID: 148164}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 294cee36894ffda44b141026aec12e5a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 576c7174c6d6dd148811d5eeb465c37d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -150,7 +136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1024582385
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c188089e5efc5146a056ab24d349126, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e9d73abab2a054479709ec0f1bfda0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -174,7 +160,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 294cee36894ffda44b141026aec12e5a, type: 2}
+      objectReference: {fileID: 9100000, guid: 576c7174c6d6dd148811d5eeb465c37d, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Constraints
       value: 1
@@ -190,6 +176,19 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e9d73abab2a054479709ec0f1bfda0a,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
