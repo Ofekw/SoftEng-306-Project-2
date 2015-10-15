@@ -72,7 +72,7 @@ public class BaseEnemy : KillableEntityInterface
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Hit side wall so reverse direction of movement
-        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead)
+        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead && !GameManager.instance.isBulletTime)
         {
             Player player = other.GetComponentInParent<Player>();
             this.animator = animator = GetComponent<Animator>();

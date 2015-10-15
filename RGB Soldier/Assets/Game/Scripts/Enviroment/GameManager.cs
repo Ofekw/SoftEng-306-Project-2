@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private Text stageText;
     private GameObject stageImage;
 
-    private const float POWERUP_TIME = 5f;
+    private const float POWERUP_TIME = 10f;
 
     private State state;
 
