@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using GooglePlayGames;
 
 
 public class IncreaseStat : MonoBehaviour {
@@ -24,6 +25,12 @@ public class IncreaseStat : MonoBehaviour {
     // Starts after everything has woken - must wait for gamecontrol
     public void Start()
     {
+        PlayGamesPlatform.Activate();
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
+
         points = GameControl.control.abilityPoints;
         strSlider.value = GameControl.control.playerStr;
         aglSlider.value = GameControl.control.playerAgl;
@@ -84,6 +91,13 @@ public class IncreaseStat : MonoBehaviour {
             player.abilityPoints = points;
             GameControl.control.abilityPoints = points;
             setStatText();
+
+            if (Social.localUser.authenticated)
+            {
+                Social.ReportProgress("CgkIpKjLyoEdEAIQAw", 100.0f, (bool success) =>
+                {
+                });
+            }
         }
 
     }

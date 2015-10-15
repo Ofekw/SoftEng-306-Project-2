@@ -1170,7 +1170,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1535931219
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: .349999994
   m_StartWidth: 2
   m_EndWidth: 0
   m_Colors:
@@ -1313,6 +1313,10 @@ Prefab:
       propertyPath: orb
       value: 
       objectReference: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Time
+      value: .349999994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106066}

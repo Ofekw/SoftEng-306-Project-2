@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using GooglePlayGames;
 
 [RequireComponent(typeof(EntityMovement))]
 
@@ -22,10 +23,28 @@ public class Boss : KillableEntityInterface
     public GameObject shield;
     private Boolean isShielded = false;
     private GameObject shieldClone;
-    private SpriteRenderer renderer;
+    private Boolean canTeleport = true;
 
     public override void die()
     {
+        if (Social.localUser.authenticated)
+        {
+            Social.ReportProgress("CgkIpKjLyoEdEAIQBQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+        Player checkPlayer = player.GetComponent<Player>();
+        if (checkPlayer.hasRanged == false)
+        {
+            if (Social.localUser.authenticated)
+            {
+                Social.ReportProgress("CgkIpKjLyoEdEAIQBg", 100.0f, (bool success) =>
+                {
+                });
+            }
+        }
+
         Destroy(this.gameObject);
         Application.LoadLevel("menu_start_screen");
     }
@@ -33,7 +52,7 @@ public class Boss : KillableEntityInterface
     public override void takeDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
-        healthBar.transform.localScale = new Vector3((currentHealth * 1.0f / maxHealth) * healthBarScale.x, healthBarScale.y, 1);
+        healthBar.transform.localScale = new Vector3((currentHealth*1.0f/maxHealth)*healthBarScale.x, healthBarScale.y, 1);
         if (currentHealth <= 0)
         {
             die();
@@ -95,10 +114,10 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = false;
             animator.SetBool("isMovingLeft", true);
             animator.SetBool("isMovingRight", false);
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
 
-        }
-        else if (teleX <= 0)
+        } else if (teleX <= 0)
         {
             if (!entityMovement.facingRight)
             {
@@ -108,7 +127,19 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = true;
             animator.SetBool("isMovingRight", true);
             animator.SetBool("isMovingLeft", false);
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
+        }
+    }
+
+    private void checkForAttack()
+    {
+        //check if any orb attacks are charging when teleport is called. If they are they should be 
+        GameObject orbAttack = GameObject.FindGameObjectWithTag("UnblockableOrbAttack");
+        //check that there is an orbattack and it is scaling, not already launched.
+        if (orbAttack != null && orbAttack.GetComponent<UnblockableOrbAttack>().startScale)
+        {
+            Destroy(orbAttack);
         }
     }
 
@@ -125,13 +156,17 @@ public class Boss : KillableEntityInterface
         maxHealth = 10;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScale = healthBar.transform.localScale;
-        renderer = this.gameObject.GetComponent<SpriteRenderer>();
+
+        PlayGamesPlatform.Activate();
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
-        //check if shielded and boss can unshield as player is valid distance away
+        //check if shield and boss can unshield as player is valid distance away
         if (isShielded)
         {
             if (Math.Abs(player.transform.position.x - this.transform.position.x) > 10)
@@ -141,9 +176,9 @@ public class Boss : KillableEntityInterface
                 {
                     Destroy(shieldClone);
                     isShielded = false;
+                    canTeleport = true;
                 }
             }
-            //else if shielded and shield isn't it's correct size, increase the size
             else if (shieldClone.transform.localScale.x < 1)
             {
                 shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.2f, 1.2f), 5 * Time.deltaTime);
@@ -154,19 +189,25 @@ public class Boss : KillableEntityInterface
         {
             isShielded = true;
             shieldClone = (GameObject)Instantiate(shield, gameObject.transform.position, gameObject.transform.rotation);
+            canTeleport = false;
         }
         attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
+        if (canTeleport)
         {
-            attackTimer = 3f;
-            int attackNo = rand.Next(1, 3);
-            if (attackNo == 1)
+            if (attackTimer <= 0)
             {
-                StartCoroutine(teleFlicker(10, 0.01f, 0.01f, spiritBomb));
-            }
-            else
-            {
-                StartCoroutine(teleFlicker(10, 0.01f, 0.01f, blackOrbAttack));
+                attackTimer = 4f;
+                int attackNo = rand.Next(1, 3);
+                if (attackNo == 1)
+                {
+                    teleport();
+                    spiritBomb();
+                }
+                else
+                {
+                    teleport();
+                    blackOrbAttack();
+                }
             }
         }
     }
@@ -187,32 +228,11 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 0.7f, xProjectileOffset + 2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 0.7f, xProjectileOffset + 2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y+1.1f, xProjectileOffset+2, yProjectileOffset, false);
         }
-    }
-
-    IEnumerator teleFlicker(int nTimes, float timeOn, float timeOff, Func<Void> attack)
-    {
-        //do teleport flickering
-        while (nTimes > 0)
-        {
-            renderer.material.color = new Color(0f, 0f, 0f, 0f);
-            yield return new WaitForSeconds(timeOn);
-            renderer.material.color = new Color(1f, 1f, 1f, 1f);
-            yield return new WaitForSeconds(timeOff);
-            nTimes--;
-        }
-        //check if boss is shielded, if they are, destroy the shield before teleporting
-        if (isShielded)
-        {
-            Destroy(shieldClone);
-            isShielded = false;
-        }
-        teleport();
-        attack();
     }
 }
