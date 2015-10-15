@@ -3,7 +3,7 @@ using System.Collections;
 
 
 
-public class Zombie : BaseEnemy
+public class NormalEnemy : BaseEnemy
 {
    public override void Update()
     {

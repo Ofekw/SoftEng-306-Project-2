@@ -1,0 +1,881 @@
+fileFormatVersion: 2
+guid: df45163a60089c94796fb50291521c98
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: all_scale
+    100002: ker1_0
+    100004: ker1_1
+    100006: ker1ago_0
+    100008: ker1ago_1
+    100010: ker2_0
+    100012: ker2_1
+    100014: ker2ago_0
+    100016: ker2ago_1
+    100018: ker3_0
+    100020: ker3_1
+    100022: ker3ago_0
+    100024: ker3ago_1
+    100026: //RootNode
+    100028: koshi_0
+    100030: koshi_1
+    100032: l_mae_0
+    100034: l_mae_1
+    100036: l_mae_2
+    100038: l_tekubi_0
+    100040: l_tekubi_1
+    100042: l_ushiro_0
+    100044: l_ushiro_1
+    100046: l_ushiro_2
+    100048: l_ushiro_3
+    100050: l_ushiro_4
+    100052: o_0
+    100054: o_1
+    100056: p_kerberos:polySurface1
+    100058: R_ker1
+    100060: R_ker1ago
+    100062: R_ker2
+    100064: R_ker2ago
+    100066: R_ker3
+    100068: R_ker3ago
+    100070: R_koshi
+    100072: R_l_hiza
+    100074: R_l_kata
+    100076: R_l_kokansetsu
+    100078: R_l_tekubi
+    100080: r_mae_0
+    100082: r_mae_1
+    100084: r_mae_2
+    100086: R_o
+    100088: R_r_hiza
+    100090: R_r_kata
+    100092: R_r_kokansetsu
+    100094: R_r_tekubi
+    100096: r_tekubi_0
+    100098: r_tekubi_1
+    100100: r_ushiro_0
+    100102: r_ushiro_1
+    100104: r_ushiro_2
+    100106: r_ushiro_3
+    100108: r_ushiro_4
+    100110: se_0
+    100112: se_1
+    400000: all_scale
+    400002: ker1_0
+    400004: ker1_1
+    400006: ker1ago_0
+    400008: ker1ago_1
+    400010: ker2_0
+    400012: ker2_1
+    400014: ker2ago_0
+    400016: ker2ago_1
+    400018: ker3_0
+    400020: ker3_1
+    400022: ker3ago_0
+    400024: ker3ago_1
+    400026: //RootNode
+    400028: koshi_0
+    400030: koshi_1
+    400032: l_mae_0
+    400034: l_mae_1
+    400036: l_mae_2
+    400038: l_tekubi_0
+    400040: l_tekubi_1
+    400042: l_ushiro_0
+    400044: l_ushiro_1
+    400046: l_ushiro_2
+    400048: l_ushiro_3
+    400050: l_ushiro_4
+    400052: o_0
+    400054: o_1
+    400056: p_kerberos:polySurface1
+    400058: R_ker1
+    400060: R_ker1ago
+    400062: R_ker2
+    400064: R_ker2ago
+    400066: R_ker3
+    400068: R_ker3ago
+    400070: R_koshi
+    400072: R_l_hiza
+    400074: R_l_kata
+    400076: R_l_kokansetsu
+    400078: R_l_tekubi
+    400080: r_mae_0
+    400082: r_mae_1
+    400084: r_mae_2
+    400086: R_o
+    400088: R_r_hiza
+    400090: R_r_kata
+    400092: R_r_kokansetsu
+    400094: R_r_tekubi
+    400096: r_tekubi_0
+    400098: r_tekubi_1
+    400100: r_ushiro_0
+    400102: r_ushiro_1
+    400104: r_ushiro_2
+    400106: r_ushiro_3
+    400108: r_ushiro_4
+    400110: se_0
+    400112: se_1
+    4300000: p_kerberos:polySurface1
+    7400000: Idle
+    7400002: Walk
+    7400004: Attack
+    7400006: Skill
+    7400008: Dead
+    9500000: //RootNode
+    13700000: p_kerberos:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/R_koshi
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3/l_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3/r_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/se_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0/ker1ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0/ker2ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0/ker3ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0/l_tekubi_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0/o_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0/r_tekubi_1
+        weight: 1
+      - path: p_kerberos:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 48
+      lastFrame: 87
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/R_koshi
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3/l_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3/r_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/se_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0/ker1ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0/ker2ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0/ker3ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0/l_tekubi_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0/o_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0/r_tekubi_1
+        weight: 1
+      - path: p_kerberos:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 90
+      lastFrame: 125
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/R_koshi
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3/l_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3/r_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/se_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0/ker1ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0/ker2ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0/ker3ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0/l_tekubi_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0/o_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0/r_tekubi_1
+        weight: 1
+      - path: p_kerberos:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Skill
+      takeName: Take 001
+      firstFrame: 128
+      lastFrame: 162
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/R_koshi
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3/l_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3/r_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/se_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0/ker1ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0/ker2ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0/ker3ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0/l_tekubi_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0/o_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0/r_tekubi_1
+        weight: 1
+      - path: p_kerberos:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Dead
+      takeName: Take 001
+      firstFrame: 165
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: all_scale
+        weight: 1
+      - path: all_scale/R_koshi
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_l_kokansetsu/l_ushiro_0/l_ushiro_1/R_l_hiza/l_ushiro_2/l_ushiro_3/l_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3
+        weight: 1
+      - path: all_scale/R_koshi/koshi_0/koshi_1/R_r_kokansetsu/r_ushiro_0/r_ushiro_1/R_r_hiza/r_ushiro_2/r_ushiro_3/r_ushiro_4
+        weight: 1
+      - path: all_scale/R_koshi/se_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker1/ker1_0/ker1_1/R_ker1ago/ker1ago_0/ker1ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker2/ker2_0/ker2_1/R_ker2ago/ker2ago_0/ker2ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_ker3/ker3_0/ker3_1/R_ker3ago/ker3ago_0/ker3ago_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_l_kata/l_mae_0/l_mae_1/l_mae_2/R_l_tekubi/l_tekubi_0/l_tekubi_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_o/o_0/o_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0
+        weight: 1
+      - path: all_scale/R_koshi/se_0/se_1/R_r_kata/r_mae_0/r_mae_1/r_mae_2/R_r_tekubi/r_tekubi_0/r_tekubi_1
+        weight: 1
+      - path: p_kerberos:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
