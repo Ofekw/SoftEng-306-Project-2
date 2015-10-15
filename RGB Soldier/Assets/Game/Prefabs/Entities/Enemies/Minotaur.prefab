@@ -287,6 +287,7 @@ GameObject:
   - 50: {fileID: 5070828}
   - 114: {fileID: 11430844}
   - 114: {fileID: 11422778}
+  - 58: {fileID: 5882904}
   m_Layer: 10
   m_Name: Minotaur
   m_TagString: Zombie
@@ -985,7 +986,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.739399, y: 43.6137848, z: 0}
+  m_LocalPosition: {x: -14.8900003, y: 43.6137848, z: 0}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 465566}
@@ -1026,7 +1027,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173786}
-  m_LocalRotation: {x: -8.66899164e-10, y: -1.57166768e-09, z: .495188534, w: .868785501}
+  m_LocalRotation: {x: -8.66899219e-10, y: -1.5716678e-09, z: .495188564, w: .86878556}
   m_LocalPosition: {x: 3.41405666e-07, y: -1.37482289e-07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1080,7 +1081,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121734}
   m_LocalRotation: {x: .0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: -.129999995, y: -.179972604, z: .00785358436}
+  m_LocalPosition: {x: -.129999995, y: -.00600000005, z: 0}
   m_LocalScale: {x: -.894623876, y: .893670142, z: -.894242287}
   m_Children: []
   m_Father: {fileID: 443938}
@@ -1256,6 +1257,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5882904
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143304}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.150000006, y: .519999981}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6114072
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1266,9 +1280,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.111309431, y: .637501299}
+  m_Offset: {x: -.138747022, y: .666786194}
   serializedVersion: 2
-  m_Size: {x: 1.0607146, y: 1.30357218}
+  m_Size: {x: 1.11558974, y: 1.15200317}
 --- !u!82 &8213222
 AudioSource:
   m_ObjectHideFlags: 1

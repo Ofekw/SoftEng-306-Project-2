@@ -491,12 +491,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 452628}
   - 95: {fileID: 9591772}
-  - 61: {fileID: 6100044}
   - 96: {fileID: 9616662}
   - 114: {fileID: 11434426}
   - 50: {fileID: 5046656}
   - 114: {fileID: 11457566}
   - 114: {fileID: 11448836}
+  - 58: {fileID: 5856016}
+  - 61: {fileID: 6140970}
   m_Layer: 10
   m_Name: RockGolem
   m_TagString: Zombie
@@ -751,7 +752,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
   m_LocalPosition: {x: .188003257, y: 16.4741726, z: 0}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
@@ -923,7 +924,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181300}
   m_LocalRotation: {x: .0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: .129999995, y: -.0799999982, z: 0}
+  m_LocalPosition: {x: .00999999978, y: -.0350000001, z: -0}
   m_LocalScale: {x: -.894623876, y: .893670142, z: -.894242287}
   m_Children: []
   m_Father: {fileID: 452628}
@@ -1052,7 +1053,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156980}
-  m_LocalRotation: {x: .56013006, y: .828404665, z: -8.50232283e-17, w: 1.64270824e-17}
+  m_LocalRotation: {x: .560130119, y: .828404725, z: -8.5023235e-17, w: 1.6427084e-17}
   m_LocalPosition: {x: -2.07309725e-07, y: -9.30439228e-08, z: 4.45397809e-23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1088,7 +1089,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6100044
+--- !u!58 &5856016
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184150}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .479999989}
+  serializedVersion: 2
+  m_Radius: .5
+--- !u!61 &6140970
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1098,9 +1112,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0466222763, y: .668253541}
+  m_Offset: {x: .0553012863, y: .699060619}
   serializedVersion: 2
-  m_Size: {x: 1.26419342, y: 1.3729794}
+  m_Size: {x: 1.24683845, y: 1.31136572}
 --- !u!82 &8282698
 AudioSource:
   m_ObjectHideFlags: 1

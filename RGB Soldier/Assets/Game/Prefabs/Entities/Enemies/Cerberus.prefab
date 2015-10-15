@@ -317,6 +317,7 @@ GameObject:
   - 114: {fileID: 11402996}
   - 114: {fileID: 11473324}
   - 82: {fileID: 8267576}
+  - 58: {fileID: 5822422}
   m_Layer: 10
   m_Name: Cerberus
   m_TagString: Zombie
@@ -1173,7 +1174,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184408}
-  m_LocalRotation: {x: -.447336197, y: .894365847, z: -8.21555652e-17, w: -2.7372677e-17}
+  m_LocalRotation: {x: -.447336227, y: .894365907, z: -8.21555718e-17, w: -2.73726787e-17}
   m_LocalPosition: {x: .371439129, y: -.441769004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1213,7 +1214,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124686}
-  m_LocalRotation: {x: .779660404, y: .626202524, z: -8.60842694e-17, w: -9.39658316e-18}
+  m_LocalRotation: {x: .779660463, y: .626202583, z: -8.60842761e-17, w: -9.39658399e-18}
   m_LocalPosition: {x: -5.58654904e-07, y: 3.3100153e-07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1303,7 +1304,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158430}
-  m_LocalRotation: {x: -1.6989079e-09, y: -5.79106818e-10, z: .31343466, w: .949609756}
+  m_LocalRotation: {x: -1.69890801e-09, y: -5.79106874e-10, z: .31343469, w: .949609816}
   m_LocalPosition: {x: 8.79245547e-08, y: -3.42438796e-07, z: 1.20844517e-22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1329,8 +1330,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133536}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.94178057, y: 25.7028713, z: 0}
+  m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
+  m_LocalPosition: {x: 0, y: 25.7028713, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 458760}
@@ -1346,7 +1347,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130726}
   m_LocalRotation: {x: .0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: -.349999994, y: -.179972604, z: .00785358436}
+  m_LocalPosition: {x: .00800000038, y: .0359999985, z: -0}
   m_LocalScale: {x: -.894623876, y: .893670142, z: -.894242287}
   m_Children: []
   m_Father: {fileID: 458612}
@@ -1677,6 +1678,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5822422
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133536}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .529999971}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6137672
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1687,9 +1701,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0455360413, y: .54389596}
+  m_Offset: {x: .0374385826, y: .597904503}
   serializedVersion: 2
-  m_Size: {x: 1.59702528, y: 1.18721187}
+  m_Size: {x: 1.52684915, y: 1.03604829}
 --- !u!82 &8267576
 AudioSource:
   m_ObjectHideFlags: 1

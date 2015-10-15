@@ -330,6 +330,7 @@ GameObject:
   - 50: {fileID: 5035766}
   - 114: {fileID: 11402000}
   - 114: {fileID: 11416806}
+  - 58: {fileID: 5879846}
   m_Layer: 10
   m_Name: EarthGolem
   m_TagString: Zombie
@@ -1059,6 +1060,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5879846
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154138}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .479999989}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6167886
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1069,9 +1083,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0427370071, y: .676023901}
+  m_Offset: {x: .0553012863, y: .699060619}
   serializedVersion: 2
-  m_Size: {x: 1.27196419, y: 1.35743797}
+  m_Size: {x: 1.24683845, y: 1.31136572}
 --- !u!95 &9519238
 Animator:
   serializedVersion: 3
@@ -1173,7 +1187,9 @@ MonoBehaviour:
   damageGiven: 1
   orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
   experienceGiven: 5
+  isSpecialLevel: 0
   knockBackStrength: 300
+  source: {fileID: 0}
 --- !u!114 &11463724
 MonoBehaviour:
   m_ObjectHideFlags: 1

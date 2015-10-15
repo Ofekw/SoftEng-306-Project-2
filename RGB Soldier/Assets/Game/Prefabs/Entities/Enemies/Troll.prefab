@@ -136,6 +136,7 @@ GameObject:
   - 114: {fileID: 11412198}
   - 114: {fileID: 11477966}
   - 114: {fileID: 11494882}
+  - 58: {fileID: 5804000}
   m_Layer: 10
   m_Name: Troll
   m_TagString: Zombie
@@ -511,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0799999982, y: -.180000007, z: 0}
+  m_LocalPosition: {x: -.0799999982, y: -.0320000015, z: 0}
   m_LocalScale: {x: -.894623816, y: .894623816, z: -.894623816}
   m_Children: []
   m_Father: {fileID: 484656}
@@ -948,6 +949,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5804000
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124446}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.119999997, y: .5}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6168956
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -958,9 +972,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0233720783, y: .779097795}
+  m_Offset: {x: -.0957298279, y: .769441247}
   serializedVersion: 2
-  m_Size: {x: 1.43939722, y: 1.69590986}
+  m_Size: {x: 1.20119464, y: 1.39332986}
 --- !u!82 &8229148
 AudioSource:
   m_ObjectHideFlags: 1

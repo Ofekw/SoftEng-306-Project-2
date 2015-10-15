@@ -310,12 +310,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 484054}
   - 95: {fileID: 9595476}
-  - 61: {fileID: 6127564}
   - 96: {fileID: 9630432}
   - 114: {fileID: 11445270}
   - 50: {fileID: 5076676}
   - 114: {fileID: 11420082}
   - 114: {fileID: 11420894}
+  - 61: {fileID: 6145212}
+  - 58: {fileID: 5893406}
   m_Layer: 10
   m_Name: IceGolem
   m_TagString: Zombie
@@ -869,7 +870,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177140}
-  m_LocalRotation: {x: 0, y: 0, z: -.35390687, w: .935280621}
+  m_LocalRotation: {x: 0, y: 0, z: -.3539069, w: .935280681}
   m_LocalPosition: {x: -22.7170258, y: 0, z: 3.38813171e-23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -883,7 +884,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125226}
   m_LocalRotation: {x: .0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: .0599999987, y: -.179972604, z: .00785358436}
+  m_LocalPosition: {x: .0599999987, y: -.074000001, z: 0}
   m_LocalScale: {x: -.894623876, y: .893670142, z: -.894242287}
   m_Children: []
   m_Father: {fileID: 484054}
@@ -920,7 +921,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120526}
-  m_LocalRotation: {x: -1.30274047e-09, y: -1.234715e-09, z: .609590828, w: .792716205}
+  m_LocalRotation: {x: -1.30274058e-09, y: -1.23471511e-09, z: .609590888, w: .792716265}
   m_LocalPosition: {x: -5.07502596e-10, y: 1.07705269e-07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -970,7 +971,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151540}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
   m_LocalPosition: {x: -5.1560297, y: -10.9606962, z: 0}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
@@ -1088,7 +1089,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6127564
+--- !u!58 &5893406
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151540}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .479999989}
+  serializedVersion: 2
+  m_Radius: .5
+--- !u!61 &6145212
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1098,9 +1112,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0404763222, y: .67291826}
+  m_Offset: {x: .0553012863, y: .699060619}
   serializedVersion: 2
-  m_Size: {x: 1.26309609, y: 1.37440586}
+  m_Size: {x: 1.24683845, y: 1.31136572}
 --- !u!82 &8287606
 AudioSource:
   m_ObjectHideFlags: 1
