@@ -6,8 +6,8 @@ using UnityStandardAssets.CrossPlatformInput;
 public class BulletTime : Objective
 {
     private GameObject player;
-    public Zombie enemyPrefab;
-    private List<Zombie> enemies = new List<Zombie>();
+    public NormalEnemy enemyPrefab;
+    private List<NormalEnemy> enemies = new List<NormalEnemy>();
     public PowerupSpawnController powerupSpawnController;
 
     public GameObject jumpButton;
@@ -23,8 +23,8 @@ public class BulletTime : Objective
         powerDrop.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5);
         enemyPrefab.GetComponent<EntityMovement>().moveForce = 60;
         enemyPrefab.GetComponent<EntityMovement>().maxSpeed = 5f;
-        enemies.Add((Zombie)Instantiate(enemyPrefab, new Vector3(player.transform.position.x - 13, player.transform.position.y), this.transform.rotation));
-        enemies.Add((Zombie)Instantiate(enemyPrefab, new Vector3(player.transform.position.x - 15, player.transform.position.y), this.transform.rotation));
+        enemies.Add((NormalEnemy)Instantiate(enemyPrefab, new Vector3(player.transform.position.x - 13, player.transform.position.y), this.transform.rotation));
+        enemies.Add((NormalEnemy)Instantiate(enemyPrefab, new Vector3(player.transform.position.x - 15, player.transform.position.y), this.transform.rotation));
         enemyPrefab.GetComponent<EntityMovement>().moveForce = 0;
         enemyPrefab.GetComponent<EntityMovement>().maxSpeed = 0;
         powerDrop.Spawn();
@@ -46,8 +46,10 @@ public class BulletTime : Objective
 
     public override bool isCompleted()
     {
-        foreach (Zombie zombie in enemies){
-            if (zombie != null){
+        foreach (NormalEnemy enemy in enemies)
+        {
+            if (enemy != null)
+            {
                 return false;
             }
         }
