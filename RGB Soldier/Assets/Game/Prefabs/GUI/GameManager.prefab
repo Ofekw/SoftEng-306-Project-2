@@ -65,10 +65,15 @@ MonoBehaviour:
   chargeBar: {fileID: 0}
   healthDisp: {fileID: 0}
   powerupCountdown: {fileID: 0}
+  levelDisp: {fileID: 0}
   nextScene: cutscene_2
   lsa: {fileID: 11467434}
   currentLevel: 1
   focus: {fileID: 100006, guid: 9ad605547dad41349b8abbe117afa092, type: 2}
+  player: {fileID: 0}
+  skin: {fileID: 0}
+  materials: []
+  textures: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

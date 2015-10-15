@@ -2320,11 +2320,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22458176, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22448922, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11497306, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: player
@@ -2555,6 +2555,11 @@ Prefab:
       propertyPath: powerupCountdown
       value: 
       objectReference: {fileID: 1345673958}
+    - target: {fileID: 11475280, guid: bc8c29cb9d760b947a96ae46980ea73a, type: 2}
+      propertyPath: levelDisp
+      value: 
+      objectReference: {fileID: 11495258, guid: 6854b4538daa95f4aa12d56a4cfff5bf,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc8c29cb9d760b947a96ae46980ea73a, type: 2}
   m_IsPrefabParent: 0
