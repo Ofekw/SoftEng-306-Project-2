@@ -87,7 +87,6 @@ public class BaseEnemy : KillableEntityInterface
         //basic decrementing health
         GameObject player = GameObject.FindWithTag("Player");
         knockBack(Mathf.Sign(this.transform.position.x - player.transform.position.x));
-        Debug.Log("asd");
         currentHealth = currentHealth - damageReceived;
         if (currentHealth <= 0)
         {
@@ -98,15 +97,17 @@ public class BaseEnemy : KillableEntityInterface
     public override void die()
     {
 
-       source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
+        GameControl.control.enemyKilledAchievement();
+        source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
         dead = true;
+
 
         // ignores collision between dead enemy and player
         Collider2D collider = GetComponent<Collider2D>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(collider, player.GetComponent<Collider2D>());
-        entityMovement.moveForce = 0F;
+
         damageGiven = 0;
 
         animator.SetBool("Dead", true);
@@ -131,6 +132,8 @@ public class BaseEnemy : KillableEntityInterface
         	{
             	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
         	}
+
+
     	}
     }
     public void loopPowerup()

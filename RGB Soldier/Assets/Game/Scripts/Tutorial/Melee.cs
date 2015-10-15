@@ -12,8 +12,7 @@ public class Melee : Objective
     {
         meleeButton.SetActive(true);
         player = GameObject.FindWithTag("Player");
-        Vector3 position = new Vector3(player.transform.position.x+3, player.transform.position.y);
-        enemy = (GameObject)Instantiate(enemyPrefab , position, this.transform.rotation);
+        enemy = (GameObject)Instantiate(enemyPrefab , new Vector3(player.transform.position.x+3, player.transform.position.y), this.transform.rotation);
         yield return new WaitForSeconds(2);
         while (!isCompleted())
         {

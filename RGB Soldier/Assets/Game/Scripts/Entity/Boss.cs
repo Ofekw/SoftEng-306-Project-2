@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using GooglePlayGames;
 
 [RequireComponent(typeof(EntityMovement))]
 
@@ -22,12 +23,30 @@ public class Boss : KillableEntityInterface
     public GameObject shield;
     private Boolean isShielded = false;
     private GameObject shieldClone;
-    private SpriteRenderer renderer;
+    private Boolean canTeleport = true;
 
     private Func<Void> currentAttack;
 
     public override void die()
     {
+        if (Social.localUser.authenticated)
+        {
+            Social.ReportProgress("CgkIpKjLyoEdEAIQBQ", 100.0f, (bool success) =>
+            {
+            });
+        }
+
+        Player checkPlayer = player.GetComponent<Player>();
+        if (checkPlayer.hasRanged == false)
+        {
+            if (Social.localUser.authenticated)
+            {
+                Social.ReportProgress("CgkIpKjLyoEdEAIQBg", 100.0f, (bool success) =>
+                {
+                });
+            }
+        }
+
         Destroy(this.gameObject);
         Application.LoadLevel("menu_start_screen");
     }
@@ -35,7 +54,7 @@ public class Boss : KillableEntityInterface
     public override void takeDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
-        healthBar.transform.localScale = new Vector3((currentHealth * 1.0f / maxHealth) * healthBarScale.x, healthBarScale.y, 1);
+        healthBar.transform.localScale = new Vector3((currentHealth*1.0f/maxHealth)*healthBarScale.x, healthBarScale.y, 1);
         if (currentHealth <= 0)
         {
             die();
@@ -98,10 +117,10 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = false;
             animator.SetBool("isMovingLeft", true);
             animator.SetBool("isMovingRight", false);
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
 
-        }
-        else if (teleX <= 0)
+        } else if (teleX <= 0)
         {
             if (!entityMovement.facingRight)
             {
@@ -111,7 +130,19 @@ public class Boss : KillableEntityInterface
             entityMovement.facingRight = true;
             animator.SetBool("isMovingRight", true);
             animator.SetBool("isMovingLeft", false);
+            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
+        }
+    }
+
+    private void checkForAttack()
+    {
+        //check if any orb attacks are charging when teleport is called. If they are they should be 
+        GameObject orbAttack = GameObject.FindGameObjectWithTag("UnblockableOrbAttack");
+        //check that there is an orbattack and it is scaling, not already launched.
+        if (orbAttack != null && orbAttack.GetComponent<UnblockableOrbAttack>().startScale)
+        {
+            Destroy(orbAttack);
         }
     }
 
@@ -129,6 +160,10 @@ public class Boss : KillableEntityInterface
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScale = healthBar.transform.localScale;
         //renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        PlayGamesPlatform.Activate();
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
     }
 
     // Update is called once per frame
@@ -144,6 +179,7 @@ public class Boss : KillableEntityInterface
                 {
                     Destroy(shieldClone);
                     isShielded = false;
+                    canTeleport = true;
                 }
             }
             //else if shielded and shield isn't it's correct size, increase the size
@@ -161,17 +197,22 @@ public class Boss : KillableEntityInterface
             shieldClone = (GameObject)Instantiate(shield, pos, gameObject.transform.rotation);
         }
         attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
+        if (canTeleport)
         {
-            attackTimer = 4f;
-            int attackNo = rand.Next(1, 3);
-            if (attackNo == 1)
+            if (attackTimer <= 0)
             {
-                StartCoroutine(teleFlicker(10, 0.01f, 0.01f, spiritBomb));
-            }
-            else
-            {
-                StartCoroutine(teleFlicker(10, 0.01f, 0.01f, blackOrbAttack));
+                attackTimer = 4f;
+                int attackNo = rand.Next(1, 3);
+                if (attackNo == 1)
+                {
+                    teleport();
+                    spiritBomb();
+                }
+                else
+                {
+                    teleport();
+                    blackOrbAttack();
+                }
             }
         }
     }

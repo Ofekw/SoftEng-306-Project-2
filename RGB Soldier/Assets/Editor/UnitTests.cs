@@ -12,8 +12,7 @@ public class UnitTests
 
         Assert.True(!sub.isJumping);
 
-        sub.jumpPressed();
-
+        sub.setJumping();
 
         Assert.True(sub.isJumping);
     }
@@ -58,7 +57,7 @@ public class UnitTests
         subGameControl.playerLevel = 1;
         subGameControl.playerExp = 100;
         subGameControl.experienceRequired = 40;
-        subGameControl.checkExperience();
+        subGameControl.levelAndCarryOver();
 
         Assert.That(subGameControl.playerExp == 60);
         Assert.That(subGameControl.playerLevel == 2);
