@@ -85,7 +85,7 @@ Animator:
   m_GameObject: {fileID: 138140}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 294cee36894ffda44b141026aec12e5a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 576c7174c6d6dd148811d5eeb465c37d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298135477edecdf4ba059226a57ca066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityMovement: {fileID: 0}
 --- !u!212 &21298096
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -171,6 +170,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 576c7174c6d6dd148811d5eeb465c37d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
