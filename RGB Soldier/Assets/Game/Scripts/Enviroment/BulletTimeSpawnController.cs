@@ -43,6 +43,8 @@ public class BulletTimeSpawnController : MonoBehaviour
 
     public void spawn()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Instantiate(focus, player.transform.position, player.transform.rotation);
         spawnerToCall = Random.Range(0, spawners.Length);  // pick random spawner for powerup
         spawners[spawnerToCall].Spawn();
     }

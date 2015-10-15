@@ -243,8 +243,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartBulletTime() {
 		isBulletTime = true;
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		Instantiate(focus, player.transform.position, player.transform.rotation);
         // go through countdown timer
         for (int i = (int)POWERUP_TIME; i > 0; i--)
         {
