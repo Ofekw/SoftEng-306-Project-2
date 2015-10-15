@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET;  // set max value of attack charge slider
 		state = State.Running;
 
-        var i = GameControl.control.playerSprite;
+        var i = GameControl.control != null ? GameControl.control.playerSprite : 1;
         player = GameObject.Find("Player");
         skin = player.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
         materials = skin.materials;
