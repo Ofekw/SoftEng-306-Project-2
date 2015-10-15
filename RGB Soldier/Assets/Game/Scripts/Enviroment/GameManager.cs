@@ -99,41 +99,24 @@ public class GameManager : MonoBehaviour
         Debug.Log(materials);
         Debug.Log(i);
         if (i == 1) {
-            for (i = 0; i < 4; i++) {
+            for (i = 0; i < 4; i++)
+            {
                 materials[i].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-
             }
-
-            materials[0].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-            materials[1].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-            materials[2].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-            materials[3].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-
-
-
         }
         else if (i == 2)
         {
             for (i = 0; i < 4; i++)
             {
-                materials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
+                materials[i].mainTexture = Resources.Load("ch037", typeof(Texture2D)) as Texture2D;
             }
-            //materials[0] = Resources.Load("ch032") as Material;
-            //materials[1] = Resources.Load("ch032") as Material;
-            //materials[2] = Resources.Load("ch032") as Material;
-            //materials[3] = Resources.Load("ch032") as Material;
         }
         else if (i == 3)
         {
             for (i = 0; i < 4; i++)
             {
                 materials[i].mainTexture = Resources.Load("ch029", typeof(Texture2D)) as Texture2D;
-
             }
-           //materials[0] = Resources.Load("ch029") as Material;
-            //materials[1] = Resources.Load("ch029") as Material;
-            //materials[2] = Resources.Load("ch029") as Material;
-            //materials[3] = Resources.Load("ch029") as Material;
         }
 
 
