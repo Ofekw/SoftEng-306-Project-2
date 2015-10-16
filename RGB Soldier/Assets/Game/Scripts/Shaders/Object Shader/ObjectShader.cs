@@ -3,29 +3,27 @@ using System.Collections;
 
 public class ObjectShader : MonoBehaviour {
 
-    public Material[] materials = new Material[3];
+    public Shader[] shaders = new Shader[3];
     public Shader redGreenShader;
     public Shader blueYellowShader;
 
-    Renderer rend;
+    public SkinnedMeshRenderer rend;
     public int current = 0;
 
 
 	// Use this for initialization
 	void Start () {
-        rend = this.gameObject.GetComponentInParent<SpriteRenderer>();
 
-        materials[0] = new Material(rend.sharedMaterial);
-        materials[1] = new Material(redGreenShader);
-        materials[2] = new Material(blueYellowShader);
+        shaders[0] = rend.material.shader;
+        shaders[1] = redGreenShader;
+        shaders[2] = blueYellowShader;
         ChangeColourBlindMode(GameControl.control.colourMode);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            Debug.Log("Key pressed");
             ChangeColourBlindMode((current+1) % 3);
         }
 	}
@@ -35,8 +33,10 @@ public class ObjectShader : MonoBehaviour {
     //2 is blue-yellow
     void ChangeColourBlindMode(int mode)
     {
-        Debug.Log("Changed to " + mode);
-        rend.sharedMaterial = materials[mode];
+        for (int i = 0; i < rend.materials.Length; i++)
+        {
+            rend.materials[i].shader = shaders[mode];
+        }
         current = mode;
     }
 }

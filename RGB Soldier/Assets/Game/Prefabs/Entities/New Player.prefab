@@ -1368,12 +1368,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d3f0e64e72fdb41b4968e27365717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
+  shaders:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   redGreenShader: {fileID: 4800000, guid: 9e250dde68b4f6d43b7a514e778e17ef, type: 3}
   blueYellowShader: {fileID: 4800000, guid: 595de75a5898e0c4596c695df0e77226, type: 3}
+  rend: {fileID: 13760104}
   current: 0
 --- !u!114 &11435388
 MonoBehaviour:
