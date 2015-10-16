@@ -7,9 +7,10 @@ using GooglePlayGames;
 [RequireComponent(typeof(LoadSceneAsync))]
 public class GameManager : MonoBehaviour
 {
-	public enum State {
-		Paused, Running
-	}
+    public enum State
+    {
+        Paused, Running
+    }
     public static GameManager instance;
     public int orbsCollected = 0;
     public float specialCharge = 0;
@@ -18,19 +19,19 @@ public class GameManager : MonoBehaviour
     public int enemiesOnScreen = 0;
     public int stage;
     public bool isTutorial;
-	public bool isBulletTime;
+    public bool isBulletTime;
 
     public int ORB_COUNT_TARGET = 20;
 
     public Text orbCountDisp;
     public Slider chargeBar;
-	public Text healthDisp;
+    public Text healthDisp;
     public Text powerupCountdown;
     public Text levelDisp;
     public string nextScene;
     public LoadSceneAsync lsa;
     public int currentLevel;
-	public GameObject focus;
+    public GameObject focus;
     public GameObject player;
     public SkinnedMeshRenderer skin;
     public Material[] materials;
@@ -43,13 +44,15 @@ public class GameManager : MonoBehaviour
 
     private State state;
 
-	public State getState() {
-		return state;
-	}
+    public State getState()
+    {
+        return state;
+    }
 
-	public void SetState(State setState) {
-		state = setState;
-	}
+    public void SetState(State setState)
+    {
+        state = setState;
+    }
 
     void Awake()
     {
@@ -80,7 +83,12 @@ public class GameManager : MonoBehaviour
         {
             stageImage = GameObject.Find("StageImage");
             stageText = GameObject.Find("StageText").GetComponent<Text>();
-            stageText.text = "Stage " + currentLevel;
+            if (currentLevel == 0)
+            {
+                stageText.text = "Boss Stage";
+            }
+            else { stageText.text = "Stage " + currentLevel; }
+
             stageImage.SetActive(true);
             Invoke("HideStageImage", 2);
         }
@@ -92,7 +100,7 @@ public class GameManager : MonoBehaviour
         powerupCountdown.text = "";
         canSpecialAtk = false;
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET;  // set max value of attack charge slider
-		state = State.Running;
+        state = State.Running;
 
         var i = GameControl.control != null ? GameControl.control.playerSprite : 1;
         player = GameObject.Find("Player");
@@ -100,8 +108,10 @@ public class GameManager : MonoBehaviour
         materials = skin.materials;
         Debug.Log(materials);
         Debug.Log(i);
-        if (i == 1) {
-            for (i = 0; i < 4; i++) {
+        if (i == 1)
+        {
+            for (i = 0; i < 4; i++)
+            {
                 materials[i].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
 
             }
@@ -132,7 +142,7 @@ public class GameManager : MonoBehaviour
                 materials[i].mainTexture = Resources.Load("ch029", typeof(Texture2D)) as Texture2D;
 
             }
-           //materials[0] = Resources.Load("ch029") as Material;
+            //materials[0] = Resources.Load("ch029") as Material;
             //materials[1] = Resources.Load("ch029") as Material;
             //materials[2] = Resources.Load("ch029") as Material;
             //materials[3] = Resources.Load("ch029") as Material;
@@ -142,13 +152,13 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-		if (GameManager.instance.isPaused ())
-			return;
+        if (GameManager.instance.isPaused())
+            return;
         countEnemies();
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         //update health counter
-		healthDisp.text = "x " + player.currentHealth;
-		orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
+        healthDisp.text = "x " + player.currentHealth;
+        orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
         chargeBar.value = specialCharge;  // set value of special attack slider
         levelDisp.text = "Level: " + GameControl.control.playerLevel; //update player level text
         //health check
@@ -184,7 +194,7 @@ public class GameManager : MonoBehaviour
 
     public void incrementSpecialAtkCounter(Player player)
     {
-		specialCharge += (float)(player.intelligence) / 5;
+        specialCharge += (float)(player.intelligence) / 5;
     }
 
     public void resetSpecialAtkCounter()
@@ -217,7 +227,7 @@ public class GameManager : MonoBehaviour
                     });
                 }
             }
-            GameControl.control.currentGameLevel = GameControl.control.currentGameLevel +1;
+            GameControl.control.currentGameLevel = GameControl.control.currentGameLevel + 1;
         }
         lsa.ClickAsync(nextScene);
     }
@@ -227,22 +237,26 @@ public class GameManager : MonoBehaviour
         Application.LoadLevel("game_over_screen");
     }
 
-	public bool isPaused() {
-		if (GameManager.instance.getState ().Equals (GameManager.State.Paused)) {
-			return true;
-		}
-		return false;
-	}
+    public bool isPaused()
+    {
+        if (GameManager.instance.getState().Equals(GameManager.State.Paused))
+        {
+            return true;
+        }
+        return false;
+    }
 
-	public void activateBulletTime() {
-		if (isBulletTime)
-			return;
-		isBulletTime = true;
-		StartCoroutine (StartBulletTime ());
-	}
+    public void activateBulletTime()
+    {
+        if (isBulletTime)
+            return;
+        isBulletTime = true;
+        StartCoroutine(StartBulletTime());
+    }
 
-    IEnumerator StartBulletTime() {
-		isBulletTime = true;
+    IEnumerator StartBulletTime()
+    {
+        isBulletTime = true;
         // go through countdown timer
         for (int i = (int)POWERUP_TIME; i > 0; i--)
         {
@@ -250,6 +264,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         powerupCountdown.text = "";  // rest countdown timer text
-		isBulletTime = false;
-	}
+        isBulletTime = false;
+    }
 }

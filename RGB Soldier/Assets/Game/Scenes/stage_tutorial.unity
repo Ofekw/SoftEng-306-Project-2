@@ -2140,6 +2140,26 @@ Prefab:
       propertyPath: isTutorial
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11446976, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 403399651}
+    - target: {fileID: 11446976, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 100006, guid: 9ad605547dad41349b8abbe117afa092, type: 2}
+    - target: {fileID: 11446976, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: levelDisp
+      value: 
+      objectReference: {fileID: 1940794956}
+    - target: {fileID: 11446976, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: ORB_COUNT_TARGET
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11446976, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: nextScene
+      value: menu_stage_select
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
   m_IsPrefabParent: 0
@@ -2211,12 +2231,6 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 152486, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
   m_PrefabInternal: {fileID: 1649324545}
---- !u!114 &1848967390 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11400014, guid: d370f9bbb9d0be0428160c6994ce7173,
-    type: 2}
-  m_PrefabInternal: {fileID: 1531284730}
-  m_Script: {fileID: 11500000, guid: 9fa78c2021b3e8c49b6bb961636d5dc0, type: 3}
 --- !u!1 &1893613449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2444,12 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1937755105}
+--- !u!114 &1940794956 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11495258, guid: 6854b4538daa95f4aa12d56a4cfff5bf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1649324545}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &2009934999
 Prefab:
   m_ObjectHideFlags: 0
@@ -2640,7 +2660,8 @@ Prefab:
     - target: {fileID: 11464554, guid: a8e496d517d23da4ea4273cf542daa6a, type: 2}
       propertyPath: spawners.Array.data[0]
       value: 
-      objectReference: {fileID: 1848967390}
+      objectReference: {fileID: 11400014, guid: d370f9bbb9d0be0428160c6994ce7173,
+        type: 2}
     - target: {fileID: 11464554, guid: a8e496d517d23da4ea4273cf542daa6a, type: 2}
       propertyPath: spawnPeriod
       value: 9999
