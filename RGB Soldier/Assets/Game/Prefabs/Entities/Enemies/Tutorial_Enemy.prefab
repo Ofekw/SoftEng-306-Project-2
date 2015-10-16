@@ -1242,7 +1242,7 @@ MonoBehaviour:
   damageGiven: 0
   orb: {fileID: 148164, guid: 54a7d89941869454db29a54732048ace, type: 2}
   experienceGiven: 0
-  isSpecialLevel: 0
+  isSpecialLevel: 1
   knockBackStrength: 300
   source: {fileID: 8245394}
 --- !u!137 &13719294
@@ -1328,6 +1328,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: experienceGiven
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isSpecialLevel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
