@@ -11,7 +11,7 @@ public class BulletTimeSpawnController : MonoBehaviour
     private float spawnTimer = 0;
     private int spawnerToCall = 0;
     private bool _canSpawn = true;  // when false spawnTimer doesn't increase and no new orbs can spawn
-    public GameObject focus;
+   // public GameObject focus;
 
     //reset the spawn timer and allow new powerups to spawn. called by BulletTimeOrb when collected
     public void enableSpawner()
