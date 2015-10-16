@@ -105,6 +105,7 @@ public class Player : KillableEntityInterface
         if (isJumping)
         {
             entityMovement.Jump();
+            isJumping = false;
         }
         float hVelocity = CrossPlatformInputManager.GetAxis("Horizontal");
 
@@ -269,12 +270,6 @@ public class Player : KillableEntityInterface
     {
         isJumping = true;
     }
-
-    public void jumpReleased()
-    {
-        isJumping = false;
-    }
-
 
     public override void takeDamage(int damageReceived)
     {
