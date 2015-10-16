@@ -66,7 +66,7 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
-        renderer = this.gameObject.transform.FindChild("p_sotai").gameObject.GetComponent<SkinnedMeshRenderer>();
+        renderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
         meleeAttackSound = Resources.Load("Audio/melee_attack") as AudioClip;
         specialAttackSound = Resources.Load("Audio/special_attack") as AudioClip;
         rangedAttackSound = Resources.Load("Audio/range_attack") as AudioClip;
