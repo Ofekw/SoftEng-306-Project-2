@@ -13,6 +13,13 @@
 ![](https://i.gyazo.com/78907c6d20cd421c2d6c360eeedc284d.gif)
 ![](https://i.gyazo.com/4fcafc831f83cede4121ca19b093745b.gif)
 
+###Over 9 Different Enemies
+
+### Colour Blind Mode
+
+### Google Play Achievements and Cloud Game Saves
+![](https://i.gyazo.com/c0a5c8c7f96fdf47b7e32a94f88d8052.png)
+
 ###Prerequisites
 * Android 4.1+ device.
 
