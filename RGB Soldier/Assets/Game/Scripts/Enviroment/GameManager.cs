@@ -34,11 +34,14 @@ public class GameManager : MonoBehaviour
     public GameObject focus;
     public GameObject player;
     public SkinnedMeshRenderer skin;
+    public SkinnedMeshRenderer pauseSkin;
     public Material[] materials;
+    public Material[] pauseMaterials;
     public Texture[] textures;
 
     private Text stageText;
     private GameObject stageImage;
+    private GameObject pausedCharacter;
 
     private const float POWERUP_TIME = 10f;
 
@@ -104,22 +107,20 @@ public class GameManager : MonoBehaviour
 
         var i = GameControl.control != null ? GameControl.control.playerSprite : 1;
         player = GameObject.Find("Player");
+        pausedCharacter = GameObject.Find("PauseScreenPlayer");
         skin = player.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
+        pauseSkin = pausedCharacter.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
         materials = skin.materials;
-        Debug.Log(materials);
-        Debug.Log(i);
+        pauseMaterials = pauseSkin.materials;
+
         if (i == 1)
         {
             for (i = 0; i < 4; i++)
             {
+                pauseMaterials[i].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
                 materials[i].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-
             }
 
-            materials[0].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-            materials[1].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-            materials[2].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
-            materials[3].mainTexture = Resources.Load("ch034", typeof(Texture2D)) as Texture2D;
 
 
 
@@ -128,24 +129,17 @@ public class GameManager : MonoBehaviour
         {
             for (i = 0; i < 4; i++)
             {
+                pauseMaterials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
                 materials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
             }
-            //materials[0] = Resources.Load("ch032") as Material;
-            //materials[1] = Resources.Load("ch032") as Material;
-            //materials[2] = Resources.Load("ch032") as Material;
-            //materials[3] = Resources.Load("ch032") as Material;
         }
         else if (i == 3)
         {
             for (i = 0; i < 4; i++)
             {
+                pauseMaterials[i].mainTexture = Resources.Load("ch029", typeof(Texture2D)) as Texture2D;
                 materials[i].mainTexture = Resources.Load("ch029", typeof(Texture2D)) as Texture2D;
-
             }
-            //materials[0] = Resources.Load("ch029") as Material;
-            //materials[1] = Resources.Load("ch029") as Material;
-            //materials[2] = Resources.Load("ch029") as Material;
-            //materials[3] = Resources.Load("ch029") as Material;
         }
 
 
@@ -153,7 +147,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (GameManager.instance.isPaused())
+        {
+            GameObject.Find("PauseScreenPlayer").GetComponent<Animator>().enabled = true;
             return;
+        }
         countEnemies();
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         //update health counter
