@@ -53,6 +53,7 @@ public class Player : KillableEntityInterface
     Vector3 movement;
 
     public Animator animator;                  //Used to store a reference to the Player's animator component.
+    public PowerupController powerController;
 
     // Use this for initialization
     // Starts after everything has woken - must wait for gamecontrol
@@ -191,18 +192,17 @@ public class Player : KillableEntityInterface
 
     public void UpdateStats()
     {
-		PowerupController control = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
         this.maxHealth = vitality;
         entityMovement.maxSpeed = agility * 5.0f;
         //Strength and dexterity are called during damage calculations
-		if (control.isAttackBoost()) {
+		if (powerController.isAttackBoost()) {
 			strength = GameControl.control.playerStr + 1;
 			dexterity = GameControl.control.playerDex + 1;
 		} else {
 			strength = GameControl.control.playerStr;
 			dexterity = GameControl.control.playerDex;
 		}
-		if (control.isAgilityBoost()) {
+		if (powerController.isAgilityBoost()) {
 			agility = GameControl.control.playerAgl + 1;
 		} else {
 			agility = GameControl.control.playerAgl;
