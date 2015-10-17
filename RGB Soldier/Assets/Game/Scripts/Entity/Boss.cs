@@ -23,9 +23,12 @@ public class Boss : KillableEntityInterface
     public GameObject shield;
     private Boolean isShielded = false;
     private GameObject shieldClone;
-    private Boolean canTeleport = true;
 
-    private Func<Void> currentAttack;
+    private Action currentAttack;
+    private int attackAnCounter = 0;
+
+    private Boolean isDead = false;
+    public GameObject[] orbs;
 
     public override void die()
     {
@@ -46,9 +49,20 @@ public class Boss : KillableEntityInterface
                 });
             }
         }
+        //teleport the boss to the middle platform to die.
+        this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(0, -0.8f), 3);
+        animator.SetBool("Dead", true);
+    }
 
+    public void destroyGameObject()
+    {
+        float pos = -1.5f;
         Destroy(this.gameObject);
-        Application.LoadLevel("menu_start_screen");
+        for(int i = 0; i< orbs.Length; i++)
+        {
+            Instantiate(orbs[i], new Vector3(pos, -0.8f), gameObject.transform.rotation);
+            pos += 1.5f;
+        }
     }
 
     public override void takeDamage(int damageReceived)
@@ -58,6 +72,7 @@ public class Boss : KillableEntityInterface
         if (currentHealth <= 0)
         {
             die();
+            isDead = true;
         }
     }
 
@@ -115,8 +130,6 @@ public class Boss : KillableEntityInterface
                 entityMovement.Flip();
             }
             entityMovement.facingRight = false;
-            animator.SetBool("isMovingLeft", true);
-            animator.SetBool("isMovingRight", false);
             checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
 
@@ -128,8 +141,6 @@ public class Boss : KillableEntityInterface
                 entityMovement.Flip();
             }
             entityMovement.facingRight = true;
-            animator.SetBool("isMovingRight", true);
-            animator.SetBool("isMovingLeft", false);
             checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
         }
@@ -169,49 +180,46 @@ public class Boss : KillableEntityInterface
     // Update is called once per frame
     void Update()
     {
-        //check if shielded and boss can unshield as player is valid distance away
-        if (isShielded)
+        if (!isDead)
         {
-            if (Math.Abs(player.transform.position.x - this.transform.position.x) > 10)
+            //check if shielded and boss can unshield as player is valid distance away
+            if (isShielded)
             {
-                shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(0.1f, 0.1f), 4 * Time.deltaTime);
-                if (shieldClone.transform.localScale.x < 0.25)
+                if (Math.Abs(player.transform.position.x - this.transform.position.x) > 10)
                 {
-                    Destroy(shieldClone);
-                    isShielded = false;
-                    canTeleport = true;
+                    shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(0.1f, 0.1f), 4 * Time.deltaTime);
+                    if (shieldClone.transform.localScale.x < 0.25)
+                    {
+                        Destroy(shieldClone);
+                        isShielded = false;
+                    }
+                }
+                //else if shielded and shield isn't it's correct size, increase the size
+                else if (shieldClone.transform.localScale.x < 1)
+                {
+                    shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.25f, 1.25f), 5 * Time.deltaTime);
                 }
             }
-            //else if shielded and shield isn't it's correct size, increase the size
-            else if (shieldClone.transform.localScale.x < 1)
+            //else check if player is close and shield should be generated
+            else if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
             {
-                shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.25f, 1.25f), 5 * Time.deltaTime);
+                isShielded = true;
+                Vector3 pos = gameObject.transform.position;
+                pos.y += 1.4f;
+                shieldClone = (GameObject)Instantiate(shield, pos, gameObject.transform.rotation);
             }
-        }
-        //else check if player is close and shield should be generated
-        else if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
-        {
-            isShielded = true;
-            Vector3 pos = gameObject.transform.position;
-            pos.y += 1.4f;
-            shieldClone = (GameObject)Instantiate(shield, pos, gameObject.transform.rotation);
-        }
-        attackTimer -= Time.deltaTime;
-        if (canTeleport)
-        {
+            attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
-                attackTimer = 4f;
+                attackTimer = 5f;
                 int attackNo = rand.Next(1, 3);
                 if (attackNo == 1)
                 {
-                    teleport();
-                    spiritBomb();
+                    StartCoroutine(teleFlicker(1, 0.1f, 0.1f, spiritBomb));
                 }
                 else
                 {
-                    teleport();
-                    blackOrbAttack();
+                    StartCoroutine(teleFlicker(1, 0.1f, 0.1f, blackOrbAttack));
                 }
             }
         }
@@ -241,7 +249,7 @@ public class Boss : KillableEntityInterface
         }
     }
 
-    IEnumerator teleFlicker(int nTimes, float timeOn, float timeOff, Func<Void> attack)
+    IEnumerator teleFlicker(int nTimes, float timeOn, float timeOff, Action attack)
     {
         //do teleport flickering
         while (nTimes > 0)
@@ -260,6 +268,37 @@ public class Boss : KillableEntityInterface
         }
         //teleport and set current attack for when attack animation finishes the doAttack fires the attack
         teleport();
-        attack();
+        currentAttack = attack;
+        if (attack == spiritBomb)
+        {
+            animator.SetBool("SpiritBomb", true);
+        }
+        else
+        {
+            animator.SetBool("OrbAttack", true);
+        }
+        
+    }
+
+    //method used in animation to launch attack at different times
+    public void doAttack()
+    {
+        //count used to track which call it is on. It is called twice in the animation
+        if (currentAttack == spiritBomb && attackAnCounter == 0)
+        {
+            //start the spiritbomb animation on the first call as it takes time to charge.
+            spiritBomb();
+        }
+        else if (currentAttack == blackOrbAttack && attackAnCounter == 1)
+        {
+            blackOrbAttack();
+        }
+        attackAnCounter++;
+        if (attackAnCounter == 2)
+        {
+            animator.SetBool("OrbAttack", false);
+            animator.SetBool("SpiritBomb", false);
+            attackAnCounter = 0;
+        }
     }
 }
