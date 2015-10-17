@@ -83,6 +83,7 @@ public class IncreaseStat : MonoBehaviour {
                 case "Vit":
                     player.vitality = (int)statBar.value;
                     GameControl.control.playerVit = player.vitality;
+                    player.currentHealth++; //add to current health as well
                     break;
             }
 

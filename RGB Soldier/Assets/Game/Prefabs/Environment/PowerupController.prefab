@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &197272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 485750}
+  - 114: {fileID: 11435698}
+  m_Layer: 11
+  m_Name: PowerupController
+  m_TagString: PowerupController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485750
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11435698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8f27ce97db27e4cb0401ddaf06848e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agilitySprite: {fileID: 11468122, guid: e599cd2c0b592944c94d459eabe565cf, type: 2}
+  atkSprite: {fileID: 11440908, guid: 88079d182e5d82640ad2af7ff01a5ebd, type: 2}
+  agilityPowerup: {fileID: 195350, guid: c3c0a17e9579f4d4c9f7dd1fdce50ffa, type: 2}
+  healthPowerup: {fileID: 105742, guid: 37b4f839eafe7d14f9de73dc27bc53b5, type: 2}
+  attackPowerup: {fileID: 190662, guid: 2e5561ca029e727458a89d54e843fc84, type: 2}
+  specialPowerup: {fileID: 128326, guid: 7453ee6a38dbe45418a65936f89cd301, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: agilitySprite
+      value: 
+      objectReference: {fileID: 11468122, guid: e599cd2c0b592944c94d459eabe565cf,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: atkSprite
+      value: 
+      objectReference: {fileID: 11440908, guid: 88079d182e5d82640ad2af7ff01a5ebd,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 197272}
+  m_IsPrefabParent: 1

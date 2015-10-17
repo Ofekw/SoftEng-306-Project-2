@@ -9,7 +9,6 @@ public class ObjectiveManager : MonoBehaviour
     //A list of objectives 
     public List<Objective> objectives = new List<Objective>();
     public GameObject stageTextObject;
-    public GameObject gameControl;
     public GameObject meleeButton;
     public GameObject rangeButton;
     public GameObject jumpButton;

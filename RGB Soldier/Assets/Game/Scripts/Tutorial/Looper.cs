@@ -16,7 +16,7 @@ public class Looper : Objective
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         while (player.transform.position.x < 18)
         {
-            joyStick.UpdateVirtualAxes(new Vector3(129, 59));
+            joyStick.UpdateVirtualAxes(new Vector3(joyStick.m_StartPos.x + 20, joyStick.m_StartPos.y));
             yield return new WaitForSeconds((float)0.01);
         }
         joyStick.OnPointerUp(null);

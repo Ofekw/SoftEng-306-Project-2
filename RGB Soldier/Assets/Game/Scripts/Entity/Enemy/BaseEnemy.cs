@@ -23,7 +23,8 @@ public class BaseEnemy : KillableEntityInterface
     private AudioClip dieSound;
 	private Rigidbody2D _body;
     private Animator animator;                  //Used to store a reference to the Player's animator component.
-
+    private BoxCollider2D boxCollider;
+    private CircleCollider2D circleCollider;
     // Use this for initialization
     public void Start()
     {
@@ -31,6 +32,9 @@ public class BaseEnemy : KillableEntityInterface
         this.entityMovement = GetComponent<EntityMovement>();
         this.animator = animator = GetComponent<Animator>();
         dieSound = Resources.Load("Audio/monster_die") as AudioClip;
+
+        boxCollider = GetComponent<BoxCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
 	}
 	
 	// Update is called once per frame
@@ -42,9 +46,8 @@ public class BaseEnemy : KillableEntityInterface
 			_body.velocity = Vector2.zero;
 			return;
 		}
+
         AIControl();
-
-
     }
 
     public virtual void AIControl()
@@ -72,7 +75,7 @@ public class BaseEnemy : KillableEntityInterface
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Hit side wall so reverse direction of movement
-        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead)
+        if (other.gameObject.CompareTag("PlayerEnemyCollider") && !dead && !GameManager.instance.isBulletTime)
         {
             Player player = other.GetComponentInParent<Player>();
             this.animator = animator = GetComponent<Animator>();
@@ -96,45 +99,61 @@ public class BaseEnemy : KillableEntityInterface
 
     public override void die()
     {
+        animator.SetBool("Dead", true);
+
+        // grabs the animation length of the death animation
+        float deathLength = animator.GetCurrentAnimatorStateInfo(0).length + 0.5F;
+
+        // speeds up and reduces animation time if in mid air
+        if (!entityMovement.grounded)
+        {
+            animator.speed = 3;
+            deathLength = deathLength / 3;
+        }
+
+        dead = true;
+        // remove gravity to allow the enemy not to drop as collisions have been removed
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.gravityScale = 0;
+
+        // remove attack and movement
+        entityMovement.moveForce = 0F;
+        damageGiven = 0;
+        entityMovement.maxSpeed = 0;
+
+        // ignores collision between this dead enemy and all other collisions
+        boxCollider.enabled = false;
+        circleCollider.enabled = false;
 
         GameControl.control.enemyKilledAchievement();
         source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
-        dead = true;
 
-
-        // ignores collision between dead enemy and player
-        Collider2D collider = GetComponent<Collider2D>();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Physics2D.IgnoreCollision(collider, player.GetComponent<Collider2D>());
-
-        damageGiven = 0;
-
-        animator.SetBool("Dead", true);
-
-        // kills the enemy after death animation
-        //TODO: want to add flashing enemy or fade out
-        StartCoroutine(delayDie());
+        ////TODO: want to add flashing enemy or fade out???
+        StartCoroutine(delayDie(deathLength));
     }
 
-    IEnumerator delayDie()
+    IEnumerator delayDie(float deathLength)
     {
-        // grabs the animation length of the death animation and waits for that many seconds
-        float deathLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(deathLength);
-
-        Destroy(gameObject);
+        // waits before destroying the object
+        yield return new WaitForSeconds(deathLength);        
 	    if (!isSpecialLevel)
         {
-        	spawnController.spawnCount--;
-        	spawnController.OnDeathSpawn();
+			spawnController.spawnCount--;
+
         	if (Random.Range(0, 2) == 0)
         	{
             	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
-        	}
-
-
+        	} 
+			else if (Random.Range(0, 19) == 0)
+			{
+				//  1 / 20 chance spawn a player powerup
+				PowerupController powerupControl = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
+				powerupControl.spawnRandomPowerup(gameObject.transform.position, gameObject.transform.rotation);
+			}
+			spawnController.OnDeathSpawn();
     	}
+		Destroy(gameObject);
     }
     public void loopPowerup()
     {

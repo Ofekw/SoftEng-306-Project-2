@@ -3,28 +3,47 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
     public bool flip;
-    public GameObject enemySpawned;
+    public BaseEnemy enemySpawned;
+    public bool isScalingEnemies;
 
     //Spawn Enemy type at spawner position
-	public void Spawn()
+	public BaseEnemy Spawn()
     {
-        GameObject clone = (GameObject)Instantiate(enemySpawned, this.transform.position, this.transform.rotation);
+        BaseEnemy clone = (BaseEnemy)Instantiate(enemySpawned, this.transform.position, this.transform.rotation);
         if (flip)
         {
             clone.gameObject.GetComponent<EntityMovement>().Flip();
+            
         }
+        if (isScalingEnemies)
+        {
+            ScaleEnemy(clone);
+        }
+        return clone;
     }
 
     public void OnDeathSpawn()
     {
         if (Random.Range(0, 10) > 5)
         {
-            GameObject clone = (GameObject)Instantiate(enemySpawned, this.transform.position, this.transform.rotation);
+            Spawn();
         }
         else
         {
-            GameObject clone = (GameObject)Instantiate(enemySpawned, this.transform.position, this.transform.rotation);
-            clone.gameObject.GetComponent<EntityMovement>().Flip();
+            BaseEnemy enemy = Spawn();
+            enemy.gameObject.GetComponent<EntityMovement>().Flip();
         }
+    }
+
+    public void ScaleEnemy(BaseEnemy enemy)
+    {
+        int playerLevel = GameControl.control.playerLevel;
+        Debug.Log("Scaled Enemy");
+        enemy.maxHealth = enemy.maxHealth + (Mathf.CeilToInt(enemy.maxHealth / 4.0f) * Mathf.FloorToInt(playerLevel / 5.0f));
+        enemy.currentHealth = enemy.currentHealth + (Mathf.CeilToInt(enemy.currentHealth/4.0f) * Mathf.FloorToInt(playerLevel/5.0f));
+        enemy.damageGiven = enemy.damageGiven;
+        enemy.experienceGiven = enemy.experienceGiven;
+        enemy.entityMovement.maxSpeed = enemy.entityMovement.maxSpeed;
+        enemy.entityMovement.maxMaxSpeed = enemy.entityMovement.maxMaxSpeed;
     }
 }

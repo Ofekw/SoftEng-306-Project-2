@@ -1189,7 +1189,7 @@ MonoBehaviour:
   experienceGiven: 5
   isSpecialLevel: 0
   knockBackStrength: 300
-  source: {fileID: 0}
+  source: {fileID: 8282698, guid: 2847f1e504befdc4ca41ba2c4638a8fc, type: 2}
 --- !u!114 &11463724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1272,6 +1272,10 @@ Prefab:
       propertyPath: m_Time
       value: .349999994
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 8282698, guid: 2847f1e504befdc4ca41ba2c4638a8fc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154138}

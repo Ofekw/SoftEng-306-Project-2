@@ -66,7 +66,7 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
-        renderer = this.gameObject.transform.FindChild("p_sotai").gameObject.GetComponent<SkinnedMeshRenderer>();
+        renderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
         meleeAttackSound = Resources.Load("Audio/melee_attack") as AudioClip;
         specialAttackSound = Resources.Load("Audio/special_attack") as AudioClip;
         rangedAttackSound = Resources.Load("Audio/range_attack") as AudioClip;
@@ -105,6 +105,7 @@ public class Player : KillableEntityInterface
         if (isJumping)
         {
             entityMovement.Jump();
+            isJumping = false;
         }
         float hVelocity = CrossPlatformInputManager.GetAxis("Horizontal");
 
@@ -156,42 +157,56 @@ public class Player : KillableEntityInterface
 
         if (temporaryInvulnerable)
         {
-            Color color = new Color(1f, 1f, 1f, 1f);
             if (renderer.material.color.a == 1f && Time.time > opacitySwitchTime)
             {
                 opacitySwitchTime = Time.time + 0.25f;
-                color = renderer.material.color;
-                color.a = .5f;
-                renderer.material.color = color;
+                setAlpha(0.5f);
             }
             if (renderer.material.color.a == .5f && Time.time > opacitySwitchTime)
             {
                 opacitySwitchTime = Time.time + 0.25f;
-                color = renderer.material.color;
-                color.a = 1f;
-                renderer.material.color = color;
+                setAlpha(1.0f);
             }
             if (Time.time > temporaryInvulnerableTime + invulnTime)
             {
                 temporaryInvulnerable = false;
-                color = renderer.material.color;
-                color.a = 1f;
-                renderer.material.color = color;
+                setAlpha(1.0f);
             }
         }
 
         UpdateStats();
     }
 
+    public void setAlpha(float alpha)
+    {
+        Material[] materials = renderer.materials;
+        for(int i = 0; i < materials.Length; i++)
+        {
+            Color colorAlpha = materials[i].color;
+            colorAlpha.a = alpha;
+            materials[i].color = colorAlpha;
+        }
+    }
+
 
     public void UpdateStats()
     {
+		PowerupController control = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
         this.maxHealth = vitality;
         entityMovement.maxSpeed = agility * 5.0f;
         //Strength and dexterity are called during damage calculations
-        strength = GameControl.control.playerStr;
-        agility = GameControl.control.playerAgl;
-        dexterity = GameControl.control.playerDex;
+		if (control.isAttackBoost()) {
+			strength = GameControl.control.playerStr + 1;
+			dexterity = GameControl.control.playerDex + 1;
+		} else {
+			strength = GameControl.control.playerStr;
+			dexterity = GameControl.control.playerDex;
+		}
+		if (control.isAgilityBoost()) {
+			agility = GameControl.control.playerAgl + 1;
+		} else {
+			agility = GameControl.control.playerAgl;
+		}
         intelligence = GameControl.control.playerInt;
         vitality = GameControl.control.playerVit;
         abilityPoints = GameControl.control.abilityPoints;
@@ -215,7 +230,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
-            Vibration.Vibrate(3000);
+            Vibration.Vibrate(2000);
             source.PlayOneShot(specialAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
@@ -259,12 +274,6 @@ public class Player : KillableEntityInterface
     {
         isJumping = true;
     }
-
-    public void jumpReleased()
-    {
-        isJumping = false;
-    }
-
 
     public override void takeDamage(int damageReceived)
     {
@@ -324,6 +333,14 @@ public class Player : KillableEntityInterface
 		if (coll.gameObject.CompareTag ("BulletTime"))
 		{
 			GameManager.instance.activateBulletTime();
+		}
+
+		if (coll.gameObject.CompareTag ("Powerup")) 
+		{
+			Powerup powerup = coll.gameObject.GetComponent<Powerup>();
+			PowerupController control = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
+			control.activatePowerup(powerup);
+
 		}
     }
 

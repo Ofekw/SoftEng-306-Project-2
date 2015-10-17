@@ -269,7 +269,7 @@ public class GameControl : MonoBehaviour
         playerExp = experienceCarryOver;
         playerLevel++;
         abilityPoints++;
-        experienceRequired = experienceRequired * 2;
+        experienceRequired = (int)(experienceRequired * 1.25);
     }
 
     public void enemyKilledAchievement()
