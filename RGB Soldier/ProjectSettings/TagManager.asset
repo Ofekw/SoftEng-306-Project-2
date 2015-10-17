@@ -15,7 +15,22 @@ TagManager:
   - HealthBar
   - SideWall
   - PlayerEnemyCollider
+  - Projectile
+  - Orb
   - HUD
+  - GameManager
+  - Zombie
+  - Boss
+  - PlayerControl
+  - MovingPlatform
+  - BulletTime
+  - PlayerAudio
+  - AllowColourCanvas
+  - BossShield
+  - UnblockableOrbAttack
+  - PlayerSelectors
+  - PowerupController
+  - Powerup
   layers:
   - Default
   - TransparentFX
@@ -31,13 +46,13 @@ TagManager:
   - Pickups
   - Ground
   - HUD
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - BouncableOrb
+  - PlayerProjectile
+  - Boss
+  - PlayerMelee
+  - Pickups
+  - PlayerSelect
   - 
   - 
   - 
@@ -58,12 +73,18 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1535931219
-    locked: 0
+    locked: 1
+  - name: Foreground
+    uniqueID: 1024582385
+    locked: 1
   - name: Character
     uniqueID: 2511236001
     locked: 0
-  - name: Foreground
-    uniqueID: 1024582385
+  - name: Enemies
+    uniqueID: 3037724457
+    locked: 0
+  - name: Pickups
+    uniqueID: 4016605433
     locked: 0
   - name: UI
     uniqueID: 149272721

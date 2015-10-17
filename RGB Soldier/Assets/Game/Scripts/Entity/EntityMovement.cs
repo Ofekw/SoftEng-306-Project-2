@@ -15,11 +15,14 @@ public class EntityMovement : MonoBehaviour
 
     public float moveForce = 500f;			// Amount of force added to move the entity left and right.
     public float maxSpeed = 10f;				// The fastest the entity can travel in the x axis.
+    public float maxMaxSpeed = 20f;              //Absolute max speed after speed bonuses
     public AudioClip[] jumpClips;			// Array of clips for when the entity jumps.
     public float jumpForce = 150f;			// Amount of force added when the entity jumps.
+    public int jumpCount = 0;               //Number of jumps made
+    public float lastJumpTime;              //Time of last jump
 
     private Transform groundCheck;			// A position marking where to check if the entity is grounded.
-    private bool grounded = true;			// Whether or not the entity is grounded.
+    public bool grounded = true;			// Whether or not the entity is grounded.
     private Animator anim;					// Reference to the entity's animator component.
 
     // Use this for initialization
@@ -28,20 +31,30 @@ public class EntityMovement : MonoBehaviour
         // Setting up references.
         groundCheck = transform.Find("groundCheck");
         anim = GetComponent<Animator>();
+        lastJumpTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+		if (GameManager.instance.isPaused ())
+			return;
         // The entity is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        if (grounded && Time.time > (lastJumpTime + 0.5))
+        {
+            jumpCount = 0;
+        }
     }
 
     //helper method, flags entity to jump at next movement call
     public void Jump()
     {
-        if (grounded)
+        //Check grounded, or has not jumped more than once and that hasnt jumped in last half second
+        if ((grounded || jumpCount < 2) && Time.time > (lastJumpTime + 0.5))
         {
+            lastJumpTime = Time.time;
+            jumpCount++;
             this.jump = true;
         }
     }
@@ -56,6 +69,7 @@ public class EntityMovement : MonoBehaviour
         if (hVelocity * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
             // ... add a force to the entity.
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * hVelocity * moveForce);
+            
 
         // If the entity's horizontal velocity is greater than the maxSpeed...
         if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
