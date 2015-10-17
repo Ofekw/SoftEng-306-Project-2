@@ -21,12 +21,13 @@ public class ArrowProjectile : ProjectileScript {
             Instantiate(damageIndicator, transform.position, transform.rotation);
             SpriteRenderer renderer = GameObject.Find("numeric-1").GetComponent<SpriteRenderer>();
             renderer.sprite = dmg[damageIndicator.gameObject.GetComponent<DamageIndicators>().CalculateRangedDamageIndicator()];
-        } else if (layerTag == "bouncableOrb")
+        }
+        else if (layerTag == "bouncableOrb")
         {
             Destroy(this.gameObject);
             Instantiate(explosion, transform.position, transform.rotation);
         }
-        else if (layerTag == "Boss")
+        else
         {
             Destroy(this.gameObject);
             Instantiate(explosion, transform.position, transform.rotation);
