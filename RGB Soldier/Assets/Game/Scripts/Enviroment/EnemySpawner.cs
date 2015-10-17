@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
     public bool flip;
     public BaseEnemy enemySpawned;
+    public bool isScalingEnemies;
 
     //Spawn Enemy type at spawner position
 	public BaseEnemy Spawn()
@@ -14,7 +15,10 @@ public class EnemySpawner : MonoBehaviour {
             clone.gameObject.GetComponent<EntityMovement>().Flip();
             
         }
-        ScaleEnemy(clone);
+        if (isScalingEnemies)
+        {
+            ScaleEnemy(clone);
+        }
         return clone;
     }
 

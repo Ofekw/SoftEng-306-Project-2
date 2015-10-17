@@ -157,31 +157,35 @@ public class Player : KillableEntityInterface
 
         if (temporaryInvulnerable)
         {
-            Color color = new Color(1f, 1f, 1f, 1f);
             if (renderer.material.color.a == 1f && Time.time > opacitySwitchTime)
             {
                 opacitySwitchTime = Time.time + 0.25f;
-                color = renderer.material.color;
-                color.a = .5f;
-                renderer.material.color = color;
+                setAlpha(0.5f);
             }
             if (renderer.material.color.a == .5f && Time.time > opacitySwitchTime)
             {
                 opacitySwitchTime = Time.time + 0.25f;
-                color = renderer.material.color;
-                color.a = 1f;
-                renderer.material.color = color;
+                setAlpha(1.0f);
             }
             if (Time.time > temporaryInvulnerableTime + invulnTime)
             {
                 temporaryInvulnerable = false;
-                color = renderer.material.color;
-                color.a = 1f;
-                renderer.material.color = color;
+                setAlpha(1.0f);
             }
         }
 
         UpdateStats();
+    }
+
+    public void setAlpha(float alpha)
+    {
+        Material[] materials = renderer.materials;
+        for(int i = 0; i < materials.Length; i++)
+        {
+            Color colorAlpha = materials[i].color;
+            colorAlpha.a = alpha;
+            materials[i].color = colorAlpha;
+        }
     }
 
 
