@@ -504,6 +504,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2009934999}
   m_Script: {fileID: 11500000, guid: 00c3c865782347f41b6358d9fba14b48, type: 3}
+--- !u!114 &394600742 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11464554, guid: a8e496d517d23da4ea4273cf542daa6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 2087797386}
+  m_Script: {fileID: 11500000, guid: 84f4d4d15a89990468ec8d3939e3f507, type: 3}
 --- !u!1 &403399651 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 156016, guid: 6817d96fa4726ac4281bcb995d5e594f, type: 2}
@@ -1495,7 +1501,7 @@ Transform:
   - {fileID: 1673126187}
   - {fileID: 416032380}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 16
 --- !u!1 &1249857218 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 145024, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
@@ -1905,7 +1911,7 @@ Transform:
   - {fileID: 85600723}
   - {fileID: 1227877368}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
 --- !u!4 &1389635320 stripped
 Transform:
   m_PrefabParentObject: {fileID: 451780, guid: 6d5f052a48805e0498dbfad6a9083845, type: 2}
@@ -2382,8 +2388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 11485744, guid: c08b1ba295c16f84f88db0e263f8b083, type: 2}
-  powerupSpawnController: {fileID: 11464554, guid: a8e496d517d23da4ea4273cf542daa6a,
-    type: 2}
+  powerupSpawnController: {fileID: 394600742}
   jumpButton: {fileID: 1249857218}
   meleeButton: {fileID: 1750844637}
   rangeButton: {fileID: 117350357}
@@ -2919,7 +2924,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 442572, guid: a8e496d517d23da4ea4273cf542daa6a, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11464554, guid: a8e496d517d23da4ea4273cf542daa6a, type: 2}
       propertyPath: spawners.Array.data[0]
