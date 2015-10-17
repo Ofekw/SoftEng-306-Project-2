@@ -230,7 +230,7 @@ public class Player : KillableEntityInterface
         //If the meter is fully charged
         if (GameManager.instance.canSpecialAtk)
         {
-            Vibration.Vibrate(3000);
+            Vibration.Vibrate(2000);
             source.PlayOneShot(specialAttackSound, ((float)GameControl.control.soundBitsVolume) / 100);
             Camera.main.GetComponent<CameraShake>().enabled = true;
 
