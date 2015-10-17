@@ -1204,7 +1204,7 @@ Prefab:
     - target: {fileID: 11450374, guid: 6817d96fa4726ac4281bcb995d5e594f, type: 2}
       propertyPath: source
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1523846671}
     - target: {fileID: 156016, guid: 6817d96fa4726ac4281bcb995d5e594f, type: 2}
       propertyPath: m_Name
       value: Player
@@ -1245,6 +1245,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 198542523}
   m_Script: {fileID: 11500000, guid: 4d20e4aaacad5c14d94c1d82a81dc70b, type: 3}
+--- !u!82 &1523846671 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 8245566, guid: 6817d96fa4726ac4281bcb995d5e594f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1083119195}
 --- !u!1001 &1602462130
 Prefab:
   m_ObjectHideFlags: 0
