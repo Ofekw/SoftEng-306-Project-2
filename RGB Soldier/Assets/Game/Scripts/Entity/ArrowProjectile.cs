@@ -26,6 +26,11 @@ public class ArrowProjectile : ProjectileScript {
             Destroy(this.gameObject);
             Instantiate(explosion, transform.position, transform.rotation);
         }
+        else if (layerTag == "Boss")
+        {
+            Destroy(this.gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
     }
 
 	void Update() {

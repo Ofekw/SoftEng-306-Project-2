@@ -281,12 +281,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 439334}
   - 95: {fileID: 9515448}
-  - 61: {fileID: 6156788}
   - 96: {fileID: 9600930}
   - 114: {fileID: 11454758}
   - 50: {fileID: 5093238}
   - 114: {fileID: 11489384}
   - 114: {fileID: 11420576}
+  - 61: {fileID: 6122062}
+  - 58: {fileID: 5860516}
   m_Layer: 10
   m_Name: SteelGolem
   m_TagString: Zombie
@@ -599,7 +600,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100048}
   m_LocalRotation: {x: .0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: .0599999987, y: -.179972604, z: .00785358436}
+  m_LocalPosition: {x: .0599999987, y: -.108999997, z: 0}
   m_LocalScale: {x: -.894623876, y: .893670142, z: -.894242287}
   m_Children: []
   m_Father: {fileID: 439334}
@@ -830,7 +831,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
   m_LocalPosition: {x: -18.905777, y: 43.6640282, z: 0}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
@@ -1088,7 +1089,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6156788
+--- !u!58 &5860516
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138724}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .479999989}
+  serializedVersion: 2
+  m_Radius: .5
+--- !u!61 &6122062
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1098,9 +1112,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0252977367, y: .657739818}
+  m_Offset: {x: .0553012863, y: .699060619}
   serializedVersion: 2
-  m_Size: {x: 1.31369174, y: 1.38452542}
+  m_Size: {x: 1.24683845, y: 1.31136572}
 --- !u!82 &8211290
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1198,7 +1212,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2c257aafa65fdaf48b7f5482b3a2ec92, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1212,9 +1226,9 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1535931219
   m_SortingOrder: 0
-  m_Time: 5
-  m_StartWidth: 1
-  m_EndWidth: 1
+  m_Time: .349999994
+  m_StartWidth: 2
+  m_EndWidth: 0
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -1249,7 +1263,7 @@ MonoBehaviour:
   dead: 0
   entityMovement: {fileID: 11489384}
   damageGiven: 1
-  orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
+  orb: {fileID: 148164, guid: 8d4317182140b2242817219a7b640bfc, type: 2}
   experienceGiven: 15
   isSpecialLevel: 0
   knockBackStrength: 300
@@ -1352,7 +1366,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Time
+      value: .349999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c257aafa65fdaf48b7f5482b3a2ec92, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138724}

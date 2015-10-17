@@ -70,6 +70,8 @@
                 half4 orig = tex2D (_MainTex, IN.texcoord);   
 				
 				fixed4 color;
+				v2f OUT;
+
 				
 //				if(orig.b > orig.g && orig.b > orig.r && (orig.r + orig.g) < 100){
 //					color = fixed4(orig.r*1.5, orig.g*0.5, orig.b*1.5, orig.a);
@@ -81,10 +83,8 @@
 //					color = fixed4(orig.r, orig.g, orig.b, orig.a);
 //				}
 
-				color = fixed4(orig.g, orig.r, orig.b, orig.a);
-            
-                //texcol.rgb = lerp(texcol.rgb, dot(texcol.rgb, float3(0.3, 0.59, 0.11)), _EffectAmount);
-                //texcol = texcol * IN.color;
+				OUT.color = fixed4(orig.g, orig.r, orig.b, orig.a);
+				color = OUT.color * _Color;
                 return color;
             }
         ENDCG

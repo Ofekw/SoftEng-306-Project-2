@@ -330,6 +330,7 @@ GameObject:
   - 50: {fileID: 5035766}
   - 114: {fileID: 11402000}
   - 114: {fileID: 11416806}
+  - 58: {fileID: 5879846}
   m_Layer: 10
   m_Name: EarthGolem
   m_TagString: Zombie
@@ -1059,6 +1060,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5879846
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154138}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .479999989}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6167886
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1069,9 +1083,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0427370071, y: .676023901}
+  m_Offset: {x: .0553012863, y: .699060619}
   serializedVersion: 2
-  m_Size: {x: 1.27196419, y: 1.35743797}
+  m_Size: {x: 1.24683845, y: 1.31136572}
 --- !u!95 &9519238
 Animator:
   serializedVersion: 3
@@ -1095,11 +1109,11 @@ TrailRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9d32c2efdb8794de3b449ab1bbc6459b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1113,9 +1127,9 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 5
-  m_StartWidth: 1
-  m_EndWidth: 1
+  m_Time: .349999994
+  m_StartWidth: 2
+  m_EndWidth: 0
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -1171,9 +1185,11 @@ MonoBehaviour:
   dead: 0
   entityMovement: {fileID: 0}
   damageGiven: 1
-  orb: {fileID: 148164, guid: cc6a649ee8873934fa56d0fe0bd0dcf3, type: 2}
+  orb: {fileID: 148164, guid: 54a7d89941869454db29a54732048ace, type: 2}
   experienceGiven: 5
+  isSpecialLevel: 0
   knockBackStrength: 300
+  source: {fileID: 8282698, guid: 2847f1e504befdc4ca41ba2c4638a8fc, type: 2}
 --- !u!114 &11463724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1251,7 +1267,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Time
+      value: .349999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 8282698, guid: 2847f1e504befdc4ca41ba2c4638a8fc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154138}
