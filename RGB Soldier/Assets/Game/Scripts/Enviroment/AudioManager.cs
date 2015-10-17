@@ -13,7 +13,7 @@ namespace Assets.Game.Scripts.Enviroment
         private AudioClip menuSong;
         private AudioClip iceSong;
         private AudioClip bossSong;
-        private AudioClip shrineSong;
+        private AudioClip cutsceneSong;
         private AudioClip tutorialSong;
 
 
@@ -35,7 +35,7 @@ namespace Assets.Game.Scripts.Enviroment
             lavaSong = Resources.Load("Audio/lava_song") as AudioClip;
             bossSong = Resources.Load("Audio/boss_battle_loop") as AudioClip;
             iceSong = Resources.Load("Audio/ice_song") as AudioClip;
-            shrineSong = Resources.Load("Audio/Visager_-_03_-_Shrine") as AudioClip;
+            cutsceneSong = Resources.Load("Audio/cutscene_song") as AudioClip;
             audioSource = GetComponent<AudioSource>();
 
         }
@@ -126,7 +126,7 @@ namespace Assets.Game.Scripts.Enviroment
             }
             else if (Application.loadedLevelName.Contains("cutscene"))
             {
-                audioSource.clip = shrineSong;
+                audioSource.clip = cutsceneSong;
 
                 if (!audioSource.isPlaying)
                 {
