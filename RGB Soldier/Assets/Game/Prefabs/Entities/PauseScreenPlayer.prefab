@@ -1241,7 +1241,7 @@ MonoBehaviour:
   - {fileID: 0}
   redGreenShader: {fileID: 4800000, guid: 9e250dde68b4f6d43b7a514e778e17ef, type: 3}
   blueYellowShader: {fileID: 4800000, guid: 595de75a5898e0c4596c695df0e77226, type: 3}
-  rend: {fileID: 0}
+  rend: {fileID: 13777044}
   current: 0
 --- !u!114 &11484058
 MonoBehaviour:
@@ -1327,7 +1327,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 13777044}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162916}
