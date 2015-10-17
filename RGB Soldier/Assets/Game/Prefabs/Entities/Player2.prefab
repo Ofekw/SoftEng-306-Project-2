@@ -1295,11 +1295,9 @@ MonoBehaviour:
   invulnTime: 2
   renderer: {fileID: 0}
   opacitySwitchTime: 0
-  meleeAttackSound: {fileID: 8300000, guid: 431089af75629444c92e6bb7260b0c4e, type: 3}
-  specialAttackSound: {fileID: 8300000, guid: 4d7f1aa9225c1ab4db8ecfbe7021dc1f, type: 3}
-  rangedAttackSound: {fileID: 8300000, guid: d1ebeb31f0a74a744a27218316562405, type: 3}
-  damageTakenSound: {fileID: 8300000, guid: 4d7f1aa9225c1ab4db8ecfbe7021dc1f, type: 3}
   isJumping: 0
+  source: {fileID: 0}
+  hasRanged: 0
   animator: {fileID: 0}
 --- !u!114 &11438966
 MonoBehaviour:
@@ -1337,12 +1335,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d3f0e64e72fdb41b4968e27365717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
+  shaders:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   redGreenShader: {fileID: 4800000, guid: 9e250dde68b4f6d43b7a514e778e17ef, type: 3}
   blueYellowShader: {fileID: 4800000, guid: 595de75a5898e0c4596c695df0e77226, type: 3}
+  rend: {fileID: 13775260}
   current: 0
 --- !u!114 &11479836
 MonoBehaviour:
@@ -1441,7 +1440,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 13775260}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196580}
