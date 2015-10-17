@@ -15,6 +15,8 @@
 
 ###Over 9 Different Enemies
 
+###Powerups, Special abilities and more!
+
 ### Colour Blind Mode
 
 ### Google Play Achievements and Cloud Game Saves
