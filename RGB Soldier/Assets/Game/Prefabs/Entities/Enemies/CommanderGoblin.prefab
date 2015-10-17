@@ -1156,7 +1156,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9d32c2efdb8794de3b449ab1bbc6459b, type: 2}
+  - {fileID: 2100000, guid: 2c257aafa65fdaf48b7f5482b3a2ec92, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1313,6 +1313,10 @@ Prefab:
       propertyPath: m_Time
       value: .349999994
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c257aafa65fdaf48b7f5482b3a2ec92, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128832}
