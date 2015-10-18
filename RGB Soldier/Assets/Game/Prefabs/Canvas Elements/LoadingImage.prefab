@@ -10,14 +10,13 @@ GameObject:
   - 224: {fileID: 22488036}
   - 222: {fileID: 22227610}
   - 114: {fileID: 11467536}
-  - 114: {fileID: 11407656}
   m_Layer: 5
   m_Name: LoadingImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &126314
 GameObject:
   m_ObjectHideFlags: 1
@@ -132,24 +131,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11407656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c111fc10bfed07d4da4b92b79374afbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platform: {fileID: 0}
-  moveSpeed: 5
-  currentPoint: {fileID: 0}
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
-  selectionPoint: 0
 --- !u!114 &11411064
 MonoBehaviour:
   m_ObjectHideFlags: 1
