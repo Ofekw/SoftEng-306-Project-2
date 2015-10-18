@@ -87,7 +87,7 @@ public class Boss : KillableEntityInterface
         }
         //find x tele position
         float teleX = xSpawnPoints;
-        if (-8 < player.transform.position.x && player.transform.position.x < 8)
+        if (-12 < player.transform.position.x && player.transform.position.x < 12)
         {
             int random = rand.Next(1, 3);
             if (random == 1)
