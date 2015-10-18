@@ -113,6 +113,10 @@ Transform:
   - {fileID: 849459318}
   m_Father: {fileID: 1603012294}
   m_RootOrder: 0
+--- !u!1 &23556404 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 120420, guid: 0d0a0ba2f1139a845be12badf1bdc627, type: 2}
+  m_PrefabInternal: {fileID: 1267472312}
 --- !u!1 &47501384
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 1267472314}
-  loadingImage: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+  loadingImage: {fileID: 23556404}
 --- !u!114 &87388208
 MonoBehaviour:
   m_ObjectHideFlags: 0

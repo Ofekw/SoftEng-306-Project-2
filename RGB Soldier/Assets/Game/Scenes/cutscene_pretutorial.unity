@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 735492705}
-  loadingImage: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+  loadingImage: {fileID: 521543048}
 --- !u!114 &285104388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,6 +853,10 @@ MonoBehaviour:
   blueYellowShader: {fileID: 4800000, guid: 595de75a5898e0c4596c695df0e77226, type: 3}
   rend: {fileID: 0}
   current: 0
+--- !u!1 &521543048 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 120420, guid: 0d0a0ba2f1139a845be12badf1bdc627, type: 2}
+  m_PrefabInternal: {fileID: 1267472312}
 --- !u!1 &533812879
 GameObject:
   m_ObjectHideFlags: 0
