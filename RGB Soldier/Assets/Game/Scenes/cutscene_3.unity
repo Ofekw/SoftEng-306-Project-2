@@ -309,6 +309,10 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
   m_IsPrefabParent: 0
@@ -504,7 +508,7 @@ MonoBehaviour:
   letterPause: .100000001
   dialogPanelObject: {fileID: 208170994}
   lsa: {fileID: 798648833}
-  scene_id: cutscene_boss_1
+  scene_id: stage_3
 --- !u!4 &798648831
 Transform:
   m_ObjectHideFlags: 0
