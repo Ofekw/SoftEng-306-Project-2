@@ -1670,6 +1670,10 @@ BoxCollider2D:
   m_Offset: {x: -7.32480431, y: -.0850659832}
   serializedVersion: 2
   m_Size: {x: 2.85112047, y: 3.0485518}
+--- !u!1 &1112002648 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 120420, guid: 0d0a0ba2f1139a845be12badf1bdc627, type: 2}
+  m_PrefabInternal: {fileID: 1267472312}
 --- !u!1 &1135169440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 1267472314}
-  loadingImage: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+  loadingImage: {fileID: 1112002648}
 --- !u!114 &1830810095
 MonoBehaviour:
   m_ObjectHideFlags: 0
