@@ -552,7 +552,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText:
-  - Welcome, I am Prince Lucian, of the land of Luminaria.
   - "My my\u2026. you have travelled far...but you yet know little\u2026"
   - Let me show you the ways of the world.
 --- !u!114 &285104389
@@ -2137,6 +2136,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .976470649
       objectReference: {fileID: 0}
+    - target: {fileID: 181306, guid: 0d0a0ba2f1139a845be12badf1bdc627, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d0a0ba2f1139a845be12badf1bdc627, type: 2}
   m_IsPrefabParent: 0
@@ -3328,7 +3331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1946855011
 Transform:
   m_ObjectHideFlags: 0
@@ -3531,7 +3534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2019963972
 Transform:
   m_ObjectHideFlags: 0

@@ -280,7 +280,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1149,7 +1149,7 @@ Transform:
   m_LocalScale: {x: 4, y: 5, z: 4.19389248}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1 &683794150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1458,7 @@ Transform:
   - {fileID: 264848718}
   - {fileID: 1790187276}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!114 &942244321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1591,7 +1591,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &988626904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1910,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &1194514916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2046,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d0a0ba2f1139a845be12badf1bdc627, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1267472313 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11470944, guid: 0d0a0ba2f1139a845be12badf1bdc627,
+    type: 2}
+  m_PrefabInternal: {fileID: 1267472312}
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1267472314 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11457174, guid: 0d0a0ba2f1139a845be12badf1bdc627,
+    type: 2}
+  m_PrefabInternal: {fileID: 1267472312}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &1267472315 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 150484, guid: 0d0a0ba2f1139a845be12badf1bdc627, type: 2}
+  m_PrefabInternal: {fileID: 1267472312}
 --- !u!1 &1284466263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,6 +2851,82 @@ Transform:
   - {fileID: 723723552}
   m_Father: {fileID: 943617676}
   m_RootOrder: 0
+--- !u!1 &1727255830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1727255834}
+  - 114: {fileID: 1727255833}
+  - 114: {fileID: 1727255832}
+  - 114: {fileID: 1727255831}
+  m_Layer: 0
+  m_Name: DialogManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1727255831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727255830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40122ff5925e6764083eaa8f976b0e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBar: {fileID: 1267472313}
+  loadingImage: {fileID: 123168, guid: 054af9fc86682194b8880c32b231e9f7, type: 2}
+--- !u!114 &1727255832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727255830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a01fde73ec269e4a854ee13d83efda7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogText:
+  - Wow, your abilities are growing so much stronger!
+  - Maybe I should have done this instead so I could end up as burly and lithe as
+    you
+  - "However the strength of Asadon\u2019s minions is also growing. Continue onwards,
+    my fierce warrior. "
+--- !u!114 &1727255833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727255830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 208bb062cb3199a49b703a1fa7c16482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayText: {fileID: 1267472314}
+  letterPause: .100000001
+  dialogPanelObject: {fileID: 1267472315}
+  lsa: {fileID: 1727255831}
+  scene_id: stage_4
+--- !u!4 &1727255834
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727255830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &1727323537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,7 +3113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1801626506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3252,7 +3344,7 @@ Transform:
   - {fileID: 1111693242}
   - {fileID: 2004916811}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!95 &1946855012
 Animator:
   serializedVersion: 3
@@ -3455,7 +3547,7 @@ Transform:
   - {fileID: 56678904}
   - {fileID: 634880366}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!95 &2019963973
 Animator:
   serializedVersion: 3
