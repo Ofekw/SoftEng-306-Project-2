@@ -338,9 +338,7 @@ public class Player : KillableEntityInterface
 		if (coll.gameObject.CompareTag ("Powerup")) 
 		{
 			Powerup powerup = coll.gameObject.GetComponent<Powerup>();
-			PowerupController control = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
-			control.activatePowerup(powerup);
-
+			powerController.activatePowerup(powerup);
 		}
     }
 
