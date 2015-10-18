@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 461922}
+  - 58: {fileID: 5813494}
+  m_Layer: 10
+  m_Name: GroundCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &103860
 GameObject:
   m_ObjectHideFlags: 1
@@ -803,12 +819,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154138}
   m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: -13.1899996, y: .720000029, z: -.0199999996}
+  m_LocalPosition: {x: -.347686529, y: .387412518, z: -.0199999996}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 409778}
   - {fileID: 439502}
   - {fileID: 451258}
+  - {fileID: 461922}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &453044
@@ -861,6 +878,18 @@ Transform:
   - {fileID: 465732}
   m_Father: {fileID: 417772}
   m_RootOrder: 0
+--- !u!4 &461922
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 451338}
+  m_RootOrder: 3
 --- !u!4 &465086
 Transform:
   m_ObjectHideFlags: 1
@@ -1060,6 +1089,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5813494
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100204}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .479999989}
+  serializedVersion: 2
+  m_Radius: .449999988
 --- !u!58 &5879846
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1113,7 +1155,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9d32c2efdb8794de3b449ab1bbc6459b, type: 2}
+  - {fileID: 2100000, guid: 2c257aafa65fdaf48b7f5482b3a2ec92, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1276,6 +1318,14 @@ Prefab:
       propertyPath: source
       value: 
       objectReference: {fileID: 8282698, guid: 2847f1e504befdc4ca41ba2c4638a8fc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c257aafa65fdaf48b7f5482b3a2ec92, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_UseLightProbes
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154138}
