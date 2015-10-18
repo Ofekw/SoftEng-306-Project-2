@@ -82,7 +82,8 @@ public class Boss : KillableEntityInterface
             isDead = true;
         }else
         {
-            teleFlicker(0, 0.1f, 0.1f, null);
+            teleport();
+            generateShield();
         }
     }
 
@@ -246,13 +247,13 @@ public class Boss : KillableEntityInterface
         {
             source.PlayOneShot(chargeSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 4, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
             source.PlayOneShot(chargeSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 4, yProjectileOffset, false);
         }
     }
 
