@@ -36,6 +36,7 @@ public class Boss : KillableEntityInterface
     private AudioClip smallShootSound;
 
     private float shieldDownTimer = 5f;
+    public SkinnedMeshRenderer renderer;
 
     public override void die()
     {
@@ -162,7 +163,7 @@ public class Boss : KillableEntityInterface
         chargeSound = Resources.Load("Audio/boss_charge") as AudioClip;
         largeShootSound = Resources.Load("Audio/boss_shoot_large") as AudioClip;
         smallShootSound = Resources.Load("Audio/small_shoot_sound") as AudioClip;
-        //renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        renderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
         PlayGamesPlatform.Activate();
         Social.localUser.Authenticate((bool success) =>
         {
@@ -194,11 +195,11 @@ public class Boss : KillableEntityInterface
                 int attackNo = rand.Next(1, 3);
                 if (attackNo == 1)
                 {
-                    StartCoroutine(teleFlicker(1, 0.1f, 0.1f, spiritBomb));
+                    StartCoroutine(teleFlicker(20, 0.01f, 0.01f, spiritBomb));
                 }
                 else
                 {
-                    StartCoroutine(teleFlicker(1, 0.1f, 0.1f, blackOrbAttack));
+                    StartCoroutine(teleFlicker(20, 0.01f, 0.01f, blackOrbAttack));
                 }
             }
         } else
@@ -262,9 +263,9 @@ public class Boss : KillableEntityInterface
         //do teleport flickering
         while (nTimes > 0)
         {
-            //renderer.material.color = new Color(0f, 0f, 0f, 0f);
+            renderer.material.color = new Color(0f, 0f, 0f, 0f);
             yield return new WaitForSeconds(timeOn);
-            //renderer.material.color = new Color(1f, 1f, 1f, 1f);
+            renderer.material.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(timeOff);
             nTimes--;
         }
