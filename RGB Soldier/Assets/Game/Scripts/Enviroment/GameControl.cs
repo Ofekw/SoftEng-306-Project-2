@@ -29,6 +29,7 @@ public class GameControl : MonoBehaviour
     public bool vibrateOn;
     public PlayerData playerData;
     public GameObject lvlup;
+    public int selectedCharacter = 1;
 
     //Play Service fields
     public DateTime loadedTime;
@@ -207,6 +208,7 @@ public class GameControl : MonoBehaviour
         playerData.soundBitsVolume = soundBitsVolume;
         playerData.colourMode = colourMode;
         playerData.vibrateOn = vibrateOn;
+        playerData.selectedCharacter = selectedCharacter;
     }
 
     public void setupLoad()
@@ -238,6 +240,7 @@ public class GameControl : MonoBehaviour
         playerDex = playerData.playerDex;
         playerInt = playerData.playerInt;
         playerVit = playerData.playerVit;
+        selectedCharacter = playerData.selectedCharacter;
         currentGameLevel = playerData.currentGameLevel;
         abilityPoints = playerData.abilityPoints;
         backgroundVolume = playerData.backgroundVolume;
@@ -310,124 +313,6 @@ public class GameControl : MonoBehaviour
 
         return cloudData;
     }
-
-
-    //Play Service Methods
-    /*
-    //Opening a saved game.
-    public void OpenSavedGame()
-    {
-        string fileName = "SavedGame";
-        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-        savedGameClient.OpenWithAutomaticConflictResolution(fileName, DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
-    }
-
-    public void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game)
-    {
-        if (status == SavedGameRequestStatus.Success)
-        {
-            if (this.save)
-            {
-                SaveGame(game, cloudData, timePlayed);
-            }
-            else
-            {
-                LoadGameData(game);
-            }
-        }
-        else
-        {
-
-        }
-    }
-
-    //Writing a saved game.
-    public void SaveGame(ISavedGameMetadata game, byte[] savedData, TimeSpan totalPlaytime)
-    {
-        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-
-        SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
-
-        builder = builder.WithUpdatedPlayedTime(totalPlaytime).WithUpdatedDescription("Game: str: " + playerData.playerStr + " agl: " + playerData.playerAgl + " cLevel: " + playerData.currentGameLevel + " level: " + playerData.playerLevel);
-
-        SavedGameMetadataUpdate updatedMetadata = builder.Build();
-        savedGameClient.CommitUpdate(game, updatedMetadata, savedData, OnSavedGameWritten);
-    }
-
-    public void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
-    {
-        if (status == SavedGameRequestStatus.Success)
-        {
-
-        }
-        else
-        {
-
-        }
-    }
-
-    //Reading saved game.
-    public void LoadGameData(ISavedGameMetadata game)
-    {
-        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-        savedGameClient.ReadBinaryData(game, OnSavedGameDataRead);
-    }
-
-    public void OnSavedGameDataRead(SavedGameRequestStatus status, byte[] data)
-    {
-        if (status == SavedGameRequestStatus.Success)
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
-            ms.Write(data, 0, data.Length);
-            ms.Seek(0, SeekOrigin.Begin);
-            playerData = (PlayerData)bf.Deserialize(ms);
-
-            GameControl.control.playerLevel = playerData.playerLevel;
-            GameControl.control.playerExp = playerData.playerExp;
-            GameControl.control.playerStr = playerData.playerStr;
-            GameControl.control.playerAgl = playerData.playerAgl;
-            GameControl.control.playerDex = playerData.playerDex;
-            GameControl.control.playerInt = playerData.playerInt;
-            GameControl.control.playerVit = playerData.playerVit;
-            GameControl.control.currentGameLevel = playerData.currentGameLevel;
-            GameControl.control.abilityPoints = playerData.abilityPoints;
-            GameControl.control.backgroundVolume = playerData.backgroundVolume;
-            GameControl.control.soundBitsVolume = playerData.soundBitsVolume;
-            GameControl.control.colourMode = playerData.colourMode;
-
-            ms.Close();
-        }
-        else
-        {
-
-        }
-    }
-
-    //Display saved games.
-    public void ShowSelectUI()
-    {
-        uint maxNumToDisplay = 5;
-        bool allowCreateNew = false;
-        bool allowDelete = true;
-
-        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-        savedGameClient.ShowSelectSavedGameUI("Select Saved Game", maxNumToDisplay, allowCreateNew, allowDelete, OnSavedGameSelected);
-    }
-
-    public void OnSavedGameSelected(SelectUIStatus status, ISavedGameMetadata game)
-    {
-        if (status == SelectUIStatus.SavedGameSelected)
-        {
-
-        }
-        else
-        {
-
-        }
-    }
-     * */
-
 }
 
 [Serializable]
@@ -447,4 +332,5 @@ public class PlayerData
     public int colourMode;
     public int experienceRequired;
     public bool vibrateOn;
+    public int selectedCharacter;
 }

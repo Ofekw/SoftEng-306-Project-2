@@ -4,7 +4,6 @@ using System.Collections;
 public class CharacterSwitcher : MonoBehaviour {
 
     public string characterName;
-    public int selectedCharacter = 1;
     public GameObject character;
     public SkinnedMeshRenderer render;
 
@@ -18,25 +17,23 @@ public class CharacterSwitcher : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (selectedCharacter < 2)
-                selectedCharacter++;
+            if (GameControl.control.selectedCharacter < 2)
+                GameControl.control.selectedCharacter++;
             else
-                selectedCharacter = 1;
+                GameControl.control.selectedCharacter = 1;
         }
 
         for (var i = 1; i < 3; i++)
         {
-            if (i != selectedCharacter)
+            if (i != GameControl.control.selectedCharacter)
             {
-                Debug.Log("1");
                 characterName = "Player" + i;
                 character = GameObject.Find(characterName);
                 character.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = false;
             }
             else
             {
-                Debug.Log("2");
-                characterName = "Player" + selectedCharacter;
+                characterName = "Player" + GameControl.control.selectedCharacter;
                 character = GameObject.Find(characterName);
                 character.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = true;
             }

@@ -29,6 +29,11 @@ public class Boss : KillableEntityInterface
 
     private Boolean isDead = false;
     public GameObject[] orbs;
+    public AudioSource source;
+
+    private AudioClip chargeSound;
+    private AudioClip largeShootSound;
+    private AudioClip smallShootSound;
 
     public override void die()
     {
@@ -170,6 +175,9 @@ public class Boss : KillableEntityInterface
         maxHealth = 10;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarScale = healthBar.transform.localScale;
+        chargeSound = Resources.Load("Audio/boss_charge") as AudioClip;
+        largeShootSound = Resources.Load("Audio/boss_shoot_large") as AudioClip;
+        smallShootSound = Resources.Load("Audio/small_shoot_sound") as AudioClip;
         //renderer = this.gameObject.GetComponent<SpriteRenderer>();
         PlayGamesPlatform.Activate();
         Social.localUser.Authenticate((bool success) =>
@@ -229,10 +237,12 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
+            source.PlayOneShot(smallShootSound, ((float)GameControl.control.soundBitsVolume) / 100);
             projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y+0.6f, xProjectileOffset, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
+            source.PlayOneShot(smallShootSound, ((float)GameControl.control.soundBitsVolume) / 100);
             projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y+0.6f, xProjectileOffset, yProjectileOffset, false);
         }
     }
@@ -241,10 +251,14 @@ public class Boss : KillableEntityInterface
     {
         if (entityMovement.facingRight)
         {
+            source.PlayOneShot(chargeSound, ((float)GameControl.control.soundBitsVolume) / 100);
+
             projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
+            source.PlayOneShot(chargeSound, ((float)GameControl.control.soundBitsVolume) / 100);
+
             projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, false);
         }
     }
