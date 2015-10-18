@@ -40,7 +40,7 @@ namespace Assets.Game.Scripts.Enviroment
             {
                 for (i = 0; i < 4; i++)
                 {
-                    materials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
+                    materials[i].mainTexture = Resources.Load("ch037", typeof(Texture2D)) as Texture2D;
                 }
             }
             else if (i == 3)
