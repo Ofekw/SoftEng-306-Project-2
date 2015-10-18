@@ -520,6 +520,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &195320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 404952}
+  - 58: {fileID: 5826130}
+  m_Layer: 22
+  m_Name: GroundCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &196862
 GameObject:
   m_ObjectHideFlags: 1
@@ -562,6 +578,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 430294}
   m_RootOrder: 0
+--- !u!4 &404952
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 405272}
+  m_RootOrder: 4
 --- !u!4 &405004
 Transform:
   m_ObjectHideFlags: 1
@@ -582,13 +610,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106066}
   m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: 13.4480057, y: 1.13, z: -.0599999987}
+  m_LocalPosition: {x: -1.1269846, y: 1.32261348, z: -.0599999987}
   m_LocalScale: {x: -2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 429586}
   - {fileID: 416930}
   - {fileID: 491828}
   - {fileID: 477822}
+  - {fileID: 404952}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &411644
@@ -1033,6 +1062,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5826130
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195320}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.230000004, y: .529999971}
+  serializedVersion: 2
+  m_Radius: .449999988
 --- !u!58 &5849982
 CircleCollider2D:
   m_ObjectHideFlags: 1

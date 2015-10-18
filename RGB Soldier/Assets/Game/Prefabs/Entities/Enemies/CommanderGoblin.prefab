@@ -30,6 +30,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &112396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417762}
+  - 58: {fileID: 5861038}
+  m_Layer: 22
+  m_Name: GroundCollide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &112834
 GameObject:
   m_ObjectHideFlags: 1
@@ -609,13 +625,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128832}
   m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: 7.05204248, y: .670000017, z: -.0199999996}
+  m_LocalPosition: {x: -.0436198711, y: .585788429, z: -.0199999996}
   m_LocalScale: {x: 2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 482670}
   - {fileID: 429924}
   - {fileID: 455370}
   - {fileID: 445916}
+  - {fileID: 417762}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &416574
@@ -630,6 +647,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 482300}
   m_RootOrder: 0
+--- !u!4 &417762
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 416486}
+  m_RootOrder: 4
 --- !u!4 &422772
 Transform:
   m_ObjectHideFlags: 1
@@ -1046,6 +1075,19 @@ CircleCollider2D:
   m_Offset: {x: -.230000004, y: .529999971}
   serializedVersion: 2
   m_Radius: .5
+--- !u!58 &5861038
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112396}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.230000004, y: .529999971}
+  serializedVersion: 2
+  m_Radius: .449999988
 --- !u!61 &6193332
 BoxCollider2D:
   m_ObjectHideFlags: 1
