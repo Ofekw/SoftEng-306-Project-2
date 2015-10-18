@@ -1726,11 +1726,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22458176, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22448922, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11497306, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
       propertyPath: player
@@ -1740,6 +1740,14 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2014651564}
+    - target: {fileID: 11444728, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
+      propertyPath: loadingImage
+      value: 
+      objectReference: {fileID: 1509073557}
+    - target: {fileID: 11444728, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 1509073556}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9795a4906ddadf4991941f5253861c3, type: 2}
   m_IsPrefabParent: 0
@@ -6030,6 +6038,14 @@ Prefab:
       propertyPath: nextScene
       value: cutscene_boss_1
       objectReference: {fileID: 0}
+    - target: {fileID: 11463790, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: loadingImage
+      value: 
+      objectReference: {fileID: 1509073557}
+    - target: {fileID: 11463790, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 1509073556}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
   m_IsPrefabParent: 0
@@ -6045,6 +6061,16 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1509073553}
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1509073556 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11460820, guid: 6854b4538daa95f4aa12d56a4cfff5bf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1509073553}
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &1509073557 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 179048, guid: 6854b4538daa95f4aa12d56a4cfff5bf, type: 2}
+  m_PrefabInternal: {fileID: 1509073553}
 --- !u!1 &1523051631
 GameObject:
   m_ObjectHideFlags: 0
