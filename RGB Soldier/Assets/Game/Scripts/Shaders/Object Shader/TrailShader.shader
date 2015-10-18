@@ -1,5 +1,5 @@
 
-Shader "AngryBots/FX/Additive" {
+Shader "TrailShader" {
 	Properties {
 		_MainTex ("Base", 2D) = "white" {}
 		_TintColor ("TintColor", Color) = (1.0, 1.0, 1.0, 1.0)
