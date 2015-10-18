@@ -35,6 +35,8 @@ public class UnitTests
     {
         Player subPlayer = new Player();
         EntityMovement subEntityMovement = NSubstitute.Substitute.For<EntityMovement>();
+        PowerupController subPowerController = NSubstitute.Substitute.For<PowerupController>();
+        subPlayer.powerController = subPowerController;
         GameControl subGameControl = new GameControl();
         GameControl.control = subGameControl;
 

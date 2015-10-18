@@ -42,7 +42,8 @@ public class PauseScript : MonoBehaviour
 	public void onPause() {
 		//Disable player controls
 		var buttons = GameObject.FindGameObjectsWithTag ("PlayerControl");
-		foreach (GameObject b in buttons) {
+        GameObject.Find("PauseScreenPlayer").transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = true;
+        foreach (GameObject b in buttons) {
 			Button button = b.GetComponent<Button>();
 			button.interactable = false;
 		}
@@ -52,7 +53,8 @@ public class PauseScript : MonoBehaviour
 	public void onResume() {
 		//Enable player controls
 		var buttons = GameObject.FindGameObjectsWithTag ("PlayerControl");
-		foreach (GameObject b in buttons) {
+        GameObject.Find("PauseScreenPlayer").transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = false;
+        foreach (GameObject b in buttons) {
 			Button button = b.GetComponent<Button>();
 			button.interactable = true;
 		}
