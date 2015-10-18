@@ -129,8 +129,8 @@ public class GameManager : MonoBehaviour
         {
             for (i = 0; i < 4; i++)
             {
-                pauseMaterials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
-                materials[i].mainTexture = Resources.Load("ch032", typeof(Texture2D)) as Texture2D;
+                pauseMaterials[i].mainTexture = Resources.Load("ch037", typeof(Texture2D)) as Texture2D;
+                materials[i].mainTexture = Resources.Load("ch037", typeof(Texture2D)) as Texture2D;
             }
         }
         else if (i == 3)
