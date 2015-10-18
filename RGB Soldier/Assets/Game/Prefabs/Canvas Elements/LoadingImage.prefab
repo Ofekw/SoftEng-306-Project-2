@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11430782}
   m_Layer: 5
   m_Name: LoadingText
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   - 114: {fileID: 11411064}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - 114: {fileID: 11434166}
   m_Layer: 5
   m_Name: LoadingBar
-  m_TagString: Untagged
+  m_TagString: AllowColourCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .49610725, g: .825766504, b: .911764681, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -178,8 +178,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: 1587eca79a8a9fd42bd515036e31d190, type: 3}
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -304,14 +304,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .352941155, g: .352941155, b: .352941155, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f4d8921cab0ddc84392222f0efa75fa7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -378,10 +378,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22488036}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: .539192736}
+  m_AnchorMax: {x: 1, y: .631843925}
+  m_AnchoredPosition: {x: 0, y: -.5}
+  m_SizeDelta: {x: -640, y: -3}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22447552
 RectTransform:
@@ -398,10 +398,10 @@ RectTransform:
   - {fileID: 22488016}
   m_Father: {fileID: 22488036}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -.800000012, y: -7.4000001}
-  m_SizeDelta: {x: 285.299988, y: 34.9000015}
+  m_AnchorMin: {x: 0, y: .427000016}
+  m_AnchorMax: {x: 1, y: .539192736}
+  m_AnchoredPosition: {x: -.800003052, y: -1.3999939}
+  m_SizeDelta: {x: -514.700012, y: -5.1000061}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22453880
 RectTransform:
@@ -471,7 +471,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.05175781e-05, y: -1.52587891e-05}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22499498
@@ -498,7 +498,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 123168}
