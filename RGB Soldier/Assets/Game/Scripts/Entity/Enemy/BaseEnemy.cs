@@ -115,6 +115,8 @@ public class BaseEnemy : KillableEntityInterface
         // remove gravity to allow the enemy not to drop as collisions have been removed
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.gravityScale = 0;
+        Vector2 moveVec= rigidbody.velocity;
+        rigidbody.velocity = new Vector2(0, moveVec.y);
 
         // remove attack and movement
         entityMovement.moveForce = 0F;
