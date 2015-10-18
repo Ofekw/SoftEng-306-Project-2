@@ -35,6 +35,9 @@ public class Boss : KillableEntityInterface
     private AudioClip largeShootSound;
     private AudioClip smallShootSound;
 
+    private float shieldDownTimer = 5f;
+    public SkinnedMeshRenderer renderer;
+
     public override void die()
     {
         if (Social.localUser.authenticated)
@@ -78,6 +81,10 @@ public class Boss : KillableEntityInterface
         {
             die();
             isDead = true;
+        }else
+        {
+            teleport();
+            generateShield();
         }
     }
 
@@ -92,7 +99,7 @@ public class Boss : KillableEntityInterface
         }
         //find x tele position
         float teleX = xSpawnPoints;
-        if (-8 < player.transform.position.x && player.transform.position.x < 8)
+        if (-7.5 < player.transform.position.x && player.transform.position.x < 7.5)
         {
             int random = rand.Next(1, 3);
             if (random == 1)
@@ -103,28 +110,6 @@ public class Boss : KillableEntityInterface
         else if (player.transform.position.x >= 0)
         {
             teleX *= -1;
-        }
-        if (isShielded)
-        {
-            //check if player is sitting above boss
-            float yRelative = transform.position.y - player.transform.position.y;
-            float playerX = player.transform.position.x;
-            float sign = Mathf.Sign(yRelative);
-            //player is above boss so teleport to other side at same level
-            if (sign == -1)
-            {
-                yPos = 0f;
-            }
-            //player is sitting below the boss so teleport to other side at same level
-            else if (sign == 1)
-            {
-                yPos = -7.5f;
-            }
-            //else simply don't move and fire at player for being s
-            else
-            {
-                return;
-            }
         }
 
         if (teleX > 0)
@@ -178,43 +163,30 @@ public class Boss : KillableEntityInterface
         chargeSound = Resources.Load("Audio/boss_charge") as AudioClip;
         largeShootSound = Resources.Load("Audio/boss_shoot_large") as AudioClip;
         smallShootSound = Resources.Load("Audio/small_shoot_sound") as AudioClip;
-        //renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        renderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
         PlayGamesPlatform.Activate();
         Social.localUser.Authenticate((bool success) =>
         {
         });
+        generateShield();
+    }
+
+    private void generateShield()
+    {
+        isShielded = true;
+        Vector3 pos = gameObject.transform.position;
+        pos.y += 1.4f;
+        shieldClone = (GameObject)Instantiate(shield, pos, gameObject.transform.rotation);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isDead)
+        if (isShielded)
         {
-            //check if shielded and boss can unshield as player is valid distance away
-            if (isShielded)
+            if (shieldClone.transform.localScale.x < 1)
             {
-                if (Math.Abs(player.transform.position.x - this.transform.position.x) > 10)
-                {
-                    shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(0.1f, 0.1f), 4 * Time.deltaTime);
-                    if (shieldClone.transform.localScale.x < 0.25)
-                    {
-                        Destroy(shieldClone);
-                        isShielded = false;
-                    }
-                }
-                //else if shielded and shield isn't it's correct size, increase the size
-                else if (shieldClone.transform.localScale.x < 1)
-                {
-                    shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.25f, 1.25f), 5 * Time.deltaTime);
-                }
-            }
-            //else check if player is close and shield should be generated
-            else if (Math.Abs(player.transform.position.x - this.transform.position.x) < 10)
-            {
-                isShielded = true;
-                Vector3 pos = gameObject.transform.position;
-                pos.y += 1.4f;
-                shieldClone = (GameObject)Instantiate(shield, pos, gameObject.transform.rotation);
+                shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.25f, 1.25f), 2 * Time.deltaTime);
             }
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
@@ -223,14 +195,37 @@ public class Boss : KillableEntityInterface
                 int attackNo = rand.Next(1, 3);
                 if (attackNo == 1)
                 {
-                    StartCoroutine(teleFlicker(1, 0.1f, 0.1f, spiritBomb));
+                    StartCoroutine(teleFlicker(20, 0.01f, 0.01f, spiritBomb));
                 }
                 else
                 {
-                    StartCoroutine(teleFlicker(1, 0.1f, 0.1f, blackOrbAttack));
+                    StartCoroutine(teleFlicker(20, 0.01f, 0.01f, blackOrbAttack));
+                }
+            }
+        } else
+        {
+            shieldDownTimer -= Time.deltaTime;
+            if (shieldDownTimer <= 0)
+            {
+                shieldDownTimer = 5f;
+                generateShield();
+            }
+            else
+            {
+                if (shieldClone != null) {
+                    if (shieldClone.transform.localScale.x < 0.25)
+                    {
+                        Destroy(shieldClone);
+                    }
+                    shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(0.1f, 0.1f), 6 * Time.deltaTime);
                 }
             }
         }
+    }
+
+    public void takeDownShield()
+    {
+        isShielded = false;
     }
 
     void blackOrbAttack()
@@ -253,13 +248,13 @@ public class Boss : KillableEntityInterface
         {
             source.PlayOneShot(chargeSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, true);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 4, yProjectileOffset, true);
         }
         else if (!(entityMovement.facingRight))
         {
             source.PlayOneShot(chargeSound, ((float)GameControl.control.soundBitsVolume) / 100);
 
-            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 2, yProjectileOffset, false);
+            projectileSpawner.spawnProjectile("unblockableAttack", transform.position.x, transform.position.y + 1.5f, xProjectileOffset + 4, yProjectileOffset, false);
         }
     }
 
@@ -268,9 +263,9 @@ public class Boss : KillableEntityInterface
         //do teleport flickering
         while (nTimes > 0)
         {
-            //renderer.material.color = new Color(0f, 0f, 0f, 0f);
+            renderer.material.color = new Color(0f, 0f, 0f, 0f);
             yield return new WaitForSeconds(timeOn);
-            //renderer.material.color = new Color(1f, 1f, 1f, 1f);
+            renderer.material.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(timeOff);
             nTimes--;
         }
@@ -278,20 +273,22 @@ public class Boss : KillableEntityInterface
         if (isShielded)
         {
             Destroy(shieldClone);
-            isShielded = false;
         }
         //teleport and set current attack for when attack animation finishes the doAttack fires the attack
         teleport();
+        if (isShielded)
+        {
+            generateShield();
+        }
         currentAttack = attack;
         if (attack == spiritBomb)
         {
             animator.SetBool("SpiritBomb", true);
         }
-        else
+        else if (attack == blackOrbAttack)
         {
             animator.SetBool("OrbAttack", true);
         }
-        
     }
 
     //method used in animation to launch attack at different times

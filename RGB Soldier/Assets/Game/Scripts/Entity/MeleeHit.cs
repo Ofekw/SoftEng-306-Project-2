@@ -42,6 +42,10 @@ public class MeleeHit : MonoBehaviour {
                 renderer2.sprite = dmg[9];
                 renderer3.sprite = dmg[9];
             }
+        }else if (hit.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            //static amount of damage dealt to boss
+            hit.gameObject.SendMessage("takeDamage", 2);
         }
     }    
 }
