@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
@@ -13,8 +14,7 @@ public class BulletTime : Objective
     public GameObject jumpButton;
     public GameObject meleeButton;
     public GameObject rangeButton;
-    public GameObject joyStick;
-    public Joystick joyStickScript;
+    public GameObject joystick;
 
     public override IEnumerator startObjective()
     {
@@ -32,7 +32,7 @@ public class BulletTime : Objective
         jumpButton.SetActive(true);
         meleeButton.SetActive(true);
         rangeButton.SetActive(true);
-        joyStick.SetActive(true);
+        joystick.GetComponent<Image>().enabled = true;
         yield return new WaitForSeconds(2);
         while (!isCompleted())
         {
@@ -41,7 +41,7 @@ public class BulletTime : Objective
         jumpButton.SetActive(false);
         meleeButton.SetActive(false);
         rangeButton.SetActive(false);
-        joyStick.SetActive(false);
+        joystick.GetComponent<Image>().enabled = false;
     }
 
     public override bool isCompleted()
