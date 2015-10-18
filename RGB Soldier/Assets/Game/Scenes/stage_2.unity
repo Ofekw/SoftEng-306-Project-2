@@ -2385,7 +2385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2768827929928f4bb017b7b1ec76857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHeight: 22
+  spawnHeight: 18
 --- !u!61 &1347256993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2970,11 +2970,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 459102, guid: 6817d96fa4726ac4281bcb995d5e594f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.03999996
+      value: -.400000006
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 6817d96fa4726ac4281bcb995d5e594f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 26.6000004
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 459102, guid: 6817d96fa4726ac4281bcb995d5e594f, type: 2}
       propertyPath: m_LocalPosition.z
