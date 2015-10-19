@@ -22,6 +22,7 @@ public class ObjectShader : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        //Used for debugging in the unity editor
         if (Input.GetKeyDown(KeyCode.J))
         {
             ChangeColourBlindMode((current+1) % 3);
@@ -31,6 +32,7 @@ public class ObjectShader : MonoBehaviour {
     //0 is none
     //1 is red-green
     //2 is blue-yellow
+    //Change the colour mode
     void ChangeColourBlindMode(int mode)
     {
         for (int i = 0; i < rend.materials.Length; i++)
