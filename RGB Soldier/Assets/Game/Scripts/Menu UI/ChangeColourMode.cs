@@ -28,7 +28,7 @@ public class ChangeColourMode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Toggle[] t = colourModes.GetComponentsInChildren<Toggle>();
-		if (GameManager.instance.isPaused())
+        if (GameManager.instance != null && GameManager.instance.isPaused())
 		{
 			foreach (Toggle i in t) {
 				i.enabled = false;
