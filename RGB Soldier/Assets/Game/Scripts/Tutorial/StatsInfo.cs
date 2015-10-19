@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/* 
+ * This tutorial teaches the player about the stats
+ */
 public class StatsInfo : Objective {
     private GameObject player;
     public GameObject stageTextObject;
@@ -16,6 +19,7 @@ public class StatsInfo : Objective {
         Text stageText = stageTextObject.GetComponent<Text>();
         yield return new WaitForSeconds(5);
         stageText.text = "";
+        //Invokes the pause button to show the stats 
         pauseButton.onClick.Invoke();
         pauseTutorialText.SetActive(true);
         while (!isCompleted())
@@ -31,6 +35,10 @@ public class StatsInfo : Objective {
         pauseTutorialText.SetActive(false);
     }
 
+    /*
+     * This method is used to wait for a certain amount of time 
+     * Obtained from http://forum.unity3d.com/threads/waitforrealseconds-solved.31346/
+    */
     public static IEnumerator WaitForRealSeconds(float time)
     {
         float start = Time.realtimeSinceStartup;
@@ -42,6 +50,7 @@ public class StatsInfo : Objective {
 
     public override bool isCompleted()
     {
+        //Checks if the player has seen the stats info
         return (infoPanel.activeSelf);
     }
 

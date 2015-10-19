@@ -4,6 +4,10 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
+/* 
+ * This class is responsible for printing the text letter by letter
+ * The user can tap to print all text and tap to continue the dialog
+ */
 public class DialogPanel : MonoBehaviour
 {
 
@@ -30,7 +34,7 @@ public class DialogPanel : MonoBehaviour
         return dialogPanel;
     }
 
-    // Checks input from player each player
+    // Checks input from player each update
     void Update()
     {
         if (!firstLine) 
@@ -51,7 +55,7 @@ public class DialogPanel : MonoBehaviour
 
     }
 
-    // Goes through the list printing the text
+    // Goes through the list printing the text for each dialog
     public IEnumerator StartDialog(List<string> allText)
     {
         dialogPanelObject.SetActive(true);
@@ -62,10 +66,11 @@ public class DialogPanel : MonoBehaviour
             yield return StartCoroutine(WaitForKeyPress());
             firstLine = true;
         }
-        dialogPanelObject.SetActive(false);
+        ClosePanel();
         lsa.ClickAsync(scene_id);
     }
 
+    //This function is used when the dialog is waiting for the user to tap to continue
     IEnumerator WaitForKeyPress()
     {
         while (!keyPressed)
@@ -84,6 +89,7 @@ public class DialogPanel : MonoBehaviour
         foreach (char letter in text.ToCharArray())
         {
             bool printing = true;
+            //Checks if the player tap when the text is being printed else just continue printing
             if (keyPressed && printing)
             {
                 displayText.text = text;
