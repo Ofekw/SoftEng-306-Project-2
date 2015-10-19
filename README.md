@@ -32,8 +32,8 @@
       
     Open up the project in Unity and build.
     
- * Althernatively you can download the apk from here and deploy straight to your phone (Note this version has testing enabled allowing access to all levels without completing previous levels): [here](https://drive.google.com/file/d/0B-JyoIm6AJBdVEE2V3Q2LW9sREk/view?usp=sharing)
- * Or you can join the public beta and download the game through the Google Play Store: [here](https://play.google.com/apps/testing/com.TeamRGB.Prisma)
+ * Althernatively you can download the apk from here and deploy straight to your phone (Note this version has testing enabled allowing access to all levels without completing previous levels): [here](https://drive.google.com/file/d/0B-JyoIm6AJBdcFZEcWVmUjNrclk/view?usp=sharing)
+ * Or you download the game through the Google Play Store: [here](https://play.google.com/store/apps/details?id=com.TeamRGB.Prisma&hl=en)
  * Final code base can be found on the master [branch](https://github.com/Ofekw/SoftEng-306-Project-2/tree/master)
   
 
