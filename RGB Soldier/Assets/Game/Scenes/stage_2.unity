@@ -3896,9 +3896,18 @@ Prefab:
       propertyPath: m_UpdateMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11415142, guid: a7c464bdd6d96934aad6258de8b7a4cd, type: 2}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1966241437}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7c464bdd6d96934aad6258de8b7a4cd, type: 2}
   m_IsPrefabParent: 0
+--- !u!137 &1966241437 stripped
+SkinnedMeshRenderer:
+  m_PrefabParentObject: {fileID: 13737468, guid: a7c464bdd6d96934aad6258de8b7a4cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1966241436}
 --- !u!1001 &1994417843
 Prefab:
   m_ObjectHideFlags: 0
