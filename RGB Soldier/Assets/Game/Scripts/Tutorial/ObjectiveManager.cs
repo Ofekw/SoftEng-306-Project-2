@@ -46,7 +46,7 @@ public class ObjectiveManager : MonoBehaviour
             stageText.fontSize = 20;
             stageText.text = obj.getDescription();
             yield return StartCoroutine(obj.startObjective());
-            stageText.text = "Well Done!!";
+            stageText.text = "Well Done!";
             yield return new WaitForSeconds(2);
         }
         stageTextObject.SetActive(false);
