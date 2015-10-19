@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             stageImage = GameObject.Find("StageImage");
             stageText = GameObject.Find("StageText").GetComponent<Text>();
-            if (currentLevel == 0)
+            if (currentLevel == -1)
             {
                 stageText.text = "Boss Stage";
             }

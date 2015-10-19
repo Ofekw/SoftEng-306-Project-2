@@ -12,18 +12,18 @@ public class ObjectiveManager : MonoBehaviour
     public GameObject meleeButton;
     public GameObject rangeButton;
     public GameObject jumpButton;
-    public GameObject joyStick;
-    public Joystick joyStickScript;
+    public GameObject joystick;
+    private Joystick joyStickScript;
     private Text stageText;
     //private Objective current;
 
     void Start()
     {
-        joyStickScript.isTutorial = true;
-        joyStick.SetActive(false);
+        joyStickScript = joystick.GetComponent<Joystick>();
+        joystick.GetComponent<Image>().enabled = false;
         meleeButton.SetActive(false);
         rangeButton.SetActive(false);
-        jumpButton.SetActive(false);
+        jumpButton.SetActive(false); 
         stageText = stageTextObject.GetComponent<Text>();
         stageText.text = "Tutorial";
         stageTextObject.SetActive(true);
