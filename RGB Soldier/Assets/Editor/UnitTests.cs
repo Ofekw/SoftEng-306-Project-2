@@ -8,6 +8,7 @@ public class UnitTests
     [Test]
     public void jumpPressed()
     {
+        //Create a player object and assert that isJumping equals true whenever a jump is performed.
         Player sub = new Player();
 
         Assert.True(!sub.isJumping);
@@ -20,6 +21,7 @@ public class UnitTests
     [Test]
     public void takeDamage()
     {
+        //Create a player and ensure the player takes damage whenever struck.
         Player player = new Player();
         player.currentHealth = 5;
 
@@ -33,6 +35,8 @@ public class UnitTests
     [Test]
     public void updateStats()
     {
+        //Create a player and substitute in EntityMovement and PowerupController components.
+        //Check that attributes are correctly updated.
         Player subPlayer = new Player();
         EntityMovement subEntityMovement = NSubstitute.Substitute.For<EntityMovement>();
         PowerupController subPowerController = NSubstitute.Substitute.For<PowerupController>();
@@ -55,6 +59,7 @@ public class UnitTests
     [Test]
     public void levelUpCarryOver()
     {
+        //Create the GameControl and assert that experience correctly carries over.
         GameControl subGameControl = new GameControl();
         subGameControl.playerLevel = 1;
         subGameControl.playerExp = 100;
@@ -66,7 +71,10 @@ public class UnitTests
     }
 
     [Test]
-    public void save() {
+    public void save()
+    {
+        //Create the GameControl and a Player
+        //Check that saves are correctly done.
         GameControl subGameControl = new GameControl();
         PlayerData subPlayerData = new PlayerData();
         subGameControl.playerData = subPlayerData;
@@ -93,6 +101,8 @@ public class UnitTests
     [Test]
     public void load()
     {
+        //Create the GameControl and a Player.
+        //Checks that loads are correctly done.
         GameControl subGameControl = new GameControl();
         PlayerData subPlayerData = new PlayerData();
         subGameControl.playerData = subPlayerData;
@@ -119,6 +129,8 @@ public class UnitTests
     [Test]
     public void resetStat()
     {
+        //Create the GameControl, IncreaseStat and a Player.
+        //Check that attributes are correctly reset.
         IncreaseStat subIS = new IncreaseStat();
         GameControl subGameControl = new GameControl();
         GameControl.control = subGameControl;
