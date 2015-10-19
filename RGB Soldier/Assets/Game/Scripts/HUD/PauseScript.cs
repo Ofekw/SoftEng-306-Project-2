@@ -46,7 +46,9 @@ public class PauseScript : MonoBehaviour
         GameObject.Find("PauseScreenPlayer").transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = true;
         GameObject.Find("PausedGUI").GetComponent<Canvas>().enabled = true;
         stageImage = GameObject.Find("StageImage");
-        if (stageImage != null)
+        
+        // dont disable stage image for tutorial
+        if (stageImage != null && !GameManager.instance.isTutorial)
         {
             stageImage.SetActive(false);
         }
