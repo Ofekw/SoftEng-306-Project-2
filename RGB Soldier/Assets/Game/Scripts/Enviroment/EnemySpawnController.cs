@@ -66,7 +66,6 @@ public class EnemySpawnController : MonoBehaviour
         yield return new WaitForSeconds(3);
         spawnerToCall++;
         spawnerToCall = spawnerToCall % spawners.Length;
-        print("ON DEATH SPAWN");
 		if (!_isDisabled)
         	spawners[spawnerToCall].OnDeathSpawn();
     }
