@@ -12,7 +12,9 @@ public class BulletTimeSpawnController : MonoBehaviour
     private int spawnerToCall = 0;
     private bool _canSpawn = true;  // when false spawnTimer doesn't increase and no new orbs can spawn
 
-    //reset the spawn timer and allow new powerups to spawn. called by BulletTimeOrb when collected
+    /// <summary>
+    /// Reset the spawn timer and allow new Focus drops to spawn. Called when a Focus drop is collected
+    /// </summary>
     public void enableSpawner()
     {
         _canSpawn = true;
@@ -42,6 +44,9 @@ public class BulletTimeSpawnController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns a new Focus drop at one randomly picked Focus spawner
+    /// </summary>
     public void spawn()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
