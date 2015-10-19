@@ -29,7 +29,6 @@ namespace Assets.Game.Scripts.Menu_UI
         public void toggleUpdate(bool update)
         {
             // update 
-            Debug.Log(update.ToString());
             GameControl.control.vibrateOn = update;
 
         }

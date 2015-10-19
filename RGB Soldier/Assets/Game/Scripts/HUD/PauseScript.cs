@@ -28,7 +28,6 @@ public class PauseScript : MonoBehaviour
 		paused = !paused;
 		GameManager.State gameState = paused ? GameManager.State.Paused : GameManager.State.Running;
 		GameManager.instance.SetState (gameState);
-		print ("Game status: " + GameManager.instance.getState ().ToString ());
         if (paused)
         {
             onPause();
