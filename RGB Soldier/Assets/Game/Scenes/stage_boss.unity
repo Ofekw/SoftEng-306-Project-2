@@ -314,8 +314,8 @@ RectTransform:
   m_RootOrder: 11
   m_AnchorMin: {x: 0, y: .899513245}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 560, y: -6.19696045}
-  m_SizeDelta: {x: -658, y: 2}
+  m_AnchoredPosition: {x: 573.400024, y: -6.19700003}
+  m_SizeDelta: {x: -685.700012, y: 2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &13847755
 MonoBehaviour:
@@ -346,10 +346,10 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Level: 1'
+  m_Text: 'Lvl: 12'
 --- !u!222 &13847756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1113,8 +1113,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: .899513245}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25, y: -6.19700623}
-  m_SizeDelta: {x: -765, y: 2}
+  m_AnchoredPosition: {x: 25.6000004, y: -10.3470001}
+  m_SizeDelta: {x: -766.200012, y: -9.08059978}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &515190216
 MonoBehaviour:
@@ -1240,13 +1240,13 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1587eca79a8a9fd42bd515036e31d190, type: 3}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 3
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 0 / 20
@@ -5491,8 +5491,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: .899513245}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 146.699997, y: -6.19700003}
-  m_SizeDelta: {x: -714.400024, y: 2}
+  m_AnchoredPosition: {x: 138.100006, y: -4.80690002}
+  m_SizeDelta: {x: -715, y: 2}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &2084385157
 Prefab:
@@ -5701,6 +5701,14 @@ Prefab:
     - target: {fileID: 448068, guid: 531d735cab95fff4a8af3b679f80cf4f, type: 2}
       propertyPath: m_LocalPosition.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11424278, guid: 531d735cab95fff4a8af3b679f80cf4f, type: 2}
+      propertyPath: maxHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11424278, guid: 531d735cab95fff4a8af3b679f80cf4f, type: 2}
+      propertyPath: currentHealth
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 531d735cab95fff4a8af3b679f80cf4f, type: 2}
