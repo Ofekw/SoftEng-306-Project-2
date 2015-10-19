@@ -6,18 +6,19 @@ public class CanvasShader : MonoBehaviour {
     public Canvas canvas;
     public int current = 0;
     public bool allColours;
-    public float lastChange;
 
+    //Initialisation
 	void Start () {
         rend = this.gameObject.GetComponent<CanvasRenderer>();
         canvas = this.gameObject.GetComponent<Canvas>();
 
+        //Get initial colour mode from Game Control
         ChangeColourMode(GameControl.control.currentGameLevel);
         allColours = GameControl.control.currentGameLevel > 3;
-        lastChange = Time.time;
 	}
 	
 	void Update () {
+        //Used for debugging in unity editor
         if (Input.GetKeyDown(KeyCode.K))
         {
             current++;
@@ -29,6 +30,7 @@ public class CanvasShader : MonoBehaviour {
     //0 is Green
     //1 is Blue
     //2 is Red
+    //Changes colour mode of attached canvas
     void ChangeColourMode(int mode)
     {
         CanvasRenderer[] renderers = GetComponentsInChildren<CanvasRenderer>(true);

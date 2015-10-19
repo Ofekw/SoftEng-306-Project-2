@@ -35,7 +35,7 @@ public class Player : KillableEntityInterface
     public float temporaryInvulnerableTime;
     public float invulnTime = 2.0f;
 
-    public SkinnedMeshRenderer renderer;
+    public SkinnedMeshRenderer rend;
     public float opacitySwitchTime;
 
     private AudioClip meleeAttackSound;
@@ -67,17 +67,19 @@ public class Player : KillableEntityInterface
         attacking = false;
         lastAttack = Time.time;
         temporaryInvulnerableTime = Time.time;
-        renderer = this.GetComponentInChildren<SkinnedMeshRenderer>();
+        rend = this.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        //Setup player sounds
         meleeAttackSound = Resources.Load("Audio/melee_attack") as AudioClip;
         specialAttackSound = Resources.Load("Audio/special_attack") as AudioClip;
         rangedAttackSound = Resources.Load("Audio/range_attack") as AudioClip;
         damageTakenSound= Resources.Load("Audio/player_ugh") as AudioClip;
         jumpSound = Resources.Load("Audio/player_jump") as AudioClip;
 
-
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
 
+        //Get stats from the GameControl
         strength = GameControl.control.playerStr;
         agility = GameControl.control.playerAgl;
         dexterity = GameControl.control.playerDex;
@@ -97,6 +99,7 @@ public class Player : KillableEntityInterface
         {
             Special();
         }
+
         //if pressing jump button, call jump method to toggle boolean
         if (Input.GetButtonDown("Jump"))
         {
@@ -108,6 +111,7 @@ public class Player : KillableEntityInterface
             entityMovement.Jump();
             isJumping = false;
         }
+
         float hVelocity = CrossPlatformInputManager.GetAxis("Horizontal");
 
         if (hVelocity == 0)
@@ -116,15 +120,12 @@ public class Player : KillableEntityInterface
             animator.ResetTrigger("Walk");
         }
 
-
         if (hVelocity != 0)
         {
             animator.SetTrigger("Walk");
         }
 
-
-
-        //call the base movement module method to handle movement
+        //Call the base movement module method to handle movement
         entityMovement.Movement(hVelocity);
 
         //If the shift button is pressed
@@ -139,6 +140,7 @@ public class Player : KillableEntityInterface
             Melee();
         }
 
+        //Set attack collider to enabled for the attack duration
         if (attacking == true)
         {
             meleeCollider.enabled = true;
@@ -154,16 +156,16 @@ public class Player : KillableEntityInterface
             meleeCollider.enabled = false;
         }
 
-
-
+        //Make player temporarily invulnerable after taking damage
+        //Achieved by changing alpha values of the sprite
         if (temporaryInvulnerable)
         {
-            if (renderer.material.color.a == 1f && Time.time > opacitySwitchTime)
+            if (rend.material.color.a == 1f && Time.time > opacitySwitchTime)
             {
                 opacitySwitchTime = Time.time + 0.25f;
                 setAlpha(0.5f);
             }
-            if (renderer.material.color.a == .5f && Time.time > opacitySwitchTime)
+            if (rend.material.color.a == .5f && Time.time > opacitySwitchTime)
             {
                 opacitySwitchTime = Time.time + 0.25f;
                 setAlpha(1.0f);
@@ -178,9 +180,10 @@ public class Player : KillableEntityInterface
         UpdateStats();
     }
 
+    //Set the alpha value of the sprites
     public void setAlpha(float alpha)
     {
-        Material[] materials = renderer.materials;
+        Material[] materials = rend.materials;
         for(int i = 0; i < materials.Length; i++)
         {
             Color colorAlpha = materials[i].color;
@@ -188,7 +191,6 @@ public class Player : KillableEntityInterface
             materials[i].color = colorAlpha;
         }
     }
-
 
     public void UpdateStats()
     {
@@ -212,10 +214,10 @@ public class Player : KillableEntityInterface
         abilityPoints = GameControl.control.abilityPoints;
     }
 
+    //Begin melee attack
     public void Melee()
     {
         animator.SetTrigger("Attack");
-
         if (Time.time > (lastAttack + attackCooldown))
         {
             source.PlayOneShot(meleeAttackSound, ((float)GameControl.control.soundBitsVolume )/100);
@@ -250,6 +252,7 @@ public class Player : KillableEntityInterface
 
     }
 
+    //Create ranged attack
     public void Shoot()
     {
         hasRanged = true;
@@ -278,6 +281,7 @@ public class Player : KillableEntityInterface
         isJumping = true;
     }
 
+    //Take damage and check if dead
     public override void takeDamage(int damageReceived)
     {
         AudioSource.PlayClipAtPoint(damageTakenSound, transform.position);
@@ -294,14 +298,15 @@ public class Player : KillableEntityInterface
         }
     }
 
+    //Remove damage taken from health
     public void calculateDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
         temporaryInvulnerable = true;
         temporaryInvulnerableTime = Time.time;
-        print("You lost a life");
     }
 
+    //Take damage and get knocked back
     public void takeDamageKnockBack(int damageReceived, float dir)
     {
         if (!temporaryInvulnerable)
@@ -311,6 +316,7 @@ public class Player : KillableEntityInterface
         }
     }
 
+    //Add knockback force
     private void knockBack(float dir)
     {
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(knockBackStrength * dir, knockBackStrength));
@@ -323,21 +329,25 @@ public class Player : KillableEntityInterface
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
+        //Collect orb on collision
         if (coll.gameObject.CompareTag("Orb"))
         {
             GameManager.instance.orbsCollected++;
         }
 
+        //Set to move with moving platform
         if(coll.transform.tag == "MovingPlatform")
         {
             transform.parent = coll.transform;
         }
 
+        //Activate bullet time power up
 		if (coll.gameObject.CompareTag ("BulletTime"))
 		{
 			GameManager.instance.activateBulletTime();
 		}
 
+        //Activate power up
 		if (coll.gameObject.CompareTag ("Powerup")) 
 		{
 			Powerup powerup = coll.gameObject.GetComponent<Powerup>();
@@ -347,11 +357,10 @@ public class Player : KillableEntityInterface
 
     private void OnCollisionExit2D(Collision2D coll)
     {
+        //Stop moving with moving platform
         if (coll.transform.tag == "MovingPlatform")
         {
             transform.parent = null;
         }
     }
-
-
 }
