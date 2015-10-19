@@ -38,7 +38,6 @@ public class EnemySpawner : MonoBehaviour {
     public void ScaleEnemy(BaseEnemy enemy)
     {
         int playerLevel = GameControl.control.playerLevel;
-        Debug.Log("Scaled Enemy");
         enemy.maxHealth = enemy.maxHealth + (Mathf.CeilToInt(enemy.maxHealth / 4.0f) * Mathf.FloorToInt(playerLevel / 5.0f));
         enemy.currentHealth = enemy.currentHealth + (Mathf.CeilToInt(enemy.currentHealth/4.0f) * Mathf.FloorToInt(playerLevel/5.0f));
         enemy.damageGiven = enemy.damageGiven;
