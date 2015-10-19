@@ -20,17 +20,17 @@ public class MeleeHit : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D hit)
     {
-        if (hit.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+        if (hit.gameObject.layer == LayerMask.NameToLayer("Enemies") || hit.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
 
             Instantiate(damageIndicator, hit.gameObject.transform.position, hit.gameObject.transform.rotation);
             SpriteRenderer renderer = GameObject.Find("numeric-1").GetComponent<SpriteRenderer>();
-            
+
             //Tell the meleed object that it has taken damage
             //Damage is equal to players strength
-            int meleeDmg = meleeMultiplier*player.GetComponent<Player>().strength;
-            hit.gameObject.SendMessage("takeDamage", meleeDmg );
-            if (meleeDmg < dmg.Length-1)
+            int meleeDmg = meleeMultiplier * player.GetComponent<Player>().strength;
+            hit.gameObject.SendMessage("takeDamage", meleeDmg);
+            if (meleeDmg < dmg.Length - 1)
             {
                 renderer.sprite = dmg[meleeDmg];
             }
@@ -42,10 +42,6 @@ public class MeleeHit : MonoBehaviour {
                 renderer2.sprite = dmg[9];
                 renderer3.sprite = dmg[9];
             }
-        }else if (hit.gameObject.layer == LayerMask.NameToLayer("Boss"))
-        {
-            //static amount of damage dealt to boss
-            hit.gameObject.SendMessage("takeDamage", 2);
         }
-    }    
+    } 
 }

@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnAwake: 1
-  awakeDestroyDelay: 1
+  awakeDestroyDelay: 2
   findChild: 0
   namedChild: 
 --- !u!212 &21200000
@@ -370,7 +370,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: awakeDestroyDelay
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Controller

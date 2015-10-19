@@ -9,34 +9,31 @@ public class Boss : KillableEntityInterface
 {
 
     private Animator animator;
-    public float xProjectileOffset;
-    public float yProjectileOffset;
-    public EntityMovement entityMovement;
-    public BossProjectileSpawner projectileSpawner;
     private float xSpawnPoints = 17.5f;
     private float attackTimer = 1f;
     private System.Random rand = new System.Random();
     private GameObject player;
     private GameObject healthBar;
     private Vector3 healthBarScale;
-
-    public GameObject shield;
     private Boolean isShielded = false;
     private GameObject shieldClone;
-
     private Action currentAttack;
     private int attackAnCounter = 0;
-
     private Boolean isDead = false;
-    public GameObject[] orbs;
-    public AudioSource source;
-
     private AudioClip chargeSound;
     private AudioClip largeShootSound;
     private AudioClip smallShootSound;
-
     private float shieldDownTimer = 5f;
-    public SkinnedMeshRenderer renderer;
+    private Boolean isWaiting = false;
+    private SkinnedMeshRenderer renderer;
+
+    public GameObject[] orbs;
+    public AudioSource source;
+    public float xProjectileOffset;
+    public float yProjectileOffset;
+    public EntityMovement entityMovement;
+    public BossProjectileSpawner projectileSpawner;
+    public GameObject shield;
 
     public override void die()
     {
@@ -62,10 +59,12 @@ public class Boss : KillableEntityInterface
         animator.SetBool("Dead", true);
     }
 
+    //destroys the boss/starts death animation
     public void destroyGameObject()
     {
         float pos = -1.5f;
         Destroy(this.gameObject);
+        //spawn orbs on death
         for(int i = 0; i< orbs.Length; i++)
         {
             Instantiate(orbs[i], new Vector3(pos, -0.8f), gameObject.transform.rotation);
@@ -73,9 +72,14 @@ public class Boss : KillableEntityInterface
         }
     }
 
+    //handles taking damage from the player
     public override void takeDamage(int damageReceived)
     {
         currentHealth -= damageReceived;
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
         healthBar.transform.localScale = new Vector3((currentHealth*1.0f/maxHealth)*healthBarScale.x, healthBarScale.y, 1);
         if (currentHealth <= 0)
         {
@@ -84,7 +88,8 @@ public class Boss : KillableEntityInterface
         }else
         {
             teleport();
-            generateShield();
+            StopCoroutine(waitForAttack());
+            isWaiting = false;
         }
     }
 
@@ -112,6 +117,7 @@ public class Boss : KillableEntityInterface
             teleX *= -1;
         }
 
+        //teleport the boss to the correct position
         if (teleX > 0)
         {
             if (entityMovement.facingRight)
@@ -120,7 +126,6 @@ public class Boss : KillableEntityInterface
                 entityMovement.Flip();
             }
             entityMovement.facingRight = false;
-            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(xSpawnPoints, yPos), 3);
 
         } else if (teleX <= 0)
@@ -131,19 +136,7 @@ public class Boss : KillableEntityInterface
                 entityMovement.Flip();
             }
             entityMovement.facingRight = true;
-            checkForAttack();
             this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, new Vector2(-xSpawnPoints, yPos), 3);
-        }
-    }
-
-    private void checkForAttack()
-    {
-        //check if any orb attacks are charging when teleport is called. If they are they should be 
-        GameObject orbAttack = GameObject.FindGameObjectWithTag("UnblockableOrbAttack");
-        //check that there is an orbattack and it is scaling, not already launched.
-        if (orbAttack != null && orbAttack.GetComponent<UnblockableOrbAttack>().startScale)
-        {
-            Destroy(orbAttack);
         }
     }
 
@@ -171,6 +164,7 @@ public class Boss : KillableEntityInterface
         generateShield();
     }
 
+    //creates shield around boss
     private void generateShield()
     {
         isShielded = true;
@@ -184,6 +178,7 @@ public class Boss : KillableEntityInterface
     {
         if (isShielded)
         {
+            //check if shielded and shield is not full size, scale if not full size
             if (shieldClone.transform.localScale.x < 1)
             {
                 shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(1.25f, 1.25f), 2 * Time.deltaTime);
@@ -191,6 +186,7 @@ public class Boss : KillableEntityInterface
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
+                //randomly select an attack and launch the teleflicker coroutine which handles these.
                 attackTimer = 5f;
                 int attackNo = rand.Next(1, 3);
                 if (attackNo == 1)
@@ -202,32 +198,50 @@ public class Boss : KillableEntityInterface
                     StartCoroutine(teleFlicker(20, 0.01f, 0.01f, blackOrbAttack));
                 }
             }
-        } else
+        }
+        else
         {
-            shieldDownTimer -= Time.deltaTime;
-            if (shieldDownTimer <= 0)
+            //check if boss has been hit and is allowing player to attack
+            if (isWaiting)
             {
-                shieldDownTimer = 5f;
-                generateShield();
-            }
-            else
-            {
-                if (shieldClone != null) {
+                //check if the shield hasn't been destroyed and needs to be scaled down
+                if (shieldClone != null)
+                {
                     if (shieldClone.transform.localScale.x < 0.25)
                     {
                         Destroy(shieldClone);
                     }
                     shieldClone.transform.localScale = Vector3.Lerp(shieldClone.transform.localScale, new Vector3(0.1f, 0.1f), 6 * Time.deltaTime);
                 }
+            } else if (!isDead)
+            {
+                //generate shield if not shielded and no longer waiting.
+                generateShield();
             }
         }
     }
 
+    /**
+    *Coroutine to wait 3.5 seconds. This is the wait after the bosses shield has been destroyed
+    **/
+    IEnumerator waitForAttack()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(3.5f);
+        isWaiting = false;
+    }
+
+    /**Method called when reflected orb hit's boss shield
+    **/
     public void takeDownShield()
     {
         isShielded = false;
+        //wait cool down to allow player to attack
+        StartCoroutine(waitForAttack());
     }
 
+    /**spawns black orb attack in direction of player
+    **/
     void blackOrbAttack()
     {
         if (entityMovement.facingRight)
@@ -241,7 +255,8 @@ public class Boss : KillableEntityInterface
             projectileSpawner.spawnProjectile("blackOrbAttack", transform.position.x, transform.position.y+0.6f, xProjectileOffset, yProjectileOffset, false);
         }
     }
-
+    /**spawns unblockable orb attack in direction of player
+    **/
     void spiritBomb()
     {
         if (entityMovement.facingRight)
@@ -258,6 +273,8 @@ public class Boss : KillableEntityInterface
         }
     }
 
+    /**Performs teleport flickering and handles teleporting boss, then launching attack.
+    **/
     IEnumerator teleFlicker(int nTimes, float timeOn, float timeOff, Action attack)
     {
         //do teleport flickering
@@ -305,6 +322,7 @@ public class Boss : KillableEntityInterface
             blackOrbAttack();
         }
         attackAnCounter++;
+        //cancel animation after all events triggered
         if (attackAnCounter == 2)
         {
             animator.SetBool("OrbAttack", false);
