@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Enviroment
 {
+
+    /// <summary>
+    /// Singleton class that controls all the background music for the game
+    /// </summary>
     class AudioManager : MonoBehaviour
     {
         private AudioSource audioSource;
@@ -29,7 +33,7 @@ namespace Assets.Game.Scripts.Enviroment
         // Use this for initialization
         void Start()
         {
-            //loads in the audio tracks(
+            //loads in the audio tracks
             tutorialSong = Resources.Load("Audio/tutorial_song") as AudioClip;
             menuSong = Resources.Load("Audio/menu_song") as AudioClip;
             lavaSong = Resources.Load("Audio/lava_song") as AudioClip;
@@ -40,7 +44,10 @@ namespace Assets.Game.Scripts.Enviroment
 
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// Called once per frame. Sets volume and listens to the scene name, and decides which 
+        /// track to play
+        /// </summary>
         void Update()
         {
            audioSource.volume = (float)(GameControl.control.backgroundVolume) / 100;
@@ -50,7 +57,6 @@ namespace Assets.Game.Scripts.Enviroment
                 {
                     audioSource.clip = menuSong;
                 }
-               //audioClip.clip = menuSong;
   
                 if (!audioSource.isPlaying)
                 {
@@ -74,7 +80,6 @@ namespace Assets.Game.Scripts.Enviroment
                 {
                     audioSource.clip = lavaSong;
                 }
-                //does not change the music
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
@@ -86,7 +91,6 @@ namespace Assets.Game.Scripts.Enviroment
                 {
                     audioSource.clip = iceSong;
                 }
-                //does not change the music
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
@@ -98,7 +102,6 @@ namespace Assets.Game.Scripts.Enviroment
                 {
                     audioSource.clip = iceSong;
                 }
-                //does not change the music
                 if (!audioSource.isPlaying)
                 {
                     audioSource.Play();
@@ -137,9 +140,6 @@ namespace Assets.Game.Scripts.Enviroment
             {
                 audioSource.Play();
             }
-        }
-        public void meleeAttackSound()
-        {
         }
     }
 }

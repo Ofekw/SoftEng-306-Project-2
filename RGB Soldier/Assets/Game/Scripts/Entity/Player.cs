@@ -225,6 +225,9 @@ public class Player : KillableEntityInterface
         }
     }
 
+    /// <summary>
+    /// Removes all the enemies in the stage, shakes the camera and vibrates the users phone
+    /// </summary>
     public void Special()
     {
         //If the meter is fully charged
