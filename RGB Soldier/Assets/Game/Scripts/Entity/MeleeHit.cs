@@ -8,7 +8,6 @@ public class MeleeHit : MonoBehaviour {
     public Sprite[] dmg;
     public GameObject damageIndicator;
 
-
     // Use this for initialization
     void Start () {
 	}
@@ -18,11 +17,13 @@ public class MeleeHit : MonoBehaviour {
 	
 	}
 
+    //Called when melee hits an object
     void OnTriggerEnter2D(Collider2D hit)
     {
+        //If the hit object is an enemy
         if (hit.gameObject.layer == LayerMask.NameToLayer("Enemies") || hit.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-
+            //Display damage given
             Instantiate(damageIndicator, hit.gameObject.transform.position, hit.gameObject.transform.rotation);
             SpriteRenderer renderer = GameObject.Find("numeric-1").GetComponent<SpriteRenderer>();
 

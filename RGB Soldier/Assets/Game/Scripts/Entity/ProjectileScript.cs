@@ -4,7 +4,6 @@ using System.Collections;
 
 public abstract class ProjectileScript : MonoBehaviour
 {
-
     public int damage;
     public Vector3 startPoint;
     public GameObject shooter;
@@ -13,6 +12,7 @@ public abstract class ProjectileScript : MonoBehaviour
     public string collidesWithLayer;
     public System.Collections.Generic.List<string> collidesWithLayers = new System.Collections.Generic.List<string>();
 
+    //Initialise
     void Start()
     {
         startPoint = this.gameObject.transform.position;
@@ -24,6 +24,7 @@ public abstract class ProjectileScript : MonoBehaviour
 	    if (GameManager.instance.isPaused () || GameManager.instance.isBulletTime){
 			    return;
         }
+        //Destroy if slowed
         if(this.GetComponent<Rigidbody2D>().velocity.magnitude < 5) {
             if (this.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
             {

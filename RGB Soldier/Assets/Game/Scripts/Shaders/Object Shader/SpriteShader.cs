@@ -10,7 +10,6 @@ public class SpriteShader : MonoBehaviour {
     public SpriteRenderer rend;
     public int current = 0;
 
-
 	// Use this for initialization
 	void Start () {
         rend = gameObject.GetComponent<SpriteRenderer>();
@@ -22,6 +21,7 @@ public class SpriteShader : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        //Used for debugging in the unity editor
         if (Input.GetKeyDown(KeyCode.J))
         {
             ChangeColourBlindMode((current+1) % 3);
@@ -31,6 +31,7 @@ public class SpriteShader : MonoBehaviour {
     //0 is none
     //1 is red-green
     //2 is blue-yellow
+    //Change colour blind mode
     void ChangeColourBlindMode(int mode)
     {
         for (int i = 0; i < rend.materials.Length; i++)
