@@ -74,12 +74,12 @@
 
 				if(orig.r >= orig.b && orig.r >= orig.g){
 					OUT.color = fixed4(orig.r*1.5, orig.g*0.75, orig.b*1.2, orig.a);
-				}else if(orig.g > orig.b && orig.g > orig.b){
+				}else if (orig.g > orig.b && orig.g > orig.b) {
 					OUT.color = fixed4(orig.r, orig.g*1.2, orig.b, orig.a);
 				}else if(orig.b > orig.g && orig.b > orig.r){
 					OUT.color = fixed4(orig.r*1.5, orig.g*0.5, orig.b*1.2, orig.a);
 				}else{
-					OUT.color = fixed4(orig.r, orig.g, orig.b, orig.a);
+					OUT.color = fixed4(orig.r*1.5, orig.g*0.75, orig.b*1.2, orig.a);
 				}
 
 				color = OUT.color * _Color;
