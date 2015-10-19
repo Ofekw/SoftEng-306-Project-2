@@ -6,6 +6,7 @@ public class PauseScript : MonoBehaviour
 {
     public static bool paused;
     public Canvas pauseScreen;
+    private GameObject stageImage;
     // Use this for initialization
     void Start()
     {
@@ -43,6 +44,9 @@ public class PauseScript : MonoBehaviour
 		//Disable player controls
 		var buttons = GameObject.FindGameObjectsWithTag ("PlayerControl");
         GameObject.Find("PauseScreenPlayer").transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = true;
+        GameObject.Find("PausedGUI").GetComponent<Canvas>().enabled = true;
+        stageImage = GameObject.Find("StageImage");
+        stageImage.SetActive(false);
         foreach (GameObject b in buttons) {
 			Button button = b.GetComponent<Button>();
 			button.interactable = false;

@@ -1,25 +1,23 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class Movement : Objective
 {
     private GameObject player;
     private float initial_x;
-    public GameObject joystick;
+    public GameObject joyStick;
 
     public override IEnumerator startObjective()
     {
         player = GameObject.FindWithTag("Player");
         initial_x = player.transform.position.x;
-        joystick.GetComponent<Image>().enabled = true;
+        joyStick.SetActive(true);
         yield return new WaitForSeconds(1);
         while (!isCompleted())
         {
             yield return new WaitForSeconds(1);
         }
-        joystick.GetComponent<Image>().enabled = false;
+        joyStick.SetActive(false);
     }
 
     public override bool isCompleted()
