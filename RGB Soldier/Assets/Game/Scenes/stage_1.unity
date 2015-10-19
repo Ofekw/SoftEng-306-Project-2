@@ -8444,7 +8444,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 196730, guid: 3df920d51cedd0e4ba22e66b913fc628, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3df920d51cedd0e4ba22e66b913fc628, type: 2}
@@ -9190,6 +9190,7 @@ GameObject:
   - 224: {fileID: 2073409620}
   - 222: {fileID: 2073409621}
   - 114: {fileID: 817953554}
+  - 225: {fileID: 2073409622}
   m_Layer: 5
   m_Name: PowerupCountdown
   m_TagString: Untagged
@@ -9222,6 +9223,17 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073409619}
+--- !u!225 &2073409622
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073409619}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2079377178
 GameObject:
   m_ObjectHideFlags: 0
