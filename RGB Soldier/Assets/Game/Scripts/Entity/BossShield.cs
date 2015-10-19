@@ -23,6 +23,7 @@ public class BossShield : MonoBehaviour {
             GameObject.FindGameObjectWithTag("Player").SendMessage("takeDamage", damage);
         } else if (coll.gameObject.CompareTag("BossProjectile") && !coll.gameObject.GetComponent<BlackOrbAttack>().isGoingToPlayer)
         {
+            //take down boss shield
             GameObject.FindGameObjectWithTag("Boss").SendMessage("takeDownShield");
             Destroy(coll.gameObject);
         }
