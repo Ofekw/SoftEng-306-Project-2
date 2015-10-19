@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
         healthDisp.text = "x " + player.currentHealth;
         orbCountDisp.text = orbsCollected.ToString() + " / " + ORB_COUNT_TARGET.ToString(); //update orb counter text
         chargeBar.value = specialCharge;  // set value of special attack slider
-        levelDisp.text = "Level: " + GameControl.control.playerLevel; //update player level text
+        levelDisp.text = "Lvl: " + GameControl.control.playerLevel; //update player level text
         //health check
         if (player.currentHealth <= 0)
         {

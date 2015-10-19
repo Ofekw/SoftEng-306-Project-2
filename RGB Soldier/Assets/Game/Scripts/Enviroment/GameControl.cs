@@ -26,7 +26,7 @@ public class GameControl : MonoBehaviour
     public int backgroundVolume = 100;
     public int soundBitsVolume = 100;
     public int colourMode;
-    public bool vibrateOn;
+    public bool vibrateOn = true;
     public PlayerData playerData;
     public GameObject lvlup;
     public int selectedCharacter = 1;
