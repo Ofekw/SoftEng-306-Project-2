@@ -9,7 +9,7 @@ using GooglePlayGames.BasicApi;
 
 public class GameControl : MonoBehaviour
 {
-
+    //Public, static reference to itself.
     public static GameControl control;
 
     public int playerSprite = 1;
@@ -45,6 +45,7 @@ public class GameControl : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        //Ensures there the singleton design pattern.
         if (control == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -56,12 +57,14 @@ public class GameControl : MonoBehaviour
             Destroy(gameObject);
         }
 
+        //Create the Play Games Client and configure it to enable saved game.
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
 
         PlayGamesPlatform.InitializeInstance(config);
 
         PlayGamesPlatform.Activate();
 
+        //Authenticate the player's Google account.
         Social.localUser.Authenticate((bool success) =>
         {
         });
@@ -86,6 +89,9 @@ public class GameControl : MonoBehaviour
         setupSave();
     }
 
+    /*
+     * If the user is authenticated do cloud save.
+     * */
     public void SaveToCloud()
     {
         if (Social.localUser.authenticated)
@@ -95,18 +101,27 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    /*
+     * Do cloud load.
+     * */
     public void DoLoadFromCloud()
     {
         doSave = false;
         CloudSync();
     }
 
+    /*
+     * Open the saved game. Conflict resolution is longest play time. Saved game file name is "SavedGame".
+     * */
     public void CloudSync()
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution("SavedGame", DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseLongestPlaytime, OpenCloudSave);
     }
 
+    /*
+     * Sets up local save. Creates the "playerInfo.dat" files and writes the binary formatted PlayerData object to it.
+     * */
     public void setupSave()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -123,6 +138,10 @@ public class GameControl : MonoBehaviour
         
     }
 
+    /*
+     * Checks to see if the saved file from the cloud has been successfully opened. Then does the cloud save and load depending on
+     * the operation boolean "doSave". 
+     * */
     public void OpenCloudSave(SavedGameRequestStatus status, ISavedGameMetadata game)
     {
         if (status == SavedGameRequestStatus.Success)
@@ -142,6 +161,10 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    /*
+     * Does the cloud save.
+     * Converts PlayerData into a byte array. Updates play time and saved file description. Then commits.
+     * */
     public void CloudSave(SavedGameRequestStatus status, ISavedGameMetadata game)
     {
         Save();
@@ -160,6 +183,9 @@ public class GameControl : MonoBehaviour
         savedGameClient.CommitUpdate(game, updatedMetadata, data, OnSaveWritten);
     }
 
+    /*
+     * Reads the saved game file.
+     * */
     public void CloudLoad(ISavedGameMetadata game)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
@@ -178,6 +204,10 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    /*
+     * Converts the byte array from the cloud save and converts it to a PlayerData object.
+     * Loads attributes from that object.
+     * */
     public void OnCloudLoad(SavedGameRequestStatus status, byte[] data)
     {
         if (status == SavedGameRequestStatus.Success)
@@ -192,6 +222,9 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    /*
+     * Updates the PlayerData object with current attributes.
+     * */
     public void Save()
     {
         playerData.playerLevel = playerLevel;
@@ -211,6 +244,12 @@ public class GameControl : MonoBehaviour
         playerData.selectedCharacter = selectedCharacter;
     }
 
+    /*
+     * Sets up local loading.
+     * Loads the "playerInfo.dat" file if it exists. Deserialises and gets the PlayerData object from the file.
+     * Loads attributes from that object.
+     * If file doesn't exist then it is a new game and set the experience required at level 1 at 15.
+     * */
     public void setupLoad()
     {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
@@ -231,6 +270,9 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    /*
+     * Load the current game's attributes from the PlayerData object.
+     * */
     public void Load()
     {
         playerLevel = playerData.playerLevel;
@@ -250,12 +292,18 @@ public class GameControl : MonoBehaviour
         vibrateOn = playerData.vibrateOn;
     }
 
+    /*
+     * Adds the parameter amount of experience to the player.
+     * */
     public void giveExperience(int experience)
     {
         playerExp += experience;
         checkExperience();
     }
 
+    /*
+     * Checks to see if the player has enough experience to level up.
+     * */
     public void checkExperience()
     {
         if (playerExp >= experienceRequired)
@@ -266,6 +314,11 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    /*
+     * Reset the amount of experience the player has and add 1 to the player level and ability point.
+     * If the player has left over experience from the previous level add to the current amount of experience.
+     * Increase the amount of experience required for the next level.
+     * */
     public void levelAndCarryOver()
     {
         int experienceCarryOver = playerExp - experienceRequired;
@@ -275,6 +328,10 @@ public class GameControl : MonoBehaviour
         experienceRequired = (int)(experienceRequired * 1.25);
     }
 
+    /*
+     * Checks to see if the player is logged in.
+     * If they are report a progress of 1 for the 100 enemies killed achievement.
+     * */
     public void enemyKilledAchievement()
     {
         if (Social.localUser.authenticated)
@@ -285,8 +342,9 @@ public class GameControl : MonoBehaviour
         }
     }
 
-    
-
+    /*
+     * Convert byte array to a PlayerData object.
+     * */
     public PlayerData FromBytes(byte[] data)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -300,6 +358,9 @@ public class GameControl : MonoBehaviour
         return playerData;
     }
 
+    /*
+     * Convert a PlayerData object to a byte array.
+     * */
     public byte[] ToBytes(PlayerData thePlayerData)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -315,6 +376,9 @@ public class GameControl : MonoBehaviour
     }
 }
 
+/*
+ * Serialisable PlayerData class used for persisting game attributes.
+ * */
 [Serializable]
 public class PlayerData
 {

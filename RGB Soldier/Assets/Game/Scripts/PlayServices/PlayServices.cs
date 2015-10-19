@@ -6,6 +6,10 @@ using GooglePlayGames.BasicApi.SavedGame;
 
 public class PlayServices : MonoBehaviour {
 
+    /*
+     * Create the Play Games Client and configure it to enable saved game.
+     * Authenticate the player's Google account.
+     * */
     void Awake()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
@@ -19,11 +23,17 @@ public class PlayServices : MonoBehaviour {
         });
     }
 
+    /*
+     * Shows the achievements interface.
+     * */
     public void showAchievements()
     {
         Social.ShowAchievementsUI();
     }
 
+    /*
+     * Shows the saved game interface.
+     * */
     public void showSavedGame()
     {
         uint maxNumToDisplay = 5;
@@ -33,6 +43,10 @@ public class PlayServices : MonoBehaviour {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.ShowSelectSavedGameUI("Select Saved Game", maxNumToDisplay, allowCreateNew, allowDelete, OnSavedGameSelected);
     }
+
+    /*
+     * Cloud loads the selected saved game.
+     * */
     public void OnSavedGameSelected(SelectUIStatus status, ISavedGameMetadata game)
     {
         if (status == SelectUIStatus.SavedGameSelected)
