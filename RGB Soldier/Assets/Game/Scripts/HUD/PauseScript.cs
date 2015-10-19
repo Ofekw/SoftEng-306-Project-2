@@ -42,7 +42,9 @@ public class PauseScript : MonoBehaviour
 	public void onPause() {
 		//Disable player controls
 		var buttons = GameObject.FindGameObjectsWithTag ("PlayerControl");
+        //Renders the player sprite in pause screen
         GameObject.Find("PauseScreenPlayer").transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>().enabled = true;
+        //Enables the pause canvas
         GameObject.Find("PausedGUI").GetComponent<Canvas>().enabled = true;
         stageImage = GameObject.Find("StageImage");
         
