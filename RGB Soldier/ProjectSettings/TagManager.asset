@@ -22,6 +22,16 @@ TagManager:
   - Zombie
   - Boss
   - PlayerControl
+  - MovingPlatform
+  - BulletTime
+  - PlayerAudio
+  - AllowColourCanvas
+  - BossShield
+  - UnblockableOrbAttack
+  - PlayerSelectors
+  - PowerupController
+  - Powerup
+  - BossProjectile
   layers:
   - Default
   - TransparentFX
@@ -43,9 +53,10 @@ TagManager:
   - Boss
   - PlayerMelee
   - Pickups
-  - 
-  - 
-  - 
+  - PlayerSelect
+  - BossShield
+  - 3DGUI
+  - GroundCollideOnly
   - 
   - 
   - 

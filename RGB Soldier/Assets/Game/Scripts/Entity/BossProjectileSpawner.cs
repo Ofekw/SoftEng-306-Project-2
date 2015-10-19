@@ -12,6 +12,7 @@ public class BossProjectileSpawner : ProjectileSpawner {
     private float unblockableOrbSpeed = 0f;
     public static Boolean startedRight;
 
+
     public override void setAttackSettings(string attack, float xPos, float yPos)
     {
         //Should set damage and projectileSpeed variables based on the key
@@ -24,14 +25,15 @@ public class BossProjectileSpawner : ProjectileSpawner {
         {
             startedRight = false;
         }
+        //setup attributes of each attack
         if (attack == "blackOrbAttack")
         {
-            damage = 2;
+            damage = 1;
             projectileSpeed = blackOrbSpeed;
-            angularVelocity = 360;
+            angularVelocity = 0;
         } else if (attack == "unblockableAttack")
         {
-            damage = 10;
+            damage = 3;
             projectileSpeed = unblockableOrbSpeed;
             angularVelocity = 0;
         }
@@ -46,6 +48,5 @@ public class BossProjectileSpawner : ProjectileSpawner {
         projectiles.Add(bounceOrbName, bounceOrb);
         projectiles.Add(unblockAbleOrbName, unblockableOrb);
     }
-
 }
 

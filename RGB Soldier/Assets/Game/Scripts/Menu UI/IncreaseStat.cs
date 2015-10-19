@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using GooglePlayGames;
 
 
 public class IncreaseStat : MonoBehaviour {
@@ -23,6 +24,25 @@ public class IncreaseStat : MonoBehaviour {
 
     // Starts after everything has woken - must wait for gamecontrol
     public void Start()
+    {
+        PlayGamesPlatform.Activate();
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+        });
+
+        points = GameControl.control.abilityPoints;
+        strSlider.value = GameControl.control.playerStr;
+        aglSlider.value = GameControl.control.playerAgl;
+        dexSlider.value = GameControl.control.playerDex;
+        intSlider.value = GameControl.control.playerInt;
+        vitSlider.value = GameControl.control.playerVit;
+
+        pointsText.text = "Points: " + points;
+        setStatText();
+    }
+
+    void Update()
     {
         points = GameControl.control.abilityPoints;
         strSlider.value = GameControl.control.playerStr;
@@ -63,6 +83,7 @@ public class IncreaseStat : MonoBehaviour {
                 case "Vit":
                     player.vitality = (int)statBar.value;
                     GameControl.control.playerVit = player.vitality;
+                    player.currentHealth++; //add to current health as well
                     break;
             }
 
@@ -71,6 +92,13 @@ public class IncreaseStat : MonoBehaviour {
             player.abilityPoints = points;
             GameControl.control.abilityPoints = points;
             setStatText();
+
+            if (Social.localUser.authenticated)
+            {
+                Social.ReportProgress("CgkIpKjLyoEdEAIQAw", 100.0f, (bool success) =>
+                {
+                });
+            }
         }
 
     }
@@ -106,5 +134,8 @@ public class IncreaseStat : MonoBehaviour {
         GameControl.control.playerVit = 1;
         player.abilityPoints = 5;
         GameControl.control.abilityPoints = 5;
+        GameControl.control.playerLevel = 1;
+        GameControl.control.playerExp = 0;
+        GameControl.control.experienceRequired= 15;
     }
 }

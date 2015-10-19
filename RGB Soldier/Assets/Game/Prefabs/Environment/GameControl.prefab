@@ -48,6 +48,26 @@ MonoBehaviour:
   playerVit: 1
   currentGameLevel: 0
   abilityPoints: 0
+  experienceRequired: 0
+  backgroundVolume: 100
+  soundBitsVolume: 100
+  colourMode: 0
+  playerData:
+    playerLevel: 0
+    playerExp: 0
+    playerStr: 0
+    playerAgl: 0
+    playerDex: 0
+    playerInt: 0
+    playerVit: 0
+    currentGameLevel: 0
+    abilityPoints: 0
+    backgroundVolume: 0
+    soundBitsVolume: 0
+    colourMode: 0
+    experienceRequired: 0
+  lvlup: {fileID: 100006, guid: f79fec9732590e940903525bc1f28365, type: 2}
+  isTutorial: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -79,6 +99,10 @@ Prefab:
       propertyPath: currentGameLevel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lvlup
+      value: 
+      objectReference: {fileID: 100006, guid: f79fec9732590e940903525bc1f28365, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190956}

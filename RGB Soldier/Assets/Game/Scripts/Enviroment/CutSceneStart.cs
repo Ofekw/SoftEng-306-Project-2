@@ -4,6 +4,9 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
+/* This class contains the list of dialogs for the cutscene
+ * and starts the cutscene dialog
+ */
 public class CutSceneStart : MonoBehaviour
 {
     private DialogPanel modalPanel;

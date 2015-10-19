@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Enviroment
 {
+    /// <summary>
+    /// Used when the special attack is started. Shakes the camera
+    /// </summary>
     class CameraShake : MonoBehaviour
     {
         // Transform of the camera to shake. Grabs the gameObject's transform

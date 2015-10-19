@@ -8,7 +8,8 @@ using UnityEngine;
 namespace Assets.Game.Scripts.Enviroment
 {
     /// <summary>
-    /// Contains methods to handle camera actions, such as following the player and shaking when the special attack is done
+    /// Contains methods to handle camera actions, such as following the player and
+    /// shaking when the special attack is done
     /// </summary>
     public class CameraControl : MonoBehaviour
     {
@@ -21,7 +22,9 @@ namespace Assets.Game.Scripts.Enviroment
 
         private Transform player;		
 
-
+        /// <summary>
+        /// Finds the player object in the stage
+        /// </summary>
         void Awake()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,6 +35,9 @@ namespace Assets.Game.Scripts.Enviroment
             FollowPlayer();
         }
 
+        /// <summary>
+        /// Finds the current location of the player and moves the camera to that location
+        /// </summary>
         void FollowPlayer()
         {
             //get the cameras current position
@@ -51,7 +57,7 @@ namespace Assets.Game.Scripts.Enviroment
 
             currentY = Mathf.Clamp(currentY, minXAndY.y, maxXAndY.y);
 
-            // Set the camera's position (z pos it the same)
+            // Set the camera's position (z pos is the same)
             transform.position = new Vector3(currentX, currentY, transform.position.z);
         }
 
@@ -62,7 +68,6 @@ namespace Assets.Game.Scripts.Enviroment
         }
 
         //used to see if the player distance is greater than than the y threshold 
-
         bool CheckYPosition()
         {
             return Mathf.Abs(transform.position.y - player.position.y) > yThreshold;

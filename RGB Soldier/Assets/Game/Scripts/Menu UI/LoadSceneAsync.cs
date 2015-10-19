@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class LoadSceneAsync : MonoBehaviour {
 
@@ -26,5 +27,9 @@ public class LoadSceneAsync : MonoBehaviour {
             // Wait a frame before reevaluating this same expression
             yield return null;
         }
+    }
+
+    public void LoadSceneAdditive(string scene_name) {
+        Application.LoadLevelAdditive(scene_name);
     }
 }
