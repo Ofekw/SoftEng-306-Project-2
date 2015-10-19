@@ -24,6 +24,9 @@ public class Powerup : CollectibleEntity {
 	}
 }
 
+/// <summary>
+/// Enumerated type that represents different kinds of powerups
+/// </summary>
 public enum PowerupType
 {
 	AGILITY, HEALTH, ATTACK, SPECIAL

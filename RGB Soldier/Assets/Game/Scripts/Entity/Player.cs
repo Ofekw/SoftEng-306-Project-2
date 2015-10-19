@@ -197,13 +197,15 @@ public class Player : KillableEntityInterface
         this.maxHealth = vitality;
         entityMovement.maxSpeed = agility * 5.0f;
         //Strength and dexterity are called during damage calculations
-		if (powerController.isAttackBoost()) {
+        //Boost strength and dexterity if attack powerup is active
+        if (powerController.isAttackBoost()) {
 			strength = GameControl.control.playerStr + 1;
 			dexterity = GameControl.control.playerDex + 1;
 		} else {
 			strength = GameControl.control.playerStr;
 			dexterity = GameControl.control.playerDex;
 		}
+        //Boost agility if agility powerup is active
 		if (powerController.isAgilityBoost()) {
 			agility = GameControl.control.playerAgl + 1;
 		} else {

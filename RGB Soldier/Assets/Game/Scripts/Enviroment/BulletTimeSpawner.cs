@@ -5,7 +5,9 @@ public class BulletTimeSpawner : MonoBehaviour
 {
     public GameObject powerup;
 
-    //Spawn bullet time powerup at spawner position
+    /// <summary>
+    /// Spawns a Focus orb at the spawner position
+    /// </summary>
     public void Spawn()
     {
         GameObject clone = (GameObject)Instantiate(powerup, transform.position, transform.rotation);

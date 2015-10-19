@@ -7,6 +7,9 @@ using GooglePlayGames;
 [RequireComponent(typeof(LoadSceneAsync))]
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// Enumerated type to represent the state of the game as either Paused or Running
+    /// </summary>
     public enum State
     {
         Paused, Running
@@ -65,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(gameObject);  //this enforces Singleton pattern
+            Destroy(gameObject);  // This enforces Singleton pattern
         }
         DontDestroyOnLoad(gameObject);
         InitGame();
@@ -96,6 +99,7 @@ public class GameManager : MonoBehaviour
             Invoke("HideStageImage", 2);
         }
 
+        // initialise values for starting game
         orbsCollected = 0;
         specialCharge = 0;
         enemiesOnScreen = 0;
@@ -169,7 +173,7 @@ public class GameManager : MonoBehaviour
             levelCleared();
         }
         //special attack check
-        canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false;  //set boolean true if player can special attack
+        canSpecialAtk = specialCharge >= SPECIAL_CHARGE_TARGET ? true : false;  // set boolean true if player can special attack
         if (!canSpecialAtk)
         {
             incrementSpecialAtkCounter(player);
@@ -189,6 +193,10 @@ public class GameManager : MonoBehaviour
         enemiesOnScreen = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
+    /// <summary>
+    /// Charges special attack bar for player. The attack bar is incremented based on the player's intelligence stat.
+    /// </summary>
+    /// <param name="player"></param>
     public void incrementSpecialAtkCounter(Player player)
     {
         specialCharge += (float)(player.intelligence) / 5;
@@ -234,6 +242,10 @@ public class GameManager : MonoBehaviour
         Application.LoadLevel("game_over_screen");
     }
 
+    /// <summary>
+    /// Checks if the game is in a pause state
+    /// </summary>
+    /// <returns></returns>
     public bool isPaused()
     {
         if (GameManager.instance.getState().Equals(GameManager.State.Paused))
@@ -243,6 +255,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Activates Focus mode
+    /// </summary>
     public void activateBulletTime()
     {
         if (isBulletTime)
@@ -251,6 +266,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(StartBulletTime());
     }
 
+    /// <summary>
+    /// Coroutine that sets Focus as active for 10 seconds
+    /// </summary>
+    /// <returns></returns>
     IEnumerator StartBulletTime()
     {
         isBulletTime = true;

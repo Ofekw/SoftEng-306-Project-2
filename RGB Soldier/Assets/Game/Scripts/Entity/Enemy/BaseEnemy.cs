@@ -130,8 +130,6 @@ public class BaseEnemy : KillableEntityInterface
         GameControl.control.enemyKilledAchievement();
         source.PlayOneShot(dieSound, ((float)GameControl.control.soundBitsVolume) / 100);
         GameControl.control.giveExperience(experienceGiven);
-
-        ////TODO: want to add flashing enemy or fade out???
         StartCoroutine(delayDie(deathLength));
     }
 
@@ -149,7 +147,7 @@ public class BaseEnemy : KillableEntityInterface
         	} 
 			else if (Random.Range(0, 9) == 0)
 			{
-				//  1 / 20 chance spawn a player powerup
+				// 1/15 chance enemy spawns a player powerup
 				PowerupController powerupControl = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
 				powerupControl.spawnRandomPowerup(gameObject.transform.position, gameObject.transform.rotation);
 			}

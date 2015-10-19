@@ -45,6 +45,10 @@ public class PowerupController : MonoBehaviour
 		agilitySprite.enabled = false;
 	}
 
+    /// <summary>
+    /// Calls the appropriate method to activate the inputted powerup
+    /// </summary>
+    /// <param name="powerup">Input powerup to be activated</param>
 	public void activatePowerup(Powerup powerup)
 	{
 		switch (powerup.getType ()) 
@@ -64,6 +68,9 @@ public class PowerupController : MonoBehaviour
 		}
 	}
 
+    /// <summary>
+    /// Activates agility boost for 15 seconds
+    /// </summary>
 	public void activateAgilityBoost() {
 		if (isAgilityBoost())
 			return;
@@ -82,6 +89,9 @@ public class PowerupController : MonoBehaviour
 		agilitySprite.enabled = false;
 	}
 
+    /// <summary>
+    /// Activates attack boost for 15 seconds
+    /// </summary>
 	public void activateAttackBoost()
 	{
 		if (isAttackBoost ())
@@ -101,12 +111,18 @@ public class PowerupController : MonoBehaviour
 		atkSprite.enabled = false;
 	}
 
+    /// <summary>
+    /// Increments player's current health by 1
+    /// </summary>
 	public void activateHealthBoost()
 	{
 		Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		player.currentHealth++;
 	}
 
+    /// <summary>
+    /// Adds 50% onto the special attack charger bar
+    /// </summary>
 	public void activateSpecialBoost()
 	{
 		GameManager.instance.specialCharge += GameManager.SPECIAL_CHARGE_TARGET / 2;
@@ -114,6 +130,13 @@ public class PowerupController : MonoBehaviour
 			GameManager.instance.specialCharge = GameManager.SPECIAL_CHARGE_TARGET;
 	}
 
+    /// <summary>
+    /// Spawns a random powerup at the given position and rotation.
+    /// Spawned powerup can be one of the following:
+    /// Agility, Attack, Health, Special.
+    /// </summary>
+    /// <param name="position">Vector position of spawned powerup. Used to instantiate powerup</param>
+    /// <param name="rotation">Rotation of spawned powerup. Used to instantiate powerup</param>
 	public void spawnRandomPowerup(Vector3 position, Quaternion rotation)
 	{
 		switch (Random.Range (0, 3))
