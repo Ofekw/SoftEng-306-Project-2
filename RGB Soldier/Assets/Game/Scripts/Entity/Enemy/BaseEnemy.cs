@@ -147,7 +147,7 @@ public class BaseEnemy : KillableEntityInterface
         	{
             	Instantiate(orb, gameObject.transform.position, gameObject.transform.rotation);
         	} 
-			else if (Random.Range(0, 19) == 0)
+			else if (Random.Range(0, 9) == 0)
 			{
 				//  1 / 20 chance spawn a player powerup
 				PowerupController powerupControl = GameObject.FindGameObjectWithTag("PowerupController").GetComponent<PowerupController>();
