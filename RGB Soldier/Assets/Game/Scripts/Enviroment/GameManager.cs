@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
+        // Initialises the stage indicator text
         if (!isTutorial)
         {
             stageImage = GameObject.Find("StageImage");
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
         chargeBar.maxValue = SPECIAL_CHARGE_TARGET;  // set max value of attack charge slider
         state = State.Running;
 
+        // Grabs the player game object
         var i = GameControl.control != null ? GameControl.control.playerSprite : 1;
         player = GameObject.Find("Player");
         pausedCharacter = GameObject.Find("PauseScreenPlayer");
@@ -116,7 +118,7 @@ public class GameManager : MonoBehaviour
         pauseSkin = pausedCharacter.transform.FindChild("p_sotai").GetComponent<SkinnedMeshRenderer>();
         materials = skin.materials;
         pauseMaterials = pauseSkin.materials;
-
+        // Renders the player with different skins depending on the user's choice
         if (i == 1)
         {
             for (i = 0; i < 4; i++)
@@ -152,6 +154,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameManager.instance.isPaused())
         {
+            // Enables the paused player sprite to be true when paused
             GameObject.Find("PauseScreenPlayer").GetComponent<Animator>().enabled = true;
             return;
         }

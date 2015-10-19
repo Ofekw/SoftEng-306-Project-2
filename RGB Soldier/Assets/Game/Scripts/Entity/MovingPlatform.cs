@@ -17,8 +17,10 @@ public class MovingPlatform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        // platform moves towards position
         platform.transform.position = Vector3.MoveTowards(platform.transform.position, currentPoint.position, Time.deltaTime * moveSpeed);
 
+        // once platform is at the position it needs to be at, it moves onto the next position in the points array
         if (platform.transform.position == currentPoint.position) {
             selectionPoint++;
 
