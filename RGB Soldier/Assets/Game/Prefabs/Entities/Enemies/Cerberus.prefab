@@ -475,6 +475,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &150812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472034}
+  - 58: {fileID: 5826996}
+  m_Layer: 22
+  m_Name: GroundCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &154330
 GameObject:
   m_ObjectHideFlags: 1
@@ -1331,13 +1347,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133536}
   m_LocalRotation: {x: -.0087265363, y: 0, z: 0, w: .999961913}
-  m_LocalPosition: {x: 0, y: 25.7028713, z: 0}
+  m_LocalPosition: {x: -.412032604, y: .755825162, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: -1}
   m_Children:
   - {fileID: 458760}
   - {fileID: 473682}
   - {fileID: 418074}
   - {fileID: 409934}
+  - {fileID: 472034}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &458760
@@ -1494,6 +1511,18 @@ Transform:
   - {fileID: 429780}
   m_Father: {fileID: 426150}
   m_RootOrder: 0
+--- !u!4 &472034
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 458612}
+  m_RootOrder: 4
 --- !u!4 &472572
 Transform:
   m_ObjectHideFlags: 1
@@ -1691,6 +1720,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: .529999971}
   serializedVersion: 2
   m_Radius: .5
+--- !u!58 &5826996
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150812}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .529999971}
+  serializedVersion: 2
+  m_Radius: .449999988
 --- !u!61 &6137672
 BoxCollider2D:
   m_ObjectHideFlags: 1

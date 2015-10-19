@@ -25,14 +25,15 @@ public class BossProjectileSpawner : ProjectileSpawner {
         {
             startedRight = false;
         }
+        //setup attributes of each attack
         if (attack == "blackOrbAttack")
         {
-            damage = 2;
+            damage = 1;
             projectileSpeed = blackOrbSpeed;
             angularVelocity = 0;
         } else if (attack == "unblockableAttack")
         {
-            damage = 10;
+            damage = 3;
             projectileSpeed = unblockableOrbSpeed;
             angularVelocity = 0;
         }

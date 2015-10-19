@@ -27,11 +27,19 @@ public class ChangeColourMode : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Toggle[] t = colourModes.GetComponentsInChildren<Toggle>();
+		if (GameManager.instance.isPaused())
+		{
+			foreach (Toggle i in t) {
+				i.enabled = false;
+				
+			}
+		}
 	}
 
     public void colourModeUpdate(bool update)
     {
+
         // toggle group only allows 1 active toggle
         Toggle activeToggle = colourModes.ActiveToggles().FirstOrDefault();
         Toggle[] t = colourModes.GetComponentsInChildren<Toggle>();

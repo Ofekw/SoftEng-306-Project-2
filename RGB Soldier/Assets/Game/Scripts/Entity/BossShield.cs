@@ -21,6 +21,15 @@ public class BossShield : MonoBehaviour {
         {
             //If player jumps into shield they should take damage.
             GameObject.FindGameObjectWithTag("Player").SendMessage("takeDamage", damage);
+        } else if (coll.gameObject.CompareTag("BossProjectile") && !coll.gameObject.GetComponent<BlackOrbAttack>().isGoingToPlayer)
+        {
+            //take down boss shield
+            GameObject.FindGameObjectWithTag("Boss").SendMessage("takeDownShield");
+            Destroy(coll.gameObject);
+        }
+        else if (coll.gameObject.CompareTag("Projectile"))
+        {
+            Destroy(coll.gameObject);
         }
     }
 }
