@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/* 
+ * This tutorial teaches the player about the special attack
+ */
 public class Special : Objective {
     public GameObject stageTextObject;
     public GameObject enemyPrefab;
@@ -16,8 +19,10 @@ public class Special : Objective {
         stageText.text = "When the middle bar is full, your special is ready";
         yield return new WaitForSeconds(2);
         stageText.text = getDescription();
+        //Spawns enemies
         enemy1 = (GameObject)Instantiate(enemyPrefab, new Vector3(player.transform.position.x - 10, player.transform.position.y), this.transform.rotation);
         enemy2 = (GameObject)Instantiate(enemyPrefab, new Vector3(player.transform.position.x - 5, player.transform.position.y), this.transform.rotation);
+        //Readys the players special
         GameManager.instance.specialCharge = 1000;
         yield return new WaitForSeconds(2);
         while (!isCompleted())
@@ -28,6 +33,7 @@ public class Special : Objective {
 
     public override bool isCompleted()
     {
+        //Checks if enemies are killed
         return (enemy1 == null && enemy2 == null);
     }
 
